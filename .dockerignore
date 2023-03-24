@@ -1,6 +1,6 @@
 Dockerfile
-.git
-.gitignore
+# .git
+# .gitignore
 README.md
 README-en.md
 screenshot.png
