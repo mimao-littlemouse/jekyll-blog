@@ -1,5 +1,4 @@
 ---
-layout: archive-dates
+layout: default
 permalink: /dates/
-title: Dates
 ---

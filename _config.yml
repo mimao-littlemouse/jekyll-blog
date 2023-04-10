@@ -1,13 +1,23 @@
-# Setup
-title: Not Pure Poole
-description: A simple, beautiful, and powerful Jekyll theme for blogs
-url: https://vszhub.github.io
+# 一.自定义变量
+# 初始化网站有关变量
+title: Mi Mao
+description: Mi Mao 更喜欢单页面博客 最好是单页面的网站，那样用起来更舒适
+url: https://github.com/mimao-littlemouse/Mi Mao
 avatar: /avatar.jpeg
-paginate: 5
+paginate: 10
 permalink: pretty
 cover_image: /bg.jpeg
 
-# Gems
+# 自定义 Jekyl SEO Tag（优化搜索结果）
+social:
+  name: Mi Mao
+  links:
+    - https://github.com/mimao-littlemouse/
+lang: en
+
+
+# 二.网站所需的配置变量
+# Gems插件依赖
 plugins:
   - jekyll-gist
   - jekyll-paginate
@@ -15,45 +25,20 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
 
-# Optimize Jekyll
+# 自定义Jekyll中不需要的文件或文件夹
 exclude:
   - .editorconfig
   - .git
   - .jekyll-cache
   - Gemfile
   - Gemfile.lock
-  - LICENSE.md
-  - README.md
-  - scripts/
-  - not-pure-poole.gemspec
+  - mimao.gemspec
 
-# Optimize Jekyl SEO Tag
-twitter:
-  username: vszhub
-  card: summary
-logo: logo.png
-social:
-  name: Songzi Vong
-  links:
-    - https://twitter.com/vszhub
-    - https://github.com/vszhub
-google_site_verification: xxxxx
-lang: en
-
+# 启用sass 并指定sass文件夹的路径和名称
 sass:
   sass_dir: _sass
   style: :compressed
 
-# Options
 
-# Replace this value and uncomment to enable Google Analytics tracking
-# google_analytics: UA-000000-0
+# 三.其他选项（自定义）
 
-# Replace this value and uncomment to enable Disqus
-# disqus: xxxxxx
-
-# Specify the author for blog posts
-author:
-  name: Songzi Vong
-  url: https://github.com/vszhub/
-  email: vszhub@gmail.com
