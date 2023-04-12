@@ -1,0 +1,4 @@
+- name: index
+  text: 首页
+- name: about
+  text: 关于

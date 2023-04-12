@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- --- 母模板 --- -->
+<!-- 这是 所有html页面的入口 -->
+<!-- 该页面用于 统一处理 SEO 兼容 引入资源 -->
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,10 +12,10 @@
   {%- seo -%}
   {%- feed_meta -%}
 </head>
+
 <body>
   <!-- ---html--- -->
-  <div id="app" class="container">
-    <div class="btn btn-primary">test</div>
+  <div id="app" class="container-fluid px-0">
     {{content}}
   </div>
   <!-- ---javascript--- -->
@@ -24,9 +27,16 @@
   <!-- ------ -->
   <!-- ---书写javascript代码--- -->
   <script>
-    $(function(){
-      console.log('hello world')
-    })
+    // $(function () {
+    //   console.log('hello world')
+    //   console.log('兼容')
+    //   // 实现自动刷新
+    //   setInterval(() => {
+    //     window.location.reload()
+    //     console.log('开始刷新')
+    //   }, 5000);
+    // })
   </script>
 </body>
+
 </html>

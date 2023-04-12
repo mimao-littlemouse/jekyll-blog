@@ -1,7 +1,7 @@
 # 一.自定义变量
 # 初始化网站有关变量
 title: Mi Mao
-description: Mi Mao 更喜欢单页面博客 最好是单页面的网站，那样用起来更舒适
+description: 用起来更舒适
 url: https://github.com/mimao-littlemouse/Mi Mao
 avatar: /avatar.jpeg
 paginate: 10
@@ -15,6 +15,10 @@ social:
     - https://github.com/mimao-littlemouse/
 lang: en
 
+# 自定义集合
+collections:
+  staff_members:
+    output: true
 
 # 二.网站所需的配置变量
 # Gems插件依赖
@@ -33,6 +37,7 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - mimao.gemspec
+  - Dockerfile
 
 # 启用sass 并指定sass文件夹的路径和名称
 sass:

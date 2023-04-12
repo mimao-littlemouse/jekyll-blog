@@ -1,3 +1,74 @@
 ---
-layout: default
+layout: app
 ---
+<!-- 定义变量 -->
+{% assign side_navbar_data = site.data.side_navbar %}
+{% assign side_post = site.post %}
+<!-- --- 头部内容部分 --- -->
+<nav id="header" class="navbar bg-body-tertiary" style="height: 50px;">
+  <div class="container-fluid row me-0 pe-0">
+    <span class="navbar-brand mb-0 h1 col-2 text-center">Mi Mao</span>
+  </div>
+</nav>
+<!-- --- 中间主体内容部分 --- -->
+<div id="main" class="d-flex container-fluid row m-0 p-0" style="height: calc(100vh - 50px);">
+  <!-- 侧边导航栏 -->
+  <!-- 导航选项部分的数据，会在 _data文件夹中d的side_navbar.yaml中进行定义 -->
+  <ul id="side-navbar"
+    class="nav nav-pills flex-column flex-nowrap pe-0 bg-body-tertiary col-2 h-100 border border-top-1" role="tablist"
+    style="padding-top: 5px;border-top-right-radius: 2px;overflow-y: auto;">
+    {% for navbar_item in side_navbar_data %}
+    <li class="nav-item mx-0 mb-1 d-flex justify-content-center" role="presentation">
+      <button class="nav-link p-0 {% if navbar_item.name=="jekyll_base" %}active{% endif %}"
+        style="width: 96%;height: 32px;" id="{{navbar_item.name}}-tab" data-bs-toggle="pill"
+        data-bs-target="#{{navbar_item.name}}-content" type="button" role="tab"
+        aria-controls="{{navbar_item.name}}-content" aria-selected="{% if navbar_item.name=="jekyll_base" %}true{%
+        endif %}">{{navbar_item.text}}</button>
+    </li>
+    {% endfor %}
+  </ul>
+  <!-- 右边内容区域 -->
+  <div id="side-content" class="tab-content col-10 ps-1 pe-0">
+    <!-- 右边区域 tab -->
+    {% for navbar_item in side_navbar_data %}
+    <div id="{{navbar_item.name}}-content" class="tab-pane fade {% if navbar_item.name=="jekyll_base" %}show active{%
+      endif %} w-100 h-100" role="tabpanel" aria-labelledby="{{navbar_item.name}}-tab" tabindex="0">
+      <!-- 使用轮播 来展示每一个类型的博客中不同章节  -->
+      <div id="{{navbar_item.name}}-carousel" class="carousel slide w-100 h-100 bg-body-tertiary">
+        <div class="carousel-inner w-100 h-100">
+          {% for post in site.posts %}
+          <ul class="carousel-item {% if forloop.index == 1 %}active{% endif %}">
+            <li>
+              <h1>{{ post.title }}{{ forloop.index }}</h1>
+              {{post.name}}
+              {{post.last_modified_at}}
+              {% for tag in site.tags %}
+              {{tag}}<br>
+              {% endfor %}
+              <!-- 显示员工信息 -->
+              显示员工信息
+              {% for staff_member in site.staff_members %}
+                <h2>{{ staff_member.name }}</h2>
+                <p>{{ staff_member.content | markdownify }}</p>
+              {% endfor %}
+            </li>
+          </ul>
+          {% endfor %}
+        </div>
+        <button class="carousel-control-prev border rounded-circle my-auto ms-1" style="width: 40px;height:40px;" type="button" data-bs-target="#{{navbar_item.name}}-carousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">上</span>
+        </button>
+        <button class="carousel-control-next border rounded-circle my-auto me-1" style="width: 40px;height:40px;" type="button" data-bs-target="#{{navbar_item.name}}-carousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">下</span>
+        </button>
+      </div>
+      <!-- 提示灯导航 -->
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<div id="footer">
+  footer
+</div>

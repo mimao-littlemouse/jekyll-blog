@@ -1,4 +1,30 @@
-// 导入 bootstrap中所有的样式
-@import "./bootstrap_scss/bootstrap";
+// 一.说明
+// ==================说明===================
+// 为了能使用bootstrap中的自定义css样式，选择bootstrap中第一种自定义方式(全覆盖)
+// custom.scss
+// Option A: Include all of Bootstrap （选项A: 包含所有bootstrap）
+// Include any default variable overrides here (though functions won't be available) （这里可以重写变量，但不能重写方法）
+// @import "./bootstrap_scss/bootstrap"; 这是css全导入的方式
+// Then add additional custom code here(添加额外的其他自定义代码)
+
 // 自定义样式，覆盖bootstrap中的样式（注意：不要去动bootstrap中的样式）
-@import "./custom";
+// 注意：
+// 1.Bootstrap中的每个Sass变量都包括 !default 标志 允许您在自己的Sass中覆盖变量的默认值，而无需修改Bootstrap的源代码。
+// 2.根据需要复制和粘贴变量，修改其值，并删除 !default。
+// 3.如果变量已经被赋值，那么Bootstrap中的默认值将不会重新赋值。
+// 4.您可以在scss/_variables.css中找到Bootstrap变量的完整列表。有些变量设置为null，这些变量不会输出属性，除非它们在您的配置中被重写。
+// 5.变量重写必须在我们的函数导入之后，但在其他导入之前。
+// ========================================
+
+// 二.书写代码
+// =============书写代码 进行实现===========
+// 注意：（下面导入的部分，需要在 custom中对应的文件中进行实现覆盖 同理：在下面进行导入的部分，需要在custom中创建）
+// (1).重写 bootstrap中所有的 variable(变量) 
+@import "./custom/variables.scss";
+// (2).导入 bootstrap中所有的样式
+@import "./bootstrap_scss/bootstrap"; //这是 bootstrap自带的，不需要进行更改
+// (3).添加额外的其他自定义代码
+
+// 404页面自定义样式
+@import "./custom/404.scss";
+// ================结束代码书写=============
