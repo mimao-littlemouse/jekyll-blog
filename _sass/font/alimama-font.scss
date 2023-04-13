@@ -1,0 +1,12 @@
+$alimama_font: "Alimama_DongFangDaKai_Regular" !default;
+$alimama_font-dir: "./fonts/alimama-fonts" !default;
+$alimama_font-file: #{$alimama_font-dir}/#{$alimama_font} !default;
+// $alimama_font-hash: "24e3eb84d0bcaf83d77f904c78ac1f47" !default;
+// $alimama_font-src: url("#{$alimama_font-file}.woff2?#{$alimama_font-hash}") format("woff2"), url("#{$alimama_font-file}.woff?#{$alimama_font-hash}") format("woff") !default;
+$alimama_font-src: url("#{$alimama_font-file}.woff2") format("woff2"), url("#{$alimama_font-file}.woff") format("woff"), url("#{$alimama_font-file}.otf") format("otf"), url("#{$alimama_font-file}.ttf") format("ttf")  !default;
+
+@font-face {
+  font-display: block;
+  font-family: $alimama_font;
+  src: $alimama_font-src;
+}

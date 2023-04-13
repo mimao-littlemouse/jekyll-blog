@@ -46,7 +46,7 @@ layout: app
               {{tag}}<br>
               {% endfor %}
               <!-- 显示员工信息 -->
-              显示员工信息
+              显示员工信息  <i class="bi bi-0-circle" style="font-size:26px;color:blue;"></i><br>
               {% for staff_member in site.staff_members %}
                 <h2>{{ staff_member.name }}</h2>
                 <p>{{ staff_member.content | markdownify }}</p>

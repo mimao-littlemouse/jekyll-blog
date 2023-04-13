@@ -22,8 +22,14 @@
 // (1).重写 bootstrap中所有的 variable(变量) 
 @import "./custom/variables.scss";
 // (2).导入 bootstrap中所有的样式
-@import "./bootstrap_scss/bootstrap"; //这是 bootstrap自带的，不需要进行更改
+@import "./bootstrap-scss/bootstrap"; //这是 bootstrap自带的，不需要进行更改
 // (3).添加额外的其他自定义代码
+
+// 导入 Bootstrap5图标库（从Bootstrap5图标库下载的字体库）
+@import "./font/bootstrap-icons.scss";
+
+// 导入 阿里字体库（从阿里图标库下载的字体库）
+// @import "./font/alimama-font.scss";
 
 // 404页面自定义样式
 @import "./custom/404.scss";
