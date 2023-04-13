@@ -1,0 +1,10 @@
+$alimama_font_dakai: "Alimama_DongFangDaKai_Regular" !default;
+$alimama_font_dakai-dir: "./fonts/alimama-fonts/dakai" !default;
+$alimama_font_dakai-file: #{$alimama_font_dakai-dir}/#{$alimama_font_dakai} !default;
+$alimama_font_dakai-src: url("#{$alimama_font_dakai-file}.woff2") format("woff2"), url("#{$alimama_font_dakai-file}.woff") format("woff") !default;
+
+@font-face {
+  font-display: block;
+  font-family: $alimama_font_dakai;
+  src: $alimama_font_dakai-src;
+}

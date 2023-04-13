@@ -1,0 +1,10 @@
+$alimama_font_shuheiti: "Alimama_ShuHeiTi_Bold" !default;
+$alimama_font_shuheiti-dir: "./fonts/alimama-fonts/shuheiti" !default;
+$alimama_font_shuheiti-file: #{$alimama_font_shuheiti-dir}/#{$alimama_font_shuheiti} !default;
+$alimama_font_shuheiti-src: url("#{$alimama_font_shuheiti-file}.woff2") format("woff2"), url("#{$alimama_font_shuheiti-file}.woff") format("woff") !default;
+
+@font-face {
+  font-display: block;
+  font-family: $alimama_font_shuheiti;
+  src: $alimama_font_shuheiti-src;
+}

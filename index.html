@@ -7,7 +7,7 @@ layout: app
 <!-- --- 头部内容部分 --- -->
 <nav id="header" class="navbar bg-body-tertiary" style="height: 50px;">
   <div class="container-fluid row me-0 pe-0">
-    <span class="navbar-brand mb-0 h1 col-2 text-center">Mi Mao</span>
+    <span class="navbar-brand mb-0 h1 col-2 text-center alimama-font-dakai">Mi Mao</span>
   </div>
 </nav>
 <!-- --- 中间主体内容部分 --- -->
@@ -36,24 +36,18 @@ layout: app
       <!-- 使用轮播 来展示每一个类型的博客中不同章节  -->
       <div id="{{navbar_item.name}}-carousel" class="carousel slide w-100 h-100 bg-body-tertiary">
         <div class="carousel-inner w-100 h-100">
-          {% for post in site.posts %}
-          <ul class="carousel-item {% if forloop.index == 1 %}active{% endif %}">
-            <li>
-              <h1>{{ post.title }}{{ forloop.index }}</h1>
-              {{post.name}}
-              {{post.last_modified_at}}
-              {% for tag in site.tags %}
-              {{tag}}<br>
-              {% endfor %}
-              <!-- 显示员工信息 -->
-              显示员工信息  <i class="bi bi-0-circle" style="font-size:26px;color:blue;"></i><br>
-              {% for staff_member in site.staff_members %}
-                <h2>{{ staff_member.name }}</h2>
-                <p>{{ staff_member.content | markdownify }}</p>
-              {% endfor %}
-            </li>
-          </ul>
-          {% endfor %}
+          <div class="carousel-item active" style="background-color: black;color:white;">
+            <p>Mi Mao</p>
+            <p class="alimama-font-dakai">Mi Mao</p>
+            <p class="alimama-font-shuheiti">Mi Mao</p>
+            <p class="alimama-font-jinbuti">Mi Mao</p>
+            <p class="alimama-font-yuyang1">Mi Mao</p>
+            <p class="alimama-font-yuyang2">Mi Mao</p>
+            <p class="alimama-font-yuyang3">Mi Mao</p>
+            <p class="alimama-font-yuyang4">Mi Mao</p>
+            <p class="alimama-font-yuyang5">Mi Mao</p>
+            <i class="bi bi-123"></i>
+          </div>
         </div>
         <button class="carousel-control-prev border rounded-circle my-auto ms-1" style="width: 40px;height:40px;" type="button" data-bs-target="#{{navbar_item.name}}-carousel" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>

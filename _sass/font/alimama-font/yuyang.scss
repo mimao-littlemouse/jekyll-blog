@@ -1,0 +1,13 @@
+$alimama_font_yuyang-dir: "./fonts/alimama-fonts/yuyang";
+// 注意：引入 ttf格式的字体文件，不需要加上 format
+@for $i from 1 through 5 {
+    $alimama_font_yuyang: "TsangerYuYangT_W0#{$i}_W0#{$i}";
+    $alimama_font_yuyang-file: #{$alimama_font_yuyang-dir}/#{$alimama_font_yuyang};
+    $alimama_font_yuyang-src: url("#{$alimama_font_yuyang-file}.ttf");
+
+    @font-face {
+        font-display: block;
+        font-family: $alimama_font_yuyang;
+        src: $alimama_font_yuyang-src;
+    }
+}

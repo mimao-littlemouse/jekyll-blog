@@ -1,0 +1,11 @@
+$alimama_font_jinbuti: "DingTalk_JinBuTi_Regular" !default;
+$alimama_font_jinbuti-dir: "./fonts/alimama-fonts/jinbuti" !default;
+$alimama_font_jinbuti-file: #{$alimama_font_jinbuti-dir}/#{$alimama_font_jinbuti} !default;
+$alimama_font_jinbuti-src: url("#{$alimama_font_jinbuti-file}.woff2") format("woff2"), url("#{$alimama_font_jinbuti-file}.woff") format("woff"), url("#{$alimama_font_jinbuti-file}.ttf") !default;
+
+// 注意：引入 ttf格式的字体文件，不需要加上 format
+@font-face {
+  font-display: block;
+  font-family: $alimama_font_jinbuti;
+  src: $alimama_font_jinbuti-src;
+}

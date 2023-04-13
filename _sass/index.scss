@@ -22,15 +22,42 @@
 // (1).重写 bootstrap中所有的 variable(变量) 
 @import "./custom/variables.scss";
 // (2).导入 bootstrap中所有的样式
-@import "./bootstrap-scss/bootstrap"; //这是 bootstrap自带的，不需要进行更改
+@import "./bootstrap/bootstrap"; //这是 bootstrap自带的，不需要进行更改
 // (3).添加额外的其他自定义代码
 
 // 导入 Bootstrap5图标库（从Bootstrap5图标库下载的字体库）
 @import "./font/bootstrap-icons.scss";
 
 // 导入 阿里字体库（从阿里图标库下载的字体库）
-// @import "./font/alimama-font.scss";
+@import "./font/alimama-font/dakai.scss";
+@import "./font/alimama-font/shuheiti.scss";
+@import "./font/alimama-font/jinbuti.scss";
+@import "./font/alimama-font/yuyang.scss";
+
+
+// 使导入的 字体样式生效
+#app{
+    .alimama-font-dakai{
+        font-family: "Alimama_DongFangDaKai_Regular";
+        font-weight: 400;
+    }
+    .alimama-font-shuheiti{
+        font-family: "Alimama_ShuHeiTi_Bold";
+        font-weight: 400;
+    }
+    .alimama-font-jinbuti{
+        font-family: "DingTalk_JinBuTi_Regular";
+        font-weight: 400;
+    }
+    @for $i from 1 through 5 {
+        .alimama-font-yuyang#{$i}{
+            font-family: "TsangerYuYangT_W0#{$i}_W0#{$i}";
+            font-weight: 400;
+        }
+    }
+}
 
 // 404页面自定义样式
 @import "./custom/404.scss";
+
 // ================结束代码书写=============
