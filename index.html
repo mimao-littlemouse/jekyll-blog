@@ -35,19 +35,19 @@ layout: app
       endif %} w-100 h-100" role="tabpanel" aria-labelledby="{{navbar_item.name}}-tab" tabindex="0">
       <!-- 使用轮播 来展示每一个类型的博客中不同章节  -->
       <div id="{{navbar_item.name}}-carousel" class="carousel slide w-100 h-100 bg-body-tertiary">
-        <div class="carousel-inner w-100 h-100">
-          <div class="carousel-item active" style="background-color: black;color:white;">
-            <p>Mi Mao</p>
-            <p class="alimama-font-dakai">Mi Mao</p>
-            <p class="alimama-font-shuheiti">Mi Mao</p>
-            <p class="alimama-font-jinbuti">Mi Mao</p>
-            <p class="alimama-font-yuyang1">Mi Mao</p>
-            <p class="alimama-font-yuyang2">Mi Mao</p>
-            <p class="alimama-font-yuyang3">Mi Mao</p>
-            <p class="alimama-font-yuyang4">Mi Mao</p>
-            <p class="alimama-font-yuyang5">Mi Mao</p>
-            <i class="bi bi-123"></i>
+        <div class="carousel-indicators w-100 m-0 d-block scrollbar scrollbar-hidden" style="top:0px;height:45px;white-space: nowrap;">
+        {% for i in (1..20) %}
+          <div data-bs-target="#{{navbar_item.name}}-carousel" data-bs-slide-to="{{forloop.index0}}" class="{% if i==1 %}active{% endif %} border-0 d-inline-block bg-primary" style="width: 120px;height:40px;text-indent: 0px;" aria-current="{% if i == 1 %}true{% else %}false{% endif %}" aria-label="Slide {{i}}">
+            {{i}}
           </div>
+        {% endfor %}
+        </div>
+        <div class="carousel-inner w-100 h-100" style="padding-top: 45px;">
+          {% for i in (1..20) %}
+          <div class="carousel-item w-100 h-100 {% if i == 1 %}active{% endif %}">
+            item{{i}}
+          </div>
+          {% endfor %}
         </div>
         <button class="carousel-control-prev border rounded-circle my-auto ms-1" style="width: 40px;height:40px;" type="button" data-bs-target="#{{navbar_item.name}}-carousel" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>

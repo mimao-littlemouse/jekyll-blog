@@ -1,0 +1,54 @@
+// 设置可滚动
+.scrollbar{
+    overflow: auto;
+} 
+// 整个scroll滚动条 不进行显示
+.scrollbar::-webkit-scrollbar{
+    width: 5px;
+    height: 5px;
+}
+// 需要 在hover时，才显示
+.scrollbar:hover::-webkit-scrollbar{
+    display: block;
+}
+// 滚动条上的按钮（上下箭头）
+.scrollbar::-webkit-scrollbar-button{
+    width: 0px;
+    height: 0px;
+}
+// 滚动条上的滚动滑块
+.scrollbar::-webkit-scrollbar-thumb{
+    background-color: lightgreen;
+}
+// 滚动条轨道
+.scrollbar::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+// 滚动条没有滑块的轨道部分
+.scrollbar::-webkit-scrollbar-track-piece{
+    background-color: transparent;
+}
+// 当同时有垂直滚动条和水平滚动条时交汇的部分。通常是浏览器窗口的右下角
+.scrollbar::-webkit-scrollbar-corner{
+    background-color: transparent;
+}
+// 出现在某些元素底角的可拖动调整大小的滑块
+.scrollbar::-webkit-resizer{
+    background-color: transparent;
+}
+// 颜色选择项（默认为 绿色）
+// 蓝色
+// 滚动条上的滚动滑块
+.scrollbar-blue::-webkit-scrollbar-thumb{
+    background-color: lightblue;
+}
+
+// 是否悬浮时，显示(默认是显示)
+// 整个scroll滚动条 悬浮时进行隐藏
+.scrollbar-hidden::-webkit-scrollbar{
+    display: none;
+}
+
+// 在 水平方向上，出现滚动条时，会默认有8像素的占位 提前空出8像素，有利于布局
+// 比如：
+// 高40的容器，如果需要使内部高40的容器，在设置overflow:scroll之后，不出现垂直方向上的滚动条，需将外部容器40调整为：40+（滚动条水平方向的像素）=45像素

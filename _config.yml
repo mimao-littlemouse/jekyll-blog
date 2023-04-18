@@ -17,8 +17,11 @@ lang: en
 
 # 自定义集合
 collections:
-  staff_members:
-    output: true
+  articles:
+    _posts:
+      output: true
+    _python:
+      output: true
 
 # 二.网站所需的配置变量
 # Gems插件依赖
