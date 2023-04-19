@@ -1,8 +1,3 @@
----
-layout: default
-permalink: /readme/
----
-
 ## 用到的插件 {#used-plugins}
 [下一节](#installation)
 - [Jekyll SEO Tag](https://github.com/jekyll/jekyll-seo-tag "去github")
@@ -22,7 +17,7 @@ permalink: /readme/
 - [Jekyll Gist](https://github.com/jekyll/jekyll-gist "去github")
   `Liquid tag for displaying GitHub Gists in Jekyll sites`
   `用于在Jekyll网站中显示GitHub Gists的Liquid标签`
-  [**`想了解就点我`**](http://rubygems.org/gems/jekyll-gist "去官网看看")
+  [**`想了解就点我`**](https://github.com/jekyll/jekyll-gist "去官网看看")
   ***
 - [MathJax](https://www.mathjax.org/ "去看看官网")
   `适用于所有浏览器的数学JavaScript显示引擎`
