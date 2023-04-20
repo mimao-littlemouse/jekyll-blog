@@ -45,13 +45,14 @@ social:
 
 lang: en
 
-# Gems插件依赖
+# 插件配置(gem依赖配置)
+# 如果需要使用 插件需要在此配置 并在自定义的.gemspec文件中添加相关依赖
 plugins:
   - jekyll-seo-tag # jekyll-seo-tag 
   - jekyll-feed # jekyll-feed 用于生成jekyll帖子(必要选项 title(或name)站点名称 description站点详细介绍 url站点地址 auther全局的作者信息  )
   - jekyll-sitemap  # jekyll-sitemap 站点地图 用于生成 sitemap.xml文件(必要选项 url站点地址（由于seo中已经定义，所以无需再次定义）)
 
-# 自定义Jekyll中不需要的文件或文件夹
+# 定义Jekyll 不进行加载的文件或文件夹
 exclude:
   - .editorconfig
   - .git
@@ -60,17 +61,47 @@ exclude:
   - Gemfile.lock
   - mimao.gemspec
   - Dockerfile
+  - git_run.sh
+  - LICENSE.md
+  - README.md
 
 # 启用sass 并指定sass文件夹的路径和名称
 sass:
   sass_dir: _sass
   style: compressed
 
+# 配置 全局的永久链接样式（可以使用：页面中的前事项permalink或集合中可以使用其集合中的前事项来覆盖）
+permalink: /:collection/:title/:year/:i_month/:i_day/:path
 
-# 三.其他选项（自定义）
-
-# 自定义集合
+# 定义集合(即：内容合集)
+# 使用 yaml的描点和引用 来简化集合中的配置
+collection_default_option: &collection_default_option
+  permalink: /articles/:collection/:title
+  sort_by: index
+  output: true
+# 声明集合的文件夹
 collections_dir: articles
+# 声明集合中 对应集合文件夹(在集合文件夹中以_开头的方式命名)
+# 这里无需定义label，在集合中有以文件名称 赋值的 label属性(index text的作用，在下面已注明)
 collections:
-  python:
-    output: false
+  jekyll: 
+    <<: *collection_default_option
+    index: 0 # 右侧导航栏中的 菜单排序索引(以0开始，依次递增)
+    text: jekyll # 右侧导航栏中的 菜单名称
+  python: 
+    <<: *collection_default_option
+    index: 1
+    text: python
+  posts:
+    index: 2
+    text: 帖子
+  
+  
+
+# 为 静态文件配置一定范围内(path路径指定范围(该路径可使用正则表达式表示))的 front matter 前事项，自定义前事项 可为前事项设置默认值(比如：title layout 等等设置默认值)
+# 可使用 {{ site.static_files | where: "image", true }} 进行调用（使用where 配合 ）
+defaults:
+  - scope:
+      path: "assets/img"
+    values:
+      image: true

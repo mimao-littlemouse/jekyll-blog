@@ -2,8 +2,7 @@
 layout: app
 ---
 <!-- 定义变量 -->
-{% assign side_navbar_data = site.data.side_navbar %}
-{% assign side_post = site.post %}
+{% assign articles = site.collections | sort: "index" %}
 <!-- --- 头部内容部分 --- -->
 <nav id="header" class="navbar bg-body-tertiary" style="height: 50px;">
   <div class="container-fluid row me-0 pe-0">
@@ -17,61 +16,54 @@ layout: app
   <ul id="side-navbar"
     class="nav nav-pills flex-column flex-nowrap pe-0 bg-body-tertiary col-2 h-100 border border-top-1" role="tablist"
     style="padding-top: 5px;border-top-right-radius: 2px;overflow-y: auto;">
-    {% for navbar_item in side_navbar_data %}
+    {% for article in articles %}
     <li class="nav-item mx-0 mb-1 d-flex justify-content-center" role="presentation">
-      <button class="nav-link p-0 {% if navbar_item.name=="jekyll_base" %}active{% endif %}"
-        style="width: 96%;height: 32px;" id="{{navbar_item.name}}-tab" data-bs-toggle="pill"
-        data-bs-target="#{{navbar_item.name}}-content" type="button" role="tab"
-        aria-controls="{{navbar_item.name}}-content" aria-selected="{% if navbar_item.name=="jekyll_base" %}true{%
-        endif %}">{{navbar_item.text}}</button>
+      <button class="nav-link p-0 {% if forloop.index0==0 %}active{% endif %}"
+        style="width: 96%;height: 32px;" id="{{article.label}}-tab-{{article.index}}" data-bs-toggle="pill"
+        data-bs-target="#{{article.label}}-content-{{article.index}}" type="button" role="tab"
+        aria-controls="{{article.label}}-content-{{article.index}}" aria-selected="{% if article.label==0 %}true{%
+        endif %}">{{article.text}}</button>
     </li>
     {% endfor %}
   </ul>
   <!-- 右边内容区域 -->
   <div id="side-content" class="tab-content col-10 ps-1 pe-0">
-    <!-- 右边区域 tab -->
-    python:<br>
-    {{ site.collections | where: "label", "article" | first }}<br>
-    <br>
-    {% assign article_chapters = site.collections %}
-    article_chapters：{{article_chapters | size}}<br>
-    article_chapters：{{article_chapters | size}}<br>
-    {% for article_chapter in article_chapters %}
-      label: {{article_chapter.label}}<br>
-      docs: {{article_chapter.docs}}<br>
-      files: {{article_chapter.files}}<br>
-      relative_directory: {{article_chapter.relative_directory}}<br>
-      directory: {{article_chapter.directory}}<br>
-      output: {{article_chapter.output | strip}}<br>
-      docs list:(size：{{article_chapter.docs | size}})<br>
-        {% for doc in article_chapter.docs %}
-        doc content: {{doc.content | strip}}<br>
-        doc output: {{doc.output | strip}}<br>
-        doc path: {{doc.path}}<br>
-        doc relative_path: {{doc.relative_path}}<br>
-        doc url: {{doc.url}}<br>
-        doc collection: {{doc.collection}}<br>
-        doc date: {{doc.date}}<br>
+    <!-- 右边区域 tab (id 以 article.label article.index 配合 tab content进行命名区分)-->
+    <!-- 其中，javascript需要 以 类名为： id-app-main-tab_content-articles-carousel 来获取这些 文章carousel对象（其中地方不要进行使用 否则会出现意外的错误） -->
+    {% for article in articles %}
+    <div id="{{article.label}}-content-{{article.index}}" class="id-app-main-tab_content-articles-carousel tab-pane fade {% if forloop.index0==0 %}show active{%
+      endif %} w-100 h-100" role="tabpanel" aria-labelledby="{{article.label}}-tab-{{article.index}}" tabindex="0">
+      <!-- 使用轮播 来展示每一个类型的博客中不同章节  -->
+      <div id="{{article.label}}-carousel-{{article.index}}" class="carousel slide w-100 h-100 bg-body-tertiary">
+        <div class="carousel-indicators w-100 m-0 d-block scrollbar scrollbar-hidden" style="top:0px;height:45px;white-space: nowrap;">
+        <!-- 轮播图中的指示点 集合 -->
+        <!-- 定义 文章中一系列文档（接受 按index排序后的系列文档） -->
+        {% assign article_docs = article.docs %}
+        {% for doc in article_docs %}
+          <div data-bs-target="#{{article.label}}-carousel-{{article.index}}" data-bs-slide-to="{{forloop.index0}}" class="{% if forloop.index0==0 %}active{% endif %} border-0 d-inline-block bg-primary text-center text-white" style="width: 120px;height:40px;line-height:40px;font-size:12px;text-indent: 0px;" aria-current="{% if forloop.index0 == 0 %}true{% else %}false{% endif %}" aria-label="Slide {{forloop.index0}}">
+            {{doc.text}}
+          </div>
         {% endfor %}
-      files list:(size：{{article_chapter.files | size}})<br>
-        {% for file in article_chapter.files %}
-        file path: {{file.path | strip}}<br>
-        file modified_time: {{file.modified_time | strip}}<br>
-        file name: {{file.name}}<br>
-        file basename: {{file.basename}}<br>
-        file extname: {{file.extname}}<br>
-        file: {{file+""}}
-        {% endfor %}
-      ============================<br>
+        </div>
+        <div class="carousel-inner w-100 h-100" style="padding-top: 45px;">
+          {% for doc in article_docs %}
+          <div class="carousel-item w-100 h-100 {% if forloop.index0 == 0 %}active{% endif %}">
+            {{doc.content}}
+          </div>
+          {% endfor %}
+        </div>
+        <button class="carousel-control-prev border rounded-circle my-auto ms-1" style="width: 40px;height:40px;" type="button" data-bs-target="#{{article.label}}-carousel-{{article.index}}" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">上</span>
+        </button>
+        <button class="carousel-control-next border rounded-circle my-auto me-1" style="width: 40px;height:40px;" type="button" data-bs-target="#{{article.label}}-carousel-{{article.index}}" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">下</span>
+        </button>
+      </div>
+      <!-- 提示灯导航 -->
+    </div>
     {% endfor %}
-    <br>
-    <hr>
-    static files:
-    {% for static_file in site.static_files%}
-    file name：{{static_file.name}}<br>
-    {% endfor %}
-    <br>
-    <hr>
   </div>
 </div>
 <div id="footer">
