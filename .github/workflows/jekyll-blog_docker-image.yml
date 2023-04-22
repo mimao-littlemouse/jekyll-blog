@@ -1,0 +1,48 @@
+name: Jekyll-Blog Docker-Image
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+
+  build-and-run:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build jekyll-blog Docker image
+      run: docker build -t jekyll-blog .
+    
+    - name: Run container blog
+      run: docker run -itd -p 4000:4000 -v ./:/blog --name="blog" jekyll-blog /bin/bash
+      
+    - name: Restart container blog
+      run: docker restart blog
+      
+    - name: Check GitHub Pages status
+      uses: crazy-max/ghaction-github-status@v3
+      with:
+        pages_threshold: major_outage
+        
+    - name: Import GPG key
+      uses: crazy-max/ghaction-import-gpg@v5
+      with:
+        gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+        passphrase: ${{ secrets.PASSPHRASE }}
+        git_user_signingkey: true
+        git_commit_gpgsign: true
+      
+    - name: Deploy to Github Pages
+      if: success()
+      uses: crazy-max/ghaction-github-pages@v3.1.0
+      with:
+        build_dir: jekyll-blog/_site
+        verbose: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+        
+    
+    
