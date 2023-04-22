@@ -16,7 +16,7 @@ jobs:
       run: docker build -t jekyll-blog .
     
     - name: Run container blog
-      run: docker run -itd -p 4000:4000 -v ./:/blog --name="blog" jekyll-blog /bin/bash
+      run: docker run -itd -P -v /jekyll-blog:/blog --name="blog" jekyll-blog /bin/bash
       
     - name: Restart container blog
       run: docker restart blog

@@ -51,6 +51,7 @@ plugins:
   - jekyll-seo-tag # jekyll-seo-tag 
   - jekyll-feed # jekyll-feed 用于生成jekyll帖子(必要选项 title(或name)站点名称 description站点详细介绍 url站点地址 auther全局的作者信息  )
   - jekyll-sitemap  # jekyll-sitemap 站点地图 用于生成 sitemap.xml文件(必要选项 url站点地址（由于seo中已经定义，所以无需再次定义）)
+  - gemoji
 
 # 定义Jekyll 不进行加载的文件或文件夹
 exclude:
@@ -71,7 +72,6 @@ sass:
   style: compressed
 
 # 配置 markdown 转换器 kramdown
-highlighter: rouge
 markdown: kramdown
 kramdown:
   input: GFM
