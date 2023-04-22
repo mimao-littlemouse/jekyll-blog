@@ -13,14 +13,14 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build jekyll-blog Docker image
-      run: |
-        ls -hl
-        pwd
-      # run: docker build -t jekyll-blog .
+      # 所在目录：/home/runner/work/jekyll-blog/jekyll-blog
+      run: docker build -t jekyll-blog .
     
-    # - name: Run container blog
-    #   run: docker run -itd -P -v /jekyll-blog:/blog --name="blog" jekyll-blog /bin/bash
-      
+    - name: Run container blog
+      run: docker run -itd -P -v /jekyll-blog:/blog --name="blog" jekyll-blog /bin/bash
+    
+    - name: Look container ls
+      run: docker exec -it blog /bin/bash -c "pwd" 
     # - name: Restart container blog
     #   run: docker restart blog
       
