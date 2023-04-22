@@ -17,6 +17,9 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "jekyll-seo-tag", "~> 2.6"
   spec.add_runtime_dependency "jekyll-sitemap", "~> 1.4"
   spec.add_runtime_dependency "kramdown-parser-gfm", "~> 1.1"
+  spec.add_runtime_dependency "kramdown-syntax-coderay", "~> 1.0"
+  spec.add_runtime_dependency "gemoji", "~> 3.0"
+  spec.add_runtime_dependency "webrick", "~> 1.8"
 
   spec.add_development_dependency "bundler", "~> 2.1"
   spec.add_development_dependency "rake", "~> 12.0"

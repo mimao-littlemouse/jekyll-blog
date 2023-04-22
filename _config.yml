@@ -70,6 +70,25 @@ sass:
   sass_dir: _sass
   style: compressed
 
+# 配置 markdown 转换器 kramdown
+highlighter: rouge
+markdown: kramdown
+kramdown:
+  input: GFM
+  # 不忽视 换行符（false 则代表忽视）
+  hard_wrap: true
+  # fgm 怪癖（怪癖列表）
+  # no_auto_typographic 使更接近github上的风格
+  gfm_quirks: [paragraph_end,no_auto_typographic]
+  # 配置表情符号
+  # 允许在GFM中渲染表情符号(默认：false 不开启)
+  gfm_emojis: true
+  # 启用 coderay高亮模式，但其外部样式还需根据 它所提供的css类名进行自定义
+  syntax_highlighter: coderay
+  syntax_highlighter_opts:
+    line_numbers: null # 不设置行号
+    default_lang: txt # 设置默认的语言为 文本
+
 # 配置 全局的永久链接样式（可以使用：页面中的前事项permalink或集合中可以使用其集合中的前事项来覆盖）
 permalink: /:collection/:title/:year/:i_month/:i_day/:path
 
@@ -84,6 +103,9 @@ collections_dir: articles
 # 声明集合中 对应集合文件夹(在集合文件夹中以_开头的方式命名)
 # 这里无需定义label，在集合中有以文件名称 赋值的 label属性(index text的作用，在下面已注明)
 collections:
+  posts:
+    index: 1000
+    text: 帖子
   jekyll: 
     <<: *collection_default_option
     index: 0 # 右侧导航栏中的 菜单排序索引(以0开始，依次递增)
@@ -92,9 +114,11 @@ collections:
     <<: *collection_default_option
     index: 1
     text: python
-  posts:
-    index: 2
-    text: 帖子
+  github:
+    <<: *collection_default_option
+    index: -1
+    text: github
+  
   
   
 

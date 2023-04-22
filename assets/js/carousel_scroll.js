@@ -4,23 +4,7 @@
  * 处理 轮播图中指示节点的自动滚动
 */
 
-
-/**
- * 轮播图节点对象（以 jekyll_base-carousel 为例）
-*/
-const myCarousel = document.getElementById('jekyll_base-carousel')
-/**
- * 轮播图指示节点容器对象
- */
-let carousel_indicators = myCarousel.childNodes[1]
-/**
- * 当前指示节点变量(默认：轮播图的第一个指示节点对象)
- */
-let current_indicator = carousel_indicators.childNodes[1]
-// 滚动条可滚动区域长度
-let scrollable_area_length = 0
-
-
+// 定义方法
 /**
  * @function getIndicatorNodeObjectByClassName
  * @description 根据类名获取 轮播指示节点中含有指定类名的指示节点对象（本方法 如果含有该类名的指示节点 大于1 则获取最近获取的第一个对象 务必确保该类名 独一无二 以免造成困扰）
@@ -68,16 +52,45 @@ function getIndicatorNodeObjectByClassName(carouselIndicator = null, className =
 
 
 /**
- * 监听 换轮播完成时的事件 
+ * @function addCarouselFinishEventListener
+ * @description 给轮播图对象添加监听事件(监听 轮播完成时的事件) 
+ * @param carousel {NodeObject}  轮播节点对象
+ * @return {void} None
+ * 
+ * @example 
+ * addCarouselFinishEventListener(carousel)
+ * 
+ * @author MiMao
+ * @version 1.0
  */
-myCarousel.addEventListener('slid.bs.carousel', event => {
-    // event参数 属性结构{direction:"right|left",from:0,to:1}
-    // 调用 根据类名获取指定指示节点对象 的方法，来获取 指定指示节点对象
-    let result = getIndicatorNodeObjectByClassName(carousel_indicators, "active")
-    if (result.status) {
-        // 如果获取到了 当前 指定的指示节点，则接下来进行 下面的处理 
-        current_indicator = result.indicatornode
-        // 调用 scrollIntoView 方法实现，点击 轮播图指示节点，并使其居中显示
-        current_indicator.scrollIntoView({ behavior: "smooth", inline: "center" })
-    }
-})
+function addCarouselFinishEventListener(carousel){
+    carousel.addEventListener('slid.bs.carousel', event => {
+        /**
+         * 轮播图指示节点容器对象
+        */
+        let carousel_indicators = carousel.childNodes[1]
+        // event参数 属性结构{direction:"right|left",from:0,to:1}
+        // 调用 根据类名获取指定指示节点对象 的方法，来获取 指定指示节点对象
+        let result = getIndicatorNodeObjectByClassName(carousel_indicators, "active")
+        if (result.status) {
+            // 如果获取到了 当前 指定的指示节点，则接下来进行 下面的处理 
+            current_indicator = result.indicatornode
+            // 调用 scrollIntoView 方法实现，点击 轮播图指示节点，并使其居中显示
+            current_indicator.scrollIntoView({ behavior: "smooth", inline: "center" })
+        }
+    })
+}
+
+// 处理 滚动条自动滚动业务
+
+/**
+ * 获取文章中所有轮播图节点对象
+*/
+let carousels = document.getElementsByClassName('id-app-main-tab_content-articles-carousel')
+// 循环变量每一个 carousel对象 为它们添加 事件
+for(let carousel of carousels){
+    // 接下来为 每一个 轮播图对象 添加事件
+    addCarouselFinishEventListener(carousel)
+}
+
+

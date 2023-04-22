@@ -2,17 +2,21 @@ PATH
   remote: .
   specs:
     mimao (0.1.0)
+      gemoji (~> 3.0)
       jekyll (~> 3.9)
       jekyll-feed (~> 0.13)
       jekyll-seo-tag (~> 2.6)
       jekyll-sitemap (~> 1.4)
       kramdown-parser-gfm (~> 1.1)
+      kramdown-syntax-coderay (~> 1.0)
+      webrick (~> 1.8)
 
 GEM
   remote: https://gems.ruby-china.com/
   specs:
-    addressable (2.8.1)
+    addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
+    coderay (1.1.3)
     colorator (1.1.0)
     concurrent-ruby (1.2.2)
     em-websocket (0.5.3)
@@ -21,6 +25,7 @@ GEM
     eventmachine (1.2.7)
     ffi (1.15.5)
     forwardable-extended (2.6.0)
+    gemoji (3.0.1)
     http_parser.rb (0.8.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
@@ -37,8 +42,6 @@ GEM
       pathutil (~> 0.9)
       rouge (>= 1.7, < 4)
       safe_yaml (~> 1.0)
-    jekyll-compose (0.12.0)
-      jekyll (>= 3.7, < 5.0)
     jekyll-feed (0.17.0)
       jekyll (>= 3.7, < 5.0)
     jekyll-sass-converter (1.5.2)
@@ -52,6 +55,9 @@ GEM
     kramdown (2.4.0)
       rexml
     kramdown-parser-gfm (1.1.0)
+      kramdown (~> 2.0)
+    kramdown-syntax-coderay (1.0.1)
+      coderay (~> 1.1)
       kramdown (~> 2.0)
     liquid (4.0.4)
     listen (3.8.0)
@@ -80,10 +86,8 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 2.1)
-  jekyll-compose
   mimao!
   rake (~> 12.0)
-  webrick (~> 1.8)
 
 BUNDLED WITH
-   2.1.4
+   2.4.6
