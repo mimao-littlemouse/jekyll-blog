@@ -25,14 +25,6 @@ jobs:
       uses: crazy-max/ghaction-github-status@v3
       with:
         pages_threshold: major_outage
-        
-    - name: Import GPG key
-      uses: crazy-max/ghaction-import-gpg@v5
-      with:
-        gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
-        passphrase: ${{ secrets.PASSPHRASE }}
-        git_user_signingkey: true
-        git_commit_gpgsign: true
       
     - name: Deploy to Github Pages
       if: success()
