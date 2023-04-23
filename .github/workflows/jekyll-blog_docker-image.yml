@@ -18,7 +18,15 @@ jobs:
       with:
         pages_threshold: major_outage
 
-    - name: cd directory
+    - name: Import GPG key
+      uses: crazy-max/ghaction-import-gpg@v5
+      with:
+        gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+        passphrase: ${{ secrets.PASSPHRASE }}
+        git_user_signingkey: true
+        git_commit_gpgsign: true
+
+    - name: cd directory to _site
       run: cd _site
 
     - name: Deploy to Github Pages
