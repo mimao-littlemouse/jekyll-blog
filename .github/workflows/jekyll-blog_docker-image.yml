@@ -32,13 +32,8 @@ jobs:
         cp -rf _site/* site
         cd site
 
-    - name: Config git
-      run: |
-        git remote remove origin
-        git remote add origin git@github.com:mimao-littlemouse/jekyll-blog.git
-        git config -l
-
     - name: Deploy to Github Pages
+      # 如果 出现git 128错误，务必确保 action常规设置中的 action的读和写的权限已打开
       if: success()
       uses: crazy-max/ghaction-github-pages@v3.1.0
       with:
@@ -46,6 +41,7 @@ jobs:
         verbose: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
         
         
     
