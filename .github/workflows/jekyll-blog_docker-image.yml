@@ -18,16 +18,14 @@ jobs:
       with:
         pages_threshold: major_outage
 
-    - name: ls all
-      run: |
-        pwd
-        ls -hla
+    - name: cd directory
+      run: cd _site
 
     - name: Deploy to Github Pages
       if: success()
       uses: crazy-max/ghaction-github-pages@v3.1.0
       with:
-        build_dir: /_site
+        build_dir: _site
         verbose: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
