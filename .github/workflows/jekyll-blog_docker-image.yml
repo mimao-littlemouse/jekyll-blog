@@ -15,7 +15,9 @@ jobs:
     - name: Build jekyll-blog Docker image
       run: |
         pwd
-        ls -hl
+        ls -hla
+        cd ..
+        pwd
 
     # 所在目录：/home/runner/work/jekyll-blog/jekyll-blog
       # run: docker build -t jekyll-blog .
