@@ -10,7 +10,7 @@ description: 用起来更舒适
 # 网站地址（默认：会是 site.github.url）
 # 因为该项目会部署在 github上，所以url是github项目介绍地址
 # 网站的完整URL。注意：默认情况下将使用site.github.url
-url: https://github.io/mimao-littlemouse/jekyll-blog
+url: "https://github.io/mimao-littlemouse/jekyll-blog"
 # 全局配置 个人作者信息
 author: 
   name: liuzhiqiang
@@ -32,7 +32,7 @@ social:
   name: MiMao LittleMouse
   # 一系列指向个人的社交媒体资料的链接
   links:
-    - https://github.com/mimao-littlemouse/
+    - "https://github.com/mimao-littlemouse/"
 # 搜索控制台 或者 叫做站长工具的验证码通行码（由于 并未使用过，所以注释）
 # 据介绍，该工具，可以提升网站在 浏览器中搜索的排名
 # webmaster_verifications:
@@ -66,8 +66,6 @@ exclude:
   - mimao.gemspec
   - Dockerfile
   - git_run.sh
-  - LICENSE.md
-  - README.md
 
 # 启用sass 并指定sass文件夹的路径和名称
 sass:
