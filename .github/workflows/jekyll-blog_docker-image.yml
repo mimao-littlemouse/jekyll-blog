@@ -17,26 +17,24 @@ jobs:
       run: docker build -t jekyll-blog .
     
     - name: Run container blog
-      run: docker run -itd -P -v /jekyll-blog:/blog --name="blog" jekyll-blog /bin/bash
+      run: docker run -itd -P --name="blog" jekyll-blog /bin/bash
     
-    - name: Look container ls
-      run: docker exec -it blog /bin/bash -c "pwd" 
-    # - name: Restart container blog
-    #   run: docker restart blog
+    - name: Restart container blog
+      run: docker restart blog
       
-    # - name: Check GitHub Pages status
-    #   uses: crazy-max/ghaction-github-status@v3
-    #   with:
-    #     pages_threshold: major_outage
+    - name: Check GitHub Pages status
+      uses: crazy-max/ghaction-github-status@v3
+      with:
+        pages_threshold: major_outage
       
-    # - name: Deploy to Github Pages
-    #   if: success()
-    #   uses: crazy-max/ghaction-github-pages@v3.1.0
-    #   with:
-    #     build_dir: /jekyll-blog/_site
-    #     verbose: true
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Deploy to Github Pages
+      if: success()
+      uses: crazy-max/ghaction-github-pages@v3.1.0
+      with:
+        build_dir: /jekyll-blog/_site
+        verbose: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
         
     
