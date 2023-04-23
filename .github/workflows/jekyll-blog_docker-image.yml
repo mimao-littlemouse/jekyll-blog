@@ -16,16 +16,13 @@ jobs:
     - name: Build jekyll-blog
       run: docker build -t jekyll-blog .
 
-    - name: Run container blog
+    - name: Run container blog and restart container
       run: |
         cd ..
         docker run -itd -v /jekyll-blog:/blog --name="blog" jekyll-blog /bin/bash
-    
-    -name: Restart container blog
-      run: |
         docker restart blog
         cd jekyll-blog
-    
+
     - name: Check GitHub Pages status
       uses: crazy-max/ghaction-github-status@v3
       with:
