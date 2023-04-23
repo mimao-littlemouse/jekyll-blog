@@ -46,7 +46,8 @@ social:
 lang: en
 
 # 配置 部署之后的基础url （即：仓库名 或 主页中可不配置）
-baseurl: /jekyll-blog
+# 开发环境中 不启用
+# baseurl: /jekyll-blog
 
 # 插件配置(gem依赖配置)
 # 如果需要使用 插件需要在此配置 并在自定义的.gemspec文件中添加相关依赖
