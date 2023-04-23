@@ -41,6 +41,10 @@ jobs:
         mkdir site
         cp -rf _site/* site
         cd site
+        ls -hal
+        cat _config.yml
+        cat feed.xml
+        cat sitemap.xml
 
     - name: Deploy to Github Pages
       # 如果 出现git 128错误，务必确保 action常规设置中的 action的读和写的权限已打开
