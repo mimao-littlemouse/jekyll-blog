@@ -11,6 +11,9 @@ description: 用起来更舒适
 # 因为该项目会部署在 github上，所以url是github项目介绍地址
 # 网站的完整URL。注意：默认情况下将使用site.github.url
 url: "https://github.io/mimao-littlemouse/jekyll-blog"
+github:
+  url: "https://github.io/mimao-littlemouse/jekyll-blog"
+  
 # 全局配置 个人作者信息
 author: 
   name: liuzhiqiang
