@@ -12,9 +12,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    # - name: Build jekyll-blog Docker image
-    #   # 所在目录：/home/runner/work/jekyll-blog/jekyll-blog
-    #   run: docker build -t jekyll-blog .
+    - name: Build jekyll-blog Docker image
+      run: |
+        pwd
+        ls -hl
+
+    # 所在目录：/home/runner/work/jekyll-blog/jekyll-blog
+      # run: docker build -t jekyll-blog .
     
     # - name: Run container blog
     #   run: docker run -itd -P --name="blog" jekyll-blog /bin/bash
@@ -27,11 +31,6 @@ jobs:
     #   with:
     #     pages_threshold: major_outage
     
-      run: |
-        pwd
-        ls -hl
-        cd jekyll-blog
-        ls -hl
     # - name: Deploy to Github Pages
     #   if: success()
     #   uses: crazy-max/ghaction-github-pages@v3.1.0
