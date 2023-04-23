@@ -17,7 +17,9 @@ jobs:
       run: docker build -t jekyll-blog .
     
     - name: Run container blog
-      run: docker run -itd -P --name="blog" jekyll-blog /bin/bash
+      run: |
+        cd ..
+        docker run -itd -P -v /jekyll-blog:/blog --name="blog" jekyll-blog /bin/bash
     
     - name: Restart container blog
       run: docker restart blog
@@ -27,12 +29,10 @@ jobs:
       with:
         pages_threshold: major_outage
 
-    - name: cd 
+    - name: ls all
       run: |
         pwd
         ls -hla
-        cd ..
-        pwd
 
     - name: Deploy to Github Pages
       if: success()
