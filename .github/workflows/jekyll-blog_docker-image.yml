@@ -22,19 +22,24 @@ jobs:
     # - name: Restart container blog
     #   run: docker restart blog
       
-    - name: Check GitHub Pages status
-      uses: crazy-max/ghaction-github-status@v3
-      with:
-        pages_threshold: major_outage
-      
-    - name: Deploy to Github Pages
-      if: success()
-      uses: crazy-max/ghaction-github-pages@v3.1.0
-      with:
-        build_dir: /_site
-        verbose: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    # - name: Check GitHub Pages status
+    #   uses: crazy-max/ghaction-github-status@v3
+    #   with:
+    #     pages_threshold: major_outage
+    
+      run: |
+        pwd
+        ls -hl
+        cd jekyll-blog
+        ls -hl
+    # - name: Deploy to Github Pages
+    #   if: success()
+    #   uses: crazy-max/ghaction-github-pages@v3.1.0
+    #   with:
+    #     build_dir: /_site
+    #     verbose: true
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
         
     
