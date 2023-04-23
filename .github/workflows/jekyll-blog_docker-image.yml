@@ -42,7 +42,7 @@ jobs:
         cp -rf _site/* site
         cd site
         ls -hal
-        cat _config.yml
+        cat ./../_config.yml
         cat feed.xml
         cat sitemap.xml
 
