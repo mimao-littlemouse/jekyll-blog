@@ -13,34 +13,35 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build jekyll-blog Docker image
+      # 所在目录：/home/runner/work/jekyll-blog/jekyll-blog
+      run: docker build -t jekyll-blog .
+    
+    - name: Run container blog
+      run: docker run -itd -P --name="blog" jekyll-blog /bin/bash
+    
+    - name: Restart container blog
+      run: docker restart blog
+      
+    - name: Check GitHub Pages status
+      uses: crazy-max/ghaction-github-status@v3
+      with:
+        pages_threshold: major_outage
+
+    - name: cd 
       run: |
         pwd
         ls -hla
         cd ..
         pwd
 
-    # 所在目录：/home/runner/work/jekyll-blog/jekyll-blog
-      # run: docker build -t jekyll-blog .
-    
-    # - name: Run container blog
-    #   run: docker run -itd -P --name="blog" jekyll-blog /bin/bash
-    
-    # - name: Restart container blog
-    #   run: docker restart blog
-      
-    # - name: Check GitHub Pages status
-    #   uses: crazy-max/ghaction-github-status@v3
-    #   with:
-    #     pages_threshold: major_outage
-    
-    # - name: Deploy to Github Pages
-    #   if: success()
-    #   uses: crazy-max/ghaction-github-pages@v3.1.0
-    #   with:
-    #     build_dir: /_site
-    #     verbose: true
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Deploy to Github Pages
+      if: success()
+      uses: crazy-max/ghaction-github-pages@v3.1.0
+      with:
+        build_dir: /jekyll-blog
+        verbose: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
         
     
