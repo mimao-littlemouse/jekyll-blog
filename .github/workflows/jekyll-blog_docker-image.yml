@@ -32,6 +32,11 @@ jobs:
         cp -rf _site/* site
         cd site
 
+    - name: Config git
+      run: |
+        git remote remove origin
+        git remote add origin git@github.com:mimao-littlemouse/jekyll-blog.git
+
     - name: Deploy to Github Pages
       if: success()
       uses: crazy-max/ghaction-github-pages@v3.1.0
