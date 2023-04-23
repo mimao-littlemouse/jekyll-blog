@@ -12,34 +12,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build jekyll-blog Docker image
-      # 所在目录：/home/runner/work/jekyll-blog/jekyll-blog
-      run: docker build -t jekyll-blog .
     
-    - name: Run container blog
-      run: |
-        cd ..
-        docker run -itd -p 4000:4000 -v /jekyll-blog:/blog --name="blog" jekyll-blog /bin/bash
-    
-    - name: ps container
-      run: |
-        docker ps
-        docker ps -a
-        docker ps
-        docker ps -a
-        docker ps
-
-    - name: Restart container blog
-      run: docker restart blog
-      
-    - name: ps container
-      run: |
-        docker ps
-        docker ps -a
-        docker ps
-        docker ps -a
-        docker ps
-        
     - name: Check GitHub Pages status
       uses: crazy-max/ghaction-github-status@v3
       with:
@@ -54,7 +27,7 @@ jobs:
       if: success()
       uses: crazy-max/ghaction-github-pages@v3.1.0
       with:
-        build_dir: /jekyll-blog
+        build_dir: /_site
         verbose: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
