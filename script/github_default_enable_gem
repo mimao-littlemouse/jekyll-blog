@@ -1,0 +1,119 @@
+#!/bin/sh
+
+cat << EOF
+github中默认启动的插件及其使用方法和配置：
+
+
+jekyll-readme-index 插件
+
+一个Jekyll插件，用于将项目的自述文件作为网站的索引。
+作用：
+假设您有一个带有README.md文件的GitHub存储库，您想将其用作GitHub Pages网站的索引（主页）。
+你可以将文件重命名为index.md，但它不会在GitHub.com上呈现。
+你可以在README中添加带有permalink: / 的YAML front matter，但为什么要强迫人类做Jekyll可以自动化的事情呢？
+如果你有一个自述文件，而你的网站没有索引文件，这个插件会指示Jekyll使用自述作为网站的索引。就是这样。不多也不少。
+使用方法：
+在 Gemfile中添加：gem "jekyll-readme-index"
+_config中，在plugins中添加 jekyll-readme-index
+即：
+plugins:
+    - jekyll-readme-index
+
+配置选项：
+readme_index:
+  enabled: true
+  remove_originals: false
+  with_frontmatter: false
+默认情况下，原始README标记文件将作为静态页面包含在输出中。
+要从输出中删除它们，请将remove_originals键设置为true。
+
+
+
+jekyll-titles-from-headings 插件
+
+一个Jekyll插件，用于在未指定任何内容时从第一个Markdown标题(h1 h2 h3)中提取页面标题。
+使用方法：
+在 Gemfile中添加：gem "jekyll-titles-from-headings"
+_config中，在plugins中添加 jekyll-titles-from-headings
+即：
+plugins:
+    - jekyll-titles-from-headings
+
+配置选项：
+titles_from_headings:
+  enabled: true
+  strip_title: false
+  collections: false
+
+如果主题基于page.title渲染标题，则可以通过设置strip_title来从内容中删除标题，以防止渲染两次
+为了将这种行为限制在特定的布局或路径上，您可以使用前端默认值，例如：
+defaults:
+  - scope:
+      path: some-path
+      layout: some_layout
+    values:
+      strip_title: true
+如果要为集合项启用此插件，请将集合选项设置为true
+由于集合项（包括帖子）已经有了从其文件名推断出的标题
+因此此选项会更改此插件的行为以覆盖推断出的名称
+推断出的标题仅在文档没有以标题开头的情况下用作后备
+
+
+
+jekyll-relative-links 插件
+
+用于将Markdown文件的相对链接转换为其渲染的等效链接
+比如：
+假设您在Markdown文件中有这样的链接：
+[foo]（bar.md）
+虽然这会在GitHub.com上显示为有效链接，但在Pages上不是有效链接。而，这个插件将会把链接转换为：
+[foo]（bar.html）
+它甚至可以处理带有自定义永久链接的页面
+如果在bar.md文件中有以下内容：
+---
+permalink: /bar/
+---
+# bar
+
+之后，[foo](bar.md)，将不是转化为：[foo]（bar.html），而是：[foo](/bar/)
+这样，GitHub Pages呈现的Markdown文件的行为 就可以与GitHub.com上呈现的Markdown文件类似
+使用方法：
+在 Gemfile中添加：gem "jekyll-relative-links"
+_config中，在plugins中添加 jekyll-relative-links
+即：
+plugins:
+    - jekyll-relative-links
+
+配置项：（在 _config.yml中配置）（默认： 如下所示）
+relative_links:
+  enabled: true
+  collections: false
+
+可通过 exclude 排除文件或文件夹，比如：
+relative_links:
+  exclude:
+    - directory
+    - file.md
+
+将collections选项设置为true 将启用集合项（包括帖子）的相对链接。
+假设这种结构是这样的：
+├── _my_collection
+│   ├── some_doc.md
+│   └── some_subdir
+│       └── another_doc.md
+├── _config.yml
+└── index.md
+将可以有一下的作用：
+File	Link
+index.md	[Some Doc](_my_collection/some_doc.md)
+index.md	[Another Doc](_my_collection/some_subdir/another_doc.md)
+_my_collection/some_doc.md	[Index](../index.md)
+_my_collection/some_doc.md	[Another Doc](some_subdir/another_doc.md)
+_my_collection/some_subdir/another_doc.md	[Index](../../index.md)
+_my_collection/some_subdir/another_doc.md	[Some Doc](../some_doc.md)
+
+这就是 生成相对链接的插件，如需禁用该插件，只需配置：
+relative_links:
+  enabled: false
+
+EOF
