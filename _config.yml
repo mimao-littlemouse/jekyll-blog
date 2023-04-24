@@ -1,3 +1,104 @@
+# 项目配置
+# 项目文件 文件夹及其地址配置
+# 注意：项目默认所在地址，就是配置文件所在目录 即( . )
+# 项目源地址 可进行自定义（但 部署到 github上时，需保持该地址为 仓库根目录（即 顶级目录））
+# source: .
+# 目标地址 可进行自定义（无要求）（但 该目录 最好当作一个临时目录即可，通过复制至web服务器或其他地方 才是最佳选择）
+# destination: ./_site
+# 查找集合的 目录（默认：该配置文件所在目录）
+# collections_dir: .
+# plugins_dir 文件夹作用：获取一个字符串数组并按该顺序加载插件
+# plugins_dir: _plugins 
+# 模板 目录（默认：_layouts目录）
+# layouts_dir: _layouts
+# 数据 目录（默认 _data目录）
+# data_dir: _data
+# 代码片段 目录（默认：_includes）
+# includes_dir: _includes
+# 默认启用sass 并指定_sass目录为 sass文件存储的地址
+# 可通过 style来指定生成项目之后 style.css的 呈现方式（默认：不压缩 为展开）
+sass:
+  sass_dir: _sass
+  style: compressed
+# 配置集合（默认如下）有关集合和front matter的defaults配置 放置在该配置文件的最下方（可在文件末尾处找到）
+# collections:
+#   posts:
+#     output: true
+# front matter的defaults配置
+# defaults: []
+
+# 处理文件或文件夹的配置
+# 禁用非白名单插件，缓存到磁盘，并忽略符号链接
+# safe 默认：false 不对插件进行禁用（但 部署到github上时，需设置为 true）
+safe: false
+# 配置生成目标的文件夹(即 目录)中 不包含的文件(即 目录)或文件夹
+# 排除相对于站点源目录的文件或文件夹(即 目录)，不能是源目录之外的
+# exclude 默认值如下:["Gemfile", "Gemfile.lock", "node_modules", "vendor/bundle/", "vendor/cache/", "vendor/gems/", "vendor/ruby/"]
+# 其中，jekyll会默认排除以 .开头的文件 而.开头的文件夹还需自己在exclude中排除，如需添加带.开头的文件至目标文件夹(即 目录)中，需在include中添加
+exclude:
+  - script
+  - docker_file
+  - Gemfile
+  - Gemfile.lock
+  - mimao.gemspec
+  - .editorconfig
+  - .git
+  - .github
+  - .gitignore
+  - .jekyll-cache
+# 强制包含文件夹(即 目录)或文件
+# 默认情况下会排除点文件，如需添加.文件(以.开头的文件)
+# include 默认值如下：[".htaccess"]
+# include:
+#   - .htaccess
+# 保留 非Jekyll生成的文件夹或文件
+# keep_files: [".git", ".svn"]
+# 设置 文件的编码 默认：utf-8
+# encoding: "utf-8"
+# 设置可用的 markdown扩展名(默认：markdown,mkdown,mkdn,mkd,md)
+# markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+# 是否 启用 front matter严格模式（默认：false 不启用）
+# strict_front_matter: false
+
+# 内容过滤方面的配置
+# 处理并呈现草稿帖子（默认：null 不进行呈现）
+# show_drafts: null
+# 限制要解析和发布的帖子数量（默认：0 不限制）
+# limit_posts: 0
+# 发布带有未来日期的帖子或集合文档（默认：false 不发布）
+# future: false
+# 渲染标记为未发布的帖子（默认：false 不渲染未发布的帖子）
+unpublished: false
+
+
+# 部署在 github上默认配置
+gist:
+  noscript: false
+
+# 配置 部署之后的基础url （即：仓库名 或 主页中可不配置）
+# baseurl: /jekyll-blog
+
+
+
+# 插件 
+# 插件配置(gem依赖配置)
+# 如果需要使用 插件需要在此配置 并在自定义的.gemspec文件中添加相关依赖
+plugins:
+  - jekyll-seo-tag # jekyll-seo-tag 
+  - jekyll-feed # jekyll-feed 用于生成jekyll帖子(必要选项 title(或name)站点名称 description站点详细介绍 url站点地址 auther全局的作者信息  )
+  - jekyll-sitemap  # jekyll-sitemap 站点地图 用于生成 sitemap.xml文件(必要选项 url站点地址（由于seo中已经定义，所以无需再次定义）)
+  - jemoji # github风格的emoji
+  - jekyll-avatar # 根据用户名自动生成 github上的头像（例如：{% avatar mimao-littlemouse %} 会生成：img标签 classlist有avatar avatar-small 高宽40px）
+  - jekyll-redirect-from # 用于设置重定向的插件
+  - rouge # markdown高亮显示的插件
+  - jekyll-watch # 其用于修改文件，自动刷新）只需在 构建jekyll时，加上 --watch参数即可 运行jekyll时，默认加上了 --watch参数
+
+# 配置插件 白名单（在 使用安全模式执行时 需要将插件添加到白名单，因为布置到github时，safe必须为true 即：必须开启安全模式 ）
+# whitelist:
+#   - jekyll-redirect-from
+
+# 对插件 进行配置并选择性说明其用法
+# jekyll-seo-tag 插件配置（该配置涉及到 下方插件配置，所以，应放置在 插件配置的最上方）
 # 配置 SEO 标签选项（参见：官网 https://github.com/jekyll/jekyll-seo-tag ；文档地址 https://github.com/jekyll/jekyll-seo-tag/blob/master/docs）；
 # 网页站点标题
 title: Mi Mao
@@ -13,7 +114,6 @@ description: 用起来更舒适
 url: "https://github.io/mimao-littlemouse/jekyll-blog"
 github:
   url: "https://github.io/mimao-littlemouse/jekyll-blog"
- 
 # 全局配置 个人作者信息
 author: 
   name: liuzhiqiang
@@ -35,7 +135,7 @@ social:
   name: MiMao LittleMouse
   # 一系列指向个人的社交媒体资料的链接
   links:
-    - "https://github.com/mimao-littlemouse/"
+    - "https://github.com/mimao-littlemouse"
 # 搜索控制台 或者 叫做站长工具的验证码通行码（由于 并未使用过，所以注释）
 # 据介绍，该工具，可以提升网站在 浏览器中搜索的排名
 # webmaster_verifications:
@@ -45,39 +145,59 @@ social:
 #   yandex: 1234
 #   baidu: 1234
 #   facebook: 1234
-
 lang: en
+# jekyll-seo-tag 配置完成，开始下一个插件配置
 
-# 配置 部署之后的基础url （即：仓库名 或 主页中可不配置）
-# baseurl: /jekyll-blog
+# jekyll-feed 必要配置 已在seo配置的时候 配置过了（其他配置 在此配置）
+feed:
+  # 默认 帖子的限制为：20
+  posts_limit: 20
+# jekyll-feed 配置完成，开始下一个插件配置
 
-# 插件配置(gem依赖配置)
-# 如果需要使用 插件需要在此配置 并在自定义的.gemspec文件中添加相关依赖
-plugins:
-  - jekyll-seo-tag # jekyll-seo-tag 
-  - jekyll-feed # jekyll-feed 用于生成jekyll帖子(必要选项 title(或name)站点名称 description站点详细介绍 url站点地址 auther全局的作者信息  )
-  - jekyll-sitemap  # jekyll-sitemap 站点地图 用于生成 sitemap.xml文件(必要选项 url站点地址（由于seo中已经定义，所以无需再次定义）)
-  - gemoji
+# jekyll-sitemap 配置
+# jekyll-sitemap 配置完成，开始下一个插件配置
 
-# 定义Jekyll 不进行加载的文件或文件夹
-exclude:
-  - .editorconfig
-  - .git
-  - .jekyll-cache
-  - Gemfile
-  - Gemfile.lock
-  - mimao.gemspec
-  - Dockerfile
-  - git_run.sh
+# jempji 配置
+# jempji 配置完成，开始下一个插件配置
 
-# 启用sass 并指定sass文件夹的路径和名称
-sass:
-  sass_dir: _sass
-  style: compressed
+# jekyll-avatar 配置(没有需要进行配置的，将解释该插件如何使用)
+# 书写方式有一下几种：
+  # 1.自己更改 头像高宽 {% avatar mimao-littlemouse size="45" %} size="45" 输出 classlist有avatar 高宽50px 
+  # 也可这样：
+  # {% assign user="mimao-littlemouse" %}
+  # {% assign size=50 %}
+  # {% avatar {{ user }} size=size %}
+  # 其他参数：lazy {% avatar {{ user }} size=size lazy=true %}
+# jekyll-avatar 配置完成，开始下一个插件配置
+
+# jekyll-redirect-from 配置及用法
+# 如果使用安全模式运行jekyll时，需要将该插件配置至 白名单
+# 是否禁用 输出的redirects.json文件（默认为true 不禁用）
+# redirect_from:
+#   json: true
+# 用法：（可以在 front matter中书写一下属性之一 或 在_config.yml中配置 front matter默认值）
+# redirect_from：相对路径（如果 设置了url baseurl 则将设置的url地址作为前缀 所以该关键字值应是 相对路径）
+# 注意：包含尾部斜杠的重定向将生成包含index.html的相应子目录，而不包含尾部斜杠则会生成不带扩展名和子目录的相应文件名
+# redirect_to: 绝对路径(比如：https://www.github.com)
+# 注意：如果将其作为模板,则在模板中可获得：page.redirect.to、page.redirect.from变量
+# 用法示范：
+# redirect_from:
+#   - /post/page1/  生成index.html
+#   - /post/page1/content  不生成index.html
+# redirect_to: http://www.github.com
+# jekyll-redirect-from 配置完成，开始下一个插件配置
+
+# rouge 配置
+# rouge 配置完成，开始下一个插件配置
+
+# jekyll-watch 配置(没有配置)
+# jekyll-watch 配置完成，开始下一个插件配置
+
 
 # 配置 markdown 转换器 kramdown
 markdown: kramdown
 kramdown:
+  # 指定 处理器（默认：GFM 为markdown处理器）
   input: GFM
   # 不忽视 换行符（false 则代表忽视）
   hard_wrap: true
@@ -87,11 +207,14 @@ kramdown:
   # 配置表情符号
   # 允许在GFM中渲染表情符号(默认：false 不开启)
   gfm_emojis: true
-  # 启用 coderay高亮模式，但其外部样式还需根据 它所提供的css类名进行自定义
-  syntax_highlighter: coderay
+  # 指定处理 math的引擎
+  math_engine: mathjax
+  # 启用 rouge高亮模式，但其外部样式还需根据 它所提供的css类名进行自定义
+  syntax_highlighter: rouge
   syntax_highlighter_opts:
     line_numbers: null # 不设置行号
     default_lang: txt # 设置默认的语言为 文本
+    
 
 # 配置 全局的永久链接样式（可以使用：页面中的前事项permalink或集合中可以使用其集合中的前事项来覆盖）
 permalink: /:collection/:title/:year/:i_month/:i_day/:path

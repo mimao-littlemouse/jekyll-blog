@@ -68,7 +68,8 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - mimao.gemspec
-  - Dockerfile
+  - docker_file/dev/Dockerfile
+  - docker_file/Dockerfile
   - git_run.sh
   - LICENSE.md
   - README.md

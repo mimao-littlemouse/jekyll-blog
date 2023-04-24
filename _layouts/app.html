@@ -9,7 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- 引入自定义css样式（该css样式已经包含了bootstrap中的scss样式） -->
   <link rel="stylesheet" href="{{ 'assets/styles.css' | relative_url }}">
+  <!-- jekyll-seo-tag 插件用于生成 seo相关内容 -->
   {%- seo -%}
+  <!-- jekyll-feed 该插件公开了一个helper标签，以公开适当的元标签，从而支持提要的自动发现。 -->
   {%- feed_meta -%}
 </head>
 
