@@ -71,23 +71,23 @@ exclude:
 # 渲染标记为未发布的帖子（默认：false 不渲染未发布的帖子）
 # unpublished: false
 
-# # 部署在 github上默认配置
-# gist:
-#   noscript: false
 
 # 插件 
 # 插件配置(gem依赖配置)
 # 如果需要使用 插件需要在此配置 并在自定义的.gemspec文件中添加相关依赖
 plugins:
-  - jekyll-seo-tag # jekyll-seo-tag 
-  - jekyll-feed # jekyll-feed 用于生成jekyll帖子(必要选项 title(或name)站点名称 description站点详细介绍 url站点地址 auther全局的作者信息  )
-  - jekyll-sitemap  # jekyll-sitemap 站点地图 用于生成 sitemap.xml文件(必要选项 url站点地址（由于seo中已经定义，所以无需再次定义）)
-  - jemoji # github风格的emoji
-  - jekyll-avatar # 根据用户名自动生成 github上的头像（例如：{% avatar mimao-littlemouse %} 会生成：img标签 classlist有avatar avatar-small 高宽40px）
-  - jekyll-redirect-from # 用于设置重定向的插件
-  - rouge # markdown高亮显示的插件
-  - jekyll-watch # 其用于修改文件，自动刷新）只需在 构建jekyll时，加上 --watch参数即可 运行jekyll时，默认加上了 --watch参数
-  # github中 默认启用 不嫩禁用的插件
+  # 有关插件的 介绍，可以 运行 script/mimao_gem | grep 插件名 进行查看其作用和用法
+  - jekyll-seo-tag 
+  - jekyll-feed
+  - jekyll-sitemap  
+  - jekyll-watch 
+  - jekyll-avatar 
+  - jekyll-redirect-from 
+  - jemoji 
+  - rouge 
+  - kramdown-parser-gfm
+  - webrick
+  # github中 默认启用 不能禁用的插件
   - jekyll-coffeescript
   - jekyll-default-layout
   - jekyll-gist
@@ -97,12 +97,34 @@ plugins:
   - jekyll-readme-index
   - jekyll-titles-from-headings
   - jekyll-relative-links # 用于在markdown中配置相对链接，让 []() 中的相对链接起作用
+  # github中 默认启用 不能禁用的插件 已经列出
 
 # 配置插件 白名单（在 使用安全模式执行时 需要将插件添加到白名单，因为布置到github时，safe必须为true 即：必须开启安全模式 ）
 # whitelist:
-#   - jekyll-redirect-from
+#   - jekyll-seo-tag 
+#   - jekyll-feed 
+#   - jekyll-sitemap  
+#   - jekyll-watch 
+#   - jekyll-avatar 
+#   - jekyll-redirect-from 
+#   - jemoji 
+#   - rouge 
+#   - kramdown-parser-gfm
+#   - webrick
+#   # github中 默认启用 不能禁用的插件
+#   - jekyll-coffeescript
+#   - jekyll-default-layout
+#   - jekyll-gist
+#   - jekyll-github-metadata
+#   - jekyll-optional-front-matter
+#   - jekyll-paginate
+#   - jekyll-readme-index
+#   - jekyll-titles-from-headings
+#   - jekyll-relative-links
+#   # github中 默认启用 不能禁用的插件 已经列出
 
 # 对插件 进行配置并选择性说明其用法
+
 # jekyll-seo-tag 插件配置（该配置涉及到 下方插件配置，所以，应放置在 插件配置的最上方）
 # 配置 SEO 标签选项（参见：官网 https://github.com/jekyll/jekyll-seo-tag ；文档地址 https://github.com/jekyll/jekyll-seo-tag/blob/master/docs）；
 # 网页站点标题
@@ -113,12 +135,12 @@ title: Mi Mao
 tagline: nhao
 # 网页 详细描述
 description: 用起来更舒适
-# 网站地址（默认：会是 site.github.url）
+# 网站主机名
 # 因为该项目会部署在 github上，所以url是github项目介绍地址
-# 网站的完整URL。注意：默认情况下将使用site.github.url
-url: "https://github.io/mimao-littlemouse/jekyll-blog"
+# 网站的主机名 注意：如果没有配置该选项 则默认情况下将使用site.github.url
+url: "https://github.io/mimao-littlemouse"
 github:
-  url: "https://github.io/mimao-littlemouse/jekyll-blog"
+  url: "https://github.io/mimao-littlemouse"
 # 全局配置 个人作者信息
 author: 
   name: liuzhiqiang
@@ -154,16 +176,32 @@ lang: en
 # jekyll-seo-tag 配置完成，开始下一个插件配置
 
 # jekyll-feed 必要配置 已在seo配置的时候 配置过了（其他配置 在此配置）
-feed:
-  # 默认 帖子的限制为：20
-  posts_limit: 20
+# 大部分已在 jekyll-seo-tag中实现(title或name description url或site.github.url author)
+# feed:
+#   # 默认 帖子的限制为：20
+#   posts_limit: 20
+#   其他配置项：
+#   目前用的比较浅，所以不进行书写了
 # jekyll-feed 配置完成，开始下一个插件配置
 
 # jekyll-sitemap 配置
+# 你可以在 不需要使用站点地图的页面或帖子的front matter 前事项中书写sitemap: false
+# 也可以为对应路径中的页面和帖子设置front matter Defaults值来实现
+# ---
+# sitemap: false
+# ---
+# 或
+# defaults:
+#   -
+#     scope:
+#       path:            "assets/**/*.pdf"
+#     values:
+#       sitemap:         false
 # jekyll-sitemap 配置完成，开始下一个插件配置
 
-# jempji 配置
-# jempji 配置完成，开始下一个插件配置
+# jekyll-watch 配置
+# 无需进行配置（serve命令行中默认配置好--watch 但build需手动设置--watch）
+# jekyll-watch 配置完成，开始下一个插件配置
 
 # jekyll-avatar 配置(没有需要进行配置的，将解释该插件如何使用)
 # 书写方式有一下几种：
@@ -192,11 +230,32 @@ feed:
 # redirect_to: http://www.github.com
 # jekyll-redirect-from 配置完成，开始下一个插件配置
 
+# jempji 配置
+# 无需进行配置 直接使用即可
+# jempji 配置完成，开始下一个插件配置
+
 # rouge 配置
+# 配置比较复杂 有时间再进行配置
 # rouge 配置完成，开始下一个插件配置
 
-# jekyll-watch 配置(没有配置)
-# jekyll-watch 配置完成，开始下一个插件配置
+# kramdown-parser-gfm 配置(没有配置)
+# 可以在 kramdown 关键字中进行配置，下面列出选项，并不代表就可以这样配置
+# 选项 并默认值：
+# hard_wrap: true
+# gfm_quirks: [paragraph_end]
+# gfm_emojis: false
+# gfm_emoji_opts: {}
+# kramdown-parser-gfm 配置完成，开始下一个插件配置
+
+# webrick 配置(没有配置)
+# 它只是作为 jekyll运行web服务器的重要插件，无需其他配置（其中还可配置响应头 但保持默认即可）
+# webrick:
+#   # jekyll中设置默认的headers
+#   headers:
+#     My-Header: My-Value
+#     My-Other-Header: My-Other-Value
+# 可参见：https://jekyllrb.com/docs/configuration/webrick/
+# webrick 配置完成，开始下一个插件配置
 
 # github上默认启用的 不能禁用的插件
 # jekyll-coffeescript 配置
@@ -206,6 +265,8 @@ feed:
 # jekyll-default-layout 配置完成，开始下一个插件配置
 
 # jekyll-gist 配置
+# gist:
+#   noscript: false
 # jekyll-gist 配置完成，开始下一个插件配置
 
 # jekyll-github-metadata 配置
@@ -240,6 +301,7 @@ feed:
 #   exclude: []
 # jekyll-relative-links 配置完成，开始下一个插件配置
 # github上默认启用的 不能禁用的插件 配置结束
+
 
 # 站点服务配置
 # 将服务器与终端分离（默认：false 不分离）
@@ -277,17 +339,24 @@ excerpt_separator: "\n\n"
 # markdown: kramdown
 # 配置kramdown转换器
 kramdown:
-  # 指定 处理器（默认：GFM 为markdown处理器）
+  # # 指定 处理器（默认：GFM 为markdown处理器）
   # input: GFM
-  auto_ids          : true
-  entity_output     : as_char
-  toc_levels        : [1, 2, 3, 4, 5, 6]
-  smart_quotes      : lsquo,rsquo,ldquo,rdquo
-  footnote_nr       : 1
-  show_warnings     : false
+  # # auto_ids 默认：true
+  # auto_ids: true
+  # # entity_output 默认：as_char
+  # entity_output: as_char
+  # # toc_levels 默认：[1, 2, 3, 4, 5, 6]
+  # toc_levels: [1, 2, 3, 4, 5, 6]
+  # # smart_quotes 默认: lsquo,rsquo,ldquo,rdquo
+  # smart_quotes: lsquo,rsquo,ldquo,rdquo
+  # # footnote_nr 默认：1
+  # footnote_nr: 1
+  # # show_warnings 默认：false
+  # show_warnings: false
   # 不忽视 换行符（false 则代表忽视）
   hard_wrap: true
-  # fgm 怪癖（怪癖列表）
+  # gfm 怪癖（怪癖列表）
+  # paragraph_end 段落之间 需要有空行
   # no_auto_typographic 使更接近github上的风格
   gfm_quirks: [paragraph_end,no_auto_typographic]
   # 配置表情符号
@@ -300,7 +369,7 @@ kramdown:
   syntax_highlighter_opts:
     line_numbers: null # 不设置行号
     default_lang: txt # 设置默认的语言为 文本
-    
+
 
 # 输出配置
 # 配置 全局的永久链接样式（默认：date 帖子样式）（可以使用：页面中的前事项permalink或集合中可以使用其集合中的前事项来覆盖）
@@ -353,13 +422,11 @@ collections:
     index: -1
     text: github
   
-  
-  
-
 # 为 静态文件配置一定范围内(path路径指定范围(该路径可使用正则表达式表示))的 front matter 前事项，自定义前事项 可为前事项设置默认值(比如：title layout 等等设置默认值)
 # 可使用 {{ site.static_files | where: "image", true }} 进行调用（使用where 配合 ）
 defaults:
-  - scope:
-      path: "assets/img"
-    values:
-      image: true
+  - 
+    scope:
+        path: "assets/img"
+      values:
+        image: true

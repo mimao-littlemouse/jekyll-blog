@@ -1,13 +1,25 @@
 source "https://gems.ruby-china.com"
 
-gem "jemoji"
+gem "jekyll-seo-tag"
+
+gem "jekyll-feed"
+
+gem "jekyll-sitemap"
+
+gem "jekyll-watch"
 
 gem "jekyll-avatar"
 
 gem "jekyll-redirect-from"
 
-# gem 'jekyll-watch' # 这个插件默认自带的，无需安装
-# gem "rouge" # 这个插件默认自带的，无需安装
+gem "jemoji"
+
+gem "rouge"
+
+gem "kramdown-parser-gfm"
+
+gem "webrick"
+
 
 # 以下是github中 默认启用 不能禁用的插件
 

@@ -13,13 +13,6 @@ Gem::Specification.new do |spec|
   spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r!^(assets|_layouts|_includes|_sass|LICENSE|README)!i) }
 
   spec.add_runtime_dependency "jekyll", "~> 3.9"
-  spec.add_runtime_dependency "jekyll-feed", "~> 0.13"
-  spec.add_runtime_dependency "jekyll-seo-tag", "~> 2.6"
-  spec.add_runtime_dependency "jekyll-sitemap", "~> 1.4"
-  spec.add_runtime_dependency "kramdown-parser-gfm", "~> 1.1"
-  spec.add_runtime_dependency "kramdown-syntax-coderay", "~> 1.0"
-  spec.add_runtime_dependency "gemoji", "~> 3.0"
-  spec.add_runtime_dependency "webrick", "~> 1.8"
 
   spec.add_development_dependency "bundler", "~> 2.1"
   spec.add_development_dependency "rake", "~> 12.0"
