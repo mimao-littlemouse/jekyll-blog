@@ -30,7 +30,7 @@ sass:
 # 处理文件或文件夹的配置
 # 禁用非白名单插件，缓存到磁盘，并忽略符号链接
 # safe 默认：false 不对插件进行禁用（但 部署到github上时，需设置为 true）
-safe: false
+safe: true
 # 配置生成目标的文件夹(即 目录)中 不包含的文件(即 目录)或文件夹
 # 排除相对于站点源目录的文件或文件夹(即 目录)，不能是源目录之外的
 # exclude 默认值如下:["Gemfile", "Gemfile.lock", "node_modules", "vendor/bundle/", "vendor/cache/", "vendor/gems/", "vendor/ruby/"]
@@ -100,28 +100,28 @@ plugins:
   # github中 默认启用 不能禁用的插件 已经列出
 
 # 配置插件 白名单（在 使用安全模式执行时 需要将插件添加到白名单，因为布置到github时，safe必须为true 即：必须开启安全模式 ）
-# whitelist:
-#   - jekyll-seo-tag 
-#   - jekyll-feed 
-#   - jekyll-sitemap  
-#   - jekyll-watch 
-#   - jekyll-avatar 
-#   - jekyll-redirect-from 
-#   - jemoji 
-#   - rouge 
-#   - kramdown-parser-gfm
-#   - webrick
-#   # github中 默认启用 不能禁用的插件
-#   - jekyll-coffeescript
-#   - jekyll-default-layout
-#   - jekyll-gist
-#   - jekyll-github-metadata
-#   - jekyll-optional-front-matter
-#   - jekyll-paginate
-#   - jekyll-readme-index
-#   - jekyll-titles-from-headings
-#   - jekyll-relative-links
-#   # github中 默认启用 不能禁用的插件 已经列出
+whitelist:
+  - jekyll-seo-tag 
+  - jekyll-feed 
+  - jekyll-sitemap  
+  - jekyll-watch 
+  - jekyll-avatar 
+  - jekyll-redirect-from 
+  - jemoji 
+  - rouge 
+  - kramdown-parser-gfm
+  - webrick
+  # github中 默认启用 不能禁用的插件
+  - jekyll-coffeescript
+  - jekyll-default-layout
+  - jekyll-gist
+  - jekyll-github-metadata
+  - jekyll-optional-front-matter
+  - jekyll-paginate
+  - jekyll-readme-index
+  - jekyll-titles-from-headings
+  - jekyll-relative-links
+  # github中 默认启用 不能禁用的插件 已经列出
 
 # 对插件 进行配置并选择性说明其用法
 
@@ -259,26 +259,49 @@ lang: en
 
 # github上默认启用的 不能禁用的插件
 # jekyll-coffeescript 配置
+# 无需配置
 # jekyll-coffeescript 配置完成，开始下一个插件配置
 
 # jekyll-default-layout 配置
+# 无需配置
 # jekyll-default-layout 配置完成，开始下一个插件配置
 
 # jekyll-gist 配置
 # gist:
-#   noscript: false
+#   # 此信息用于为不支持JavaScript的搜索引擎和浏览器传播noscript标记
+#   # 如果 向提升网页的加载速度，将noscript设置为 false 即可
+#   # 默认：true  开启
+#   noscript: true
 # jekyll-gist 配置完成，开始下一个插件配置
 
 # jekyll-github-metadata 配置
+# 配置的选项 太多，目前不进行配置
 # jekyll-github-metadata 配置完成，开始下一个插件配置
 
 # jekyll-optional-front-matter 配置
+# 该插件可以把不带---yaml---内容的front matter的markdown文件 标记为需要转化的markdown
+# 但如果您想要标记文件，如README、CONTRIBUTING文件、CODE_OF_CONDUCT或LICENSE，等等，你需要在 _config中的include中进行包含
+# 除此之外，默认情况下，原件也会包含在输出中（即：会出现.md .html两个同名文件）这是就需要如下配置：
+# optional_front_matter:
+#   # 是否 启用（默认：启用）
+#   enabled: true
+#   # 是否移除原件（默认：false 不移除）
+#   remove_originals: false
 # jekyll-optional-front-matter 配置完成，开始下一个插件配置
 
 # jekyll-paginate 配置
+# paginate: 5
+# paginate_path: "/jekyll-blog/page:num/"
 # jekyll-paginate 配置完成，开始下一个插件配置
 
 # jekyll-readme-index 配置
+# readme_index:
+#   # 是否 启用（默认：启用）
+#   enabled: true
+#   # 默认情况下，原始README标记文件将作为静态页面包含在输出中
+#   # 要从输出中删除它们，请将remove_originals键设置为true
+#   remove_originals: false
+#   with_frontmatter: false
 # jekyll-readme-index 配置完成，开始下一个插件配置
 
 # jekyll-titles-from-headings 配置
@@ -328,7 +351,7 @@ lang: en
 # 为相关帖子制作索引（默认：false 不开启） 如果需要，则需要添加分类器重生插件（classifier-reborn）
 # lsi: false
 # 帖子摘录配置
-excerpt_separator: "\n\n"
+# excerpt_separator: "\n\n"
 
 
 # 配置 转化器
@@ -424,9 +447,9 @@ collections:
   
 # 为 静态文件配置一定范围内(path路径指定范围(该路径可使用正则表达式表示))的 front matter 前事项，自定义前事项 可为前事项设置默认值(比如：title layout 等等设置默认值)
 # 可使用 {{ site.static_files | where: "image", true }} 进行调用（使用where 配合 ）
-defaults:
-  - 
-    scope:
-        path: "assets/img"
-      values:
-        image: true
+# defaults:
+#   - 
+#     scope:
+#         path: "assets/img"
+#       values:
+#         image: true

@@ -11,6 +11,8 @@ RUN bundle lock
 RUN bundle install
 
 VOLUME [ "/blog" ]
+# 此外，在开发环境中，特意设置与生产环境下的端口不同，开发环境，使用4200端口 生产环境使用：4000端口
+EXPOSE 4200
 
-ENTRYPOINT [ "bundle", "exec", "jekyll", "serve" ]
+ENTRYPOINT [ "script/serve_dev" ]
 

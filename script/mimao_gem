@@ -27,57 +27,7 @@ cat << EOF
   WEBrick还包括用于守护进程、以更高的权限级别启动进程和删除权限的工具。
   在jekyll中用于启动web服务
   可参见：https://github.com/ruby/webrick
-# github中 默认启用 不能禁用的插件
-- jekyll-coffeescript
-- jekyll-default-layout
-- jekyll-gist
-- jekyll-github-metadata
-- jekyll-optional-front-matter
-- jekyll-paginate
-- jekyll-readme-index
-- jekyll-titles-from-headings
-- jekyll-relative-links # 用于在markdown中配置相对链接，让 []() 中的相对链接起作用
-# github中 默认启用 不能禁用的插件 已经列出
 
 EOF
 
-# gem "jekyll-seo-tag"
-
-# gem "jekyll-feed"
-
-# gem "jekyll-sitemap"
-
-# gem "jekyll-watch"
-
-# gem "jekyll-avatar"
-
-# gem "jekyll-redirect-from"
-
-# gem "jemoji"
-
-# gem "rouge"
-
-# gem "kramdown-parser-gfm"
-
-# gem "webrick"
-
-
-# # 以下是github中 默认启用 不能禁用的插件
-
-# gem "jekyll-coffeescript"
-
-# gem "jekyll-default-layout"
-
-# gem "jekyll-gist"
-
-# gem "jekyll-github-metadata"
-
-# gem "jekyll-optional-front-matter"
-
-# gem "jekyll-paginate"
-
-# gem "jekyll-readme-index"
-# # 渲染标题（没有指定 任何title的时候，从文档中寻找标题给页面）
-# gem "jekyll-titles-from-headings"
-# # 配置相对链接的
-# gem "jekyll-relative-links"
+cat script/github_default_enable_gem
