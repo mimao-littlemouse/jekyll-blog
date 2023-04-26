@@ -5,6 +5,8 @@
 # 开发环境下的构建jekyll，只是构建，不会启动服务）
 # 设定 指定读取开发环境下的配置文件
 # 还可指定的选项有：
+# 启用安全模式（用于 模拟部署至github后的效果）
+# --safe 可在_config中配置
 # 用于生成 liquid配置文件，以鉴定站点性能瓶颈
 # --profile 可在config中进行配置
 # 提升站点性能，进行增量构建（只对更改的页面和帖子进行构建）
@@ -24,5 +26,7 @@
 
 jekyll_env="development"
 github_token="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"
+
+# 对于 可直接在配置文件中，进行配置的选项，推荐在配置中进行配置（便于管理配置）
 
 JEKYLL_ENV=${jekyll_env} JEKYLL_GITHUB_TOKEN=${github_token}  bundle exec jekyll build --config _config_dev.yml

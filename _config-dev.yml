@@ -139,8 +139,6 @@ description: 用起来更舒适
 # 因为该项目会部署在 github上，所以url是github项目介绍地址
 # 网站的主机名 注意：如果没有配置该选项 则默认情况下将使用site.github.url
 url: "https://github.io/mimao-littlemouse"
-github:
-  url: "https://github.io/mimao-littlemouse"
 # 全局配置 个人作者信息
 author: 
   name: liuzhiqiang
@@ -194,9 +192,9 @@ lang: en
 # defaults:
 #   -
 #     scope:
-#       path:            "assets/**/*.pdf"
+#       path: "assets/**/*.pdf"
 #     values:
-#       sitemap:         false
+#       sitemap: false
 # jekyll-sitemap 配置完成，开始下一个插件配置
 
 # jekyll-watch 配置
@@ -275,7 +273,7 @@ lang: en
 # jekyll-gist 配置完成，开始下一个插件配置
 
 # jekyll-github-metadata 配置
-# 配置的选项 太多，目前不进行配置
+repository: mimao-littlemouse/jekyll-blog
 # jekyll-github-metadata 配置完成，开始下一个插件配置
 
 # jekyll-optional-front-matter 配置
@@ -330,21 +328,22 @@ lang: en
 # 将服务器与终端分离（默认：false 不分离）
 # detach: false
 # 站点 监听的端口（默认：4000）
-# port: 4000
+port: 4200
 # 站点主机名（默认：localhost 即：127.0.0.1）
-# host: 127.0.0.1
+host: 0.0.0.0
 # 配置 部署之后的基础url(不包含域名或主机名的那部分 比如：https://www.github.com中后面那部分) 
 # 如部署至 github仓库中 则需要配置仓库名 
 # 部署至 github个人主页中可不配置
 # baseurl: "/jekyll-blog"
 # 显示目录列表，而不是加载索引文件（默认：false 不显示）
-# show_dir_listing    : false
+# 如果，开启，则首页显示的是整个项目的导航列表（即：目录列表）
+# show_dir_listing: false
 
 
 # 优化性能配置
 # 启用实验性增量构建功能（默认：false  不启用）
 # 增量构建只会重新构建已更改的帖子和页面，从而显著提高大型网站的性能，但在某些情况下也可能中断网站生成
-# incremental: false  
+# incremental: false 
 
 
 # 帖子相关配置
@@ -402,7 +401,7 @@ permalink: /:collection/:title/:year/:i_month/:i_day/:path
 # 在构建过程中使Jekyll的正常输出静音（默认：false  不静音（即：会输出日志））
 # quiet: false
 # 打印详细输出（默认：false 不详细输出）
-# verbose: false
+verbose: true
 # 是否生成Liquid渲染配置文件以帮助您识别性能瓶颈（默认：false）
 # profile: false
 
