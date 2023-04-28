@@ -91,7 +91,7 @@ plugins:
   - jekyll-coffeescript
   - jekyll-default-layout
   - jekyll-gist
-  - jekyll-github-metadata
+  # - jekyll-github-metadata
   - jekyll-optional-front-matter
   - jekyll-paginate
   - jekyll-readme-index
@@ -115,7 +115,7 @@ whitelist:
   - jekyll-coffeescript
   - jekyll-default-layout
   - jekyll-gist
-  - jekyll-github-metadata
+  # - jekyll-github-metadata
   - jekyll-optional-front-matter
   - jekyll-paginate
   - jekyll-readme-index
@@ -273,7 +273,7 @@ lang: en
 # jekyll-gist 配置完成，开始下一个插件配置
 
 # jekyll-github-metadata 配置
-repository: mimao-littlemouse/jekyll-blog
+# repository: mimao-littlemouse/jekyll-blog
 # jekyll-github-metadata 配置完成，开始下一个插件配置
 
 # jekyll-optional-front-matter 配置
