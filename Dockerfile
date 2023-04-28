@@ -11,8 +11,15 @@ RUN bundle lock
 RUN bundle install
 
 VOLUME [ "/blog" ]
-# 此外，在开发环境中，特意设置与生产环境下的端口不同，开发环境，使用4200端口 生产环境使用：4000端口 但构建时，不需要开启端口
+
+# 构建时 不需要端口，所以 构建时 请注释
+# 开发
+EXPOSE 4000
+# 生产
 # EXPOSE 4200
 
-ENTRYPOINT [ "script/build_dev" ]
+# 运行
+ENTRYPOINT [ "/bin/bash", "script/serve" ]
+# 构建
+# ENTRYPOINT [ "/bin/bash", "script/build" ]
 

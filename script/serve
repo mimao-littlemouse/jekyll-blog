@@ -3,12 +3,14 @@
 # 生产环境 serve
 
 # 生产环境下的运行jekyll（由于 jekyll服务是先构建，再运行服务，所以得区分不同环境下的运行）
-# 设定 端口 自动刷新浏览器 自动打开浏览器  指定读取开发环境下的配置文件 
+# 设定 端口 指定读取开发环境下的配置文件 
 # 还可指定的选项有：
 # 设定 主机名
 # --host 127.0.0.1
 # 设定 端口
 # --port 4000
+# 基本url地址头
+# --baseurl /blog
 # 启用安全模式（用于 模拟部署至github后的效果）
 # --safe 可在_config中配置
 # 显示目录列表
@@ -29,11 +31,22 @@
 # JEKYLL_ENV=production
 # 在修改文件时启用站点的自动重新生成
 # --watch 在serve中默认开启（如需取消，可以带上: --no-watch）
+# 自动刷新浏览器 --livereload 
+# 自动打开浏览器 --open-url
 
-jekyll_env="production"
-github_token="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"
-
+# 推荐在命令行中进行配置（便于管理配置）
 # 此外，在开发环境中，特意设置与生产环境下的端口不同，开发环境，使用4200端口 生产环境使用：4000端口（推荐在配置中指定）
-# 对于 可直接在配置文件中，进行配置的选项，推荐在配置中进行配置（便于管理配置）
 
-JEKYLL_ENV=${jekyll_env} JEKYLL_GITHUB_TOKEN=${github_token} bundle exec jekyll serve --livereload --open-url  --config _config.yml
+# 共用
+# 目前无
+
+# 开发
+jekyll_env="development"
+# 生产
+# jekyll_env="production"
+
+# 开发
+JEKYLL_ENV=${jekyll_env} bundle exec jekyll serve --trace
+# 生产
+# JEKYLL_ENV=${jekyll_env} bundle exec jekyll serve
+

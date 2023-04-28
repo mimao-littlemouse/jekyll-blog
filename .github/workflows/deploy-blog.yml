@@ -1,4 +1,4 @@
-name: Jekyll-Blog Docker-Image
+name: deploy blog
 
 on:
   push:
@@ -13,28 +13,14 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Build jekyll-blog
-      run: docker build -t jekyll-blog . -f "./docker_file/production/build/Dockerfile"
+    - name: build blog image
+      run: docker build -t blog .
 
-    - name: Run container blog and restart container
+    - name: run blog container
       run: |
         cd ..
-        docker run -itd -v jekyll-blog:/blog --name="blog" jekyll-blog /bin/bash
+        docker run -itd -v jekyll-blog:/blog --name="blog" blog /bin/bash
         cd jekyll-blog
-        docker ps -a
-        sleep 15
-        ls -ahl
-        docker ps -a
-        docker logs -f blog
-        docker restart blog
-        sleep 15
-        docker ps -a
-        docker logs -f blog
-        ls -ahl
-        sleep 15
-        ls -ahl
-        docker ps -a
-        docker logs -f blog
 
     - name: Check GitHub Pages status
       uses: crazy-max/ghaction-github-status@v3
@@ -54,7 +40,6 @@ jobs:
 
     - name: Mkdir site and cp -r _site/* site and cd directory
       run: |
-        ls -ahl
         mkdir site
         cp -rf _site/* site
         cd site
