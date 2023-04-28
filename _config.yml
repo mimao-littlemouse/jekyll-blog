@@ -3,11 +3,9 @@ sass:
   sass_dir: _sass
   style: compressed
 
-# 设置安全模式运行
-safe: false
-
 # 排除文件
 exclude:
+  - Dockerfile
   - README.md
   - LICENSE.md
   - script
@@ -30,14 +28,14 @@ plugins:
   - webrick
 
 # 配置插件 白名单
-# whitelist:
-#   - jekyll-seo-tag 
-#   - jekyll-feed
-#   - jekyll-sitemap  
-#   - jemoji 
-#   - rouge 
-#   - kramdown-parser-gfm
-#   - webrick
+whitelist:
+  - jekyll-seo-tag 
+  - jekyll-feed
+  - jekyll-sitemap  
+  - jemoji 
+  - rouge 
+  - kramdown-parser-gfm
+  - webrick
 
 # 对插件 进行配置并选择性说明其用法
 
@@ -54,7 +52,7 @@ description: 用起来更舒适
 # 网站主机名
 # 因为该项目会部署在 github上，所以url是github项目介绍地址
 # 网站的主机名 注意：如果没有配置该选项 则默认情况下将使用site.github.url
-url: "https://github.io/mimao-littlemouse"
+url: "https://mimao-littlemouse.github.io"
 # 全局配置 个人作者信息
 author: 
   name: liuzhiqiang

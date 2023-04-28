@@ -46,7 +46,7 @@ jekyll_env="development"
 # jekyll_env="production"
 
 # 开发
-JEKYLL_ENV=${jekyll_env} bundle exec jekyll serve --trace
+JEKYLL_ENV=${jekyll_env} bundle exec jekyll serve --host 0.0.0.0 --port 4200 --trace --verbose
 # 生产
 # JEKYLL_ENV=${jekyll_env} bundle exec jekyll serve
 

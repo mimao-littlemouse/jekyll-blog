@@ -32,11 +32,11 @@
 # 目前无
 
 # 开发
-jekyll_env="development"
+# jekyll_env="development"
 # 生产
-# jekyll_env="production"
+jekyll_env="production"
 
 # 开发
-JEKYLL_ENV=${jekyll_env} bundle exec jekyll build --trace --watch
+# JEKYLL_ENV=${jekyll_env} bundle exec jekyll build --trace --watch
 # 生产
-# JEKYLL_ENV=${jekyll_env} bundle exec jekyll build --baseurl "/jekyll-blog"
+JEKYLL_ENV=${jekyll_env} bundle exec jekyll build --baseurl "/jekyll-blog" --safe
