@@ -13,21 +13,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: build blog image
-      run: docker build -t blog .
-
-    - name: run blog container
-      run: |
-        cd ..
-        docker run -itd -v jekyll-blog:/blog --name="blog" blog /bin/bash
-        cd jekyll-blog
-        docker logs -f blog
-        ls -ahl
-        sleep 10
-        ls -ahl
-        sleep 12
-        ls -ahl
-
     - name: Check GitHub Pages status
       uses: crazy-max/ghaction-github-status@v3
       with:
@@ -44,18 +29,12 @@ jobs:
         git_user_signingkey: true
         git_commit_gpgsign: true
 
-    - name: Mkdir site and cp -r _site/* site and cd directory
-      run: |
-        mkdir site
-        cp -rf _site/* site
-        cd site
-
     - name: Deploy to Github Pages
       # 如果 出现git 128错误，务必确保 action常规设置中的 action的读和写的权限已打开
       if: success()
       uses: crazy-max/ghaction-github-pages@v3.1.0
       with:
-        build_dir: site
+        build_dir: build
         jekyll: true
         verbose: true
       env:
