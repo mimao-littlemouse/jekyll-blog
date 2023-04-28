@@ -14,5 +14,5 @@ VOLUME [ "/blog" ]
 # 此外，在开发环境中，特意设置与生产环境下的端口不同，开发环境，使用4200端口 生产环境使用：4000端口 但构建时，不需要开启端口
 # EXPOSE 4000
 
-ENTRYPOINT [ "pwd" ]
+ENTRYPOINT [ "JEKYLL_ENV=production JEKYLL_GITHUB_TOKEN=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 bundle exec jekyll build --config _config.yml"]
 

@@ -20,43 +20,40 @@ jobs:
       run: |
         cd ..
         docker run -itd -v /jekyll-blog:/blog --name="blog" jekyll-blog /bin/bash
-    #     docker logs -f blog
-    #     docker restart blog
-    #     docker logs -f blog
-    #     cd jekyll-blog
+        cd jekyll-blog
 
-    # - name: Check GitHub Pages status
-    #   uses: crazy-max/ghaction-github-status@v3
-    #   with:
-    #     pages_threshold: major_outage
+    - name: Check GitHub Pages status
+      uses: crazy-max/ghaction-github-status@v3
+      with:
+        pages_threshold: major_outage
 
-    # - name: Import GPG key
-    #   uses: crazy-max/ghaction-import-gpg@v5
-    #   with:
-    #     # 这两个secrets变量 需要在仓库的 scrects 中进行创建 这两个变量
-    #     # gpg需要带有begin end包围的那个很长很长的字符串（就那个密钥）
-    #     # passphrase 是 设置gpg时 设置的密码
-    #     gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
-    #     passphrase: ${{ secrets.PASSPHRASE }}
-    #     git_user_signingkey: true
-    #     git_commit_gpgsign: true
+    - name: Import GPG key
+      uses: crazy-max/ghaction-import-gpg@v5
+      with:
+        # 这两个secrets变量 需要在仓库的 scrects 中进行创建 这两个变量
+        # gpg需要带有begin end包围的那个很长很长的字符串（就那个密钥）
+        # passphrase 是 设置gpg时 设置的密码
+        gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+        passphrase: ${{ secrets.PASSPHRASE }}
+        git_user_signingkey: true
+        git_commit_gpgsign: true
 
-    # - name: Mkdir site and cp -r _site/* site and cd directory
-    #   run: |
-    #     mkdir site
-    #     cp -rf _site/* site
-    #     cd site
+    - name: Mkdir site and cp -r _site/* site and cd directory
+      run: |
+        mkdir site
+        cp -rf _site/* site
+        cd site
 
-    # - name: Deploy to Github Pages
-    #   # 如果 出现git 128错误，务必确保 action常规设置中的 action的读和写的权限已打开
-    #   if: success()
-    #   uses: crazy-max/ghaction-github-pages@v3.1.0
-    #   with:
-    #     build_dir: site
-    #     jekyll: true
-    #     verbose: true
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Deploy to Github Pages
+      # 如果 出现git 128错误，务必确保 action常规设置中的 action的读和写的权限已打开
+      if: success()
+      uses: crazy-max/ghaction-github-pages@v3.1.0
+      with:
+        build_dir: site
+        jekyll: true
+        verbose: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
         
         
