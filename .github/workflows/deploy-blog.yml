@@ -22,6 +22,7 @@ jobs:
         docker run -itd -v jekyll-blog:/blog --name="blog" blog /bin/bash
         cd jekyll-blog
         docker logs -f blog
+        ls -ahl
 
     - name: Check GitHub Pages status
       uses: crazy-max/ghaction-github-status@v3
