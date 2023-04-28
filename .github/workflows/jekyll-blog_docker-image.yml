@@ -45,6 +45,7 @@ jobs:
 
     - name: Mkdir site and cp -r _site/* site and cd directory
       run: |
+        ls -ahl
         mkdir site
         cp -rf _site/* site
         cd site
