@@ -25,7 +25,7 @@
 # --watch 在serve中默认开启（如需取消，可以带上: --no-watch）
 
 jekyll_env="production"
-github_token="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"
+github_token="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"
 
 # 对于 可直接在配置文件中，进行配置的选项，推荐在配置中进行配置（便于管理配置）
 
