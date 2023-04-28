@@ -21,7 +21,5 @@ VOLUME [ "/blog" ]
 # 运行
 # ENTRYPOINT [ "/bin/bash", "script/serve" ]
 # 构建
-# ENTRYPOINT [ "/bin/bash", "./script/build" ]
-
-ENTRYPOINT [ "bundle", "exec", "jekyll", "build", "--baseurl", "/jekyll-blog", "--safe" ]
+ENTRYPOINT [ "/bin/bash", "./script/build" ]
 

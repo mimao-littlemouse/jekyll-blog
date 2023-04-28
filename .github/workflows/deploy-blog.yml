@@ -23,6 +23,10 @@ jobs:
         cd jekyll-blog
         docker logs -f blog
         ls -ahl
+        sleep 10
+        ls -ahl
+        sleep 12
+        ls -ahl
 
     - name: Check GitHub Pages status
       uses: crazy-max/ghaction-github-status@v3
