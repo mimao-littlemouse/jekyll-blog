@@ -22,16 +22,18 @@ plugins:
   - jekyll-seo-tag 
   - jekyll-feed
   - jekyll-sitemap  
+  - jekyll-watch
   - jemoji 
   - rouge 
   - kramdown-parser-gfm
   - webrick
 
-# 配置插件 白名单
+# # 配置插件 白名单
 whitelist:
   - jekyll-seo-tag 
   - jekyll-feed
   - jekyll-sitemap  
+  - jekyll-watch
   - jemoji 
   - rouge 
   - kramdown-parser-gfm
@@ -115,7 +117,7 @@ kramdown:
 
 # 输出配置
 # 配置 全局的永久链接样式（默认：date 帖子样式）（可以使用：页面中的前事项permalink或集合中可以使用其集合中的前事项来覆盖）
-permalink: /:collection/:title/:year/:i_month/:i_day/:path
+permalink: /articles/:collection/:title/:year/:i_month/:i_day/:path
 
 # 定义集合(即：内容合集)
 # 使用 yaml的描点和引用 来简化集合中的配置

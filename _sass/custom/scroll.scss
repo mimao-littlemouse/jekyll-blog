@@ -19,6 +19,7 @@
 // 滚动条上的滚动滑块
 .scrollbar::-webkit-scrollbar-thumb{
     background-color: lightgreen;
+    border-radius: 5px;
 }
 // 滚动条轨道
 .scrollbar::-webkit-scrollbar-track{
@@ -41,6 +42,7 @@
 // 滚动条上的滚动滑块
 .scrollbar-blue::-webkit-scrollbar-thumb{
     background-color: lightblue;
+    border-radius: 5px;
 }
 
 // 是否悬浮时，显示(默认是显示)

@@ -12,14 +12,14 @@ layout: app
 <!-- --- 中间主体内容部分 --- -->
 <div id="main" class="d-flex container-fluid row m-0 p-0" style="height: calc(100vh - 50px);">
   <!-- 侧边导航栏 -->
-  <!-- 导航选项部分的数据，会在 _data文件夹中d的side_navbar.yaml中进行定义 -->
+  <!-- 导航选项的数据 是根据集合进行定义 -->
   <ul id="side-navbar"
-    class="nav nav-pills flex-column flex-nowrap pe-0 bg-body-tertiary col-2 h-100 border border-top-1" role="tablist"
-    style="padding-top: 5px;border-top-right-radius: 2px;overflow-y: auto;">
+    class="nav nav-pills flex-column flex-nowrap pe-0 bg-body-tertiary col-2 h-100 border border-top-1 overflow-y-auto" role="tablist"
+    style="padding-top: 5px;border-top-right-radius: 2px;">
     {% for article in articles %}
     <li class="nav-item mx-0 mb-1 d-flex justify-content-center" role="presentation">
       <button class="nav-link p-0 {% if forloop.index0==0 %}active{% endif %}"
-        style="width: 96%;height: 32px;" id="{{article.label}}-tab-{{article.index}}" data-bs-toggle="pill"
+        style="width: 96%;height: 32px;border-radius: 2px;" id="{{article.label}}-tab-{{article.index}}" data-bs-toggle="pill"
         data-bs-target="#{{article.label}}-content-{{article.index}}" type="button" role="tab"
         aria-controls="{{article.label}}-content-{{article.index}}" aria-selected="{% if article.label==0 %}true{%
         endif %}">{{article.text}}</button>
@@ -27,7 +27,7 @@ layout: app
     {% endfor %}
   </ul>
   <!-- 右边内容区域 -->
-  <div id="side-content" class="tab-content col-10 ps-1 pe-0">
+  <div id="side-content" class="tab-content col-10 ps-1 pe-0 h-100">
     <!-- 右边区域 tab (id 以 article.label article.index 配合 tab content进行命名区分)-->
     <!-- 其中，javascript需要 以 类名为： id-app-main-tab_content-articles-carousel 来获取这些 文章carousel对象（其中地方不要进行使用 否则会出现意外的错误） -->
     {% for article in articles %}
@@ -35,20 +35,22 @@ layout: app
       endif %} w-100 h-100" role="tabpanel" aria-labelledby="{{article.label}}-tab-{{article.index}}" tabindex="0">
       <!-- 使用轮播 来展示每一个类型的博客中不同章节  -->
       <div id="{{article.label}}-carousel-{{article.index}}" class="carousel slide w-100 h-100 bg-body-tertiary">
-        <div class="carousel-indicators w-100 m-0 d-block scrollbar scrollbar-hidden" style="top:0px;height:45px;white-space: nowrap;">
+        <div class="carousel-indicators w-100 m-0 d-block scrollbar scrollbar-hidden  bg-body-tertiary" style="top:-45px;height:45px;white-space: nowrap;">
         <!-- 轮播图中的指示点 集合 -->
         <!-- 定义 文章中一系列文档（接受 按index排序后的系列文档） -->
         {% assign article_docs = article.docs %}
         {% for doc in article_docs %}
-          <div data-bs-target="#{{article.label}}-carousel-{{article.index}}" data-bs-slide-to="{{forloop.index0}}" class="{% if forloop.index0==0 %}active{% endif %} border-0 d-inline-block bg-primary text-center text-white" style="width: 120px;height:40px;line-height:40px;font-size:12px;text-indent: 0px;" aria-current="{% if forloop.index0 == 0 %}true{% else %}false{% endif %}" aria-label="Slide {{forloop.index0}}">
+          <div data-bs-target="#{{article.label}}-carousel-{{article.index}}" data-bs-slide-to="{{forloop.index0}}" class="{% if forloop.index0==0 %}active{% endif %} border-0 d-inline-block bg-primary text-center text-white" style="width: 120px;height:40px;line-height:40px;font-size:12px;text-indent: 0px;border-radius: 2px;" aria-current="{% if forloop.index0 == 0 %}true{% else %}false{% endif %}" aria-label="Slide {{forloop.index0}}">
             {{doc.text}}
           </div>
         {% endfor %}
         </div>
-        <div class="carousel-inner w-100 h-100" style="padding-top: 45px;">
+        <div class="carousel-inner w-100" style="margin-top: 45px;height: calc(100% - 45px);">
           {% for doc in article_docs %}
           <div class="carousel-item w-100 h-100 {% if forloop.index0 == 0 %}active{% endif %}">
-            {{doc.content}}
+            <div class="carousel-item-content w-100 border-top border-1 overflow-y-auto scrollbar scrollbar-blue" style="height: calc(100% - 1px);">
+              {{doc.content}}
+            </div>
           </div>
           {% endfor %}
         </div>
