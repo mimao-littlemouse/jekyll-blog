@@ -1,8 +1,8 @@
 #!/bin/sh
 
-cp -r _site/* build
-sudo git add .
-sudo git commit -S -m "$1"
+rm -rf build
+mkdir build
+cp _site/* build
 git add .
 git commit -S -m "$1"
 git push -u origin main

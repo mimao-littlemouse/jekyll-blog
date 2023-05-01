@@ -9,13 +9,16 @@ exclude:
   - README.md
   - LICENSE.md
   - script
+  - build
   - Gemfile
   - Gemfile.lock
+  - mimao.gemspec
   - .editorconfig
   - .git
   - .github
   - .gitignore
   - .jekyll-cache
+  - .sass-cache
 
 # 插件配置(gem依赖配置)
 plugins:
@@ -48,9 +51,9 @@ title: Mi Mao
 # 网页 简要描述（网站的描述 都是在 页面没有定义 title的时候，即：page.title没有定义的时候显示）
 # 定义了 简要描述 title中优先显示简要描述 而不是 详细描述，但详细描述有利于 seo的搜索优化
 # 优先级：page.title tagline description
-tagline: nhao
+tagline: 舒适 便捷
 # 网页 详细描述
-description: 用起来更舒适
+description: 用起来更舒适 便捷
 # 网站主机名
 # 因为该项目会部署在 github上，所以url是github项目介绍地址
 # 网站的主机名 注意：如果没有配置该选项 则默认情况下将使用site.github.url
@@ -68,7 +71,7 @@ author:
 #   publisher: 1234
 #   admins: 1234
 # 搜索页面 查找该网站时，在组织一栏中 会显示的图标（该图标可以是 公司的图标 也可以是个人图标）
-logo: /assets/logo.png
+# logo: /assets/logo.png
 # 指定社交信息
 social:
   # 如果用户或组织名称与站点名称不一致时，进行配置
