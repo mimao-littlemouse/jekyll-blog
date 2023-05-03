@@ -4,6 +4,29 @@
 <!-- 观察者模块 -->
 <script src="{{ 'assets/js/common/observe.js' | relative_url }}"></script>
 
+
+
 <!-- 引入 各部分内容 javascript 代码 -->
 <!-- 轮播图指示滚动条模块 -->
 <script src="{{ 'assets/js/carousel_scroll.js' | relative_url }}"></script>
+
+
+<!-- 懒加载模块 javascript 引入 -->
+<!-- 如果需要实现 相关效果，可以在 对应的模块中进行修改效果 -->
+<!-- 懒加载 入口 javascript -->
+<!-- 用于处理 懒加载全局变量和全局方法 -->
+<script src="{{ 'assets/js/custom_lazyload/index.js' | relative_url }}"></script>
+<!-- 自定义懒加载 元素 加载模块 -->
+<!-- 这个可以实现，元素出现在视图时 要去实现的 花里胡哨的操作 -->
+<script src="{{ 'assets/js/custom_lazyload/element.js' | relative_url }}"></script>
+<!-- 自定义懒加载 图片 加载模块 -->
+<!-- 这个可以实现 在大量图片需要加载的时候，为了减轻加载图片的负担，提高性能，去减缓图片的加载 -->
+<!-- 通过 让图片 未出现在视图或距视图下方多少 不进行加载合理化的效果，达到提升用户体验的效果 -->
+<script src="{{ 'assets/js/custom_lazyload/img.js' | relative_url }}"></script>
+<!-- 用于处理 懒加载 监听事件 -->
+<script src="{{ 'assets/js/custom_lazyload/index_done.js' | relative_url }}"></script>
+
+<!-- 引入 懒加载模块（在该项目中，我会默认优先使用 异步加载的形式，通过监听 lazy-load 实例的初始化，然后再 加载懒加载模块） -->
+<!-- 所以需定义再懒加载模块的下方 -->
+<!-- 懒加载 api模块 使用 verlok vanilla-lazyload 的项目，地址：https://github.com/verlok/vanilla-lazyload -->
+<script src="{{ 'assets/plugins/lazyload/lazyload.min.js' | relative_url }}"></script>
