@@ -5,9 +5,10 @@
 window.addEventListener(
     "LazyLoad::Initialized",
     function (e) {
-      var instance = e.detail.instance;
-      console.log(instance);
+      let instance = e.detail.instance;
+      // 其中，instance._settings.name 是懒加载实例的名称
       lazyLoadInstances.push(instance);
+      console.log(lazyLoadInstances);
     },
     false
   );

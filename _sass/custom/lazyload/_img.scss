@@ -1,0 +1,22 @@
+// 懒加载 处理图片素样式  进行统一管理
+
+// 添加 图片过渡效果
+img.lazyload-img {
+    display: block;
+    opacity: 0;
+}
+
+img:not(.initial) {
+    transition: opacity 1s;
+}
+
+img.lazyload-img-initial,
+img.lazyload-img-loaded,
+img.lazyload-img-error {
+    opacity: 1;
+}
+
+// 对于，没有 src的图片 进行取消显示
+img:not([src]) {
+    visibility: hidden;
+}

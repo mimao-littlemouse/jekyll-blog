@@ -4,10 +4,10 @@
 // 定义全局变量
 // 懒加载实例集合
 window.lazyLoadInstances = [];
-// 其中，[]中应包含 {name:"",instance:object}
+// 其中，[]中包含的instance实例对象的 _settings.name 是实例的名称（该名称是通过 配置选项中的name属性得来的）
 // 懒加载选项集合
 window.lazyLoadOptions = [];
-// 其中，[]中应包含 {name:"",option:object}
+// 其中，[]中包含的option选项对象 中有name 懒加载实例名称 属性
 
 
 
@@ -15,9 +15,9 @@ window.lazyLoadOptions = [];
 /**
  * @function initLazyloadOption
  * @description 初始化 懒加载选项（注意：要确保每一个 lazyload_instance_name 都不同 否则只会对最后一个实例生效）
- * @param lazyload_instance_name {string} 必填选项
+ * @param name {string} 必填选项(懒加载实例的名称 必须唯一)
  * @param container {document} 默认：document
- * @param elements_selector  {string} 默认： "lazyload"
+ * @param elements_selector  {string} 默认： ".lazyload"
  * @param threshold {number} 默认：300
  * @param thresholds {string} 默认：null 
  * @param stage_classname_prefix {string} 默认："lazyload-"
@@ -38,8 +38,9 @@ window.lazyLoadOptions = [];
  * @author MiMao
  * @version 1.0
  */
-function initLazyloadOption(lazyload_instance_name, container = document, elements_selector = "lazyload", threshold = 300, thresholds = null, stage_classname_prefix = "lazyload-", cancel_on_exit = true, unobserve_entered = false, unobserve_completed = true, callback_enter = null, callback_loading = null, callback_loaded = null, callback_finish = null, callback_cancel = null, callback_exit = null, callback_error = null, callback_applied = null) {
+function initLazyloadOption(name, container = document, elements_selector = ".lazyload", threshold = 300, thresholds = null, stage_classname_prefix = "lazyload-", cancel_on_exit = true, unobserve_entered = false, unobserve_completed = true, callback_enter = null, callback_loading = null, callback_loaded = null, callback_finish = null, callback_cancel = null, callback_exit = null, callback_error = null, callback_applied = null) {
     let lazyLoad_option = {
+        name,
         // elements_selector选项中元素的滚动容器 默认：document
         container,
 
@@ -115,9 +116,7 @@ function initLazyloadOption(lazyload_instance_name, container = document, elemen
 
     }
     // 将选项 添加到全局 选项变量列表中
-    lazyLoadOptions.push({
-        name: lazyload_instance_name,
-        option: lazyLoad_option
-    });
+    lazyLoadOptions.push(lazyLoad_option);
+    console.log(lazyLoadOptions)
 }
 
