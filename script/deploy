@@ -6,3 +6,5 @@ cp -R _site/* build
 git add .
 git commit -S -m "$1"
 git push -u origin main
+
+# 仅供参考（大致流程 如上）
