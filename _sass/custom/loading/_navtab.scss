@@ -1,0 +1,215 @@
+//实现 loading 加载动画
+// 兼容 ie
+@keyframes navtab_loading
+{
+    1%{
+        font-size: 12px;
+        font-weight: 400;
+    }
+    20%{
+        font-size: 14px;
+        font-weight: 410;
+    }
+    40%{
+        font-size: 16px;
+        font-weight: 420;
+    }
+    60%{
+        font-size: 18px;
+        font-weight: 430;
+    }
+    80%{
+        font-size: 20px;
+        font-weight: 440;
+    }
+    100%{
+        font-size: 20px;
+        font-weight: 450;
+    }
+}
+
+// 兼容 chrome safari opera 15.0
+@-webkit-keyframes navtab_loading
+{
+    1%{
+        font-size: 12px;
+        font-weight: 400;
+    }
+    20%{
+        font-size: 14px;
+        font-weight: 410;
+    }
+    40%{
+        font-size: 16px;
+        font-weight: 420;
+    }
+    60%{
+        font-size: 18px;
+        font-weight: 430;
+    }
+    80%{
+        font-size: 20px;
+        font-weight: 440;
+    }
+    100%{
+        font-size: 20px;
+        font-weight: 450;
+    }
+}
+// 兼容 firefox
+@-moz-keyframes navtab_loading{
+    1%{
+        font-size: 12px;
+        font-weight: 400;
+    }
+    20%{
+        font-size: 14px;
+        font-weight: 410;
+    }
+    40%{
+        font-size: 16px;
+        font-weight: 420;
+    }
+    60%{
+        font-size: 18px;
+        font-weight: 430;
+    }
+    80%{
+        font-size: 20px;
+        font-weight: 440;
+    }
+    100%{
+        font-size: 20px;
+        font-weight: 450;
+    }
+}
+// 兼容 opera 12.0
+@-o-keyframes navtab_loading{
+    1%{
+        font-size: 12px;
+        font-weight: 400;
+    }
+    20%{
+        font-size: 14px;
+        font-weight: 410;
+    }
+    40%{
+        font-size: 16px;
+        font-weight: 420;
+    }
+    60%{
+        font-size: 18px;
+        font-weight: 430;
+    }
+    80%{
+        font-size: 20px;
+        font-weight: 440;
+    }
+    100%{
+        font-size: 20px;
+        font-weight: 450;
+    }
+}
+
+.navtab-loading-animation>{
+    .l{
+        // 兼容 ie
+        animation: navtab_loading 3s ease 0s infinite alternate;
+        // 兼容 chrome safari opera 15.0
+        -webkit-animation: navtab_loading 3s ease 0s infinite alternate;
+        // 兼容 firefox
+        -moz-animation: navtab_loading 3s ease 0s infinite alternate;
+        // 兼容 opera 12.0
+        -o-animation: navtab_loading 3s ease 0s infinite alternate;
+    }
+    .o{
+        // 兼容 ie
+        animation: navtab_loading 3s ease 0.5s infinite alternate;
+        // 兼容 chrome safari opera 15.0
+        -webkit-animation: navtab_loading 3s ease 0.5s infinite alternate;
+        // 兼容 firefox
+        -moz-animation: navtab_loading 3s ease 0.5s infinite alternate;
+        // 兼容 opera 12.0
+        -o-animation: navtab_loading 3s ease 0.5s infinite alternate;
+    }
+    .a{
+        // 兼容 ie
+        animation: navtab_loading 3s ease 0.8s infinite alternate;
+        // 兼容 chrome safari opera 15.0
+        -webkit-animation: navtab_loading 3s ease 0.8s infinite alternate;
+        // 兼容 firefox
+        -moz-animation: navtab_loading 3s ease 0.8s infinite alternate;
+        // 兼容 opera 12.0
+        -o-animation: navtab_loading 3s ease 0.8s infinite alternate;
+    }
+    .d{
+        // 兼容 ie
+        animation: navtab_loading 3s ease 1s infinite alternate;
+        // 兼容 chrome safari opera 15.0
+        -webkit-animation: navtab_loading 3s ease 1s infinite alternate;
+        // 兼容 firefox
+        -moz-animation: navtab_loading 3s ease 1s infinite alternate;
+        // 兼容 opera 12.0
+        -o-animation: navtab_loading 3s ease 1s infinite alternate;
+    }
+    .i{
+        // 兼容 ie
+        animation: navtab_loading 3s ease 1.5s infinite alternate;
+        // 兼容 chrome safari opera 15.0
+        -webkit-animation: navtab_loading 3s ease 1.5s infinite alternate;
+        // 兼容 firefox
+        -moz-animation: navtab_loading 3s ease 1.5s infinite alternate;
+        // 兼容 opera 12.0
+        -o-animation: navtab_loading 3s ease 1.5s infinite alternate;
+    }
+    .n{
+        // 兼容 ie
+        animation: navtab_loading 3s ease 1.8s infinite alternate;
+        // 兼容 chrome safari opera 15.0
+        -webkit-animation: navtab_loading 3s ease 1.8s infinite alternate;
+        // 兼容 firefox
+        -moz-animation: navtab_loading 3s ease 1.8s infinite alternate;
+        // 兼容 opera 12.0
+        -o-animation: navtab_loading 3s ease 1.8s infinite alternate;
+    }
+    .g{
+        // 兼容 ie
+        animation: navtab_loading 3s ease 1.8s infinite alternate;
+        // 兼容 chrome safari opera 15.0
+        -webkit-animation: navtab_loading 3s ease 1.8s infinite alternate;
+        // 兼容 firefox
+        -moz-animation: navtab_loading 3s ease 1.8s infinite alternate;
+        // 兼容 opera 12.0
+        -o-animation: navtab_loading 3s ease 1.8s infinite alternate;
+    }
+    .dot1{
+        // 兼容 ie
+        animation: navtab_loading 3s ease 2s infinite alternate;
+        // 兼容 chrome safari opera 15.0
+        -webkit-animation: navtab_loading 3s ease 2s infinite alternate;
+        // 兼容 firefox
+        -moz-animation: navtab_loading 3s ease 2s infinite alternate;
+        // 兼容 opera 12.0
+        -o-animation: navtab_loading 3s ease 2s infinite alternate;
+    }
+    .dot2{
+        // 兼容 ie
+        animation: navtab_loading 3s ease 2.5s infinite alternate;
+        // 兼容 chrome safari opera 15.0
+        -webkit-animation: navtab_loading 3s ease 2.5s infinite alternate;
+        // 兼容 firefox
+        -moz-animation: navtab_loading 3s ease 2.5s infinite alternate;
+        // 兼容 opera 12.0
+        -o-animation: navtab_loading 3s ease 2.5s infinite alternate;
+    }
+    .dot3{
+        // 兼容 ie
+        animation: navtab_loading 3s ease 2.8s infinite alternate;
+        // 兼容 chrome safari opera 15.0
+        -webkit-animation: navtab_loading 3s ease 2.8s infinite alternate;
+        // 兼容 firefox
+        -moz-animation: navtab_loading 3s ease 2.8s infinite alternate;
+        // 兼容 opera 12.0
+        -o-animation: navtab_loading 3s ease 2.8s infinite alternate;
+    }
+}

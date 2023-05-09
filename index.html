@@ -4,16 +4,19 @@ layout: app
 <!-- 定义变量 -->
 {% assign articles = site.collections | sort: "index" -%}
 <!-- --- 头部内容部分 --- -->
-<div id="app-header" class="row mx-0 border-bottom" style="height: 50px;">
-  <div class="col-2 col-sm-1 col-md-2 col-lg-1 px-0 d-flex user-select-none fs-5"
+<div id="app-header" class="bg-body-tertiary row mx-0 border-bottom" style="height: 50px;">
+  <div class="col-1 col-md-2 col-lg-1 px-1 px-md-0 d-flex user-select-none fs-5"
     title="Mi Mao just want you to be comfortable!">
-    <span class="d-block d-sm-none d-md-block mx-auto align-self-center">Mi Mao</span>
-    <i class="bi bi-123 d-none d-sm-block d-md-none mx-auto align-self-center text-body"></i>
+    <span class="d-none d-md-block mx-auto align-self-center">Mi Mao</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="text-body d-block d-md-none mx-auto align-self-center" viewBox="0 0 16 16">
+      <path d="M9.482 9.341c-.069.062-.17.153-.17.309 0 .162.107.325.3.456.877.613 2.521.54 2.592.538h.002c.667 0 1.32-.18 1.894-.519A3.838 3.838 0 0 0 16 6.819c.018-1.316-.44-2.218-.666-2.664l-.04-.08C13.963 1.487 11.106 0 8 0A8 8 0 0 0 .473 5.29C1.488 4.048 3.183 3.262 5 3.262c2.83 0 5.01 1.885 5.01 4.797h-.004v.002c0 .338-.168.832-.487 1.244l.006-.006a.594.594 0 0 1-.043.041Z"/>
+      <path d="M.01 7.753a8.137 8.137 0 0 0 .753 3.641 8 8 0 0 0 6.495 4.564 5.21 5.21 0 0 1-.785-.377h-.01l-.12-.075a5.45 5.45 0 0 1-1.56-1.463A5.543 5.543 0 0 1 6.81 5.8l.01-.004.025-.012c.208-.098.62-.292 1.167-.285.129.001.257.012.384.033a4.037 4.037 0 0 0-.993-.698l-.01-.005C6.348 4.282 5.199 4.263 5 4.263c-2.44 0-4.824 1.634-4.99 3.49Zm10.263 7.912c.088-.027.177-.054.265-.084-.102.032-.204.06-.307.086l.042-.002Z"/>
+      <path d="M10.228 15.667a5.21 5.21 0 0 0 .303-.086l.082-.025a8.019 8.019 0 0 0 4.162-3.3.25.25 0 0 0-.331-.35c-.215.112-.436.21-.663.294a6.367 6.367 0 0 1-2.243.4c-2.957 0-5.532-2.031-5.532-4.644.002-.135.017-.268.046-.399a4.543 4.543 0 0 0-.46 5.898l.003.005c.315.441.707.821 1.158 1.121h.003l.144.09c.877.55 1.721 1.078 3.328.996Z"/>
+    </svg>
   </div>
-  <div class="col-10 col-sm-11 col-md-10 col-lg-11 px-0 d-flex">
+  <div class="col-11 col-md-10 col-lg-11 px-0 d-flex">
     <div class="d-flex justify-content-sm-between my-auto flex-grow-1 user-select-none fw-light">
-      <span class="d-none d-sm-block d-md-none ps-sm-5 fs-4">Mi Mao</span>
-      <span class="d-block my-sm-auto mx-auto mx-md-auto">米猫博客</span>
+      <span class="d-block d-md-none my-sm-auto mx-auto mx-md-auto">米猫博客</span>
     </div>
     <div class="flex-shrink-0 my-auto mx-1 me-sm-2 me-md-4 me-lg-2" style="width: 60px;">
       <a href="#" class="btn btn-outline-dark d-block px-1">github</a>
@@ -21,28 +24,30 @@ layout: app
   </div>
 </div>
 <!-- --- 中间主体内容部分 --- -->
-<div id="app-main" class="bg-body d-flex row mx-0 overflow-y-auto" style="height: calc(100vh - 50px);">
+<div id="app-main" class="bg-body d-flex row mx-0 overflow-y-auto bg-body-tertiary" style="height: calc(100vh - 50px);">
   <!-- 侧边导航栏 -->
   <!-- 导航选项的数据 是根据集合进行定义 -->
   <div id="app-main-side-navbar"
-    class="bg-danger col-12 col-sm-1 col-md-2 col-lg-1 px-1 px-sm-0 d-flex flex-row flex-sm-column align-items-center align-items-sm-stretch overflow-auto scrollbar"
-    style="max-height: calc(100vh - 50px);min-height: 35px;" role="tablist">
+    class="bg-body-tertiary nav nav-pills border-1 col-12 col-sm-1 col-md-2 col-lg-1 px-1 px-sm-0 d-flex flex-row flex-sm-column flex-nowrap align-items-center align-items-sm-stretch overflow-auto scrollbar"
+    style="max-height: calc(100vh - 50px);" role="tablist">
     <!-- role="presentation" 可以声明为该元素为列表项 可以赋予列表项的一些特殊css表现，而不需要自己设置 role="button"类似 -->
     {% for article in articles -%}
-    <div id="{{- article.label -}}-tab-{{- article.index -}}"
-      class="bg-primary mx-1 mx-sm-0 mb-0 mb-sm-1 flex-shrink-0 d-flex {% if forloop.index0==0 -%}text-primary{% endif -%}"
-      style="min-width: 48px;min-height: 30px;" data-bs-target="#{{- article.label -}}-content-{{- article.index -}}"
+    <div class="nav-item mx-1 mx-sm-0 my-0 flex-shrink-0" role="presentation" style="height: 32px;">
+      <div id="{{- article.label -}}-tab-{{- article.index -}}"
+      class="nav-tab-loading nav-link p-0 d-flex {% if forloop.index0 == 0 -%}active{% endif -%}"
+      style="min-width: 48px;min-height: 30px;border-radius: 0px;" data-bs-target="#{{- article.label -}}-content-{{- article.index -}}" data-bs-toggle="pill"
       type="button" role="tab" aria-controls="{{- article.label -}}-content-{{- article.index -}}" aria-selected="{% if article.label==0 -%}true{%
       endif -%}">
-      <span class="d-block d-sm-none d-md-block mx-auto align-self-center" style="font-size: 12px;">{{- article.text
-        -}}</span>
-      <i class="bi bi-123 d-none d-sm-block d-md-none mx-auto align-self-center text-body"></i>
+        <span class="d-block d-sm-none d-md-block mx-auto align-self-center" style="font-size: 12px;">{{- article.text
+          -}}</span>
+        <i class="bi bi-123 d-none d-sm-block d-md-none mx-auto align-self-center text-body"></i>
+      </div>
     </div>
     {% endfor -%}
   </div>
   <!-- 右边内容区域 -->
-  <div id="app-main-content" class="tab-content bg-success col-12 col-sm-11 col-md-10 col-lg-11 px-0"
-    style="min-height: calc(100vh - 85px);max-height: calc(100vh - 50px);">
+  <div id="app-main-content" class="tab-content bg-body-tertiary col-12 col-sm-11 col-md-10 col-lg-11 px-1"
+    style="height: calc(100vh - 87px);max-height: calc(100vh - 50px);">
     <!-- 右边区域 tab (id 以 article.label article.index 配合 tab content进行命名区分)-->
     <!-- 其中，javascript需要 以 类名为： id-app-main-tab_content-articles-carousel 来获取这些 文章carousel对象（其中地方不要进行使用 否则会出现意外的错误） -->
     {% for article in articles -%}
@@ -52,23 +57,23 @@ layout: app
       <!-- 使用轮播 来展示每一个类型的博客中不同章节  -->
       <div id="{{- article.label -}}-carousel-{{- article.index -}}"
         class="carousel slide w-100 h-100 bg-body-tertiary">
-        <div class="carousel-indicators w-100 m-0 d-block scrollbar scrollbar-hidden  bg-body-tertiary"
-          style="top:0px;height:45px;white-space: nowrap;">
+        <div class="carousel-indicators w-100 m-0 d-flex justify-content-start align-items-center scrollbar scrollbar-hidden bg-body-tertiary"
+          style="top:1px;height:30px;">
           <!-- 轮播图中的指示点 集合 -->
           <!-- 定义 文章中一系列文档（接受 按index排序后的系列文档） -->
           {% assign article_docs = article.docs -%}
           {% for doc in article_docs -%}
           <div data-bs-target="#{{- article.label -}}-carousel-{{- article.index -}}"
             data-bs-slide-to="{{- forloop.index0 -}}"
-            class="{% if forloop.index0 == 0 -%}active{% endif %} border-0 d-inline-block bg-primary text-center text-white"
-            style="width: 120px;height:40px;line-height:40px;font-size:12px;text-indent: 0px;border-radius: 2px;"
+            class="{% if forloop.index0 == 0 -%}active{% endif %} border-0 flex-shrink-0 text-center"
+            style="width: 80px;height:25px;line-height: 25px;font-size:12px;text-indent: 0px;background-color: transparent;"
             aria-current="{% if forloop.index0 == 0 -%}true{% else %}false{% endif %}"
             aria-label="Slide {{- forloop.index0 -}}">
             {{- doc.text -}}
           </div>
           {% endfor -%}
         </div>
-        <div class="carousel-inner w-100 h-100" style="padding-top: 45px;">
+        <div class="carousel-inner w-100 h-100" style="padding-top: 32px;">
           {% for doc in article_docs -%}
           <div class="carousel-item w-100 h-100 {% if forloop.index0 == 0 -%}active{% endif -%}">
             <div class="carousel-item-content w-100 border-top border-1 overflow-y-auto scrollbar scrollbar-blue"
@@ -78,16 +83,6 @@ layout: app
           </div>
           {% endfor -%}
         </div>
-        <button class="carousel-control-prev border rounded-circle my-auto ms-1" style="width: 40px;height:40px;"
-          type="button" data-bs-target="#{{- article.label -}}-carousel-{{- article.index -}}" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">上</span>
-        </button>
-        <button class="carousel-control-next border rounded-circle my-auto me-1" style="width: 40px;height:40px;"
-          type="button" data-bs-target="#{{- article.label -}}-carousel-{{- article.index -}}" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">下</span>
-        </button>
       </div>
     </div>
     {% endfor -%}

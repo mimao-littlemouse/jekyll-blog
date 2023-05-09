@@ -1,0 +1,58 @@
+<!-- loading 元素 -->
+<div id="app-loading" class="position-absolute top-0 start-0 w-100 h-100 bg-dark" style="z-index: 1100;opacity: 90%;">
+<!-- 
+$zindex-dropdown:                   1000;
+$zindex-sticky:                     1020;
+$zindex-fixed:                      1030;
+$zindex-offcanvas-backdrop:         1040;
+$zindex-offcanvas:                  1045;
+$zindex-modal-backdrop:             1050;
+$zindex-modal:                      1055;
+$zindex-popover:                    1070;
+$zindex-tooltip:                    1080;
+$zindex-toast:                      1090; 
+-->
+    <!-- app-loading-animation 动画 (bootstrap旋转器 mimao耳朵动画)-->
+    <div id="app-loading-app" class="position-absolute top-50 start-50 translate-middle w-75 h-75 bg-light">
+        <!-- 加载 容器四角 -->
+        <div class="position-absolute top-0 start-0 translate-middle rounded-circle bg-light" style="width: 20px;height:20px;"></div>
+        <div class="position-absolute top-0 start-100 translate-middle rounded-circle bg-light" style="width: 20px;height:20px;"></div>
+        <div class="position-absolute top-100 start-0 translate-middle rounded-circle bg-light" style="width: 20px;height:20px;"></div>
+        <div class="position-absolute top-100 start-100 translate-middle rounded-circle bg-light" style="width: 20px;height:20px;"></div>
+        <!-- 加载 旋转器 -->
+        <div class="position-absolute top-50 start-50 translate-middle z-3">
+            <div id="app-loading-app-spinner_border" class="spinner-border text-dark" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+        <div class="position-absolute top-50 start-50 translate-middle z-3">
+            <div id="app-loading-app-spinner_grow" class="spinner-grow" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+        <!-- 加载 文件提示 -->
+        <div class="position-absolute top-50 start-50 translate-middle w-50 h-50">
+            <div class="position-absolute top-0 start-50 translate-middle">Mi Mao</div>
+            <div id="app-loading-app-text_tip" class="position-absolute top-100 start-50 translate-middle text-success" style="font-size: 12px;">加载中...</div>
+        </div>
+        <!-- 加载 背景动画 -->
+        <!-- Mi Mao 动画 加载 -->
+        <div class="position-absolute top-50 start-50 translate-middle w-50 h-50">
+            {% include mimao.html %}
+        </div>
+    </div>
+    <!-- navtab-loading-animation 动画 -->
+    <div id="app-loading-navtab" class="invisible position-absolute top-50 start-50 translate-middle w-50 h-25 bg-light rounded-1 opacity-100 d-flex justify-content-center align-items-center">
+        <!-- loading 文件动画（波浪形变化） -->
+        <span class="l">l</span>
+        <span class="o">o</span>
+        <span class="a">a</span>
+        <span class="d">d</span>
+        <span class="i">i</span>
+        <span class="n">n</span>
+        <span class="g">g</span>
+        <span class="dot1">.</span>
+        <span class="dot2">.</span>
+        <span class="dot3">.</span>
+    </div>
+</div>

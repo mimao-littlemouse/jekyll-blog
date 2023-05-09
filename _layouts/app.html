@@ -17,9 +17,10 @@
 
 <body>
   <!-- ---html--- -->
-  <div id="app" class="vw-100 vh-100 bg-body-tertiary overflow-auto scrollbar">
+  <div id="app" class="invisible position-relative vw-100 vh-100 overflow-auto scrollbar">
     {{content}}
   </div>
+  {% include app_loading.html %}
   <!-- ---javascript--- -->
   <!-- 引入 js文件 -->
   <!-- 引入 jquery js 文件 和 bootstrap js 文件（引入时，要使bootstrap js 有效，得先引入jquery（bootstrap依赖jquery js）） -->
@@ -28,6 +29,8 @@
   <noscript>请启用Javascript，否则该网站大部分功能无法实现</noscript>
   <!-- 导入自定义javascript代码 -->
   {% include import_js.html %}
+  <!-- 引入 页面各个阶段的加载事件的javascript代码（也是关键性代码） -->
+  <script src="{{ 'assets/js/app.js' | relative_url }}"></script>
 </body>
 
 </html>

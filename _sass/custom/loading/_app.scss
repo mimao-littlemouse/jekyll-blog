@@ -1,0 +1,199 @@
+// 对 app 中mimao 头部添加动画
+//实现 app_loading_mimao_head loading 加载动画
+
+// 头部
+// 兼容 ie
+@keyframes app_loading_mimao_head
+{
+    1%{
+        translate: -2px;
+    }
+    50%{
+        translate: 2px 2px;
+    }
+    100%{
+        translate: 0px -2px;
+    }
+}
+
+// 兼容 chrome safari opera 15.0
+@-webkit-keyframes app_loading_mimao_head
+{
+    1%{
+        translate: -2px;
+    }
+    50%{
+        translate: 2px 2px;
+    }
+    100%{
+        translate: 0px -2px;
+    }
+}
+// 兼容 firefox
+@-moz-keyframes app_loading_mimao_head
+{
+    1%{
+        translate: -2px;
+    }
+    50%{
+        translate: 2px 2px;
+    }
+    100%{
+        translate: 0px -2px;
+    }
+}
+// 兼容 opera 12.0
+@-o-keyframes app_loading_mimao_head
+{
+    1%{
+        translate: -2px;
+    }
+    50%{
+        translate: 2px 2px;
+    }
+    100%{
+        translate: 0px -2px;
+    }
+}
+
+// 左耳朵
+// 兼容 ie
+@keyframes app_loading_mimao_head_ear1
+{
+    1%{
+        translate: -2px;
+    }
+    50%{
+        translate: 2px 2px;
+    }
+    100%{
+        translate: 0px -2px;
+    }
+}
+
+// 兼容 chrome safari opera 15.0
+@-webkit-keyframes app_loading_mimao_head_ear1
+{
+    1%{
+        translate: -2px;
+    }
+    50%{
+        translate: 2px 2px;
+    }
+    100%{
+        translate: 0px -2px;
+    }
+}
+// 兼容 firefox
+@-moz-keyframes app_loading_mimao_head_ear1
+{
+    1%{
+        translate: -2px;
+    }
+    50%{
+        translate: 2px 2px;
+    }
+    100%{
+        translate: 0px -2px;
+    }
+}
+// 兼容 opera 12.0
+@-o-keyframes app_loading_mimao_head_ear1
+{
+    1%{
+        translate: -2px;
+    }
+    50%{
+        translate: 2px 2px;
+    }
+    100%{
+        translate: 0px -2px;
+    }
+}
+
+// 右耳朵
+// 兼容 ie
+@keyframes app_loading_mimao_head_ear2
+{
+    1%{
+        translate: 2px;
+    }
+    50%{
+        translate: -2px 2px;
+    }
+    100%{
+        translate: 0px -2px;
+    }
+}
+
+// 兼容 chrome safari opera 15.0
+@-webkit-keyframes app_loading_mimao_head_ear2
+{
+    1%{
+        translate: 2px;
+    }
+    50%{
+        translate: -2px 2px;
+    }
+    100%{
+        translate: 0px -2px;
+    }
+}
+// 兼容 firefox
+@-moz-keyframes app_loading_mimao_head_ear2
+{
+    1%{
+        translate: 2px;
+    }
+    50%{
+        translate: -2px 2px;
+    }
+    100%{
+        translate: 0px -2px;
+    }
+}
+// 兼容 opera 12.0
+@-o-keyframes app_loading_mimao_head_ear2
+{
+    1%{
+        translate: 2px;
+    }
+    50%{
+        translate: -2px 2px;
+    }
+    100%{
+        translate: 0px -2px;
+    }
+}
+
+
+.app-loading-mimao_head-animation{
+    // 兼容 ie
+    animation: app_loading_mimao_head 3s linear 0s infinite alternate;
+    // 兼容 chrome safari opera 15.0
+    -webkit-animation: app_loading_mimao_head 3s linear 0s infinite alternate;
+    // 兼容 firefox
+    -moz-animation: app_loading_mimao_head 3s linear 0s infinite alternate;
+    // 兼容 opera 12.0
+    -o-animation: app_loading_mimao_head 3s linear 0s infinite alternate;
+}
+.app-loading-mimao_head_ear1-animation{
+    // 兼容 ie
+    animation: app_loading_mimao_head_ear1 3s linear 0s infinite alternate;
+    // 兼容 chrome safari opera 15.0
+    -webkit-animation: app_loading_mimao_head_ear1 3s linear 0s infinite alternate;
+    // 兼容 firefox
+    -moz-animation: app_loading_mimao_head_ear1 3s linear 0s infinite alternate;
+    // 兼容 opera 12.0
+    -o-animation: app_loading_mimao_head_ear1 3s linear 0s infinite alternate;
+}
+.app-loading-mimao_head_ear2-animation{
+    // 兼容 ie
+    animation: app_loading_mimao_head_ear2 3s linear 0s infinite alternate;
+    // 兼容 chrome safari opera 15.0
+    -webkit-animation: app_loading_mimao_head_ear2 3s linear 0s infinite alternate;
+    // 兼容 firefox
+    -moz-animation: app_loading_mimao_head_ear2 3s linear 0s infinite alternate;
+    // 兼容 opera 12.0
+    -o-animation: app_loading_mimao_head_ear2 3s linear 0s infinite alternate;
+}
