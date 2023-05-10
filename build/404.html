@@ -30,7 +30,7 @@
 
 <body>
   <!-- ---html--- -->
-  <div id="app" class="invisible position-relative vw-100 vh-100 overflow-auto scrollbar">
+  <div id="app" class="invisible position-relative vw-100 vh-100 overflow-auto scrollbar" data-bs-theme="light">
     <div class="app-error-page container-fluid d-flex justify-content-center align-items-center" style="height: 100vh;">
     404页面丢了
 
@@ -198,6 +198,13 @@ $zindex-toast:                      1090;
 <!-- 懒加载 api模块 使用 verlok vanilla-lazyload 的项目，地址：https://github.com/verlok/vanilla-lazyload -->
 <script src="/jekyll-blog/assets/plugins/lazyload/lazyload.min.js"></script>
 
+
+<!-- 引入本地存储模块的javascript代码 -->
+<script src="/jekyll-blog/assets/js/localstorage/index.js"></script>
+<!-- 引入头部模块的javascript代码 实现header部分的业务逻辑处理 -->
+<script src="/jekyll-blog/assets/js/header/index.js"></script>
+<!-- 引入页尾模块的javascript代码 实现footer的显示与隐藏 -->
+<script src="/jekyll-blog/assets/js/footer/index.js"></script>
   <!-- 引入 页面各个阶段的加载事件的javascript代码（也是关键性代码） -->
   <script src="/jekyll-blog/assets/js/app.js"></script>
 </body>

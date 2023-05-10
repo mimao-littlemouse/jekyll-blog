@@ -24,6 +24,8 @@ window.addEventListener('DOMContentLoaded', () => {
 })
 // 页面加载完成（完成了所有资源的加载）
 window.onload = () => {
+    // 根据 本地中存放的主题变量 对当前页面的主题进行设置（调用 localstorage/index.js中的方法进行设置启用）
+    enableAppThemeLocalstorage()
     // 此时切换app加载页面中的提示内容
     setAppLoadingText("全部加载完成")
     // 页面加载完成，取消app加载

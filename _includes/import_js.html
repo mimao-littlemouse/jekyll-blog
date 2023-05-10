@@ -35,3 +35,11 @@
 <!-- 所以需定义再懒加载模块的下方 -->
 <!-- 懒加载 api模块 使用 verlok vanilla-lazyload 的项目，地址：https://github.com/verlok/vanilla-lazyload -->
 <script src="{{ 'assets/plugins/lazyload/lazyload.min.js' | relative_url }}"></script>
+
+
+<!-- 引入本地存储模块的javascript代码 -->
+<script src="{{ 'assets/js/localstorage/index.js' | relative_url }}"></script>
+<!-- 引入头部模块的javascript代码 实现header部分的业务逻辑处理 -->
+<script src="{{ 'assets/js/header/index.js' | relative_url }}"></script>
+<!-- 引入页尾模块的javascript代码 实现footer的显示与隐藏 -->
+<script src="{{ 'assets/js/footer/index.js' | relative_url }}"></script>
