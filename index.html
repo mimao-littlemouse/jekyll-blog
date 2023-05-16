@@ -71,7 +71,7 @@ layout: app
         <div class="carousel-inner w-100 h-100" style="padding-top: 32px;">
           {% for doc in article_docs -%}
           <div class="carousel-item w-100 h-100 {% if forloop.index0 == 0 -%}active{% endif -%}">
-            <div class="carousel-item-content w-100 border-top border-1 overflow-y-auto scrollbar scrollbar-blue"
+            <div class="carousel-item-content w-100 border-top border-1 overflow-y-auto scrollbar scrollbar-blue app-main-content-doc-content doc-{{- article.label -}}-style"
               style="height: calc(100% - 1px);">
               {{- doc.content -}}
             </div>
@@ -84,11 +84,14 @@ layout: app
   </div>
 </div>
 <!-- 页尾 -->
-<div id="app-footer" class="position-relative w-100 bg-dark">
+<div id="app-footer" class="position-relative w-100 text-bg-dark">
   <div id="app-footer-collapse-button" class="position-absolute bg-primary d-flex" style="width:40px;height:25px;top: -30px;right: 10px;" data-bs-toggle="collapse" href="#app-footer-content" role="button" aria-expanded="false" aria-controls="app-footer-content">
     <i id="app-footer-collapse-button-icon" class="bi bi-chevron-bar-up text-white align-self-center mx-auto"></i>
   </div>
   <div id="app-footer-content" class="collapse">
-      <div style="height:200px" class="bg-warning">content</div>
+      <div style="height:200px" class="d-flex flex-column align-items-center justify-content-evenly">
+        <div>© 2023 开源项目</div>
+        <div>email: mimao_littlemouse@163.com</div>
+      </div>
   </div>
 </div>

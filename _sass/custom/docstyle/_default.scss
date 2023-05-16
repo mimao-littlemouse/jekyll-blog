@@ -1,0 +1,32 @@
+// 定义 文档的标题类样式
+.doc-content-title{
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0px;
+    padding: 5px 0px;
+}
+// 定义 h1 ~ h6 的文档样式
+// 字体大小: h6~h1 依次是: 12px 15px 18px 21px 24px 27px
+.doc-content-h1{
+    font-size: 27px;
+}
+.doc-content-h2{
+    font-size: 24px;
+}
+.doc-content-h3{
+    font-size: 21px;
+}
+.doc-content-h4{
+    font-size: 18px;
+}
+.doc-content-h5{
+    font-size: 15px;
+}
+.doc-content-h6{
+    font-size: 12px;
+}
+// 定义 a 元素，目前不对其进行处理，直接进行禁用（直接不进行显示）
+.doc-content-a{
+    display: none;
+}

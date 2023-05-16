@@ -1,0 +1,44 @@
+<!-- toast 提示框 元素 -->
+<!-- Bootstrap5 Toast -->
+
+<!-- app-toast HtmlTemplateStructure -->
+<!-- 对话框 html模板结构如下，每一次调用对话框，会有不同的对话框形式，比如 确认对话框 提示对话框 警告确认对话框 公告提示 使用前阅读 等等形式（相关信息提示请使用 toast提示框） -->
+<div id="app-toasts" class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="app-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <!-- 头部内容 -->
+      ...
+      <!-- 头部 关闭按钮 -->
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+  </div>
+</div>
+
+<!-- 调用方法 -->
+<!-- 1. 激活 toast提示框，需要为元素 添加 click事件 为toast实例调用show方法 才可进行显示 -->
+<!-- 例如： -->
+<!-- <button type="button" class="btn btn-primary" id="showtoastBtn">Show live toast</button> -->
+<!-- 
+const toastTrigger = document.getElementById('showtoastBtn')
+const appToast = document.getElementById('app-toast')
+if (toastTrigger) {
+  toastTrigger.addEventListener('click', () => {
+    const toast = new bootstrap.Toast(appToast)
+    toast.show()
+  })
+} -->
+<!-- 这个是需要为按钮添加点击事件，才可用进行显示 -->
+
+<!-- 2. 也可以使用javascript进行激活：例如 -->
+<!-- 
+animation boolean 默认true 将CSS淡入淡出过渡应用于吐司
+autohide boolean 默认true 延迟后自动隐藏吐司
+delay number 默认5000 隐藏吐司之前的延迟（以毫秒为单位） -->
+<!-- let options = {
+    autohide: false
+} -->
+<!-- const toast = new bootstrap.Toast(appToast,options)
+toast.show() -->

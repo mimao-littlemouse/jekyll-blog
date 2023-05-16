@@ -1,0 +1,18 @@
+// 导入 文章显示 的自定义样式
+// 提示：如果其他的文章不需要自定义其他样式，需要将其名称在default.scss文件进行注册（注册时：需要在文章类别的前后分别添加 doc- 和 -style 进行说明）
+// 例如：在原本的doc-github-style后面 添加doc-css-style即可
+// 原本只有：github 这个文章类别选择默认，如下
+// .doc-github-style{
+//     ......
+// }
+// 现在，我需要为 css 这个文章类别也选择默认样式，则像下方一样进行注册即可
+// .doc-github-style,.doc-css-style{
+//     ......
+// }
+
+
+// 导入自定义 默认样式
+@import "./default";
+
+// 导入自定义 post样式(帖子的样式)
+@import "./post";

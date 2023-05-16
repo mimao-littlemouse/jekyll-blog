@@ -1,0 +1,24 @@
+<!-- 对话框 元素 -->
+<!-- Bootstrap5 Modal -->
+
+<!-- app-dialog HtmlTemplateStructure -->
+<!-- 对话框 html模板结构如下，每一次调用对话框，会有不同的对话框形式，比如 确认对话框 提示对话框 警告确认对话框 公告提示 使用前阅读 等等形式（相关信息提示请使用 toast提示框） -->
+<div id="app-dialog" class="modal fade" tabindex="-1" aria-labelledby="app-dialog-title" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="app-dialog-title"></h1>
+                <button id="app-dialog-btnclose" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- 每一个不同形式的内容显示区域，通过 display:none; display:block;进行切换内容（并为其添加过渡transition） -->
+                内容
+            </div>
+            <div class="modal-footer">
+                <!-- 每一个不同形式的内容显示区域，通过 display:none; display:block;进行切换内容（并为其添加过渡transition） -->
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">确认</button>
+            </div>
+        </div>
+    </div>
+</div>

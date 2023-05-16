@@ -20,7 +20,16 @@
   <div id="app" class="invisible position-relative vw-100 vh-100 overflow-auto scrollbar" data-bs-theme="light">
     {{content}}
   </div>
+  <!-- 引入加载的内容 -->
   {% include app_loading.html %}
+  <!-- 引入对话框的内容 -->
+  {% include app_dialog.html %}
+  <!-- 引入toast提示框的内容 -->
+  {% include app_toast.html %}
+  <!-- 引入devicetip的内容 -->
+  {% include app_devicetip.html %}
+  <!-- ---end html--- -->
+
   <!-- ---javascript--- -->
   <!-- 引入 js文件 -->
   <!-- 引入 jquery js 文件 和 bootstrap js 文件（引入时，要使bootstrap js 有效，得先引入jquery（bootstrap依赖jquery js）） -->
@@ -31,6 +40,7 @@
   {% include import_js.html %}
   <!-- 引入 页面各个阶段的加载事件的javascript代码（也是关键性代码） -->
   <script src="{{ 'assets/js/app.js' | relative_url }}"></script>
+  <!-- ---end javascript--- -->
 </body>
 
 </html>

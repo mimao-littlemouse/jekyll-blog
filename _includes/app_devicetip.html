@@ -1,0 +1,20 @@
+<!-- 这里是 针对 设备提示的 html 代码 可使用 invisible 类名对元素进行隐藏-->
+<div id="app-devicetip" class="invisible position-absolute top-0 start-0 w-100 h-100 text-bg-dark" style="z-index: 1100;">
+    <!-- 是否是移动设备的页面提示页面 -->
+    <div id="app-devicetip-showismobiletip" class="invisible position-absolute top-0 start-0 w-100 h-100 d-flex flex-column flex-sm-row align-items-center justify-content-center justify-content-sm-around">
+        <i class="bi bi-display computer fs-1 my-5 my-sm-0 btn btn-primary"></i>
+        <i id="" class="bi bi-question fs-1 my-5 my-sm-0"></i>
+        <i class="bi bi-phone phone fs-1  my-5 my-sm-0 btn btn-primary"></i>
+    </div>
+    <!-- 移动设备进行横屏显示时 对用户进行提示的页面 -->
+    <div id="app-devicetip-showmobileisrotatetip" class="invisible position-absolute top-0 start-0 w-100 h-100 d-flex flex-column flex-sm-row align-items-center justify-content-center justify-content-sm-around">
+        <i class="bi bi-phone fs-1 my-5 my-sm-0"></i>
+        <!-- scss中对 linethrough-container linethrough类添加 过渡，并在linethrough-container鼠标悬浮的时候为linethrough类添加position:absolute;属性 -->
+        <div class="fs-1  my-5 my-sm-0 linethrough-container">
+            <i class="bi bi-slash linethrough"></i>
+            <i class="bi bi-arrow-down-square d-block d-sm-none"></i>
+            <i class="bi bi-arrow-right-square d-none d-sm-block"></i>
+        </div>
+        <i class="bi bi-phone-landscape fs-1 my-5 my-sm-0"></i>
+    </div>
+</div>

@@ -28,6 +28,16 @@
 // 导入加载动画样式
 @import "./custom/loading/index.scss";
 
+// 导入设备提示样式
+@import "./custom/devicetip/index.scss";
+
+// 导入设备对话框样式
+@import "./custom/dialogbox/index.scss";
+
+// 导入设备提示框样式
+@import "./custom/toastbox/index.scss";
+
+
 // 导入 Bootstrap5图标库（从Bootstrap5图标库下载的字体库）
 @import "./font/bootstrap-icons.scss";
 
@@ -69,6 +79,14 @@
 // 懒加载 相关自定义样式
 // 导入 懒加载自定义 入口文件即可
 @import "./custom/lazyload/index.scss";
+
+// 更具文章类别进行命名的 自定义文章指定样式
+// 导入 该入口文件即可
+@import "./custom/docstyle/index.scss";
+
+// 导入 高亮模式开源项目中的 样式表 
+// 导入 该入口文件即可
+@import "./custom/highlighter/index.scss";
 
 // ================ 结束代码书写 =============
 

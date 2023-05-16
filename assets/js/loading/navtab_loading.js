@@ -4,6 +4,19 @@
  * 处理 nav-tab 切换时 造成的延迟 使用 loading 进行提示，并避免用户误点其他选项造成的卡顿
 */
 
+
+// $zindex-dropdown:                   1000;
+// $zindex-sticky:                     1020;
+// $zindex-fixed:                      1030;
+// $zindex-offcanvas-backdrop:         1040;
+// $zindex-offcanvas:                  1045;
+// $zindex-modal-backdrop:             1050;
+// $zindex-modal:                      1055;
+// $zindex-popover:                    1070;
+// $zindex-tooltip:                    1080;
+// $zindex-toast:                      1090; 
+
+
 // 定义方法
 /**
  * @function handleNavTabLoading

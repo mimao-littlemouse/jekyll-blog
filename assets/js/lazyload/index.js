@@ -117,6 +117,5 @@ function initLazyloadOption(name, container = document, elements_selector = ".la
     }
     // 将选项 添加到全局 选项变量列表中
     lazyLoadOptions.push(lazyLoad_option);
-    console.log(lazyLoadOptions)
 }
 

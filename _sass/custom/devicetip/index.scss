@@ -1,0 +1,43 @@
+// 添加过渡动画
+// 设备提示页面的样式
+#app-devicetip {
+    // 该内容的显示过渡
+    transition: all 1s linear 0s;
+    // 是否是移动设备的页面提示页面的样式
+    #app-devicetip-showismobiletip {
+        // 该内容的显示过渡
+        transition: all 1s linear 1s;
+    }
+    // 移动设备进行横屏显示时 对用户进行提示的页面的样式
+    #app-devicetip-showmobileisrotatetip {
+        // 该内容的显示过渡
+        transition: all 1s linear 1s;
+        .linethrough-container{
+            // 该内容的显示过渡
+            transition: all 1s linear 0.5s;
+            .linethrough{
+                // 该内容的显示过渡
+                transition: all 1s linear 0s;
+            }
+        }
+    }
+
+}
+
+// 对相关元素进行样式更改
+// 设备提示页面的样式
+#app-devicetip{
+    
+    // 是否是移动设备的页面提示页面的样式
+    // #app-devicetip-showismobiletip:hover {
+
+    // }
+
+    // 移动设备进行横屏显示时 对用户进行提示的页面的样式
+    #app-devicetip-showmobileisrotatetip:hover {
+        .linethrough{
+            position: absolute;
+        }
+    }
+
+}
