@@ -132,10 +132,28 @@
                     }, 2000);
                     return
                 }
+
+                // 根据 href中的内容进行不同的处理
+                // 获取 href中 路径关键字数组，将href字符串用 /进行分隔
+                // 此外,需要将 开发环境下的 前缀同步至此
+                let development_baseurl_prefix = ""
+                // 此外,需要将 生产环境下的 前缀同步至此
+                let product_baseurl_prefix = "jekyll-blog"
+                // 判断前缀是否存在,再进行 a标签 href路径关键字的赋值
+                // 先 声明其变量 并赋值默认值
+                let doc_container_all_link_element_href_keylist = doc_container_all_link_element_href.split("/").slice(1)
+                if((doc_container_all_link_element_href_keylist[0] == development_baseurl_prefix || doc_container_all_link_element_href_keylist[0] == product_baseurl_prefix) && doc_container_all_link_element_href_keylist[1] == jekyll_collection_name){
+                    // 则将其 前缀去掉,取后面的元素
+                    let doc_container_all_link_element_href_keylist_temp = doc_container_all_link_element_href_keylist.slice(1)
+                    doc_container_all_link_element_href_keylist = doc_container_all_link_element_href_keylist_temp
+                }
+
+                let doc_container_all_link_element_href_keylist_length = doc_container_all_link_element_href_keylist.length
+
                 // 判断当前 是否是集合中的文章文档链接，如果是则不需要移除href直接处理一两句代码即可return，如果不是 则需要进行下面的代码逻辑，不进行一两句代码处理
-                if(jekyll_collection_name != doc_container_all_link_element_href.split("/").slice(1)[0]){
-                    // 通过 判断href中是否存在单独的 jekyll_collection_name 对应的值
-                    // 获取 href中的路径关键字列表并进行判断 jekyll_collection_name 值是否存在，这里就一句即可
+                if(jekyll_collection_name != doc_container_all_link_element_href_keylist[0]){
+                    // 通过 判断href属性路径关键字列表中的第一项 是否是 jekyll_collection_name 对应的值
+                    // 实现方法: 获取 href中的路径关键字列表并进行判断 jekyll_collection_name 值是否存在，这里就一句即可
                     return
                 }
 
@@ -152,10 +170,6 @@
                     doc_container_all_link_element.setAttribute("title","还没缓过来，我先缓缓")
                 }
 
-                // 根据 href中的内容进行不同的处理
-                // 获取 href中 路径关键字数组，将href字符串用 /进行分隔
-                let doc_container_all_link_element_href_keylist = doc_container_all_link_element_href.split("/").slice(1)
-                let doc_container_all_link_element_href_keylist_length = doc_container_all_link_element_href_keylist.length
                 // 获取 当前激活的文章类别可点击元素
                 let current_article_type_clickable_element = document.querySelector("#app-main-side-navbar .active")
                 // 获取 当前激活的文章类别可点击元素中的id属性，进而获取 id属性中隐藏的 article.label 值
@@ -184,7 +198,7 @@
                             if(doc_container_all_link_element_href_keylist[2] == current_activate_article_doc_element_name){
                                 // 一致时，将页面推至顶端
                                 // 但,如果该功能已经启动,则直接return(通过 enable_doc_content_container_scrollspy类名 有无进行判断)
-                                
+
 
                                 // 将页面推至顶端，即：将href的值设置为：#doc-content-title 并将内容容器添加一些属性和类名即可
                                 doc_container_all_a_element.setAttribute("href","#doc-content-title")
