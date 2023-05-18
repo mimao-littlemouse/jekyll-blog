@@ -1,0 +1,92 @@
+<p>可以为 前事项(front matter)设置默认值</p>
+
+<p>defaults:<br />
+  -<br />
+    scope:<br />
+      path: “” # an empty string here means all files in the project<br />
+      type: “posts” # previously <code>post</code> in Jekyll 2.2.<br />
+    values:<br />
+      layout: “default”</p>
+
+<p>jekyll中的生产环境和开发环境 判断<br />
+生产环境</p>
+
+<p>生产环境</p>
+
+<p>默认 运行环境为：development （开发环境）<br />
+JEKYLL_ENV=development 是默认值</p>
+
+<p>如果需要 生产环境中需要显示的内容显示，需要在运行构建命令上指定，例如：<br />
+JEKYLL_ENV=production jekyll build <br />
+该命令 才会让上述的 生产环境变量 判断中的内容 才会执行</p>
+
+<p>这样做的目的：<br />
+通过指定环境值，可以使某些内容仅在特定环境中可用。</p>
+
+<p>除此之外，还可以使用build命令，来指定 特定环境中使用的 _config.yaml文件：<br />
+在build命令中，添加 --config _config.yml 或--config _config_development.yml 则可以实现</p>
+
+<p>Markdown 选项（介绍 Kramdown ）<br />
+Jekyll支持的各种Markdown渲染器有时会提供额外的选项。</p>
+
+<p>Kramdown是Jekyll的默认Markdown渲染器，通常在没有额外配置的情况下运行良好。但是，它确实支持许多配置选项。</p>
+
+<p>Kramdown 处理器 介绍：<br />
+默认情况下，Jekyll为Kramdown使用GitHub Flavored Markdown（GFM）处理器。（指定输入：GFM很好，但是多余的。）<br />
+GFM支持几个额外的Kramdown选项，由Kramdown解析器GFM记录。<br />
+这些选项可以直接在Kramdown Jekyll配置中使用，如下所示：</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">kramdown</span><span class="pi">:</span>
+  <span class="na">gfm_quirks</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">paragraph_end</span><span class="pi">]</span>
+
+<span class="s">这样的配置是多余的，因为 jekyll为其提供了默认的 GFM处理器</span>
+
+<span class="s">如果 不想使用 jekyll默认提供的处理器，可以这样做：</span>
+<span class="na">kramdown</span><span class="pi">:</span>
+  <span class="na">input</span><span class="pi">:</span> <span class="s">Kramdown</span>
+
+<span class="s">Kramdown文档中提供了Kramdowns解析器的文档。如果您使用的是Kramdown或GFM以外的Kramdown解析器，则需要为其添加gem。（也就是 安装gem依赖）</span>
+</code></pre></div></div>
+<p>如果 需要使用 kramdown 中的语法高亮，则 必须 安装 其gem依赖，命令如下：</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">bundle</span> <span class="n">add</span> <span class="n">kramdown</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">coderay</span>
+</code></pre></div></div>
+<p>然后，您可以在syntax_highlighter配置项中指定CodeRay，例如：</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">kramdown</span><span class="pi">:</span>
+  <span class="na">syntax_highlighter</span><span class="pi">:</span> <span class="s">coderay</span>
+</code></pre></div></div>
+<p>除了可以使用之外，还有其自己的配置选项，，可以作为syntax_highlighter_opts 配置项的值进行传递，如下所示：<br />
+(CodeRay支持几个自己的配置选项，这些选项记录在kramdown语法CodeRay文档中 <a href="https://github.com/kramdown/syntax-coderay"><code>去文档看看</code></a>)</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">kramdown</span><span class="pi">:</span>
+  <span class="na">syntax_highlighter</span><span class="pi">:</span> <span class="s">coderay</span>
+  <span class="na">syntax_highlighter_opts</span><span class="pi">:</span>
+    <span class="na">line_numbers</span><span class="pi">:</span> <span class="s">table</span>
+    <span class="na">bold_every</span><span class="pi">:</span> <span class="m">5</span>
+</code></pre></div></div>
+
+<p>Liquid 配置</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">liquid</span><span class="pi">:</span>
+  <span class="na">error_mode</span><span class="pi">:</span> <span class="s">strict</span>
+  <span class="na">strict_variables</span><span class="pi">:</span> <span class="no">true</span>
+  <span class="na">strict_filters</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+<p>如上所述进行配置将停止生成/服务，并调用有问题的错误并停止。当您希望通过停止构建或服务过程来发现与液体相关的问题，<br />
+并允许您处理任何问题时，这是很有帮助的。</p>
+
+<p>帖子 摘录<br />
+在前事项中添加：excerpt_separator: <!--more--> 可以指定 摘录部分<br />
+默认：分隔是<!--more-->，所以可以通过 excerpt_separator 指定</p>
+
+<p>可以通过：post.excerpt 来使用</p>
+
+<p>为静态文件添加front matter变量：</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">defaults</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
+      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">assets/img"</span>
+    <span class="na">values</span><span class="pi">:</span>
+      <span class="na">image</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+</code></pre></div></div>
+<p>当你建立你的网站时，输出会列出每个符合这个front matter 条件的文件的路径。</p>
+

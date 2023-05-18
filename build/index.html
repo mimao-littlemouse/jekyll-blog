@@ -42,7 +42,7 @@
     <span class="d-block my-auto mx-auto user-select-none fw-light">米猫博客</span>
   </div>
   <div class="col-1 col-md-2 col-lg-1 px-1 px-md-0 d-flex user-select-none fs-5" title="light or dark">
-    <i id="app-header-light-dark-button" class="btn btn-outline-dark p-0 bi bi-brightness-high d-block m-auto align-self-center" style="width: 32px;height:32px;line-height: 32px;"></i>
+    <i id="app-header-light-dark-button" class="btn btn-outline-dark p-0 bi bi-brightness-high d-block m-auto align-self-center" style="width: 32px;"></i>
   </div>
 </div>
 <!-- --- 中间主体内容部分 --- -->
@@ -88,11 +88,13 @@
           <!-- 轮播图中的指示点 集合 -->
           <!-- 定义 文章中一系列文档（接受 按index排序后的系列文档） -->
           <!-- 其中，为了在获取doc所有名称时，减少耦合，提升高效性，为所有doc盗汗按钮元素添加 doc-carousel-indicators-navbtn 来辨识按钮元素，用于获取所有按钮名称 -->
-          <div data-bs-target="#github-carousel-0" data-bs-slide-to="0" class="doc-carousel-indicators-navbtn active border-0 flex-shrink-0 text-center" style="width: 80px;height:25px;line-height: 25px;font-size:12px;text-indent: 0px;background-color: transparent;" aria-current="true" aria-label="Slide0" data-doc-title="Emoji">github emoji</div>
+          <div data-bs-target="#github-carousel-0" data-bs-slide-to="0" class="doc-carousel-indicators-navbtn active border-0 flex-shrink-0 text-center" style="width: 80px;height:25px;line-height: 25px;font-size:12px;text-indent: 0px;background-color: transparent;" aria-current="true" aria-label="Slide0" data-doc-title="Emoji">emoji列表</div>
+          <!-- 其中，为了在获取doc所有名称时，减少耦合，提升高效性，为所有doc盗汗按钮元素添加 doc-carousel-indicators-navbtn 来辨识按钮元素，用于获取所有按钮名称 -->
+          <div data-bs-target="#github-carousel-0" data-bs-slide-to="1" class="doc-carousel-indicators-navbtn  border-0 flex-shrink-0 text-center" style="width: 80px;height:25px;line-height: 25px;font-size:12px;text-indent: 0px;background-color: transparent;" aria-current="false" aria-label="Slide1" data-doc-title="Emoji_introduction">emoji介绍</div>
           </div>
         <div class="carousel-inner w-100 h-100" style="padding-top: 32px;">
           <div class="carousel-item w-100 h-100 active">
-            <div class="carousel-item-content w-100 border-top border-1 overflow-y-auto scrollbar scrollbar-blue app-main-content-doc-content doc-github-style" style="height: calc(100% - 1px);">
+            <div class="carousel-item-content w-100 border-top border-1 overflow-y-auto scrollbar scrollbar-blue app-main-content-doc-content doc-github-style doc-github-emoji-content" style="height: calc(100% - 1px);">
 <div id="articles-github-emoji" class="d-flex w-100 h-100 include-container-lazyload-img">
   <div id="github-emoji_group_scrollspy_navbar" class="h-100 bg-body" style="font-size:12px;">
     <nav class="nav nav-pills h-100 d-flex flex-column flex-nowrap border-end scrollbar scrollbar-blue overflow-y-auto" style="width:40px;">
@@ -24949,6 +24951,15 @@
 
 </div>
           </div>
+          <div class="carousel-item w-100 h-100 ">
+            <div class="carousel-item-content w-100 border-top border-1 overflow-y-auto scrollbar scrollbar-blue app-main-content-doc-content doc-github-style doc-github-emoji_introduction-content" style="height: calc(100% - 1px);">
+<h1 id="介绍-github-emoji">介绍 github emoji</h1>
+
+<p>使用方法:<br>
+在 markdown 文件中,直接书写 :emoij名称:  进行书写即可<br>
+emoji的名称,可在 emoji列表中<a href="/jekyll-blog/articles/github/emoji">查看</a></p>
+</div>
+          </div>
           </div>
       </div>
     </div>
@@ -24966,7 +24977,7 @@
           </div>
         <div class="carousel-inner w-100 h-100" style="padding-top: 32px;">
           <div class="carousel-item w-100 h-100 active">
-            <div class="carousel-item-content w-100 border-top border-1 overflow-y-auto scrollbar scrollbar-blue app-main-content-doc-content doc-python-style" style="height: calc(100% - 1px);">
+            <div class="carousel-item-content w-100 border-top border-1 overflow-y-auto scrollbar scrollbar-blue app-main-content-doc-content doc-python-style doc-python-chapter1-content" style="height: calc(100% - 1px);">
 <h1 id="chapter1-python1">chapter1 python1</h1>
 <p><a href="/jekyll-blog/articles/python/chapter2" title="go">去2</a><br>
 <a href="/jekyll-blog/articles/python/chapter2">去2</a><br>
@@ -24974,7 +24985,7 @@
 </div>
           </div>
           <div class="carousel-item w-100 h-100 ">
-            <div class="carousel-item-content w-100 border-top border-1 overflow-y-auto scrollbar scrollbar-blue app-main-content-doc-content doc-python-style" style="height: calc(100% - 1px);">
+            <div class="carousel-item-content w-100 border-top border-1 overflow-y-auto scrollbar scrollbar-blue app-main-content-doc-content doc-python-style doc-python-chapter2-content" style="height: calc(100% - 1px);">
 <p>chapter2 python2<br>
 <a href="/jekyll-blog/articles/python/chapter1" title="go">去1</a><br>
 <a href="/jekyll-blog/articles/python/chapter1">去1</a><br>
@@ -24992,14 +25003,438 @@
           <!-- 轮播图中的指示点 集合 -->
           <!-- 定义 文章中一系列文档（接受 按index排序后的系列文档） -->
           <!-- 其中，为了在获取doc所有名称时，减少耦合，提升高效性，为所有doc盗汗按钮元素添加 doc-carousel-indicators-navbtn 来辨识按钮元素，用于获取所有按钮名称 -->
-          <div data-bs-target="#jekyll-carousel-2" data-bs-slide-to="0" class="doc-carousel-indicators-navbtn active border-0 flex-shrink-0 text-center" style="width: 80px;height:25px;line-height: 25px;font-size:12px;text-indent: 0px;background-color: transparent;" aria-current="true" aria-label="Slide0" data-doc-title="Filter">jekyll filter</div>
+          <div data-bs-target="#jekyll-carousel-2" data-bs-slide-to="0" class="doc-carousel-indicators-navbtn active border-0 flex-shrink-0 text-center" style="width: 80px;height:25px;line-height: 25px;font-size:12px;text-indent: 0px;background-color: transparent;" aria-current="true" aria-label="Slide0" data-doc-title="Gem_source_config">gem</div>
+          <!-- 其中，为了在获取doc所有名称时，减少耦合，提升高效性，为所有doc盗汗按钮元素添加 doc-carousel-indicators-navbtn 来辨识按钮元素，用于获取所有按钮名称 -->
+          <div data-bs-target="#jekyll-carousel-2" data-bs-slide-to="1" class="doc-carousel-indicators-navbtn  border-0 flex-shrink-0 text-center" style="width: 80px;height:25px;line-height: 25px;font-size:12px;text-indent: 0px;background-color: transparent;" aria-current="false" aria-label="Slide1" data-doc-title="Jekyll_deep">深入</div>
+          <!-- 其中，为了在获取doc所有名称时，减少耦合，提升高效性，为所有doc盗汗按钮元素添加 doc-carousel-indicators-navbtn 来辨识按钮元素，用于获取所有按钮名称 -->
+          <div data-bs-target="#jekyll-carousel-2" data-bs-slide-to="2" class="doc-carousel-indicators-navbtn  border-0 flex-shrink-0 text-center" style="width: 80px;height:25px;line-height: 25px;font-size:12px;text-indent: 0px;background-color: transparent;" aria-current="false" aria-label="Slide2" data-doc-title="Jekyll_example">案例讲解</div>
+          <!-- 其中，为了在获取doc所有名称时，减少耦合，提升高效性，为所有doc盗汗按钮元素添加 doc-carousel-indicators-navbtn 来辨识按钮元素，用于获取所有按钮名称 -->
+          <div data-bs-target="#jekyll-carousel-2" data-bs-slide-to="3" class="doc-carousel-indicators-navbtn  border-0 flex-shrink-0 text-center" style="width: 80px;height:25px;line-height: 25px;font-size:12px;text-indent: 0px;background-color: transparent;" aria-current="false" aria-label="Slide3" data-doc-title="Jekyll_filter">filter</div>
+          <!-- 其中，为了在获取doc所有名称时，减少耦合，提升高效性，为所有doc盗汗按钮元素添加 doc-carousel-indicators-navbtn 来辨识按钮元素，用于获取所有按钮名称 -->
+          <div data-bs-target="#jekyll-carousel-2" data-bs-slide-to="4" class="doc-carousel-indicators-navbtn  border-0 flex-shrink-0 text-center" style="width: 80px;height:25px;line-height: 25px;font-size:12px;text-indent: 0px;background-color: transparent;" aria-current="false" aria-label="Slide4" data-doc-title="Jekyll_seo">seo</div>
+          <!-- 其中，为了在获取doc所有名称时，减少耦合，提升高效性，为所有doc盗汗按钮元素添加 doc-carousel-indicators-navbtn 来辨识按钮元素，用于获取所有按钮名称 -->
+          <div data-bs-target="#jekyll-carousel-2" data-bs-slide-to="5" class="doc-carousel-indicators-navbtn  border-0 flex-shrink-0 text-center" style="width: 80px;height:25px;line-height: 25px;font-size:12px;text-indent: 0px;background-color: transparent;" aria-current="false" aria-label="Slide5" data-doc-title="Jekyll_undergo">进一步深入</div>
+          <!-- 其中，为了在获取doc所有名称时，减少耦合，提升高效性，为所有doc盗汗按钮元素添加 doc-carousel-indicators-navbtn 来辨识按钮元素，用于获取所有按钮名称 -->
+          <div data-bs-target="#jekyll-carousel-2" data-bs-slide-to="6" class="doc-carousel-indicators-navbtn  border-0 flex-shrink-0 text-center" style="width: 80px;height:25px;line-height: 25px;font-size:12px;text-indent: 0px;background-color: transparent;" aria-current="false" aria-label="Slide6" data-doc-title="Navbar">导航</div>
           </div>
         <div class="carousel-inner w-100 h-100" style="padding-top: 32px;">
           <div class="carousel-item w-100 h-100 active">
-            <div class="carousel-item-content w-100 border-top border-1 overflow-y-auto scrollbar scrollbar-blue app-main-content-doc-content doc-jekyll-style" style="height: calc(100% - 1px);">
-<h1 id="introduction">jekyll基础(filters部分)</h1>
+            <div class="carousel-item-content w-100 border-top border-1 overflow-y-auto scrollbar scrollbar-blue app-main-content-doc-content doc-jekyll-style doc-jekyll-gem_source_config-content" style="height: calc(100% - 1px);">
+<p><strong><em>配置方法</em></strong><br>
+<strong>查找默认源</strong></p>
+<pre><code>$ gem sources
+</code></pre>
+<p><strong>移除默认源</strong></p>
+<pre><code>$ gem sources --remove https://rubygems.org/
+</code></pre>
+<p><strong>添加新源</strong>(阿里镜像源)</p>
+<pre><code>$ gem sources -a https://mirrors.aliyun.com/rubygems/
+</code></pre>
 
-<h4 id="返回"><a href="/jekyll-blog/articles/github/emoji" title="github emoji">返回</a></h4>
+<p><strong>相关链接</strong></p>
+
+<ul>
+  <li>
+    <p><a href="https://rubygems.org/" title="去rubygems的主页"><code>rubygems官方主页</code></a></p>
+  </li>
+  <li>
+    <p><a href="https://developer.aliyun.com/mirror/rubygems?spm=a2c6h.13651102.0.0.406e1b119qGH4Y" title="去查看阿里云镜像 rubygems的source配置"><code>阿里云镜像 rubygems的source配置</code></a></p>
+  </li>
+</ul>
+</div>
+          </div>
+          <div class="carousel-item w-100 h-100 ">
+            <div class="carousel-item-content w-100 border-top border-1 overflow-y-auto scrollbar scrollbar-blue app-main-content-doc-content doc-jekyll-style doc-jekyll-jekyll_deep-content" style="height: calc(100% - 1px);">
+<h1 id="jekyll深入了解">jekyll深入了解</h1>
+<h2 id="返回目录"><a href="/jekyll-blog/articles/jekyll/navbar"><code>返回目录</code></a></h2>
+<h3 id="content"><code>深入了解jekyll</code></h3>
+<ul>
+  <li>
+<a href="#content" title="指南"><strong><code>Guides</code></strong></a>指南：<br>
+<a href="#content-plugins" title="插件"><code>Plugins</code></a>插件、<a href="#content-blog_migrations" title="博客迁移"><code>Blog Migrations</code></a>博客迁移、<a href="#content-upgrading" title="升级"><code>Upgrading</code></a>升级、<a href="#content-deployment" title="部署"><code>Deployment</code></a>部署<br>
+***</li>
+  <li>
+<a href="#content" title="构建"><strong><code>Build</code></strong></a>构建：<br>
+<a href="#content-command_line_usage" title="命令行用法"><code>Command Line Usage</code></a>命令行用法、<a href="#content-configuration" title="配置"><code>Configuration</code></a>配置、<a href="#content-rendering_process" title="渲染过程"><code>Rendering Process</code></a>渲染过程<br>
+***</li>
+</ul>
+
+<h3 id="content-guides"><strong><code>Guides 指南</code></strong></h3>
+<p><a href="#content"><code>返回大纲</code></a> | <a href="#content-build"><code>Build 构建</code></a></p>
+<h4 id="content-plugins">Plugins 插件</h4>
+<p><a href="#content">目录</a> | <a href="#content-blog_migrations">下</a></p>
+<pre><code class="language-txt">Jekyll has a plugin system with hooks that allow you to create custom generated content specific to your site. 
+You can run custom code for your site without having to modify the Jekyll source itself.
+</code></pre>
+<p>Jekyll有一个带有钩子的插件系统，允许您创建特定于您的网站的自定义生成内容。<br>
+您可以为您的网站运行自定义代码，而无需修改Jekyll源代码本身。</p>
+
+<pre><code class="language-txt">You can add specific plugins to the whitelist key in _config.yml to allow them to run in safe mode.
+</code></pre>
+<p><strong>您可以在_config.yml中的白名单密钥中添加特定的插件，以允许它们在安全模式下运行。</strong></p>
+<pre><code class="language-txt">Installation - How to install plugins
+Your first plugin - How to write plugins
+Generators - Create additional content on your site
+Converters - Change a markup language into another format
+Commands - Extend the jekyll executable with subcommands
+Tags - Create custom Liquid tags
+Filters - Create custom Liquid filters
+Hooks - Fine-grained control to extend the build process
+</code></pre>
+<p>Installation - 如何安装插件<br>
+Your first plugin - 如何编写插件<br>
+Generators - 在您的网站上创建其他内容<br>
+Converters - 将标记语言更改为其他格式<br>
+Commands - 使用子命令扩展jekyll可执行文件<br>
+Tags - 创建自定义Liquid标记<br>
+Filters - 创建自定义Liquid过滤器<br>
+Hooks - 细粒度控制以扩展构建过程</p>
+
+<hr>
+
+<h4 id="content-blog_migrations">Blog Migrations 博客迁移</h4>
+<p><a href="#content-plugins">上</a> | <a href="#content-upgrading">下</a></p>
+<pre><code class="language-txt">If you’re switching to Jekyll from another blogging system, Jekyll’s importers can help you with the move. 
+To learn more about importing your site to Jekyll, visit our jekyll-import docs site.
+</code></pre>
+<p>如果你从另一个博客系统切换到Jekyll，Jekyll的进口商可以帮助你。<br>
+要了解有关将您的网站导入Jekyll的更多信息，请访问我们的jekyll-import文档网站。</p>
+
+<hr>
+
+<h4 id="content-upgrading">Upgrading 升级</h4>
+<p><a href="#content-blog_migrations">上</a> | <a href="#content-deployment">下</a></p>
+<pre><code class="language-txt">Upgrading from an older version of Jekyll? 
+Upgrading to a new major version of Jekyll (e.g. from v2.x to v3.x) may cause some headaches. 
+Take the following guides to aid your upgrade:
+</code></pre>
+<p>从旧版本的Jekyll升级？<br>
+升级到Jekyll的新主要版本（例如从v2.x升级到v3.x）可能会引起一些头痛。<br>
+请参阅以下指南以帮助您升级：</p>
+<pre><code>From 0.x to 1.x and 2.x
+From 2.x to 3.x
+From 3.x to 4.x
+</code></pre>
+
+<p><strong>Minor updates(次要更新)</strong></p>
+<pre><code class="language-txt">Stay Up to Date
+We recommend you update Jekyll as often as possible to benefit from the latest bug fixes.
+</code></pre>
+<p><strong>保持最新</strong><br>
+<strong>我们建议您尽可能频繁地更新Jekyll，以从最新的错误修复中获益。</strong></p>
+
+<pre><code class="language-txt">If you followed our setup recommendations and installed Bundler, 
+run bundle update jekyll or simply bundle update and all your gems will update to the latest versions.
+
+If you don’t have Bundler installed, run gem update jekyll.
+
+The procedure is similar if you use the github-pages gem.
+</code></pre>
+<p>如果您遵循了我们的设置建议并安装了Bundler，<br>
+运行<code>bundle update jekyll</code> 或简单地运行 <code>bundle update</code>，所有gem都将更新到最新版本。<br>
+如果您没有安装Bundler，请运行gem更新jekyll。<br>
+如果您使用github pages gem，则过程与此类似。</p>
+
+<hr>
+
+<h4 id="content-deployment">Deployment 部署</h4>
+<p><a href="#content-upgrading">上</a> | <a href="#content-build">下</a></p>
+<pre><code class="language-txt">Sites built using Jekyll can be deployed in a large number of ways due to the static nature of the generated output. 
+Here’s some of the most common ways:
+Manually
+Automated
+Third Party
+</code></pre>
+<p>由于生成的输出具有静态性质，使用Jekyll构建的站点可以通过多种方式进行部署。<br>
+以下是一些最常见的方法：<br>
+Manually 手动<br>
+Automated 自动化<br>
+Third Party 第三方</p>
+
+<hr>
+
+<h3 id="content-build"><strong><code>Build 构建</code></strong></h3>
+<p><a href="#content"><code>返回大纲</code></a> | <a href="#content-command_line_usage">下</a></p>
+<h4 id="content-command_line_usage">Command Line Usage  命令行用法</h4>
+<p><a href="#content">目录</a> | <a href="#content-guides">Guides 指南</a> | <a href="#content-configuration">下</a></p>
+<pre><code class="language-txt">The Jekyll gem makes a jekyll executable available to you in your terminal.
+
+The jekyll program has several commands but the structure is always:
+</code></pre>
+<p>Jekyll gem使您可以在终端中使用Jekyll可执行文件。<br>
+jekyll程序有几个命令，但其结构始终是：</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll <span class="nb">command</span> <span class="o">[</span>argument] <span class="o">[</span>option] <span class="o">[</span>argument_to_option]
+
+Examples:
+    jekyll new site/ <span class="nt">--blank</span>
+    jekyll serve <span class="nt">--config</span> _alternative_config.yml
+</code></pre></div></div>
+<pre><code class="language-txt">Typically you’ll use jekyll serve while developing locally and jekyll build when you need to generate the site for production.
+
+For a full list of options and their argument, see Build Command Options.
+
+Here are some of the most common commands:
+</code></pre>
+<p>通常，您将在本地开发时使用jekyll serve，并在需要生成用于生产的站点时使用jekyll build。<br>
+有关选项及其参数的完整列表，请参见生成命令选项。<br>
+以下是一些最常见的命令：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">command</th>
+      <th style="text-align: left">description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">jekyll new PATH</td>
+      <td style="text-align: left">Creates a new Jekyll site with default gem-based theme at specified path. The directories will be created as necessary.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">在指定的路径上创建一个新的Jekyll站点，该站点具有默认的基于gem的主题。将根据需要创建目录。</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">jekyll new PATH --blank</td>
+      <td style="text-align: left">Creates a new blank Jekyll site scaffold at specified path.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">在指定的路径上创建一个新的空白Jekyll站点脚手架。</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">jekyll build or jekyll b</td>
+      <td style="text-align: left">Performs a one off build your site to ./_site (by default).</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">对执行一次性构建您的网站到 ./_site（默认情况下）。</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">jekyll serve or jekyll s</td>
+      <td style="text-align: left">Builds your site any time a source file changes and serves it locally.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">在源文件更改时随时构建您的网站，并在本地提供服务.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">jekyll clean</td>
+      <td style="text-align: left">Removes all generated files: destination folder, metadata file, Sass and Jekyll caches.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">删除所有生成的文件：目标文件夹、元数据文件、Sass和Jekyll缓存。</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">jekyll help</td>
+      <td style="text-align: left">Shows help, optionally for a given subcommand, e.g. jekyll help build.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">显示给定子命令的帮助（可选），例如jekyll help build。</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">jekyll new-theme</td>
+      <td style="text-align: left">Creates a new Jekyll theme scaffold.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">创建一个新的Jekyll主题脚手架。</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">jekyll doctor</td>
+      <td style="text-align: left">Outputs any deprecation or configuration issues.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">输出任何弃用或配置问题。</td>
+    </tr>
+  </tbody>
+</table>
+
+<pre><code class="language-txt">To change Jekyll’s default build behavior have a look through the configuration options.
+</code></pre>
+<p>要更改Jekyll的默认构建行为，请查看配置选项。</p>
+
+<hr>
+<h4 id="content-configuration">Configuration  配置</h4>
+<p><a href="#content-command_line_usage">上</a> | <a href="#content-rendering_process">下</a></p>
+<pre><code class="language-txt">Jekyll gives you a lot of flexibility to customize how it builds your site. 
+These options can either be specified in a _config.yml or _config.toml file placed in your site’s root directory, 
+or can be specified as flags for the jekyll executable in the terminal.
+
+Configuration Options
+Default Configuration
+Front Matter Defaults
+Environments
+Markdown Options
+Liquid Options
+Sass/SCSS Options
+Webrick Options
+Incremental Regeneration
+</code></pre>
+<p>Jekyll为您提供了很大的灵活性来定制它如何构建您的网站。<br>
+这些选项可以在位于站点根目录中的_config.yml或_config.toml文件中指定，<br>
+或者可以被指定为在终端中可执行的jekyll的标志。</p>
+
+<p>配置选项<br>
+默认配置<br>
+Front Matter默认<br>
+环境<br>
+Markdown选项<br>
+Liquid选项<br>
+Sass/SCSS选项<br>
+Webrick选项<br>
+增量再生<br>
+***</p>
+<h4 id="content-rendering_process">Rendering Process  渲染过程</h4>
+<p><a href="#content-configuration">上</a></p>
+<pre><code class="language-txt">For any Jekyll site, a build session consists of discrete phases in the following order
+— setting up plugins, reading source files, running generators, rendering templates, and finally writing files to disk.
+
+While the phases above are self-explanatory, the one phase that warrants dissection is the rendering phase.
+
+The rendering phase is further divisible into three optional stages. 
+Every file rendered, passes through one or more of these stages as determined by the file’s content string, front matter and extension. 
+The stages are akin to an assembly line, with the output from a stage being the input for the succeeding stage:
+
+Interpreting Liquid expressions in the file
+This stage evaluates Liquid expressions in the current file. 
+By default, the interpretation is shallow — in that any Liquid expression in resulting output is not further interpreted. 
+Moreover, any Liquid expression in the file’s front matter is left untouched.
+
+Unleashing the converters
+This stage invokes the converter mapped to the current file’s extension and converts the input string. 
+This is when Markdown gets converted into HTML and Sass / Scss into CSS or CoffeeScript into JavaScript, etc, etc. 
+Since this stage is determined by the file’s extension, Markdown or Sass inside a .html file will remain untouched.
+
+Populating the layouts
+By this stage, the source file is considered rendered and it will not be revisited. However, 
+based on the file’s extension and consequently based on the front matter, 
+it is determined whether to take the output string from the preceding stage and place into layouts or not. 
+
+Whereas output from Sass files or CoffeeScript files are never placed into a layout, 
+regular text output can go either ways based on whether a layout has been assigned via the front matter.
+
+Placement into layouts work similar to how Russian dolls encase the smaller ones within itself or how an oyster generates a pearl 
+— the converted output from the preceding stage forms the core and layout(s) are successively rendered separately onto the core.
+</code></pre>
+<p>对于任何Jekyll站点，构建会话由以下顺序的离散阶段组成<br>
+-设置插件，读取源文件，运行生成器，渲染模板，最后将文件写入磁盘。</p>
+
+<p>虽然上面的阶段是不言自明的，但有必要进行解剖的一个阶段是渲染阶段。</p>
+
+<p>渲染阶段可以进一步划分为三个可选阶段。<br>
+渲染的每个文件都经过一个或多个阶段，这取决于文件的内容字符串、主题和扩展名。<br>
+这些阶段类似于装配线，一个阶段的输出是下一阶段的输入：</p>
+
+<p>解释文件中的Liquid表达式此阶段评估当前文件中的Liquid表达式。<br>
+默认情况下，解释是浅的，因为结果输出中的任何Liquid表达式都不会被进一步解释。<br>
+此外，文件前面的内容中的任何Liquid表达式都保持不变。</p>
+
+<p>释放转换器<br>
+此阶段调用映射到当前文件扩展名的转换器并转换输入字符串。<br>
+这是当Markdown被转换成HTML，Sass/Scss被转换成CSS或CoffeeScript被转换成JavaScript等时。<br>
+由于这个阶段是由文件的扩展名决定的，因此.html文件中的Markdown或Sass将保持不变。</p>
+
+<p>填充布局<br>
+在此阶段，源文件被视为已渲染，不会重新访问。然而<br>
+基于文件的扩展名并且因此基于前面的内容，<br>
+确定是否从前一阶段取得输出字符串并将其放入布局中。</p>
+
+<p>尽管来自Sass文件或CoffeeScript文件的输出从未被放置到布局中，<br>
+常规文本输出可以根据是否已通过前面的内容指定布局来进行任何一种方式。</p>
+
+<p>布局的方式类似于俄罗斯玩偶如何将较小的玩偶包裹在自己体内，或者牡蛎如何产生珍珠<br>
+-来自前一阶段的转换输出形成核心，并且布局被连续地分别呈现到核心上。</p>
+
+<hr>
+<p>到底了...<br>
+***</p>
+</div>
+          </div>
+          <div class="carousel-item w-100 h-100 ">
+            <div class="carousel-item-content w-100 border-top border-1 overflow-y-auto scrollbar scrollbar-blue app-main-content-doc-content doc-jekyll-style doc-jekyll-jekyll_example-content" style="height: calc(100% - 1px);">
+<h1 id="案例介绍">案例介绍</h1>
+<h4 id="返回目录"><a href="/jekyll-blog/articles/jekyll/navbar"><code>返回目录</code></a></h4>
+<h5 id="content"><code>使用jekyll-blog博客案例</code></h5>
+<h3 id="title-1">{#title-1}</h3>
+<p><a href="#introduction"><strong>查看笔记介绍</strong></a> | <a href="#title-2"><strong>下一节</strong></a></p>
+
+<p>1.<strong><em>安装jekyll环境</em></strong><br>
+安装jekyll 和 bundler 依赖</p>
+<pre><code>$ gem install jekyll bundler
+</code></pre>
+
+<p>2.<strong><em>创建第一个jekyll项目</em></strong><br>
+创建jekyll项目，并命名为 myblog</p>
+<pre><code>$ jekyll new myblog
+</code></pre>
+<blockquote>
+  <p>创建的过程非常长，请耐心等待</p>
+</blockquote>
+
+<p>3.<strong><em>项目结构</em></strong></p>
+<pre><code>_site #这是运行项目之后，才生成的文件夹（功能如其名）
+    jekyll
+        update
+            2023
+                03
+                    16
+                        welcome-to-jekyll.html
+    assets
+        main.css 
+        main.css.map
+        minima-social-icons.svg
+    about
+        index.html
+    feed.xml
+    404.html
+    index.html
+_ports
+    2023-03-16-welcome-to-jekyll.markdown
+_config.yml
+404.html
+about.markdown
+index.markdown
+Gemfile
+Gemfile.lock
+</code></pre>
+
+<p>4.<strong><em>运行项目</em></strong></p>
+<pre><code>$ bundler exec jekyll serve
+</code></pre>
+
+<pre><code>在运行之后，可能会报有关sass方面的错误，解决方法：
+$ gem install sass
+$ gem install compass
+(是否安装完成，输入sass -v  和  compass -v 看是否可以输出版本好)
+安装上面两个依赖就行，继续
+</code></pre>
+
+<blockquote>
+  <p>将--livereload选项传递给serve，以便在对源文件进行每次更改时自动刷新页面：<br>
+$ bundle exec jekyll serve--livereload</p>
+
+  <p>指定 --host  --post<br>
+可以更改服务运行时的 主机名 和 端口号<br>
+例如：<br>
+$ bundler exec jekyll serve --host 0.0.0.0 --post 4000</p>
+
+  <p>运行之后，出现的sass警告 不用管</p>
+</blockquote>
+
+<p><strong>扩展</strong><br>
+其他使用方法，请参考：<br>
+<a href="https://juejin.cn/post/6844903623567081486">入门教程</a>(来源掘金)</p>
+</div>
+          </div>
+          <div class="carousel-item w-100 h-100 ">
+            <div class="carousel-item-content w-100 border-top border-1 overflow-y-auto scrollbar scrollbar-blue app-main-content-doc-content doc-jekyll-style doc-jekyll-jekyll_filter-content" style="height: calc(100% - 1px);">
+<h1 id="introduction">jekyll基础(filters部分)</h1>
+<h4 id="返回"><a href="./../jekyll%E5%9F%BA%E7%A1%80.md#liquid-filters" title="jekyll基础(filters部分)">返回</a></h4>
 <h2 id="liuqid-filters">Liuqid Filters</h2>
 <pre><code class="language-txt">All of the standard Liquid filters are supported (see below).
 
@@ -25010,83 +25445,711 @@ You can also create your own filters using plugins.
 为了简化常见任务，Jekyll甚至添加了一些自己的方便过滤器，所有这些都可以在这个页面上找到。<br>
 您也可以使用插件创建自己的过滤器。</p>
 
-<p><img class="emoji" title=":+1:" alt=":+1:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png" height="20" width="20"><br>
-<img class="emoji" title=":crown:" alt=":crown:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f451.png" height="20" width="20"><br>
-<img class="emoji" title=":grinning:" alt=":grinning:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f600.png" height="20" width="20"></p>
-
-<p><img class="emoji" title=":crown:" alt=":crown:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f451.png" height="20" width="20"></p>
-
 <table>
   <thead>
     <tr>
-      <th>name</th>
-      <th>age</th>
+      <th style="text-align: center">name</th>
+      <th style="text-align: left">description</th>
+      <th style="text-align: center">filter and output</th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>xiaoli</td>
-      <td>20</td>
+      <td style="text-align: center">Relative URL</td>
+      <td style="text-align: left">Prepend baseurl config value to the input to convert a URL path into a relative URL. <br> This is recommended for a site that is hosted on a subpath of a domain.</td>
+      <td style="text-align: center">
+<code>\{\{ "/assets/style.css" | relative_url \}\}</code> <br> <code>/my-baseurl/assets/style.css</code>
+</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将baseurl配置值前置到输入，以将URL路径转换为相对URL。<br> 对于托管在域的子路径上的网站，建议这样做。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Absolute URL</td>
+      <td style="text-align: left">Prepend url and baseurl values to the input to convert a URL path to an absolute URL.</td>
+      <td style="text-align: center">
+<code>\{\{ "/assets/style.css" | absolute_url \}\}</code> <br> <code>http://example.com/my-baseurl/assets/style.css</code>
+</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将url和baseurl值前置到输入，以将url路径转换为绝对url。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Date to XML Schema</td>
+      <td style="text-align: left">Convert a Date into XML Schema (ISO 8601) format.</td>
+      <td style="text-align: center">
+<code>\{\{ site.time | date_to_xmlschema \}\}</code><br><code>2008-11-07T13:07:54-08:00</code>
+</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将日期转换为XML模式（ISO 8601）格式。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Date to RFC-822 Format</td>
+      <td style="text-align: left">Convert a Date into the RFC-822 format used for RSS feeds.</td>
+      <td style="text-align: center">
+<code>\{\{ site.time | date_to_rfc822 \}\}</code><br><code>Mon, 07 Nov 2008 13:07:54 -0800</code>
+</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将Date转换为用于RSS提要的RFC-822格式。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Date to String</td>
+      <td style="text-align: left">Convert a date to short format.</td>
+      <td style="text-align: center">
+<code>\{\{ site.time | date_to_string \}\}</code><br><code>07 Nov 2008</code>
+</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将日期转换为短格式。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Date to String in ordinal US style</td>
+      <td style="text-align: left">Format a date to ordinal, US, short format. 3.8.0</td>
+      <td style="text-align: center">
+<code>\{\{ site.time | date_to_string: "ordinal", "US" \}\}</code><br><code>Nov 7th, 2008</code>
+</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将日期格式设置为序号、美国短格式。3.8.0</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Date to Long String</td>
+      <td style="text-align: left">Format a date to long format.</td>
+      <td style="text-align: center">
+<code>\{\{ site.time | date_to_long_string \}\}</code><br><code>07 November 2008</code>
+</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将日期设置为长格式。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Date to Long String in ordinal UK style</td>
+      <td style="text-align: left">Format a date to ordinal, UK, long format. 3.8.0</td>
+      <td style="text-align: center">
+<code>\{\{ site.time | date_to_long_string: "ordinal" \}\}</code><br><code>7th November 2008</code>
+</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将日期格式设置为序数、英国、长格式。3.8.0</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Where</td>
+      <td style="text-align: left">Select all the objects in an array where the key has the given value.</td>
+      <td style="text-align: center"><code>\{\{ site.members | where:"graduation_year","2014" \}\}</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">选择数组中键具有给定值的所有对象。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Where Expression</td>
+      <td style="text-align: left">Select all the objects in an array where the expression is true. 3.2.0</td>
+      <td style="text-align: center">
+<code>\{\{ site.members | where_exp:"item","item.graduation_year == 2014" \}\}</code><br><code>\{\{ site.members | where_exp:"item","item.graduation_year &lt; 2014" \}\}</code><br><code>\{\{ site.members | where_exp:"item","item.projects contains 'foo'" \}\}</code>
+</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">选择数组中表达式为true的所有对象。3.2.0</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Find</td>
+      <td style="text-align: left">Return the first object in an array for which the queried attribute has the given value or return nil <br> if no item in the array satisfies the given criteria. 4.1.0</td>
+      <td style="text-align: center"><code>\{\{ site.members | find: "graduation_year", "2014" \}\}</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">返回数组中查询属性具有给定值的第一个对象，<br>或者如果数组中没有项目满足给定条件，则返回nil。4.1.0</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Find Expression</td>
+      <td style="text-align: left">Return the first object in an array for which the given expression evaluates to true or <br> return nil if no item in the array satisfies the evaluated expression. 4.1.0</td>
+      <td style="text-align: center">
+<code>\{\{ site.members | find_exp:"item","item.graduation_year == 2014" \}\}</code><br><code>\{\{ site.members | find_exp:"item","item.graduation_year &lt; 2014" \}\}</code><br>`{{ site.members</td>
+      <td>find_exp:”item”,”item.projects contains ‘foo’” }}</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">返回数组中给定表达式计算结果为true的第一个对象，<br>如果数组中没有项满足计算结果的表达式，则返回nil。4.1.0</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Group By</td>
+      <td style="text-align: left">Group an array’s items by a given property.</td>
+      <td style="text-align: center">
+<code>\{\{ site.members | group_by:"graduation_year" \}\}</code><br><code>[{"name"=&gt;"2013", "items"=&gt;[...]},{"name"=&gt;"2014", "items"=&gt;[...]}]</code>
+</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">根据给定的属性对数组的项进行分组。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Group By Expression</td>
+      <td style="text-align: left">Group an array’s items using a Liquid expression. 3.4.0</td>
+      <td style="text-align: center">
+<code>\{\{ site.members | group_by_exp: "item","item.graduation_year | truncate: 3, ''" \}\}</code><br><code>[{"name"=&gt;"201", "items"=&gt;[...]},{"name"=&gt;"200", "items"=&gt;[...]}]</code>
+</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">使用Liquid表达式对数组的项进行分组。3.4.0</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">XML Escape</td>
+      <td style="text-align: left">Escape some text for use in XML.</td>
+      <td style="text-align: center"><code>\{\{ page.content | xml_escape \}\}</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">转义一些文本以用于XML。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">CGI Escape</td>
+      <td style="text-align: left">CGI escape a string for use in a URL. <br> Replaces any special characters with appropriate %XX replacements. <br> CGI escape normally replaces a space with a plus + sign.</td>
+      <td style="text-align: center">
+<code>\{\{ "foo, bar; baz?" | cgi_escape \}\}</code><br><code>foo%2C+bar%3B+baz%3F</code>
+</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">CGI对字符串进行转义，以便在URL中使用<br>用适当的 %XX 替换来替换任何特殊字符<br>CGI转义通常用加号替换空格。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">URI Escape</td>
+      <td style="text-align: left">Percent encodes any special characters in a URI. <br> URI escape normally replaces a space with %20. <br> Reserved characters will not be escaped.</td>
+      <td style="text-align: center">
+<code>\{\{ "http://foo.com/?q=foo, \bar?" | uri_escape \}\}</code> <br> <code>http://foo.com/?q=foo,%20%5Cbar?</code>
+</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">Percent对URI中的任何特殊字符进行编码<br>URI转义通常会将空格替换为 %20 <br>保留字符将不会被转义。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Number of Words</td>
+      <td style="text-align: left">Count the number of words in some text.<br>From v4.1.0, this filter takes an optional argument to control the handling of Chinese-Japanese-Korean (CJK) characters in the input string.<br>Passing ‘cjk’ as the argument will count every CJK character detected as one word irrespective of being separated by whitespace.<br>Passing ‘auto’ (auto-detect) works similar to ‘cjk’ but is more performant if the filter is used on a variable string that may or may not contain CJK chars.</td>
+      <td style="text-align: center">
+<code>\{\{ "Hello world!" | number_of_words \}\}</code> <br> 2 <br> <code>\{\{ "你好hello世界world" | number_of_words \}\}</code> <br> 1 <br> <code>\{\{ "你好hello世界world" | number_of_words: "cjk" \}\}</code> <br> 6 <br> <code>\{\{ "你好hello世界world" | number_of_words: "auto" \}\}</code> <br> 6 <br>
+</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">计算一些文本中的字数<br>从v4.1.0开始，此筛选器采用一个可选参数来控制输入字符串中中日韩（CJK）字符的处理<br>传递“cjk”作为参数将把检测到的每个cjk字符计算为一个单词，而不考虑是否用空格分隔<br>传递“auto”（自动检测）的工作原理类似于“cjk”，但如果过滤器用于可能包含或不包含cjk字符的变量字符串，则性能更高。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Array to Sentence</td>
+      <td style="text-align: left">Convert an array into a sentence. <br> Useful for listing tags. <br> Optional argument for connector.</td>
+      <td style="text-align: center">
+<code>\{\{ page.tags | array_to_sentence_string \}\}</code> <br> <code>foo, bar, and baz</code> <br> <code>\{\{ page.tags | array_to_sentence_string: "or" \}\}</code> <br> <code>foo, bar, or baz</code>
+</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将数组转换成句子<br>用于列出标记<br>连接器的可选参数。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Markdownify</td>
+      <td style="text-align: left">Convert a Markdown-formatted string into HTML.</td>
+      <td style="text-align: center"><code>\{\{ page.excerpt | markdownify \}\}</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将Markdown格式的字符串转换为HTML。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Smartify</td>
+      <td style="text-align: left">Convert “quotes” into “smart quotes.”</td>
+      <td style="text-align: center"><code>\{\{ page.title | smartify \}\}</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将“引号”转换为“智能引号”</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Converting Sass/SCSS</td>
+      <td style="text-align: left">Convert a Sass- or SCSS-formatted string into CSS.</td>
+      <td style="text-align: center">
+<code>\{\{ some_sass | sassify \}\}</code><br><code>\{\{ some_scss | scssify \}\}</code>
+</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将Sass或SCSS格式的字符串转换为CSS。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Slugify</td>
+      <td style="text-align: left">Convert a string into a lowercase URL “slug”. <br> See below for options.</td>
+      <td style="text-align: center">
+<code>\{\{ "The _config.yml file" | slugify \}\}</code> <br> <code>the-config-yml-file</code> <br> <code>\{\{ "The _config.yml file" | slugify: "pretty" \}\}</code> <br> <code>the-_config.yml-file</code> <br> <code>\{\{ "The _cönfig.yml file" | slugify: "ascii" \}\}</code> <br> <code>the-c-nfig-yml-file</code> <br> <code>\{\{ "The cönfig.yml file" | slugify: "latin" \}\}</code><br><code>the-config-yml-file</code>
+</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将字符串转换为小写URL“slug”<br>请参阅以下选项。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Data To JSON</td>
+      <td style="text-align: left">Convert Hash or Array to JSON.</td>
+      <td style="text-align: center"><code>\{\{ site.data.projects | jsonify \}\}</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将哈希或数组转换为JSON。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Normalize Whitespace</td>
+      <td style="text-align: left">Replace any occurrence of whitespace with a single space.</td>
+      <td style="text-align: center"><code>\{\{ "a \n b" | normalize_whitespace \}\}</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">用单个空格替换任何出现的空格。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Sort</td>
+      <td style="text-align: left">Sort an array. Optional arguments for hashes 1. property name 2. nils order (first or last).</td>
+      <td style="text-align: center">
+<code>\{\{ page.tags | sort \}\}</code><br><code>\{\{ site.posts | sort: "author" \}\}</code><br><code>\{\{ site.pages | sort: "title", "last" \}\}</code>
+</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">对数组进行排序。哈希1的可选参数。属性名称2。幂零顺序（第一个或最后一个）。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Sample</td>
+      <td style="text-align: left">Pick a random value from an array. <br> Optionally, pick multiple values.</td>
+      <td style="text-align: center">
+<code>\{\{ site.pages | sample \}\}</code><br><code>\{\{ site.pages | sample: 2 \}\}</code>
+</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">从数组中选择一个随机值<br>可选地，选择多个值。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">To Integer</td>
+      <td style="text-align: left">Convert a string or boolean to integer.</td>
+      <td style="text-align: center"><code>\{\{ some_var | to_integer \}\}</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将字符串或布尔值转换为整数。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Array Filters</td>
+      <td style="text-align: left">Push, pop, shift, and unshift elements from an Array. <br> These are NON-DESTRUCTIVE, i.e. they do not mutate the array, but rather make a copy and mutate that.</td>
+      <td style="text-align: center">
+<code>\{\{ page.tags | push: "Spokane" \}\}</code><br><code>["Seattle", "Tacoma", "Spokane"]</code><br><code>\{\{ page.tags | pop \}\}</code><br><code>["Seattle"]</code><br><code>\{\{ page.tags | shift \}\}</code><br><code>["Tacoma"]</code><br><code>\{\{ page.tags | unshift: "Olympia" \}\}</code><br><code>["Olympia", "Seattle", "Tacoma"]</code>
+</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">从数组中推送、弹出、移位和取消移位元素<br>这些是非破坏性的，即它们不会使数组发生突变，而是复制并使其发生突变。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Inspect</td>
+      <td style="text-align: left">Convert an object into its String representation for debugging.</td>
+      <td style="text-align: center"><code>\{\{ some_var | inspect \}\}</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将对象转换为其字符串表示形式以进行调试。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
     </tr>
   </tbody>
 </table>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="mi">12</span> <span class="o">=</span> <span class="nx">a</span> <span class="nx">a</span> <span class="mi">12</span> <span class="nx">a</span> <span class="mi">12</span><span class="p">;</span>
-<span class="kd">function</span> <span class="nx">getname</span><span class="p">(){</span>
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nx">getname</span><span class="p">()</span>
+<hr>
+
+<p><strong>Options for the slugify filter(slugify过滤器选项)</strong></p>
+<pre><code class="language-txt">The slugify filter accepts an option, each specifying what to filter. 
+The default is default. 
+They are as follows (with what they filter):
+</code></pre>
+<p>slugify过滤器接受一个选项，每个选项都指定要过滤的内容。<br>
+默认值为默认值。<br>
+它们如下（以及它们过滤的内容）：</p>
+<pre><code class="language-txt">none: no characters
+无字符
+raw: spaces
+空格
+default: spaces and non-alphanumeric characters
+空格和非字母数字字符
+pretty: spaces and non-alphanumeric characters except for ._~!$&amp;'()+,;=@
+空格和非字母数字字符，除了 ._~!$&amp;'()+,;=@
+ascii: spaces, non-alphanumeric, and non-ASCII characters
+空格，非字母数字字符 和 非ASCII字符
+latin: like default, except Latin characters are first transliterated (e.g. àèïòü to aeiou)3.7.0 .
+与默认情况一样，除了 拉丁字符 是第一个音译的（例如，从ïòü到aeiou）3.7.0。
+</code></pre>
+<pre><code class="language-txt">Detecting nil values with where filter 4.0
+</code></pre>
+<p>使用where filter 4.0检测零值</p>
+
+<pre><code class="language-txt">You can use the where filter to detect documents and pages with properties that are nil or "". 
+For example,
+</code></pre>
+<p>您可以使用 where筛选器 检测财产为 零或“” 的文档和页面。<br>
+例如，</p>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Using `nil` to select posts that either do not have `my_prop`
+// defined or `my_prop` has been set to `nil` explicitly.
+
+</code></pre></div></div>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Using Liquid's special literal `empty` or `blank` to select
+// posts that have `my_prop` set to an empty value.
+
 </code></pre></div></div>
 
-<p>This <del>is a complex strike through *test ~~with nesting</del> involved* here~~.<br>
-字符串：test = example example test example test<br>
-正则表达式: (\w+)\s<em>=\s</em>(\w+)<br>
-替换表达式：$2 = $1</p>
-<h1 id="sa数据1sdf">sa数据1sdf</h1>
-<h1 id="s数据1">s数据1</h1>
-<h1 id="s数据1-1">s数据1</h1>
-<h1 id="s数据1-2">s数据1</h1>
-<h1 id="asd">asd</h1>
-<h2 id="fas">fas</h2>
-<h2 id="数据1">数据1</h2>
-<h2 id="asfas">asfas</h2>
-<h2 id="数据1-1">数据1</h2>
-<h2 id="ads">ads</h2>
-<h2 id="fasd">fasd</h2>
-<h3 id="f">f</h3>
-<h3 id="fas-1">fas</h3>
-<h3 id="fas-2">fas</h3>
-<h3 id="fs">fs</h3>
-<h3 id="fa">fa</h3>
-<h3 id="f-1">f</h3>
-<h3 id="sf">sf</h3>
-<h3 id="asf">asf</h3>
-<h3 id="asd-1">asd</h3>
-<h3 id="fd">fd</h3>
-<h4 id="fasd-1">fasd</h4>
-<h4 id="fads">fads</h4>
-<h4 id="fas-3">fas</h4>
-<h4 id="fas-4">fas</h4>
-<h4 id="数据1a">数据1a</h4>
-<h4 id="da">da</h4>
-<h4 id="sdas">sdas</h4>
-<h4 id="数据1a-1">数据1a</h4>
-<h4 id="dsf">dsf</h4>
-<h4 id="asf-1">asf</h4>
-<h5 id="asf-2">asf</h5>
-<h5 id="asfs">asfs</h5>
-<h5 id="ad">ad</h5>
-<h5 id="fds">fds</h5>
-<h5 id="fdsf">fdsf</h5>
-<h5 id="s">s</h5>
-<h6 id="fds-1">fds</h6>
-<h6 id="fds-2">fds</h6>
-<h6 id="f-2">f</h6>
-<h6 id="sf-1">sf</h6>
-<h6 id="fads-1">fads</h6>
-<h6 id="f-3">f</h6>
-<h6 id="d">d</h6>
-<p><a href="/jekyll-blog/articles/jekyll/filter" title="to top"><code>到顶部</code></a></p>
+<p><strong>Binary operators in where_exp filter4.0(where _exp过滤器中的二进制运算符)</strong></p>
+<pre><code class="language-txt">You can use Liquid binary operators or and and in the expression passed to the where_exp filter to employ multiple conditionals in the operation.
+
+For example, to get a list of documents on English horror flicks, one could use the following snippet:
+</code></pre>
+<p>可以在传递给where_exp过滤器的表达式中使用Liquid二进制运算符或和，以便在操作中使用多个条件。<br>
+例如，要获得英国恐怖电影的文档列表，可以使用以下片段：</p>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\{\{ site.movies | where_exp: "item", "item.genre == 'horror' and item.language == 'English'" \}\}
+</code></pre></div></div>
+<pre><code class="language-txt">Or to get a list of comic-book based movies, one may use the following:
+</code></pre>
+<p>或者，要获得基于漫画的电影列表，可以使用以下内容：</p>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\{\{ site.movies | where_exp: "item", "item.sub_genre == 'MCU' or item.sub_genre == 'DCEU'" \}\}
+</code></pre></div></div>
+
+<p><strong>Standard Liquid Filters(标准Liquid过滤器)</strong></p>
+<pre><code class="language-txt">For your convenience, here is the list of all Liquid filters with links to examples in the official Liquid documentation.
+</code></pre>
+<p>为了方便您，以下是所有Liquid过滤器的列表，并附有官方Liquid文档中示例的链接。</p>
+
+<p><a href="https://shopify.github.io/liquid/filters/abs/" title="Liquid文档">去查看</a></p>
+
+<pre><code>abs
+
+append
+
+at_least
+
+at_most
+
+capitalize
+
+ceil
+
+compact
+
+concat
+
+date
+
+default
+
+divided_by
+
+downcase
+
+escape
+
+escape_once
+
+first
+
+floor
+
+join
+
+last
+
+lstrip
+
+map
+
+minus
+
+modulo
+
+newline_to_br
+
+plus
+
+prepend
+
+remove
+
+remove_first
+
+replace
+
+replace_first
+
+reverse
+
+round
+
+rstrip
+
+size
+
+slice
+
+sort
+
+sort_natural
+
+split
+
+strip
+
+strip_html
+
+strip_newlines
+
+times
+
+truncate
+
+truncatewords
+
+uniq
+
+upcase
+
+url_decode
+
+url_encode
+</code></pre>
+
+</div>
+          </div>
+          <div class="carousel-item w-100 h-100 ">
+            <div class="carousel-item-content w-100 border-top border-1 overflow-y-auto scrollbar scrollbar-blue app-main-content-doc-content doc-jekyll-style doc-jekyll-jekyll_seo-content" style="height: calc(100% - 1px);">
+<h1 id="seo介绍">SEO介绍</h1>
+<pre><code class="language-txt">Jekyll中的SEO是指通过改进网站的结构、内容和元数据等方面的优化，以提高网站在搜索引擎中的排名和曝光度，
+从而吸引更多的流量和用户。Jekyll本身并不会为网站提供SEO优化，
+但是通过合理的架构设计、关键词优化、页面标题和描述等元素的设置，可以提高网站在搜索引擎中的可见性和排名。
+
+
+
+jekyll-seo-tag插件是一个用于Jekyll静态网站生成器的插件，
+它可以自动生成搜索引擎优化（SEO）标签，包括页面标题、描述、关键字、作者和其他元数据。
+
+使用jekyll-seo-tag插件可以让你更方便地为你的网站优化SEO，使其在搜索引擎中更容易被发现和索引。
+它还可以帮助你确保每个页面都有独特的元数据，从而提高网站的整体质量和可发现性。
+
+要使用jekyll-seo-tag插件，只需将其添加到你的Jekyll项目中，并在你的模板中使用它提供的标记来生成SEO标签。
+你可以自定义标签的内容和格式，以适应你的具体需求。
+</code></pre>
+</div>
+          </div>
+          <div class="carousel-item w-100 h-100 ">
+            <div class="carousel-item-content w-100 border-top border-1 overflow-y-auto scrollbar scrollbar-blue app-main-content-doc-content doc-jekyll-style doc-jekyll-jekyll_undergo-content" style="height: calc(100% - 1px);">
+<p>可以为 前事项(front matter)设置默认值</p>
+
+<p>defaults:<br>
+  -<br>
+    scope:<br>
+      path: “” # an empty string here means all files in the project<br>
+      type: “posts” # previously <code>post</code> in Jekyll 2.2.<br>
+    values:<br>
+      layout: “default”</p>
+
+<p>jekyll中的生产环境和开发环境 判断<br>
+生产环境</p>
+
+<p>生产环境</p>
+
+<p>默认 运行环境为：development （开发环境）<br>
+JEKYLL_ENV=development 是默认值</p>
+
+<p>如果需要 生产环境中需要显示的内容显示，需要在运行构建命令上指定，例如：<br>
+JEKYLL_ENV=production jekyll build <br>
+该命令 才会让上述的 生产环境变量 判断中的内容 才会执行</p>
+
+<p>这样做的目的：<br>
+通过指定环境值，可以使某些内容仅在特定环境中可用。</p>
+
+<p>除此之外，还可以使用build命令，来指定 特定环境中使用的 _config.yaml文件：<br>
+在build命令中，添加 --config _config.yml 或--config _config_development.yml 则可以实现</p>
+
+<p>Markdown 选项（介绍 Kramdown ）<br>
+Jekyll支持的各种Markdown渲染器有时会提供额外的选项。</p>
+
+<p>Kramdown是Jekyll的默认Markdown渲染器，通常在没有额外配置的情况下运行良好。但是，它确实支持许多配置选项。</p>
+
+<p>Kramdown 处理器 介绍：<br>
+默认情况下，Jekyll为Kramdown使用GitHub Flavored Markdown（GFM）处理器。（指定输入：GFM很好，但是多余的。）<br>
+GFM支持几个额外的Kramdown选项，由Kramdown解析器GFM记录。<br>
+这些选项可以直接在Kramdown Jekyll配置中使用，如下所示：</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">kramdown</span><span class="pi">:</span>
+  <span class="na">gfm_quirks</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">paragraph_end</span><span class="pi">]</span>
+
+<span class="s">这样的配置是多余的，因为 jekyll为其提供了默认的 GFM处理器</span>
+
+<span class="s">如果 不想使用 jekyll默认提供的处理器，可以这样做：</span>
+<span class="na">kramdown</span><span class="pi">:</span>
+  <span class="na">input</span><span class="pi">:</span> <span class="s">Kramdown</span>
+
+<span class="s">Kramdown文档中提供了Kramdowns解析器的文档。如果您使用的是Kramdown或GFM以外的Kramdown解析器，则需要为其添加gem。（也就是 安装gem依赖）</span>
+</code></pre></div></div>
+<p>如果 需要使用 kramdown 中的语法高亮，则 必须 安装 其gem依赖，命令如下：</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">bundle</span> <span class="n">add</span> <span class="n">kramdown</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">coderay</span>
+</code></pre></div></div>
+<p>然后，您可以在syntax_highlighter配置项中指定CodeRay，例如：</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">kramdown</span><span class="pi">:</span>
+  <span class="na">syntax_highlighter</span><span class="pi">:</span> <span class="s">coderay</span>
+</code></pre></div></div>
+<p>除了可以使用之外，还有其自己的配置选项，，可以作为syntax_highlighter_opts 配置项的值进行传递，如下所示：<br>
+(CodeRay支持几个自己的配置选项，这些选项记录在kramdown语法CodeRay文档中 <a href="https://github.com/kramdown/syntax-coderay"><code>去文档看看</code></a>)</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">kramdown</span><span class="pi">:</span>
+  <span class="na">syntax_highlighter</span><span class="pi">:</span> <span class="s">coderay</span>
+  <span class="na">syntax_highlighter_opts</span><span class="pi">:</span>
+    <span class="na">line_numbers</span><span class="pi">:</span> <span class="s">table</span>
+    <span class="na">bold_every</span><span class="pi">:</span> <span class="m">5</span>
+</code></pre></div></div>
+
+<p>Liquid 配置</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">liquid</span><span class="pi">:</span>
+  <span class="na">error_mode</span><span class="pi">:</span> <span class="s">strict</span>
+  <span class="na">strict_variables</span><span class="pi">:</span> <span class="no">true</span>
+  <span class="na">strict_filters</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+<p>如上所述进行配置将停止生成/服务，并调用有问题的错误并停止。当您希望通过停止构建或服务过程来发现与液体相关的问题，<br>
+并允许您处理任何问题时，这是很有帮助的。</p>
+
+<p>帖子 摘录<br>
+在前事项中添加：excerpt_separator: <!--more--> 可以指定 摘录部分<br>
+默认：分隔是<!--more-->，所以可以通过 excerpt_separator 指定</p>
+
+<p>可以通过：post.excerpt 来使用</p>
+
+<p>为静态文件添加front matter变量：</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">defaults</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
+      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">assets/img"</span>
+    <span class="na">values</span><span class="pi">:</span>
+      <span class="na">image</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+</code></pre></div></div>
+<p>当你建立你的网站时，输出会列出每个符合这个front matter 条件的文件的路径。</p>
+
+</div>
+          </div>
+          <div class="carousel-item w-100 h-100 ">
+            <div class="carousel-item-content w-100 border-top border-1 overflow-y-auto scrollbar scrollbar-blue app-main-content-doc-content doc-jekyll-style doc-jekyll-navbar-content" style="height: calc(100% - 1px);">
+<h1 id="jekyll框架">Jekyll框架</h1>
+<h2 id="目录">目录</h2>
+<h3 id="一jekyll基础">一.jekyll基础</h3>
+
+<p><a href="/jekyll-blog/articles/jekyll" title="去学习基础知识"><code>学习基础知识</code></a></p>
+
+<h3 id="二深入学习jekyll">二.深入学习jekyll</h3>
+
+<p><a href="/jekyll-blog/articles/jekyll/jekyll_deep" title="jekyll深入了解"><code>jekyll深入了解</code></a></p>
+
+<h3 id="三案例介绍">三.案例介绍</h3>
+
+<p><a href="/jekyll-blog/articles/jekyll/jekyll_example" title="案例介绍"><code>案例讲解</code></a></p>
 </div>
           </div>
           </div>
@@ -25106,12 +26169,12 @@ You can also create your own filters using plugins.
           </div>
         <div class="carousel-inner w-100 h-100" style="padding-top: 32px;">
           <div class="carousel-item w-100 h-100 active">
-            <div class="carousel-item-content w-100 border-top border-1 overflow-y-auto scrollbar scrollbar-blue app-main-content-doc-content doc-posts-style" style="height: calc(100% - 1px);">
+            <div class="carousel-item-content w-100 border-top border-1 overflow-y-auto scrollbar scrollbar-blue app-main-content-doc-content doc-posts-style doc-posts-jekyll-content" style="height: calc(100% - 1px);">
 <h1 id="jekyll-post1">jekyll post1</h1>
 </div>
           </div>
           <div class="carousel-item w-100 h-100 ">
-            <div class="carousel-item-content w-100 border-top border-1 overflow-y-auto scrollbar scrollbar-blue app-main-content-doc-content doc-posts-style" style="height: calc(100% - 1px);">
+            <div class="carousel-item-content w-100 border-top border-1 overflow-y-auto scrollbar scrollbar-blue app-main-content-doc-content doc-posts-style doc-posts-jekyll-content" style="height: calc(100% - 1px);">
 <p>jekyll post2</p>
 </div>
           </div>

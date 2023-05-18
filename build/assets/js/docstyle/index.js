@@ -29,8 +29,6 @@
         // 对文档中，第一个h1，将其设定为 文档标题，为其添加 .doc-content-title类(该类表示 该文档的标题)
         if(doc_container_first_element_tagname == "h1"){
             doc_container_first_element.classList.add("doc-content-title")
-            // 并将其 id属性设置为 doc-content-title ，便于其他地方使用
-            doc_container_first_element.setAttribute("id","doc-content-title")
         }
     }
     // 获取所有h1-h6标签，并不对含有.doc-content-title的h1进行处理
@@ -184,7 +182,7 @@
                     // 逻辑分析：
                     // 无论关键字的个数是2或3，都需要先跳转至对应的文章类别 ，如果个数为3，在跳转至对应的文章类别之后，还需跳转至对应的文章
                     // 但，如果本身就在该文章类别中，个数为2时，啥也不需要做
-                    // 个数为3时，只需跳转至对应文章，其中本身也在对应文章时，这时需要将href属性设置为 #doc-content-title 将页面推至顶端
+                    // 个数为3时，只需跳转至对应文章，其中本身也在对应文章时，这时需要将href属性设置为 当前页面,然后通过让标题处于可视区域即可将页面推至顶端
                     // 实现步骤：
                     // 将 a标签中的href属性值对应的路径关键字数组的第二个路径与当前文档类别做比较，
                     // (1).如果一致，则代表该a标签的目的为  在路径关键字列表中，长度为2时，该目的为：无任何操作 只需在长度为3时，进行 切换文档判断
@@ -197,27 +195,29 @@
                             // 判断 需要切换的文档名称与当前文档名称是否一致
                             if(doc_container_all_link_element_href_keylist[2] == current_activate_article_doc_element_name){
                                 // 一致时，将页面推至顶端
-                                // 但,如果该功能已经启动,则直接return(通过 enable_doc_content_container_scrollspy类名 有无进行判断)
-
-
-                                // 将页面推至顶端，即：将href的值设置为：#doc-content-title 并将内容容器添加一些属性和类名即可
-                                doc_container_all_a_element.setAttribute("href","#doc-content-title")
+                                // 首先将当前元素的href进行移除
+                                doc_container_all_link_element.removeAttribute("href")
                                 // 获取 文档内容容器元素
-                                let doc_content_container_element = document.querySelector(".doc-"+doc_container_all_link_element_href_keylist[1]+"-style")
-                                // 为该容器元素添加一些属性
-                                doc_content_container_element.setAttribute("data-bs-spy","scroll")
-                                doc_content_container_element.setAttribute("data-bs-target",doc_content_container_element)
-                                doc_content_container_element.setAttribute("data-bs-smooth-scroll","true")
-                                doc_content_container_element.setAttribute("tabindex","0")
-                                // 添加当前元素进行启动该功能的标识类名 默认: enable_doc_content_container_scrollspy
-                                doc_content_container_element.classList.add("enable_doc_content_container_scrollspy")
-                                // 并设置两秒之后，将这些属性和类名都移除
+                                let doc_content_container_element = document.querySelector(".doc-"+doc_container_all_link_element_href_keylist[1]+"-"+doc_container_all_link_element_href_keylist[2]+"-content")
+                                // 将内容容器添加 已启动类名以辨别启动状态,防止多次点击而出现错误 
+                                // (1).首先 判断 是否已点击该 a标签元素 通过 类名 enable-article-doc-content 辨别
+                                if(doc_content_container_element.classList.contains("enable-article-doc-content")){
+                                    return
+                                }
+                                // (2).添加当前元素进行启动该功能的标识类名 默认: enable-article-doc-content
+                                doc_content_container_element.classList.add("enable-article-doc-content")
+                                // 使用 scrolltoview方法,将页面推至顶端 ,即让 标题处于可见区域
+                                // 获取标题元素
+                                let doc_content_container_doc_content_title_element = document.querySelector(".doc-"+doc_container_all_link_element_href_keylist[1]+"-"+doc_container_all_link_element_href_keylist[2]+"-content>.doc-content-title")
+                                doc_content_container_doc_content_title_element.scrollIntoView({ behavior: "smooth", block: "start" })
+                                // 并设置两秒之后，将启动类名和相关title href处理都移除或还原
                                 setTimeout(() => {
-                                    doc_content_container_element.setAttribute("data-bs-spy","scroll")
-                                    doc_content_container_element.setAttribute("data-bs-target",doc_content_container_element)
-                                    doc_content_container_element.setAttribute("data-bs-smooth-scroll","true")
-                                    doc_content_container_element.setAttribute("tabindex","0")
-                                    doc_content_container_element.classList.add("enable_doc_content_container_scrollspy")
+                                    // 移除 启动标识类名
+                                    doc_content_container_element.classList.remove("enable-article-doc-content")
+                                    // 还原 href title 相关设置
+                                    doc_container_all_link_element.setAttribute("href",doc_container_all_link_element_href)
+                                    doc_container_all_link_element.setAttribute("title",doc_container_all_link_element_title?doc_container_all_link_element_title:doc_container_all_link_element_href.split("/").slice(1).join(" >> "))
+                                    doc_container_all_link_element.classList.remove("doc-content-a-disabled")
                                 }, 2000);
                                 return
                             }else{
@@ -306,8 +306,78 @@
         if(!doc_container_all_highlighter_element_classlist.contains("doc-content-highlighter")){
             doc_container_all_highlighter_element.classList.add("doc-content-highlighter")
         }
-        if(!doc_container_all_highlighter_element_classlist.contains("highlight-default")){
-            doc_container_all_highlighter_element.classList.add("highlight-default")
+        // 不同主题下,默认选择: light中使用default  dark中使用monokai
+        // 通过判断当前app页面的 主题来决定(此外,还需在用户点击切换主题按钮的时候,需要进行 也需要根据主题更换)
+        // 获取app元素
+        let app_element = document.querySelector("#app")
+        let app_element_theme = app_element.getAttribute("data-bs-theme")
+        if(app_element_theme == "light"){
+            if(!doc_container_all_highlighter_element_classlist.contains("highlight-default")){
+                doc_container_all_highlighter_element.classList.add("highlight-default")
+            }
+        }else{
+            if(!doc_container_all_highlighter_element_classlist.contains("highlight-monokai")){
+                doc_container_all_highlighter_element.classList.add("highlight-monokai")
+            }
+        }
+        
+        // 为了 便于用户复制代码,对 该元素添加 user-select-all 类名
+        if(!doc_container_all_highlighter_element_classlist.contains("user-select-all")){
+            doc_container_all_highlighter_element.classList.add("user-select-all")
+        }
+    }
+
+    // 获取所有内容中子元素中的pre元素
+    let doc_container_all_childern_pre_elements = document.querySelectorAll(".app-main-content-doc-content>pre")
+    // 为这些元素添加 .doc-content-pre 类名 以及 滚动条样式
+    for(let doc_container_all_childern_pre_element of doc_container_all_childern_pre_elements){
+        if(!doc_container_all_childern_pre_element.classList.contains("doc-content-pre")){
+            doc_container_all_childern_pre_element.classList.add("doc-content-pre")
+        }
+        if(!doc_container_all_childern_pre_element.classList.contains("scrollbar")){
+            doc_container_all_childern_pre_element.classList.add("scrollbar")
+        }
+    }
+
+    // 获取所有 blockquote 元素
+    let doc_container_all_childern_blockquote_elements = document.querySelectorAll(".app-main-content-doc-content>blockquote")
+    // 为这些元素添加 .doc-content-blockquote 类名 并且还需添加 bg-body-secondary mb-2 的样式
+    for(let doc_container_all_childern_blockquote_element of doc_container_all_childern_blockquote_elements){
+        if(!doc_container_all_childern_blockquote_element.classList.contains("doc-content-blockquote")){
+            doc_container_all_childern_blockquote_element.classList.add("doc-content-blockquote")
+        }
+        if(!doc_container_all_childern_blockquote_element.classList.contains("bg-body-secondary")){
+            doc_container_all_childern_blockquote_element.classList.add("bg-body-secondary")
+        }
+        if(!doc_container_all_childern_blockquote_element.classList.contains("mb-2")){
+            doc_container_all_childern_blockquote_element.classList.add("mb-2")
+        }
+    }
+    // 并对其含有 .doc-content-blockquote 类名元素所有子代元素的blockquote添加 mb-0 ps-1 bg-body-secondary p标签添加 mb-0 ps-1 text-bg-light
+    // 获取所有 blockquote 元素中子代元素 blockquote标签
+    let doc_container_all_childern_blockquote_element_blockquotes = document.querySelectorAll(".app-main-content-doc-content>blockquote.doc-content-blockquote blockquote")
+    for(let doc_container_all_childern_blockquote_element_blockquote of doc_container_all_childern_blockquote_element_blockquotes){
+        if(!doc_container_all_childern_blockquote_element_blockquote.classList.contains("mb-0")){
+            doc_container_all_childern_blockquote_element_blockquote.classList.add("mb-0")
+        }
+        if(!doc_container_all_childern_blockquote_element_blockquote.classList.contains("ps-1")){
+            doc_container_all_childern_blockquote_element_blockquote.classList.add("ps-1")
+        }
+        if(!doc_container_all_childern_blockquote_element_blockquote.classList.contains("bg-body-secondary")){
+            doc_container_all_childern_blockquote_element_blockquote.classList.add("bg-body-secondary")
+        }
+    }
+    // 获取所有 blockquote 元素中子代元素 p标签
+    let doc_container_all_childern_blockquote_element_ps = document.querySelectorAll(".app-main-content-doc-content>blockquote.doc-content-blockquote p")
+    for(let doc_container_all_childern_blockquote_element_p of doc_container_all_childern_blockquote_element_ps){
+        if(!doc_container_all_childern_blockquote_element_p.classList.contains("mb-0")){
+            doc_container_all_childern_blockquote_element_p.classList.add("mb-0")
+        }
+        if(!doc_container_all_childern_blockquote_element_p.classList.contains("ps-1")){
+            doc_container_all_childern_blockquote_element_p.classList.add("ps-1")
+        }
+        if(!doc_container_all_childern_blockquote_element_p.classList.contains("text-bg-light")){
+            doc_container_all_childern_blockquote_element_p.classList.add("text-bg-light")
         }
     }
 }

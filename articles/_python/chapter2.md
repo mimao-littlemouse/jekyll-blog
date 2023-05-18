@@ -1,5 +1,4 @@
 ---
-label: chapter2
 index: 1
 text: python2
 ---

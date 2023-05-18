@@ -36,3 +36,33 @@
     cursor: not-allowed;
     opacity: 0.6;
 }
+
+// 高亮模块 的样式
+// (1)默认语言的高亮模块 样式
+.doc-content-pre{
+    margin: 6px 10px 6px 4px;
+    padding-left: 6px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+}
+// (2)其他语言的高亮模块 样式
+div.doc-content-highlighter{
+    margin: 6px 10px 6px 4px;
+    padding-left: 6px;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    >div.highlight{
+        pre.highlight{
+            margin-bottom: 0px;
+        }
+    }
+}
+
+
+// 代码块模块 的样式
+blockquote.doc-content-blockquote{
+    margin: 6px 10px 6px 4px;
+    padding-left: 6px;
+    border: 1px solid lightblue;
+    border-radius: 3px;
+}

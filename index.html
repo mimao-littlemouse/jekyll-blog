@@ -15,7 +15,7 @@ layout: app
   </div>
   <div class="col-1 col-md-2 col-lg-1 px-1 px-md-0 d-flex user-select-none fs-5"
     title="light or dark">
-    <i id="app-header-light-dark-button" class="btn btn-outline-dark p-0 bi bi-brightness-high d-block m-auto align-self-center" style="width: 32px;height:32px;line-height: 32px;"></i>
+    <i id="app-header-light-dark-button" class="btn btn-outline-dark p-0 bi bi-brightness-high d-block m-auto align-self-center" style="width: 32px;"></i>
   </div>
 </div>
 <!-- --- 中间主体内容部分 --- -->
@@ -77,7 +77,7 @@ layout: app
         <div class="carousel-inner w-100 h-100" style="padding-top: 32px;">
           {% for doc in article_docs -%}
           <div class="carousel-item w-100 h-100 {% if forloop.index0 == 0 -%}active{% endif -%}">
-            <div class="carousel-item-content w-100 border-top border-1 overflow-y-auto scrollbar scrollbar-blue app-main-content-doc-content doc-{{- article.label -}}-style"
+            <div class="carousel-item-content w-100 border-top border-1 overflow-y-auto scrollbar scrollbar-blue app-main-content-doc-content doc-{{- article.label -}}-style doc-{{- article.label -}}-{{- doc.title | downcase  -}}-content"
               style="height: calc(100% - 1px);">
               {{- doc.content -}}
             </div>
