@@ -28,5 +28,11 @@
 }
 // 定义 a 元素，目前不对其进行处理，直接进行禁用（直接不进行显示）
 .doc-content-a{
-    display: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+// 定义 a 元素的不可点击状态
+.doc-content-a-disabled{
+    cursor: not-allowed;
+    opacity: 0.6;
 }

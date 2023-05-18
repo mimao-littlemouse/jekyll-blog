@@ -8,14 +8,14 @@ layout: app
   <div class="col-1 col-md-2 col-lg-1 px-1 px-md-0 d-flex user-select-none fs-5"
     title="Mi Mao just want you to be comfortable!">
     <span class="d-none d-md-block mx-auto align-self-center">Mi Mao</span>
-    <i class="bi bi-card-list d-block d-md-none mx-auto align-self-center" style="width: 32px;height:32px;"></i>
+    <i class="bi bi-card-list d-block d-md-none mx-auto align-self-center text-center" style="width: 32px;height:32px;"></i>
   </div>
   <div class="col-10 col-md-8 col-lg-10 px-0 d-flex">
     <span class="d-block my-auto mx-auto user-select-none fw-light">米猫博客</span>
   </div>
   <div class="col-1 col-md-2 col-lg-1 px-1 px-md-0 d-flex user-select-none fs-5"
     title="light or dark">
-    <i id="app-header-light-dark-button" class="btn btn-outline-dark p-0 bi bi-brightness-high d-block m-auto align-self-center" style="width: 32px;height:32px;"></i>
+    <i id="app-header-light-dark-button" class="btn btn-outline-dark p-0 bi bi-brightness-high d-block m-auto align-self-center" style="width: 32px;height:32px;line-height: 32px;"></i>
   </div>
 </div>
 <!-- --- 中间主体内容部分 --- -->
@@ -31,11 +31,15 @@ layout: app
       <div id="{{- article.label -}}-tab-{{- article.index -}}"
       class="nav-tab-loading nav-link p-0 d-flex {% if forloop.index0 == 0 -%}active{% endif -%}"
       style="min-width: 48px;min-height: 30px;border-radius: 0px;" data-bs-target="#{{- article.label -}}-content-{{- article.index -}}" data-bs-toggle="pill"
-      type="button" role="tab" aria-controls="{{- article.label -}}-content-{{- article.index -}}" aria-selected="{% if article.label==0 -%}true{%
+      type="button" role="tab" aria-controls="{{- article.label -}}-content-{{- article.index -}}" aria-selected="{% if forloop.index0 == 0 -%}true{%
       endif -%}">
         <span class="d-block d-sm-none d-md-block mx-auto align-self-center" style="font-size: 12px;">{{- article.text
           -}}</span>
-        <i class="bi bi-123 d-none d-sm-block d-md-none mx-auto align-self-center text-body"></i>
+        {% if article.icon == "" -%}
+        <img class="d-none d-sm-block d-md-none mx-auto align-self-center" style="height:24px;" src="assets/imgs/{{- article.label -}}.png" alt="{{- article.label -}}" title="{{- article.label -}}">
+        {% else -%}
+        <i class="bi bi-{{- article.icon }} d-none d-sm-block d-md-none mx-auto align-self-center text-body" title="{{- article.label -}}"></i>
+        {% endif -%}
       </div>
     </div>
     {% endfor -%}
@@ -50,20 +54,22 @@ layout: app
       endif %} w-100 h-100" role="tabpanel" aria-labelledby="{{- article.label -}}-tab-{{- article.index -}}"
       tabindex="0">
       <!-- 使用轮播 来展示每一个类型的博客中不同章节  -->
+      <!-- 其中，因为该id属性中含有不确定因素的index值，为了减少耦合，提升高效性，为该元素添加 article-\{\{- article.label -\}\}-doc 来辨识该元素，用于其他当前文章激活元素 -->
       <div id="{{- article.label -}}-carousel-{{- article.index -}}"
-        class="carousel slide w-100 h-100 bg-body-tertiary">
+        class="article-{{- article.label -}}-doc carousel slide w-100 h-100 bg-body-tertiary">
         <div class="carousel-indicators w-100 m-0 d-flex justify-content-start align-items-center scrollbar scrollbar-hidden bg-body-tertiary"
           style="top:1px;height:30px;">
           <!-- 轮播图中的指示点 集合 -->
           <!-- 定义 文章中一系列文档（接受 按index排序后的系列文档） -->
           {% assign article_docs = article.docs -%}
           {% for doc in article_docs -%}
+          <!-- 其中，为了在获取doc所有名称时，减少耦合，提升高效性，为所有doc盗汗按钮元素添加 doc-carousel-indicators-navbtn 来辨识按钮元素，用于获取所有按钮名称 -->
           <div data-bs-target="#{{- article.label -}}-carousel-{{- article.index -}}"
             data-bs-slide-to="{{- forloop.index0 -}}"
-            class="{% if forloop.index0 == 0 -%}active{% endif %} border-0 flex-shrink-0 text-center"
+            class="doc-carousel-indicators-navbtn {% if forloop.index0 == 0 -%}active{% endif %} border-0 flex-shrink-0 text-center"
             style="width: 80px;height:25px;line-height: 25px;font-size:12px;text-indent: 0px;background-color: transparent;"
             aria-current="{% if forloop.index0 == 0 -%}true{% else %}false{% endif %}"
-            aria-label="Slide {{- forloop.index0 -}}">
+            aria-label="Slide {{- forloop.index0 -}}" data-doc-title="{{- doc.title -}}">
             {{- doc.text -}}
           </div>
           {% endfor -%}
