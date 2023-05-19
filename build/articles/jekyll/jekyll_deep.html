@@ -1,10 +1,16 @@
 <h1 id="jekyll深入了解">jekyll深入了解</h1>
+
 <h2 id="返回目录"><a href="/jekyll-blog/articles/jekyll/navbar"><code>返回目录</code></a></h2>
+
 <h3 id="content"><code>深入了解jekyll</code></h3>
 <ul>
   <li><a href="#content" title="指南"><strong><code>Guides</code></strong></a>指南：<br />
-<a href="#content-plugins" title="插件"><code>Plugins</code></a>插件、<a href="#content-blog_migrations" title="博客迁移"><code>Blog Migrations</code></a>博客迁移、<a href="#content-upgrading" title="升级"><code>Upgrading</code></a>升级、<a href="#content-deployment" title="部署"><code>Deployment</code></a>部署<br />
-***</li>
+<a href="#content-plugins" title="插件"><code>Plugins</code></a>插件、<a href="#content-blog_migrations" title="博客迁移"><code>Blog Migrations</code></a>博客迁移、<a href="#content-upgrading" title="升级"><code>Upgrading</code></a>升级、<a href="#content-deployment" title="部署"><code>Deployment</code></a>部署</li>
+</ul>
+
+<hr />
+
+<ul>
   <li><a href="#content" title="构建"><strong><code>Build</code></strong></a>构建：<br />
 <a href="#content-command_line_usage" title="命令行用法"><code>Command Line Usage</code></a>命令行用法、<a href="#content-configuration" title="配置"><code>Configuration</code></a>配置、<a href="#content-rendering_process" title="渲染过程"><code>Rendering Process</code></a>渲染过程<br />
 ***</li>
@@ -12,8 +18,10 @@
 
 <h3 id="content-guides"><strong><code>Guides 指南</code></strong></h3>
 <p><a href="#content"><code>返回大纲</code></a> | <a href="#content-build"><code>Build 构建</code></a></p>
+
 <h4 id="content-plugins">Plugins 插件</h4>
 <p><a href="#content">目录</a> | <a href="#content-blog_migrations">下</a></p>
+
 <pre><code class="language-txt">Jekyll has a plugin system with hooks that allow you to create custom generated content specific to your site. 
 You can run custom code for your site without having to modify the Jekyll source itself.
 </code></pre>
@@ -23,6 +31,7 @@ You can run custom code for your site without having to modify the Jekyll source
 <pre><code class="language-txt">You can add specific plugins to the whitelist key in _config.yml to allow them to run in safe mode.
 </code></pre>
 <p><strong>您可以在_config.yml中的白名单密钥中添加特定的插件，以允许它们在安全模式下运行。</strong></p>
+
 <pre><code class="language-txt">Installation - How to install plugins
 Your first plugin - How to write plugins
 Generators - Create additional content on your site
@@ -45,6 +54,7 @@ Hooks - 细粒度控制以扩展构建过程</p>
 
 <h4 id="content-blog_migrations">Blog Migrations 博客迁移</h4>
 <p><a href="#content-plugins">上</a> | <a href="#content-upgrading">下</a></p>
+
 <pre><code class="language-txt">If you’re switching to Jekyll from another blogging system, Jekyll’s importers can help you with the move. 
 To learn more about importing your site to Jekyll, visit our jekyll-import docs site.
 </code></pre>
@@ -55,6 +65,7 @@ To learn more about importing your site to Jekyll, visit our jekyll-import docs 
 
 <h4 id="content-upgrading">Upgrading 升级</h4>
 <p><a href="#content-blog_migrations">上</a> | <a href="#content-deployment">下</a></p>
+
 <pre><code class="language-txt">Upgrading from an older version of Jekyll? 
 Upgrading to a new major version of Jekyll (e.g. from v2.x to v3.x) may cause some headaches. 
 Take the following guides to aid your upgrade:
@@ -62,6 +73,7 @@ Take the following guides to aid your upgrade:
 <p>从旧版本的Jekyll升级？<br />
 升级到Jekyll的新主要版本（例如从v2.x升级到v3.x）可能会引起一些头痛。<br />
 请参阅以下指南以帮助您升级：</p>
+
 <pre><code>From 0.x to 1.x and 2.x
 From 2.x to 3.x
 From 3.x to 4.x
@@ -90,6 +102,7 @@ The procedure is similar if you use the github-pages gem.
 
 <h4 id="content-deployment">Deployment 部署</h4>
 <p><a href="#content-upgrading">上</a> | <a href="#content-build">下</a></p>
+
 <pre><code class="language-txt">Sites built using Jekyll can be deployed in a large number of ways due to the static nature of the generated output. 
 Here’s some of the most common ways:
 Manually
@@ -106,20 +119,24 @@ Third Party 第三方</p>
 
 <h3 id="content-build"><strong><code>Build 构建</code></strong></h3>
 <p><a href="#content"><code>返回大纲</code></a> | <a href="#content-command_line_usage">下</a></p>
+
 <h4 id="content-command_line_usage">Command Line Usage  命令行用法</h4>
 <p><a href="#content">目录</a> | <a href="#content-guides">Guides 指南</a> | <a href="#content-configuration">下</a></p>
+
 <pre><code class="language-txt">The Jekyll gem makes a jekyll executable available to you in your terminal.
 
 The jekyll program has several commands but the structure is always:
 </code></pre>
 <p>Jekyll gem使您可以在终端中使用Jekyll可执行文件。<br />
 jekyll程序有几个命令，但其结构始终是：</p>
+
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll <span class="nb">command</span> <span class="o">[</span>argument] <span class="o">[</span>option] <span class="o">[</span>argument_to_option]
 
 Examples:
     jekyll new site/ <span class="nt">--blank</span>
     jekyll serve <span class="nt">--config</span> _alternative_config.yml
 </code></pre></div></div>
+
 <pre><code class="language-txt">Typically you’ll use jekyll serve while developing locally and jekyll build when you need to generate the site for production.
 
 For a full list of options and their argument, see Build Command Options.
@@ -212,6 +229,7 @@ Here are some of the most common commands:
 <hr />
 <h4 id="content-configuration">Configuration  配置</h4>
 <p><a href="#content-command_line_usage">上</a> | <a href="#content-rendering_process">下</a></p>
+
 <pre><code class="language-txt">Jekyll gives you a lot of flexibility to customize how it builds your site. 
 These options can either be specified in a _config.yml or _config.toml file placed in your site’s root directory, 
 or can be specified as flags for the jekyll executable in the terminal.
@@ -238,10 +256,13 @@ Markdown选项<br />
 Liquid选项<br />
 Sass/SCSS选项<br />
 Webrick选项<br />
-增量再生<br />
-***</p>
+增量再生</p>
+
+<hr />
+
 <h4 id="content-rendering_process">Rendering Process  渲染过程</h4>
 <p><a href="#content-configuration">上</a></p>
+
 <pre><code class="language-txt">For any Jekyll site, a build session consists of discrete phases in the following order
 — setting up plugins, reading source files, running generators, rendering templates, and finally writing files to disk.
 

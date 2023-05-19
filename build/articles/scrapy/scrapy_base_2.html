@@ -1,0 +1,25 @@
+<h1 id="scrapy基础知识-下篇">scrapy基础知识 下篇</h1>
+
+<p>1.一个scrapy项目，可用有多个子项目：（即：一个scrapy项目的根目录，可用有多个项目进行共享）<br />
+通过配置scrapy.conf 中的 settings配置项中，进行配置：<br />
+默认情况下：<br />
+[settings]<br />
+default = myproject.settings<br />
+设置配置：<br />
+[settings]<br />
+default = myproject1.settings	#设置默认的项目<br />
+project1 = myproject1.settings	#设置项目1的别名<br />
+project2 = myproject2.settings #设置项目2的别名<br />
+注意：<br />
+设置完之后，项目的运行，默认是按default项目进行运行，所以，可用使用下面命令更改默认设置：<br />
+(在终端中，运行下面命令)</p>
+<blockquote>
+  <blockquote>
+    <p>scrapy settings --get BOT_NAME<br />
+Project 1 Bot<br />
+export SCRAPY_PROJECT=project2<br />
+scrapy settings --get BOT_NAME<br />
+Project 2 Bot</p>
+  </blockquote>
+</blockquote>
+

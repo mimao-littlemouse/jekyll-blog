@@ -1,0 +1,87 @@
+<h1 id="打开-控制台练习-scrapy获取数据的方式">打开 控制台练习 scrapy获取数据的方式</h1>
+
+<p>1.学习如何使用Scrapy提取数据的最佳方法是使用ScrapyShell尝试选择器 进行运行提取<br />
+例如：scrapy shell ‘https://quotes.toscrape.com/page/1/’  <br />
+(注意：在命令行中运行ScrapyShell时，请记住始终将URL括在引号中，否则包含参数（即&amp;符号）的URL将不起作用<br />
+在python中可以用双引号和单引号 包含字符串，但在windows中，单引号是字符，只有双引号才能包含字符串，<br />
+所以，在windows中请改用双引号)<br />
+运行结果：<br />
+[ ... Scrapy log here ... ]<br />
+日期 时间 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://quotes.toscrape.com/page/1/&gt; (referer: None)<br />
+[s] Available Scrapy objects:<br />
+[s]   scrapy     scrapy module (contains scrapy.Request, scrapy.Selector, etc)<br />
+[s]   crawler    &lt;scrapy.crawler.Crawler object at 0x7fa91d888c90&gt;<br />
+[s]   item       {}<br />
+[s]   request    &lt;GET https://quotes.toscrape.com/page/1/&gt;<br />
+[s]   response   &lt;200 https://quotes.toscrape.com/page/1/&gt;<br />
+[s]   settings   &lt;scrapy.settings.Settings object at 0x7fa91d888c10&gt;<br />
+[s]   spider     &lt;DefaultSpider ‘default’ at 0x7fa91c8af990&gt;<br />
+[s] Useful shortcuts:<br />
+[s]   shelp()           Shell help (print this help)<br />
+[s]   fetch(req_or_url) Fetch request (or URL) and update local objects<br />
+[s]   view(response)    View response in a browser</p>
+<blockquote>
+  <blockquote>
+    <blockquote>
+
+      <p>使用shell，您可以尝试使用CSS和响应对象选择元素,例如：<br />
+response.css(‘title’)<br />
+结果为：<br />
+[<Selector xpath="descendant-or-self::title" data="&lt;title&gt;Quotes to Scrape&lt;/title&gt;">]
+或提取其中的文本：
+response.css('title::text').getall()
+结果为：
+['Quotes to Scrape']</Selector></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h1 id="使用-re正则表达式进行提取数据避免了getall-get都提取不了的情况">使用 re正则表达式进行提取数据，避免了getall() get()都提取不了的情况</h1>
+<p>2.介绍 get()  getall() （如果没有使用get getall re 这些方法，则还是一个Selector对象 也就是说还可以继续嵌套）<br />
+其实 response.get() 或 response.getall() 等，都是 response.selector.get() .getall()等的快捷书写方式<br />
+低版本中，get()是使用extract_first()  getall()是使用extract() ，而extract() extract_first() 两者都没有被弃用，都还可以使用，只是官方觉得get getall 更为简介<br />
+无论是Selector 还是SelectorList 去调用get getall 返回的结果类型一致（get还是返回第一个匹配字符串 getall 返回所有匹配的字符串列表）<br />
+(1).调用.get()的结果是一个字符串，选择器返回第一个结果，没有任何返回时，则会返回 None，也可以设置默认值,.get(default=”默认值”)<br />
+(2).调用.getall()的结果是一个列表，选择器可能返回多个结果，没有任何返回时，则会返回  [ ] (空列表)<br />
+(3).调用re() 正则表达式来 返回符合正则表达式的返回结果</p>
+
+<p>例如<br />
+1.get()方法：</p>
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p>response.css(‘title::text’).get()<br />
+有结果时：<br />
+‘返回的结果字符串’<br />
+没有结果时：<br />
+None<br />
+response.css(‘title::text’).get(default=’not-found’)<br />
+有结果时：<br />
+‘返回的结果字符串’<br />
+没有结果时：<br />
+‘not-found’<br />
+2.getall()方法：<br />
+response.css(‘title::text’).getall()   #不需要设置默认值，没有结果时，会默认返回空列表 [ ]<br />
+有结果时：<br />
+[’’,’’]  字符串列表<br />
+没有结果时：<br />
+[ ]</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>（注意：对于get()获取到的结果：可以通过 is None   is not None 来判断是否获取到数据 ）</p>
+
+<p>3.selector的attrib属性<br />
+可以使用Selector的.attrib属性查询属性，而不是xpath中使用例如’@src’的方式获取属性：</p>
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p>[img.attrib[‘src’] for img in response.css(‘img’)]<br />
+[‘image1_thumb.jpg’,’image2_thumb.jpg’]<br />
+作为快捷方式，.attrib也可以直接在SelectorList上使用；它返回第一个匹配元素的属性：<br />
+response.css(‘img’).attrib[‘src’]<br />
+‘image1_thumb.jpg’</p>
+    </blockquote>
+  </blockquote>
+</blockquote>

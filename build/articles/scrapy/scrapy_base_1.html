@@ -1,0 +1,210 @@
+<h1 id="scrapy基础知识-上篇">scrapy基础知识 上篇</h1>
+
+<p>1.创建scrapy项目<br />
+scrapy startproject myproject [project_dir]<br />
+注意：<br />
+这将在project_dir目录下创建一个Scrapy项目<br />
+如果未指定project_dir，project_dir将与myproject相同</p>
+
+<p>2.创建新的spider<br />
+格式：<br />
+scrapy genspider [-t template] <name> <domain or="" URL="">
+例如：
+scrapy genspider mydomain mydomain.com
+注意：
+(1).如果从项目内部调用，则在当前文件夹或当前项目的spider文件夹中创建新的spider
+＜name＞参数设置为spider的名称，而＜domain或URL＞用于生成allowed_domains和start_urls spider的属性
+(2). -t template的用法：如下 (在 终端中输入)</domain></name></p>
+<blockquote>
+  <blockquote>
+    <p>scrapy genspider -l<br />
+Available templates:<br />
+  basic<br />
+  crawl<br />
+  csvfeed<br />
+  xmlfeed</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>scrapy genspider example example.com<br />
+Created spider ‘example’ using template ‘basic’</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>scrapy genspider -t crawl scrapyorg scrapy.org<br />
+Created spider ‘scrapyorg’ using template ‘crawl’<br />
+注意：这只是一个基于预定义模板创建spider的快捷命令，<br />
+但肯定不是创建spider的唯一方法。您可以自己创建spider源代码 .py文件，而不用使用此命令</p>
+  </blockquote>
+</blockquote>
+
+<p>3.一些scrapy命令<br />
+(1).获取命令的帮助信息<br />
+scrapy genspider [-t template] <name> <domain or="" URL="">
+scrapy <command /> -h</domain></name></p>
+
+<p>(2).查看所有可用命令<br />
+scrapy -h</p>
+
+<p>4.全局命令<br />
+(1).startproject	scrapy startproject <project_name> [project_dir] 
+创建scrapy项目
+(2).genspider		 scrapy genspider [-t template] <name> <domain or="" URL=""> 
+创建新的spider
+使用预定义模板生成新蜘蛛
+(3).settings 15773110606
+获取设置值
+(4).runspider
+运行自包含的spider（不创建项目）
+(5).shell
+交互式scrapy控制台
+(6).fetch
+使用剪贴下载器获取URL
+(7).view
+在浏览器中打开URL，如Scrapy所示
+(8).version
+打印scrapy版本
+5.项目命令
+(1).crawl	运行spider程序
+(2).check	检查蜘蛛合同
+(3).list	列出可用spider
+(4).edit	编辑spider
+(5).parse	解析URL（使用其spider）并打印结果
+(6).bench 	运行快速基准测试
+(7).fetch 	使用spider下载器获取URL
+运行快速基准测试
+5.1命令介绍
+爬取spider (命令：crawl )
+开始用crawl进行爬取
+scrapy crawl <spider>
+支持的选项：
+-h、 --help：显示帮助消息并退出
+-a NAME=VALUE：设置spider参数（可以重复使用该选项，例如: -a tag='humer' -a url='demain.com' ....等等）
+--output FILE或-o FILE：将scrapy的项目附加到FILE的末尾（使用-表示stdout），以定义格式，在输出URI的末尾设置冒号（即-o FILE:format）
+--overwrite-output FILE或-O FILE：将scrapy项目转储到FILE中，覆盖任何现有文件，以定义格式，在输出URI的结尾设置冒号（即-O FILE:format）
+--output-format FORMAT或-t FORMAT：定义用于转储项的格式的方法已被弃用，不能与-O结合使用
+例如：</spider></domain></name></project_name></p>
+<blockquote>
+  <blockquote>
+    <p>scrapy crawl myspider<br />
+[ ... myspider starts crawling ... ]</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>scrapy -o myfile:csv myspider<br />
+[ ... myspider starts crawling and appends the result to the file myfile in csv format ... ]</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>scrapy -O myfile:json myspider<br />
+[ ... myspider starts crawling and saves the result in myfile in json format overwriting the original content... ]</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>scrapy -o myfile -t csv myspider<br />
+[ ... myspider starts crawling and appends the result to the file myfile in csv format ... ]</p>
+  </blockquote>
+</blockquote>
+
+<p>check命令（检查spider是否有语法错误）<br />
+scrapy check [-l] <spider>
+例如：</spider></p>
+<blockquote>
+  <blockquote>
+    <p>scrapy check -l<br />
+first_spider</p>
+    <ul>
+      <li>parse</li>
+      <li>parse_item<br />
+second_spider</li>
+      <li>parse</li>
+      <li>parse_item</li>
+    </ul>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>scrapy check<br />
+[FAILED] first_spider:parse_item</p>
+    <blockquote>
+      <p>‘RetailPricex’ field is missing</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>[FAILED] first_spider:parse</p>
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p>Returned 92 requests, expected 0..4</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>list命令（列出当前项目中所有可用的spider 输出是每行一个spider）<br />
+scrapy list<br />
+例如：</p>
+<blockquote>
+  <blockquote>
+    <p>scrapy list<br />
+spider1<br />
+spider2</p>
+  </blockquote>
+</blockquote>
+
+<p>edit命令<br />
+scrapy edit <spider>
+使用editor环境变量中定义的编辑器或（如果未设置）editor设置编辑给定的spider。
+该命令仅作为最常见情况下的快捷方式提供，开发人员可以自由选择任何工具或IDE来编写和调试spider。
+例如：
+ scrapy edit spider1</spider></p>
+
+<p>fetch命令<br />
+scrapy fetch <url>
+使用Scrapy下载器下载给定的URL，并将内容写入标准输出
+这个命令的有趣之处在于它获取页面，spider将如何下载它的页面：
+例如，如果spider具有覆盖USER AGENT的USER_AGENT属性，它将使用该属性。
+因此，该命令可用于“查看”spider如何获取特定页面。
+如果在项目外部使用，则不会应用特定的spider行为，
+它将只使用默认的Scrapy下载器设置。
+支持的选项：
+--spider=SPIDER：绕过spider自动检测和强制使用特定spider
+--headers：打印响应的HTTP头，而不是响应的正文
+--no-redirect：不遵循HTTP 3xx重定向（默认遵循它们）
+例如:</url></p>
+<blockquote>
+  <blockquote>
+    <p>scrapy fetch --nolog http://www.example.com/some/page.html<br />
+[ ... html content here ... ]</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>scrapy fetch --nolog --headers http://www.example.com/<br />
+{‘Accept-Ranges’: [‘bytes’],<br />
+ ‘Age’: [‘1263   ‘],<br />
+ ‘Connection’: [‘close     ‘],<br />
+ ‘Content-Length’: [‘596’],<br />
+ ‘Content-Type’: [‘text/html; charset=UTF-8’],<br />
+ ‘Date’: [‘Wed, 18 Aug 2010 23:59:46 GMT’],<br />
+ ‘Etag’: [‘“573c1-254-48c9c87349680”’],<br />
+ ‘Last-Modified’: [‘Fri, 30 Jul 2010 15:30:18 GMT’],<br />
+ ‘Server’: [‘Apache/2.2.3 (CentOS)’]}</p>
+  </blockquote>
+</blockquote>
+
+<p>parse命令</p>
+
+<p>bench</p>

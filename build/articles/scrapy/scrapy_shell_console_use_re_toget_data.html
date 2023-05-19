@@ -1,0 +1,19 @@
+<h1 id="re获取数据的方式">re获取数据的方式</h1>
+
+<p>1.使用re正则表达式提取数据 例如：（除了 re 还可以使用 getall get 提取数据）</p>
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p>response.css(‘title::text’).re(r’Quotes.*’)<br />
+[‘Quotes to Scrape’]<br />
+response.css(‘title::text’).re(r’Q\w+’)<br />
+[‘Quotes’]<br />
+response.css(‘title::text’).re(r’(\w+) to (\w+)’)<br />
+[‘Quotes’, ‘Scrape’]</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>2.介绍re()  re_first()<br />
+re()获取所有匹配的字符串 <br />
+re_first()获取第一个匹配的字符串</p>

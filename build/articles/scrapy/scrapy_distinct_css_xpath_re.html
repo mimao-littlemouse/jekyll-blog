@@ -1,0 +1,22 @@
+<h1 id="区分css-xpath-re-获取和处理数据的方式">区分css xpath re 获取和处理数据的方式</h1>
+
+<p>1.获取属性上：<br />
+css中：::attr(name)<br />
+xpath中:  @name<br />
+(name 代表属性名称)</p>
+
+<p>2.re 与 css 、xpath提取数据的时候，是否能嵌套<br />
+css xpath在使用get() getall() re()之前，都能嵌套，使用之后，便不能进行嵌套<br />
+（使用它们之后，返回的结果都不再是 Selector类型，get()返回的是字符串 getall()返回的是字符串列表 re()返回的是字符串列表）</p>
+
+<p>3.它们都可以相互使用，例如：css xpath</p>
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p>from scrapy import Selector<br />
+sel = Selector(text=’&lt;div class="hero shout"&gt;<time datetime="2014-07-23 19:00">Special date</time>&lt;/div&gt;’)<br />
+sel.css(‘.shout’).xpath(‘./time/@datetime’).getall()<br />
+[‘2014-07-23 19:00’]</p>
+    </blockquote>
+  </blockquote>
+</blockquote>

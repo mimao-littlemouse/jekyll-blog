@@ -80,9 +80,15 @@ function enableAppLightDarkThemeButtonClickEventListener() {
                 if (!doc_container_all_highlighter_element.classList.contains("highlight-default")) {
                     doc_container_all_highlighter_element.classList.add("highlight-default")
                 }
+                if (doc_container_all_highlighter_element.classList.contains("highlight-monokai")) {
+                    doc_container_all_highlighter_element.classList.remove("highlight-monokai")
+                }
             } else {
                 if (!doc_container_all_highlighter_element.classList.contains("highlight-monokai")) {
                     doc_container_all_highlighter_element.classList.add("highlight-monokai")
+                }
+                if (doc_container_all_highlighter_element.classList.contains("highlight-default")) {
+                    doc_container_all_highlighter_element.classList.remove("highlight-default")
                 }
             }
         }

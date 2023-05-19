@@ -1,0 +1,123 @@
+<h1 id="scrapy安装和使用">scrapy安装和使用</h1>
+
+<p>1.支持的python版本：<br />
+Scrapy需要Python 3.7+，要么是CPython实现（默认），要么是PyPy实现（请参阅替代实现）</p>
+
+<p>使用python进行安装，或其他方式安装<br />
+(个人喜欢使用python中的pip进行安装（并使用 virtualenv虚拟环境下进行安装）这也是强烈推荐的安装方式(在虚拟环境中安装))<br />
+（这样就可以最大程度上避免出现安装错误，并不会破环原本环境）<br />
+pip3 install scrapy</p>
+
+<p>注意：值得了解的事情<br />
+Scrapy是用纯Python编写的，它依赖于几个关键的Python包（其中包括）：<br />
+lxml，一种高效的XML和HTML解析器<br />
+parsel是一个基于lxml编写的HTML/XML数据提取库，<br />
+w3lib，用于处理URL和网页编码的多用途助手<br />
+twisted，一种异步网络框架<br />
+cryptography和pyOpenSSL，以满足各种网络级安全需求<br />
+其中一些软件包本身依赖于非Python软件包，这些软件包可能需要额外的安装步骤，具体取决于您的平台<br />
+如果出现与这些依赖项相关的任何问题，请参阅各自的安装说明：<br />
+lxml模块安装<br />
+cryptography模块安装</p>
+
+<p>2.在ubuntu中安装,前提是不使用python的时候，安装方式，如果 ubuntu中，已经有python virtualenv环境了，则于个人安装方式一致<br />
+Ubuntu 14.04 或 以上版本适用：<br />
+(ubuntu 14.04一下就不用考虑使用scrapy了，因为这也不可能)<br />
+要在Ubuntu（或基于Ubuntu的）系统上安装Scrapy，您需要安装这些依赖项：<br />
+sudo apt-get install python3 python3-dev python3-pip libxml2-dev libxslt1-dev zlib1g-dev libffi-dev libssl-dev<br />
+然后，再安装virtualenv virtualenvwrapper，这安装方法，可再csdn中查到<br />
+安装相关依赖后，则激活进入 virtualenv后，安装：<br />
+pip3 install scrapy</p>
+
+<p>3.创建项目<br />
+scrapy startproject 项目名称<br />
+使用命令，创建的目录如下：<br />
+项目名称/<br />
+	项目名称/		#project的Python模块，您将从这里导入代码<br />
+		<strong>init</strong>.py<br />
+		spiders/	#稍后放置spider的目录<br />
+			<strong>init</strong>.py<br />
+		items.py	#项目项定义文件<br />
+		middlewares.py	#项目中间件文件<br />
+		pipelines.py	#项目管道文件<br />
+		settings.py	#项目设置文件</p>
+
+<pre><code>scrapy.cfg		#部署配置文件
+</code></pre>
+
+<p>第一步，创建自己的spider<br />
+介绍：spider是你定义的类，Scrapy用来从网站（或一组网站）中抓取信息<br />
+它们必须将Spider子类化，并定义要发出的初始请求，<br />
+可选地，如何跟踪页面中的链接，以及如何解析下载的页面内容以提取数据。<br />
+操作：<br />
+在项目的目录下的spiders文件夹下，创建：要做爬取的数据或功能名称_spider.py 进行命名<br />
+（例如：quotes_spider.py 我要爬取名言有关的数据，则用quotes_spider.py进行命名（推荐这样做，当然自己可以随便起名字））<br />
+quotes_spider.py中的内容：</p>
+<h1 id="导入模块">导入模块</h1>
+<p>from pathlib import Path<br />
+import scrapy</p>
+<h1 id="书写spider类">书写spider类</h1>
+<p>class QuotesSpider(scrapy.Spider):<br />
+    name = “quotes”  # name：标识蜘蛛。它在项目中必须是唯一的，也就是说，不能为不同的蜘蛛设置相同的名称</p>
+
+<pre><code># start_requests（）：必须返回一个可迭代的请求（您可以返回一个请求列表或编写一个生成器函数）
+# Spider将从中开始爬网 后续请求将从这些初始请求中依次生成
+def start_requests(self):  
+    urls = [
+        'https://quotes.toscrape.com/page/1/',
+        'https://quotes.toscrape.com/page/2/',
+    ]	#存放需要请求的url地址列表
+    for url in urls:	#循环遍历每一个要请求的url地址
+        yield scrapy.Request(url=url, callback=self.parse)  #迭代的返回每一个请求的响应至parse
+
+# parse（）：一个将被调用以处理为每个请求下载的响应的方法
+# response参数是TextResponse的一个实例，它保存页面内容，并有其他有用的方法来处理它
+# parse（）方法通常解析响应，将抓取的数据提取为dict，还可以找到新的URL，并从中创建新的请求（Request）
+def parse(self, response):
+    page = response.url.split("/")[-2]  #根据url来获取页面名称
+    filename = f'quotes-{page}.html' #获取页面名称来作为文件名
+    Path(filename).write_bytes(response.body) #将获取到的内容存放至文件中
+    self.log(f'Saved file {filename}')   #输出打印日志
+</code></pre>
+
+<p>4.书写完之后，运行spider:<br />
+将目录切换到项目根目录下：<br />
+打开cmd或终端输入：scrapy crawl quotes  去运行spider<br />
+运行结果结构如下：<br />
+... (omitted for brevity)<br />
+日期 时间 [scrapy.core.engine] INFO: Spider opened # 这是spider运行开始的标志<br />
+日期 时间 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)<br />
+日期 时间 [scrapy.extensions.telnet] DEBUG: Telnet console listening on 127.0.0.1:6023<br />
+日期 时间 [scrapy.core.engine] DEBUG: Crawled (404) &lt;GET https://quotes.toscrape.com/robots.txt&gt; (referer: None)<br />
+日期 时间 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://quotes.toscrape.com/page/1/&gt; (referer: None)<br />
+日期 时间 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://quotes.toscrape.com/page/2/&gt; (referer: None)<br />
+日期 时间 [quotes] DEBUG: Saved file quotes-1.html	#这是打印的日志信息<br />
+日期 时间 [quotes] DEBUG: Saved file quotes-2.html  #这是打印的日志信息<br />
+日期 时间 [scrapy.core.engine] INFO: Closing spider (finished) # 这是spider运行结束的标志<br />
+...</p>
+
+<p>5.Scrapy调度Scrapy.Request对象，该对象由spider的start_requests方法返回。在接收到每个响应时，<br />
+它实例化response对象并调用与请求相关联的回调方法（在本例中为parse方法），将响应作为参数传递<br />
+(注意：您可以只定义一个带有URL列表的start_URLs类属性，<br />
+而不是实现一个从URL生成scrapy.Request对象的start_requests()方法<br />
+然后，start_requests()的默认实现将使用此列表为spider创建初始请求：)<br />
+即：（可以这样）</p>
+<h1 id="导入模块-1">导入模块</h1>
+<p>from pathlib import Path<br />
+import scrapy</p>
+
+<p>class QuotesSpider(scrapy.Spider):<br />
+    name = “quotes”<br />
+    # 就这样定义一个 start_urls属性即可（最简单的定义方式）<br />
+    # 也会调用parse()方法来处理这些URL的每个请求，即使我们没有明确告诉Scrapy这样做<br />
+    # 这是因为parse()是Scrapy的默认回调方法，在没有明确指定回调的请求时调用该方法<br />
+    start_urls = [<br />
+        ‘https://quotes.toscrape.com/page/1/’,<br />
+        ‘https://quotes.toscrape.com/page/2/’,<br />
+    ]</p>
+
+<pre><code>def parse(self, response):
+    page = response.url.split("/")[-2]
+    filename = f'quotes-{page}.html'
+    Path(filename).write_bytes(response.body)
+</code></pre>

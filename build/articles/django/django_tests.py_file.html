@@ -1,0 +1,107 @@
+<h1 id="django中的testspy介绍">django中的tests.py介绍</h1>
+
+<p>测试的格式，大致是：</p>
+<h1 id="-create-your-tests-here"># Create your tests here.</h1>
+<h1 id="1导入相关模块">1.导入相关模块</h1>
+<h1 id="from-djangotest-import-testcase-client">from django.test import TestCase, Client</h1>
+<h1 id="from-models-import-student">from .models import Student</h1>
+<h1 id="2创建一个-类名testcase的类继承testcase-并在类中书写setup-和-以test开头的方法的需要测试的方法-在最好虽然可以写teardown方法但不需要这样因为django会帮咱们做">2.创建一个 类名TestCase的类，继承TestCase 并在类中书写setup 和 以test开头的方法的需要测试的方法 在最好虽然可以写tearDown方法，但不需要这样，因为django会帮咱们做</h1>
+<h1 id="class-studenttestcasetestcase">class StudentTestCase(TestCase):</h1>
+<h1>”””</h1>
+<h1 id="3在student类中首先书写-setup进行初始化-进行测试的准备工作">3.在student类中，首先书写 setup进行初始化 进行测试的准备工作</h1>
+<h1 id="def-setupself用来初始化环境包括创建初始数据或做一些其他准备工作">def setUp(self)：用来初始化环境，包括创建初始数据，或做一些其他准备工作</h1>
+<h1 id="setup的功能可以对-模型student表进行添加数据添加的数据会放到一个临时的数据库中前提是-settings中的数据库已配置好">setUp的功能，可以对 模型student表进行添加数据，添加的数据会放到一个临时的数据库中，前提是 settings中的数据库已配置好</h1>
+<h1 id="4书写-需要进行测试的方法-可以通过-selfassertequal变量-值-提示内容-或-selfasserttruebool值需要print打印出来的信息--进行断言">4.书写 需要进行测试的方法 可以通过 self.assertEqual(变量, 值, 提示内容) 或 self.assertTrue(bool值,需要print打印出来的信息)  进行断言</h1>
+<h1 id="如果需要测试请求是否有问题则可以通过client--client-response--clientget-或-response--clientpostdata">如果需要测试请求是否有问题，则可以通过client = Client() response = client.get(‘/’) 或 response = client.post(‘/’,data)</h1>
+<h1 id="def-test_xxxselfxxx可以是任何东西以test_开头的方法都会被django认为是需要测试的方法跑测试时会被执行">def test_xxx(self)：xxx可以是任何东西，以test_开头的方法，都会被django认为是需要测试的方法，跑测试时会被执行</h1>
+<h1 id="注每个需要被测试的方法都是相互独立的">注：每个需要被测试的方法都是相互独立的</h1>
+<h1 id="def-teardownself跟setup相对用来清理测试环境和测试数据在django中可以不关心这个">def tearDown(self)：跟setUp相对，用来清理测试环境和测试数据（在django中可以不关心这个）</h1>
+<h1 id="-1">”””</h1>
+<h1 id="5例如">5.例如：</h1>
+<h1 id="def-setupself">def setUp(self):</h1>
+<h1 id="printsetup">print(‘setUp’)</h1>
+
+<h1 id="-需要进行测试的方法"># 需要进行测试的方法</h1>
+<h1 id="def-test_xxxself">def test_xxx(self):</h1>
+<h1 id="printtest_xxx">print(‘test_xxx’)</h1>
+<h1 id="selfassertequal变量-值-需要print打印出来的信息">self.assertEqual(变量, 值, 需要print打印出来的信息)</h1>
+
+<p>案例：<br />
+from django.test import TestCase, Client<br />
+from .models import Student</p>
+
+<p>class StudentTestCase(TestCase):<br />
+    “””<br />
+    def setUp(self)：用来初始化环境，包括创建初始数据，或做一些其他准备工作<br />
+    def test_xxx(self)：xxx可以是任何东西，以test_开头的方法，都会被django认为是需要测试的方法，跑测试时会被执行。<br />
+        注：每个需要被测试的方法都是相互独立的<br />
+    def tearDown(self)：跟setUp相对，用来清理测试环境和测试数据（在django中可以不关心这个）<br />
+    “””<br />
+    def setUp(self):<br />
+        print(‘setUp’)<br />
+        Student.objects.create(<br />
+            name=’stu1’,<br />
+            sex=1,<br />
+            email=’test1@qq.com’,<br />
+            qq=’333’,<br />
+            phone=’111’,<br />
+        )</p>
+
+<pre><code># 测试数据创建以及sex字段的正确展示
+def test_create_and_sex_show(self):
+    print('test_create_and_sex_show')
+    student = Student.objects.create(
+        name='huyang',
+        sex=1,
+        email='test2@qq.com',
+        profession='t1',
+        qq='123',
+        phone='test2123',
+    )
+    # django提供了get_xxx_display方法，可以替换sex_show
+    self.assertEqual(student.sex_show, '男', '性别字段内容跟展示不一样')
+    # self.assertEqual(student.get_sex_display, '男', '性别字段内容跟展示不一样')
+
+# 测试查询是否可用
+def test_filter(self):
+    print('test_filter')
+    Student.objects.create(
+        name='huyang',
+        sex=1,
+        email='testfilter@qq.com',
+        profession='t2',
+        qq='222',
+        phone='22322',
+    )
+    name = 'stu1'
+    students = Student.objects.filter(name=name)
+    self.assertEqual(students.count(), 1, '应该只存在一个名称为{}的记录'.format(name))
+
+# 测试首页的可用性
+def test_get_index(self):
+    print('test_get_index')
+    client = Client()
+    response = client.get('/')
+    self.assertEqual(response.status_code, 200, 'status code must be 200!')
+
+# 测试post请求
+def test_post_student(self):
+    print('test_post_student')
+    client = Client()
+    data = dict(
+        name='test_for_post',
+        sex=1,
+        email='333@dd.com',
+        profession='t2',
+        qq='2323',
+        phone='3222'
+    )
+    response = client.post('/', data)
+    self.assertEqual(response.status_code, 302, 'status code must be 302!')
+
+    response = client.get('/')
+    with open('temp.html', 'wb') as f:
+        f.write(response.content)
+    self.assertTrue(b'test_for_post' in response.content,
+                    'response content must contain `test_for_post`')
+</code></pre>
