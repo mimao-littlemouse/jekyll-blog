@@ -448,28 +448,48 @@ collections:
     icon: github # 右侧导航栏中的 图标名称（可在 Bootstrap5 图标库中选取名称）如果icon为""，icon的值将会被 集合文件夹名称覆盖
   jekyll: 
     <<: *collection_default_option
-    index: 2 
+    index: 2
     text: jekyll 
     icon: "" 
-  javascript: 
+  markdown: 
     <<: *collection_default_option
     index: 3
+    text: markdown 
+    icon: "markdown" 
+  bootstrap5: 
+    <<: *collection_default_option
+    index: 4
+    text: bootstrap5 
+    icon: "bootstrap" 
+  javascript: 
+    <<: *collection_default_option
+    index: 5
     text: javascript
     icon: ""
   python: 
     <<: *collection_default_option
-    index: 4
+    index: 6
     text: python
     icon: ""
   django: 
     <<: *collection_default_option
-    index: 5
+    index: 7
     text: django
     icon: ""
   scrapy: 
     <<: *collection_default_option
-    index: 6
+    index: 8
     text: scrapy
+    icon: ""
+  sqlite: 
+    <<: *collection_default_option
+    index: 9
+    text: sqlite
+    icon: ""
+  boa: 
+    <<: *collection_default_option
+    index: 10
+    text: boa
     icon: ""
   posts:
     index: 1000

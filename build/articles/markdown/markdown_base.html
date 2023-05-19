@@ -1,0 +1,386 @@
+<h1 id="markdown-标记语言">Markdown 标记语言</h1>
+<h4 id="目录">目录</h4>
+<p>一.<a href="#title_1">标题</a><br />
+二.<a href="#title_2">段落和换行</a><br />
+三.<a href="#title_3">文字粗体 斜体 粗体加斜体</a><br />
+四.<a href="#title_4">列表和引用以及转义标识和转义字符语法</a><br />
+五.<a href="#title_5">分割线和代码块</a><br />
+六.<a href="#title_6">链接和图片</a><br />
+七.<a href="#title_7">Markdown扩展语法</a></p>
+
+<hr />
+<h2 id="语法介绍">语法介绍</h2>
+<h5 id="书写符号与内容之间最好用空格隔开">(书写符号与内容之间，最好用空格隔开)</h5>
+<h3 id="title_1">一.标题</h3>
+<h4 id="1标题共有6级">(1)标题共有6级</h4>
+<ol>
+  <li>
+    <h5 id="一级标题-">一级标题 <code>#</code></h5>
+  </li>
+  <li>
+    <h5 id="二级标题-">二级标题 <code>##</code></h5>
+  </li>
+  <li>
+    <h5 id="三级标题-">三级标题 <code>###</code></h5>
+  </li>
+  <li>
+    <h5 id="四级标题-">四级标题 <code>####</code></h5>
+  </li>
+  <li>
+    <h5 id="五级标题-">五级标题 <code>#####</code></h5>
+  </li>
+  <li>
+    <h5 id="六级标题-">六级标题 <code>######</code></h5>
+    <h4 id="2效果">(2)效果</h4>
+    <h1 id="一级标题--1">一级标题 <code>#</code></h1>
+    <h2 id="二级标题--1">二级标题 <code>##</code></h2>
+    <h3 id="三级标题--1">三级标题 <code>###</code></h3>
+    <h4 id="四级标题--1">四级标题 <code>####</code></h4>
+    <h5 id="五级标题--1">五级标题 <code>#####</code></h5>
+    <h6 id="六级标题--1">六级标题 <code>######</code></h6>
+    <h4 id="3其他扩展">（3）其他扩展</h4>
+  </li>
+  <li>
+    <h5 id="一级标题">一级标题</h5>
+    <h6 id="在文字的下方添加--">在文字的下方添加 <code>= </code></h6>
+    <h6 id="-的数量可以是任意的但最少一个"><code>=</code> 的数量可以是任意的，但最少一个</h6>
+  </li>
+  <li>
+    <h5 id="二级标题">二级标题</h5>
+    <h6 id="在文字的下方添加---1">在文字的下方添加 <code>-</code></h6>
+    <h6 id="--的数量可以是任意的但最少一个"><code>-</code> 的数量可以是任意的，但最少一个</h6>
+    <hr />
+    <h3 id="title_2">二.段落和换行</h3>
+  </li>
+  <li>
+    <h4 id="段落">段落</h4>
+    <ul>
+      <li>要创建段落，请使用空白行 对文本进行分隔</li>
+      <li>不要用<code>空格</code>或<code>tab键</code>缩进段落</li>
+    </ul>
+  </li>
+  <li>
+    <h4 id="换行">换行</h4>
+    <ul>
+      <li>使用回车键进行换行即可 (推荐)</li>
+      <li>
+        <blockquote>
+          <p>其他换行方式，比如添加 <code>&lt;br&gt;</code> 或 <code>行尾添加空格</code> 或 <code>\反斜杠</code> (不推荐)<br />
+***</p>
+          <h3 id="title_3">三.文字粗体 斜体 粗体加斜体</h3>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <h4 id="斜体">斜体</h4>
+    <ul>
+      <li>使用 <code>*文字*</code> 表示即可</li>
+      <li>例如：<em>文字</em></li>
+    </ul>
+  </li>
+  <li>
+    <h4 id="粗体">粗体</h4>
+    <ul>
+      <li>使用 <code>**文字**</code> 表示即可</li>
+      <li>例如：<strong>文字</strong></li>
+    </ul>
+  </li>
+  <li>
+    <h4 id="粗体加斜体">粗体加斜体</h4>
+    <ul>
+      <li>使用 <code>***文字**</code> 表示即可</li>
+      <li>例如：<strong>文字</strong></li>
+    </ul>
+  </li>
+  <li>
+    <h4 id="其他方式并不推荐">其他方式并不推荐</h4>
+    <hr />
+    <h3 id="title_4">四.列表和引用以及转义标识和转义字符语法</h3>
+  </li>
+  <li>
+    <h4 id="列表">列表</h4>
+    <ul>
+      <li>有序列表
+        <ul>
+          <li>使用 <code>1. </code> （序号.空格隔开写内容 ）</li>
+        </ul>
+      </li>
+      <li>无序列表
+        <ul>
+          <li>使用 <code>- </code> （-空格隔开写内容）</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <h4 id="引用">引用</h4>
+    <ul>
+      <li>使用 <code>&gt;</code> 进行表示该段为引用，该符号可以进行嵌套使用，嵌套越多，缩进越明显</li>
+      <li>例如：<code>&gt; 内容</code> <code>&gt;&gt; 内容</code></li>
+      <li>效果：</li>
+      <li>
+        <ol>
+          <li>
+            <blockquote>
+              <p>一个引用</p>
+            </blockquote>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>
+            <blockquote>
+              <blockquote>
+                <p>两个英勇</p>
+              </blockquote>
+            </blockquote>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <blockquote>
+                      <p>甚至多个</p>
+                    </blockquote>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>嵌套使用：
+            <blockquote>
+              <p>hello</p>
+              <blockquote>
+                <p>hello</p>
+                <blockquote>
+                  <p>world</p>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </li>
+        </ol>
+      </li>
+      <li>搭配列表和``代码标识进行使用，效果明显</li>
+    </ul>
+  </li>
+  <li>
+    <h4 id="转义标识">转义标识</h4>
+    <ul>
+      <li>使用 `` 进行标识</li>
+      <li>效果： <code>效果</code></li>
+    </ul>
+  </li>
+  <li>
+    <h4 id="转义字符语法">转义字符语法</h4>
+    <ul>
+      <li>使用 <code>\</code> 进行转义即可</li>
+      <li>例如：<code>*</code> 需要显示出来 就可以使用 <code>\*</code> 进行转义显示<br />
+***
+        <h3 id="title_5">五.分割线和代码块</h3>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <h4 id="分割线">分割线</h4>
+    <ul>
+      <li>使用 <code>***</code> 在新的一行开头书写，并且当前这行无其他内容即可</li>
+      <li>效果如下<br />
+***</li>
+    </ul>
+  </li>
+  <li>
+    <h4 id="代码块">代码块</h4>
+    <ul>
+      <li>
+        <blockquote>
+          <p>在用<code>#</code>标识的标题下方，只需要一个<code>tab键</code></p>
+        </blockquote>
+      </li>
+      <li>
+        <blockquote>
+          <p>在其他地方，则需要先用空行隔开其他内容 开头处需要三个 <code>tab键</code></p>
+        </blockquote>
+      </li>
+      <li>
+        <p>效果如下</p>
+
+        <pre><code>   效果 *** ### 六.链接和图片 {#title_6}
+</code></pre>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <h4 id="链接">链接</h4>
+    <ol>
+      <li>链接语法：<code>[链接显示的名称](链接的地址 "链接的title属性")</code>
+        <ul>
+          <li>例如：<code>[百度](http://www.baidu.com "百度地址")</code></li>
+          <li>效果如下</li>
+          <li><a href="http://www.baidu.com" title="百度地址">百度</a></li>
+          <li>在[百度]中变为[<code>百度</code>]，加上转义标识，之后，效果如下：</li>
+          <li><a href="http://www.baidu.com" title="百度地址"><code>百度</code></a></li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <h4 id="图片">图片</h4>
+    <ol>
+      <li>图片语法: <code>![图片的alt属性](图片的链接地址 "图片的title属性")</code>
+        <ul>
+          <li>例如：<code>![百度图片](./baidu.png "百度")</code></li>
+          <li>效果如下</li>
+          <li><img src="./baidu.png" alt="百度图片" title="百度" /><br />
+***
+            <h3 id="title_7">七.Markdown扩展语法</h3>
+          </li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <h4 id="表格">表格</h4>
+    <dl>
+      <dt>例如</dt>
+      <dd><code>|列名1|列名2|列名3|</code><br />
+<code>|:-|:-:|-:|</code><br />
+<code>|默认对其方式(左对齐)|中间对齐|右对齐|</code><br />
+<code>|内容1|内容2|内容3|</code></dd>
+    </dl>
+  </li>
+</ol>
+
+<p><strong><em>效果</em></strong><br />
+|列名1(------)|列名2(------)|列名3(------)|<br />
+|:-|:-:|-:|<br />
+|默认对其方式(左对齐)|中间对齐|右对齐|<br />
+|内容1|内容2|内容3|<br />
+***</p>
+<ol>
+  <li>
+    <h4 id="代码块-1">代码块</h4>
+    <h6 id="不写语言类型则表示原样输出">不写语言类型，则表示原样输出</h6>
+    <dl>
+      <dt>例如</dt>
+      <dd>使用 ` <code>语言类型 换行另起一行书写内容</code> `</dd>
+    </dl>
+  </li>
+</ol>
+
+<p>```<br />
+let a = 1;<br />
+```<br />
+效果如下</p>
+<pre><code>let a = 1;
+</code></pre>
+<hr />
+<p>```javascript<br />
+let a = 1;<br />
+```</p>
+
+<p>效果如下</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</code></pre></div></div>
+<hr />
+<ol>
+  <li>
+    <h4 id="脚注">脚注</h4>
+    <ul>
+      <li>
+        <ol>
+          <li>使用 [^脚注名] 定义</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>使用[^脚注名]: 进行激活</li>
+        </ol>
+      </li>
+      <li>
+        <ul>
+          <li>激活之后，才会有效果</li>
+        </ul>
+      </li>
+      <li>效果如下<br />
+脚注[^7-3] <br />
+[^7-3]: 这就是7-3的脚注</li>
+    </ul>
+  </li>
+  <li>
+    <h4 id="标题编号">标题编号</h4>
+    <ul>
+      <li>
+        <ol>
+          <li>使用 {#名称} 进行定义</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>使用 <code>[链接名称](#名称)</code> 进行链接使用<br />
+效果如下<br />
+<a href="#名称">链接名称</a><br />
+***</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <h4 id="定义学术列表">定义学术列表</h4>
+    <p>语法如下</p>
+    <pre><code>学术名称
+: 学术内容
+学术内容
+</code></pre>
+    <p>效果如下</p>
+  </li>
+</ol>
+
+<dl>
+  <dt>学术名称</dt>
+  <dd>学术内容<br />
+学术内容</dd>
+</dl>
+
+<ol>
+  <li>
+    <h4 id="删除线">删除线</h4>
+    <p>语法如下</p>
+    <pre><code>~~内容~~
+</code></pre>
+    <p>效果如下<br />
+<del>内容</del></p>
+  </li>
+  <li>
+    <h4 id="任务列表">任务列表</h4>
+    <p>语法如下</p>
+    <pre><code>- [ ] 列表1
+- [x] 列表2
+</code></pre>
+    <p>效果如下</p>
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />列表1</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />列表2</li>
+    </ul>
+  </li>
+  <li>
+    <h4 id="emoji表情">Emoji表情</h4>
+    <p>在网站上，复制下来，进行粘贴即可</p>
+  </li>
+</ol>
+
+<dl>
+  <dt>链接地址</dt>
+  <dd><a href="https://emojipedia.org/" title="Emoji表情">emoji</a></dd>
+</dl>
+

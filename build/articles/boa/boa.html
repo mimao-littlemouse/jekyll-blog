@@ -1,0 +1,92 @@
+<h1 id="boa服务器部署步骤">boa服务器部署步骤</h1>
+
+<h2 id="准备">准备</h2>
+
+<h3 id="下载好boa服务器源码">下载好，boa服务器源码</h3>
+<pre><code>在linux系统中的home目录下，创建如下的目录结构:
+home:
+	share:
+		myboa:
+			boa
+			log
+			www:
+				cgi-bin
+</code></pre>
+<h3 id="然后下载相关工具">然后，下载相关工具：</h3>
+<pre><code>sudo apt-get install bison 
+sudo apt-get install flex
+</code></pre>
+<h3 id="将-下载好的boa服务器源码放置在-share-目录下">将 下载好的boa服务器源码，放置在 share 目录下：</h3>
+<p>并对其进行解压：<br />
+tar zxvf 压缩包名.tar.gz</p>
+
+<h4 id="然后进入-解压后的目录再进入src目录-并执行-configure之后修改配置文件">然后进入 解压后的目录，再进入src目录 并执行 ./configure，之后，修改配置文件</h4>
+<p>修改一下 defines.h文件中的 #define SERVER_ROOT ““中地址即可<br />
+即：设置为 /home/stu/share/myboa/boa 即可<br />
+这个设置的路径对后面有影响</p>
+
+<h4 id="然后注释一下-boac中第225行左右if语句含有icky-linux-kernel-bug语句的代码使用-if-0--endif-进行注释">然后，注释一下 boa.c中第225行左右if语句(含有icky Linux kernel bug语句)的代码，使用 #if 0  #endif 进行注释</h4>
+
+<h4 id="然后再修改-compath中120行左右的define-timezone_offset中的--foo修改为-foo--即可">然后，再修改 compat.h中120行左右的#define TIMEZONE_OFFSET中的  foo##修改为 (foo)  即可</h4>
+<p>再在当前目录下，执行 make</p>
+
+<h4 id="然后就可以得到我们所需要的三个文件">然后，就可以得到我们所需要的三个文件</h4>
+<p>将 当前文件夹下的 boa boa_indexer 文件 复制到  /home/share/myboa/boa中<br />
+然后，在解压后的文件夹中，找到 boa.conf文件，将其也复制到 /home/share/myboa/boa文件夹中<br />
+然后，在log中创建 access_log  和  error_log 普通文件<br />
+大概目录，如下所示:</p>
+<pre><code>myboa:
+	boa:
+		boa
+		boa_indexer
+		boa.conf
+	log:
+		access_log
+		error_log
+	www:
+		cgi-bin
+		index.html
+</code></pre>
+
+<h4 id="然后需要对-boa文件夹中的--boaconf文件进行配置">然后，需要对 boa文件夹中的  boa.conf文件，进行配置</h4>
+
+<pre><code>配置内容
+User Group 将其值None改为0
+ErrorLog的地址改为  error_log文件所在的地址
+	比如：ErrorLog /home/stu/share/myboa/log/error_log
+AccessLog的地址改为  access_log文件所在的地址
+	比如：AccessLog /home/stu/share/myboa/log/access_log
+DocumentRoot的地址改为 www文件夹所在地址
+	比如：DocumentRoot /home/stu/share/myboa/www
+DirectoryMaker的地址改为 boa_indexer文件所在地址
+	比如：DirectoryMaker /home/stu/share/myboa/boa/boa_indexer
+DirectoryIndex可改可不改，即，访问 网页的时候，直接使用ip进时候，默认访问的网页
+ScriptAlias改为 /cgi-bin/ /home/stu/share/myboa/www/cgi-bin/
+</code></pre>
+
+<blockquote>
+  <p>配置完，即可运行boa服务器了<br />
+sudo ./boa 进行运行<br />
+可以使用： ps -e 查看是否运行</p>
+</blockquote>
+
+<h4 id="如果需要将boa添加到系统环境变量中方法是">如果需要将boa添加到系统环境变量中，方法是：</h4>
+
+<pre><code>打开配置文件：sudo vi /etc/bash.bashrc
+添加：export PATH=$PATH:/home/stu/share/myboa/boa
+
+然后，更新配置文件：
+
+source /etc/bash.bashrc
+</code></pre>
+
+<h4 id="停用该boa程序可以通过杀死进程实现">停用该boa程序，可以通过杀死进程实现</h4>
+
+<pre><code>kill boa对应的进程id
+
+ps -e可以查找到boa对应的进程id
+
+注意：下次运行boa服务器，一定要加上 sudo，否则没用
+
+准备成功之后，就可以在 index.html中进行书写代码了，并使用浏览器进行访问 index.html页面
+</code></pre>
