@@ -1,10 +1,12 @@
 ---
-index: 0
+order: 1
 text: 导航
 ---
 
 # Jekyll框架
+
 ## 目录
+
 ### 一.jekyll基础
 
 [`学习基础知识`](./jekyll_base.md "去学习基础知识")

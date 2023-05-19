@@ -1,0 +1,22 @@
+---
+order: 6
+text: css练习
+---
+
+# css获取数据的方式
+
+介绍css提取数据的方法：
+先准备练习提取数据方法的环境：
+在项目根目录，打开终端输入：scrapy shell 网址
+进入shell 控制台
+
+1.根据W3C标准，CSS选择器不支持选择文本节点或属性值。但在web抓取环境中，选择这些非常重要，
+以至于Scrapy（parcel）实现了一些非标准伪元素：
+标签::text 选择标签选择器的文本节点
+标签::attr(name) 选择标签选择器的属性值，其中name是要获取其值的属性的名称
+标签 *::text 选择当前标签选择器上下文的所有后代文本节点
+(注意：如果不知道如何使用 浏览器中的开发者工具，
+可以查看https://doc.scrapy.org/en/latest/topics/developer-tools.html#topics-developer-tools中的介绍
+也可以在 csdn中搜索即可得到结果，并将其学会)
+
+selector.attrib['属性'].getall()

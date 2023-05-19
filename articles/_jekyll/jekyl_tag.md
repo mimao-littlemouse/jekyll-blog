@@ -1,6 +1,16 @@
-# jekyll基础(tags部分) {#introduction} 
-#### [返回](./../jekyll基础.md#liquid-tags "jekyll基础(tags部分)")
+---
+order: 6
+text: tag
+---
+{% raw %}
+
+
+# jekyll基础(tags部分)
+
+#### [返回](./jekyll_base.md "jekyll基础(tags部分)")
+
 ## Tags Filters
+
 ```txt
 All of the standard Liquid tags are supported. 
 Jekyll has a few built in tags to help you build your site. 
@@ -10,13 +20,16 @@ You can also create your own tags using plugins.
 Jekyll有一些内置标签可以帮助你建立你的网站。
 您也可以使用插件创建自己的标签。
 
+
 **Includes**
+
 ```txt
 If you have page snippets that you use repeatedly across your site, an include is the perfect way to make this more maintainable.
 ```
 如果您有在整个网站上重复使用的页面片段，那么include是使其更易于维护的完美方法。
 
 **Code snippet highlighting(代码段突出显示)**
+
 ```txt
 Jekyll has built in support for syntax highlighting of over 100 languages thanks to Rouge. 
 Rouge is the default highlighter in Jekyll 3 and above.
@@ -47,6 +60,7 @@ def foo
 end
 {% endhighlight %}
 ```
+
 ```txt
 The argument to the highlight tag (ruby in the example above) is the language identifier. 
 
@@ -57,14 +71,15 @@ To find the appropriate identifier to use for the language you want to highlight
 
 ```txt
 Jekyll processes all Liquid filters in code blocks
-If you are using a language that contains curly braces, you will likely need to place {% raw %} and {% endraw %} tags around your code. 
+If you are using a language that contains curly braces, you will likely need to place \{\% raw \%\} and \{\% endraw \%\} tags around your code. 
 Since Jekyll 4.0 , you can add render_with_liquid: false in your front matter to disable Liquid entirely for a particular document.
 ```
 Jekyll在代码块中处理所有Liquid筛选器。
-如果您使用的语言包含大括号，则可能需要在代码周围放置｛%raw%｝和｛%endraw%}标记。
+如果您使用的语言包含大括号，则可能需要在代码周围放置｛% raw% ｝和｛% endraw %} 标记。
 自Jekyll 4.0以来，您可以在前面的内容中添加 render_with_liquid:false ，以完全禁用特定文档的liquid。
 
 **Line numbers(行号)**
+
 ```txt
 There is a second argument to highlight called linenos that is optional. 
 Including the linenos argument will force the highlighted code to include line numbers. 
@@ -73,6 +88,7 @@ For instance, the following code block would include line numbers next to each l
 还有第二个要突出显示的参数linenos是可选的。
 包含linenos参数将强制高亮显示的代码包含行号。
 例如，以下代码块将包括每行旁边的行号：
+
 ```liquid
 {% highlight ruby linenos %}
 def foo
@@ -82,6 +98,7 @@ end
 ```
 
 **Marking specific lines4.4.0(标记特定线条)**
+
 ```txt
 You can mark specific lines in a code snippet by using the optional argument mark_lines. 
 This argument takes a space-separated list of line numbers which must be wrapped in double quotes. 
@@ -90,6 +107,7 @@ For example, the following code block will mark lines 1 and 2 but not line 3:
 您可以使用可选参数mark_lines来标记代码段中的特定行。
 此参数采用一个以空格分隔的行号列表，该列表必须用双引号括起来。
 例如，以下代码块将标记第1行和第2行，但不标记第3行：
+
 ```liquid
 {% highlight ruby mark_lines="1 2" %}
 def foo
@@ -97,12 +115,14 @@ def foo
 end
 {% endhighlight %}
 ```
+
 ```txt
 A default class name of hll will be applied to the marked lines.
 ```
 hll的默认类名将应用于标记的行。
 
 **Stylesheets for syntax highlighting(语法高亮显示的样式表)**
+
 ```txt
 In order for the highlighting to show up, you’ll need to include a highlighting stylesheet. 
 For Pygments or Rouge you can use a stylesheet for Pygments, you can find an example gallery here or from its repository.
@@ -112,14 +132,18 @@ Copy the CSS file (native.css for example) into your css directory and import th
 为了显示高亮显示，您需要包含一个高亮显示样式表。
 对于Pygments或Rouge，您可以使用Pygments的样式表，您可以在此处或其存储库中找到示例库。
 将CSS文件（例如native.CSS）复制到CSS目录中，并将语法高亮样式导入到main.CSS中：
+
 ```css
 @import "native.css";
 ```
+
+
 **Links**
 ```txt
 Since Jekyll 4.0 , you don’t need to prepend link and post_url tags with site.baseurl.
 ```
 自从Jekyll 4.0以来，您不需要使用 site.baseurl 来准备链接和post_url标签。
+
 
 **Linking to pages(链接到页面)**
 ```txt
@@ -140,6 +164,7 @@ You must include the file’s original extension when using the link tag. Here a
 {% link news/index.html %}
 {% link /assets/files/doc.pdf %}
 ```
+
 ```txt
 You can also use the link tag to create a link in Markdown as follows:
 ```
@@ -150,6 +175,7 @@ You can also use the link tag to create a link in Markdown as follows:
 [Link to a page]({% link news/index.html %})
 [Link to a file]({% link /assets/files/doc.pdf %})
 ```
+
 ```txt
 The path to the post, page, or collection is defined as the path relative to the root directory (where your config file is) to the file, 
 not the path from your existing page to the other page.
@@ -202,29 +228,36 @@ my_variable: footer_company_a.html
 You could then reference that variable in your link:
 ```
 然后，您可以在链接中引用该变量：
+
 ```liquid
 {% link {{ page.my_variable }} %}
 ```
+
 ```txt
 In this example, the link tag would render a link to the file footer_company_a.html.
 ```
 在本例中，链接标记将呈现到文件footer_company_a.html的链接。
 
 **Linking to posts(链接到帖子)**
+
 ```txt
 If you want to include a link to a post on your site, the post_url tag will generate the correct permalink URL for the post you specify.
 ```
 如果你想在网站上包含一个帖子链接，post_url标签会为你指定的帖子生成正确的永久链接url。
+
 ```liquid
 {% post_url 2010-07-21-name-of-post %}
 ```
+
 ```txt
 If you organize your posts in subdirectories, you need to include subdirectory path to the post:
 ```
 如果你在子目录中组织你的帖子，你需要包括帖子的子目录路径：
+
 ```liquid
 {% post_url /subdir/2010-07-21-name-of-post %}
 ```
+
 ```txt
 There is no need to include the file extension when using the post_url tag.
 
@@ -232,14 +265,9 @@ You can also use this tag to create a link to a post in Markdown as follows:
 ```
 使用post_url标记时，不需要包含文件扩展名。
 您也可以使用此标记创建指向Markdown中帖子的链接，如下所示：
+
 ```liquid
 [Name of Link]({% post_url 2010-07-21-name-of-post %})
 ```
 
-
-
-
-
-
-
-
+{% endraw %}

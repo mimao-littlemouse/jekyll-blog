@@ -1,19 +1,25 @@
-\-\-\-
-index: 1
+---
+order: 2
 text: 基础知识
-\-\-\-
+---
+{% raw %}
 
 # jekyll基础知识
 ## [`返回目录`](./navbar.md)
 ### `基础知识大纲` {#content}
 - [**`Content`**](#content-content "内容")内容部分：
   [`Pages`](#content-pages "页面")页面、[`Posts`](#content-posts "帖子")帖子、[`Front Matter`](#content-front_matter "前事务 即前言")前事务、[`Collections`](#content-collections "集合")集合、[`Data Files`](#content-data_files "数据文件")数据文件、[`Assets`](#content-assets "资产")资产、[`Static Files`](#content-static_files "静态文件")静态文件
+
     ***
+
 - [**`Site Structure`**](#content-site_structure "站点结构")站点结构部分：
   [`Directory Structure`](#content-directory_structure "目录结构")目录结构、[`Liquid`](#content-liquid "语法")语法、[`Variables`](#content-variables "变量")变量、[`Includes`](#content-includes "组件")组件、[`Layouts`](#content-layouts "布局")布局、[`Permalinks`](#content-permalinks "链接")链接、[`Themes`](#content-themes "主题")主题、[`Pagination`](#content-pagination "分页")分页
+
   ***
+
 ### **`Content 内容`**  {#content-content}
 [`返回大纲`](#content) | [`站点结构`](#content-site_structure)
+
 #### Pages 页面 {#content-pages}
 [目录](#content) | [下](#content-posts)
 ```txt
@@ -115,10 +121,10 @@ For a simple example this can just be empty:
 **所有博客文章文件都必须以front matter开头，它通常用于设置布局或其他元数据。**
 **对于一个简单的例子，它可以是空的：**
 ```liquid
-\-\-\-
+---
 layout: post
 title:  "Welcome to Jekyll!"
-\-\-\-
+---
 
 # Welcome
 
@@ -176,11 +182,11 @@ Here’s a simple example of how to create a list of links to your blog posts:
 **以下是一个简单的示例，说明如何创建指向博客文章的链接列表：**
 ```html
 <ul>
-  \{\% for post in site.posts \%\}
+  {% for post in site.posts %}
     <li>
-      <a href="\{\{ post.url \}\}">\{\{ post.title \}\}</a>
+      <a href="{{ post.url }}">{{ post.title }}</a>
     </li>
-  \{\% endfor \%\}
+  {% endfor %}
 </ul>
 ```
 ```txt
@@ -233,14 +239,14 @@ where the first item is the name of the tag and the second item being an array o
 其中第一项是标签的名称，第二项是具有该标签的帖子的阵列。
 
 ```html
-\{\% for tag in site.tags \%\}
-  <h3>\{\{ tag[0] \}\}</h3>
+{% for tag in site.tags %}
+  <h3>{{ tag[0] }}</h3>
   <ul>
-    \{\% for post in tag[1] \%\}
-      <li><a href="\{\{ post.url \}\}">\{\{ post.title \}\}</a></li>
-    \{\% endfor \%\}
+    {% for post in tag[1] %}
+      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
   </ul>
-\{\% endfor \%\}
+{% endfor %}
 ```
 **Categories(分类)**
 ```txt
@@ -282,9 +288,9 @@ however it can be customized by setting a excerpt_separator variable in front ma
 默认情况下，这是文章内容的第一段，
 但可以通过在 front matter(前事项) 或 _config.yml中设置一个`extract_separator`变量来自定义。
 ```liquid
-\-\-\-
+---
 excerpt_separator: <!--more-->
-\-\-\-
+---
 
 Excerpt with multiple paragraphs
 摘录多段
@@ -302,12 +308,12 @@ Out-of-excerpt
 
 ```html
 <ul>
-  \{\% for post in site.posts \%\}
+  {% for post in site.posts %}
     <li>
-      <a href="\{\{ post.url \}\}">\{\{ post.title \}\}</a>
-      \{\{ post.excerpt \}\}
+      <a href="{{ post.url }}">{{ post.title }}</a>
+      {{ post.excerpt }}
     </li>
-  \{\% endfor \%\}
+  {% endfor %}
 </ul>
 ```
 
@@ -346,10 +352,10 @@ Here is a basic example:
 
 **以下是一个基本示例：**
 ```liquid
-\-\-\-
+---
 layout: post
 title: Blogging Like a Hacker
-\-\-\-
+---
 ```
 ```txt
 Between these triple-dashed lines, you can set predefined variables (see below for a reference) 
@@ -423,11 +429,11 @@ For instance, if you set a variable called food, you can use that in your page:
 您也可以设置您自己的 front matter(前事项)变量，您可以在Liquid中访问这些变量。
 例如，如果您设置了一个名为food的变量，您可以在页面中使用该变量：
 ```ruby
-\-\-\-
+---
 food: Pizza
-\-\-\-
+---
 
-<h1>\{\{ page.food \}\}</h1>
+<h1>{{ page.food }}</h1>
 ```
 
 **Predefined Variables for Posts(帖子的预定义变量)**
@@ -539,10 +545,10 @@ The filename is ./_staff_members/jane.md with the following content:
 例如，以下是如何将一名工作人员添加到上面的集合中。
 文件名为/_staff_members/jane.md，包含以下内容：
 ```yaml
-\-\-\-
+---
 name: Jane Doe
 position: Developer
-\-\-\-
+---
 Jane has worked on Jekyll for the past *five years*.
 ```
 ```txt
@@ -567,10 +573,10 @@ Similar to posts, the body of the document is accessed using the content variabl
 现在，您可以在页面上迭代site.staff_members，并输出每个工作人员的内容。
 与帖子类似，使用内容变量访问文档的正文：
 ```ruby
-\{\% for staff_member in site.staff_members \%\}
-  <h2>\{\{ staff_member.name \}\} - \{\{ staff_member.position \}\}</h2>
-  <p>\{\{ staff_member.content | markdownify \}\}</p>
-\{\% endfor \%\}
+{% for staff_member in site.staff_members %}
+  <h2>{{ staff_member.name }} - {{ staff_member.position }}</h2>
+  <p>{{ staff_member.content | markdownify }}</p>
+{% endfor %}
 ```
 
 ```txt
@@ -586,14 +592,14 @@ collections:
 ```
 **You can link to the generated page using the url attribute(您可以使用url属性链接到生成的页面):**
 ```ruby
-\{\% for staff_member in site.staff_members \%\}
+{% for staff_member in site.staff_members %}
   <h2>
-    <a href="\{\{ staff_member.url \}\}">
-      \{\{ staff_member.name \}\} - \{\{ staff_member.position \}\}
+    <a href="{{ staff_member.url }}">
+      {{ staff_member.name }} - {{ staff_member.position }}
     </a>
   </h2>
-  <p>\{\{ staff_member.content | markdownify \}\}</p>
-\{\% endfor \%\}
+  <p>{{ staff_member.content | markdownify }}</p>
+{% endfor %}
 ```
 
 **Permalinks(链接)**
@@ -709,7 +715,7 @@ You may wish to use filters to find your collection:
 在迭代site.collections时需要注意这一点，因为您可能需要将其过滤掉。
 您可能希望使用筛选器来查找您的集合：
 ```liquid
-\{\{ site.collections | where: "label", "myCollection" | first \}\}
+{{ site.collections | where: "label", "myCollection" | first }}
 ```
 
 ```txt
@@ -741,8 +747,8 @@ In addition to any front matter provided in the document’s corresponding file,
 除了文档对应文件中提供的任何前事项(front matter)外，每个文档都具有以下属性
 | variable | description |
 | :-: | :- |
-| content | The (unrendered) content of the document. If no front matter is provided, Jekyll will not generate the file in your collection. If front matter is used, then this is all the contents of the file after the terminating `\-\-\-` of the front matter. |
-| 译 | 文档的（未提交的）内容。如果没有提供前置内容，Jekyll将不会在您的集合中生成文件。如果使用了前置内容，那么这就是前置内容的终止“\-\-\-”之后的文件的所有内容。 |
+| content | The (unrendered) content of the document. If no front matter is provided, Jekyll will not generate the file in your collection. If front matter is used, then this is all the contents of the file after the terminating `---` of the front matter. |
+| 译 | 文档的（未提交的）内容。如果没有提供前置内容，Jekyll将不会在您的集合中生成文件。如果使用了前置内容，那么这就是前置内容的终止“---”之后的文件的所有内容。 |
 | output | The rendered output of the document, based on the content. |
 | 译 | 基于内容呈现的文档输出。 |
 | path | The full path to the document's source file. |
@@ -829,13 +835,13 @@ You can now render the list of members in a template:
 现在可以在模板中呈现成员列表：
 ```yaml
 <ul>
-\{\% for member in site.data.members \%\}
+{% for member in site.data.members %}
   <li>
-    <a href="https://github.com/\{\{ member.github \}\}">
-      \{\{ member.name \}\}
+    <a href="https://github.com/{{ member.github }}">
+      {{ member.name }}
     </a>
   </li>
-\{\% endfor \%\}
+{% endfor %}
 </ul>
 ```
 **Subfolders(子文件夹)**
@@ -876,15 +882,15 @@ The organizations can then be accessed via site.data.orgs, followed by the file 
 然后可以通过site.data.orgs访问这些组织，然后输入文件名：
 ```ruby
 <ul>
-\{\% for org_hash in site.data.orgs \%\}
-\{\% assign org = org_hash[1] \%\}
+{% for org_hash in site.data.orgs %}
+{% assign org = org_hash[1] %}
   <li>
-    <a href="https://github.com/\{\{ org.username \}\}">
-      \{\{ org.name \}\}
+    <a href="https://github.com/{{ org.username }}">
+      {{ org.name }}
     </a>
-    (\{\{ org.members | size \}\} members)
+    ({{ org.members | size }} members)
   </li>
-\{\% endfor \%\}
+{% endfor %}
 </ul>
 ```
 **Example: Accessing a specific author(例如：访问特定作者)**
@@ -905,16 +911,16 @@ The author can then be specified as a page variable in a post’s front matter:
 ```
 然后，作者可以被指定为帖子标题中的页面变量：
 ```ruby
-\-\-\-
+---
 title: sample post
 author: dave
-\-\-\-
+---
 
-\{\% assign author = site.data.people[page.author] \%\}
+{% assign author = site.data.people[page.author] %}
 <a rel="author"
-  href="https://twitter.com/\{\{ author.twitter \}\}"
-  title="\{\{ author.name \}\}">
-    \{\{ author.name \}\}
+  href="https://twitter.com/{{ author.twitter }}"
+  title="{{ author.name }}">
+    {{ author.name }}
 </a>
 ```
 ```txt
@@ -966,9 +972,9 @@ In order to use them, you must first create a file with the proper extension nam
 ```
 **Jekyll提供了对Sass的内置支持，并且可以通过Ruby gem与 CoffeeScript 一起工作。**
 **为了使用它们，您必须首先创建一个具有正确扩展名的文件（.sas、.scs或.coffee之一），并以两行三连字符开头，如下所示：**
-```ruby
-\-\-\-
-\-\-\-
+```sas
+---
+---
 
 // start content
 .my-definition
@@ -1127,10 +1133,10 @@ You could use this for loop to look in the static_files object and get all stati
 假设您想列出assets/img中包含的所有图像资产。
 您可以使用此for循环来查找static_files对象，并获取所有具有此front-matter属性的静态文件：
 ```ruby
-\{\% assign image_files = site.static_files | where: "image", true \%\}
-\{\% for myimage in image_files \%\}
-  \{\{ myimage.path \}\}
-\{\% endfor \%\}
+{% assign image_files = site.static_files | where: "image", true %}
+{% for myimage in image_files %}
+  {{ myimage.path }}
+{% endfor %}
 ```
 ```txt
 When you build your site, the output will list the path to each file that meets this front matter condition.
@@ -1205,10 +1211,10 @@ An overview of what each of these does:
 | 译 | 存储配置数据。其中许多选项可以从命令行可执行文件中指定，但在此处指定它们更容易，因此您不必记住它们。 |
 | _drafts | Drafts are unpublished posts. The format of these files is without a date: title.MARKUP. Learn how to work with drafts. |
 | 译 | 草稿是未发布的帖子。这些文件的格式没有日期：title.MARKUP。学习如何使用草稿。 |
-| _includes | These are the partials that can be mixed and matched by your layouts and posts to facilitate reuse. The liquid tag \{\% include file.ext \%\} can be used to include the partial in _includes/file.ext. |
+| _includes | These are the partials that can be mixed and matched by your layouts and posts to facilitate reuse. The liquid tag {% include file.ext %} can be used to include the partial in _includes/file.ext. |
 | 译 | 这些部分可以通过布局和帖子进行混合和匹配，以便于重用。liquid 标记｛% include file.ext %｝可用于包含分部 _includes/file.ext 。 |
-| _layouts | These are the templates that wrap posts. Layouts are chosen on a post-by-post basis in the front matter, which is described in the next section. The liquid tag \{\{ content \}\} is used to inject content into the web page. |
-| 译 | 这些是包装帖子的模板。布局是在前面的内容中逐个选择的，这将在下一节中进行描述。liquid标签\{\{ content \}\} 用于将内容注入网页。 |
+| _layouts | These are the templates that wrap posts. Layouts are chosen on a post-by-post basis in the front matter, which is described in the next section. The liquid tag {{ content }} is used to inject content into the web page. |
+| 译 | 这些是包装帖子的模板。布局是在前面的内容中逐个选择的，这将在下一节中进行描述。liquid标签{{ content }} 用于将内容注入网页。 |
 | _posts | Your dynamic content, so to speak. The naming convention of these files is important, and must follow the format: YEAR-MONTH-DAY-title.MARKUP. The permalinks can be customized for each post, but the date and markup language are determined solely by the file name. |
 | 译 | 可以说是你的动态内容。这些文件的命名约定很重要，必须遵循以下格式：YEAR-MMONTH-DAY-title.MARKUP。可以为每个帖子自定义永久链接（permalinks），但日期和标记语言仅由文件名决定。 |
 | _data | Well-formatted site data should be placed here. The Jekyll engine will autoload all data files (using either the .yml, .yaml, .json, .csv or .tsv formats and extensions) in this directory, and they will be accessible via `site.data`. If there's a file members.yml under the directory, then you can access contents of the file through site.data.members. |
@@ -1240,12 +1246,12 @@ include:
 
 ***
 
-#### Liquid `\{\{ \}\}`语法 {#content-liquid}
+#### Liquid `{{ }}`语法 {#content-liquid}
 [上](#content-directory_structure) | [下](#content-variables)
 ```txt
 Jekyll uses the Liquid templating language to process templates.
 
-Generally in Liquid you output content using two curly braces e.g. \{\{ variable \}\} and perform logic statements by surrounding them in a curly brace percentage sign e.g. \{\% if statement \%\}. 
+Generally in Liquid you output content using two curly braces e.g. {{ variable }} and perform logic statements by surrounding them in a curly brace percentage sign e.g. {% if statement %}. 
 To learn more about Liquid, check out the official Liquid Documentation.
 
 Jekyll provides a number of useful Liquid additions to help you build your site:
@@ -1425,7 +1431,7 @@ The include tag allows you to include the content from another file stored in th
 ```
 **include标记允许您包含存储在_includes文件夹中的另一个文件中的内容：**
 ```liquid
-\{\% include footer.html \%\}
+{% include footer.html %}
 ```
 ```txt
 Jekyll will look for the referenced file (in this case, footer.html) 
@@ -1440,7 +1446,7 @@ You can choose to include file fragments relative to the current file by using t
 ```
 您可以使用`include_relative`标记来选择包含相对于当前文件的文件片段：
 ```liquid
-\{\% include_relative somedir/footer.html \%\}
+{% include_relative somedir/footer.html %}
 ```
 ```txt
 You won’t need to place your included content within the _includes directory. 
@@ -1470,19 +1476,19 @@ For example, suppose you defined a variable in your page’s front matter like t
 可以将要嵌入的文件名指定为变量，而不是实际的文件名。
 例如，假设您在页面的front matter中定义了一个变量，如下所示：
 ```liquid
-\-\-\-
+---
 title: My page
 my_variable: footer_company_a.html
-\-\-\-
+---
 ```
 ```txt
 You could then reference that variable in your include:
 ```
 然后，您可以在include中引用该变量：
 ```liquid
-\{\% if page.my_variable \%\}
-  \{\% include \{\{ page.my_variable \}\} \%\}
-\{\% endif \%\}
+{% if page.my_variable %}
+  {% include {{ page.my_variable }} %}
+{% endif %}
 ```
 ```txt
 In this example, the include would insert the file footer_company_a.html from the _includes/footer_company_a.html directory.
@@ -1501,20 +1507,20 @@ For example, suppose you have a file called note.html in your _includes folder t
 ```liquid
 <div markdown="span" class="alert alert-info" role="alert">
   <i class="fa fa-info-circle"></i> <b>Note:</b>
-  \{\{ include.content \}\}
+  {{ include.content }}
 </div>
 ```
 ```txt
-The \{\{ include.content \}\} is a parameter that gets populated when you call the include and specify a value for that parameter, 
+The {{ include.content }} is a parameter that gets populated when you call the include and specify a value for that parameter, 
 like this:
 ```
-`\{\{include.content\}\}`是一个参数，当您调用include并为该参数指定值时，
+`{{include.content}}`是一个参数，当您调用include并为该参数指定值时，
 这样地：
 ```liquid
-\{\% include note.html content="This is my sample note." \%\}
+{% include note.html content="This is my sample note." %}
 ```
 ```txt
-The value of content (which is This is my sample note) will be inserted into the \{\{ include.content \}\} parameter.
+The value of content (which is This is my sample note) will be inserted into the {{ include.content }} parameter.
 
 Passing parameters to includes is especially helpful when you want to hide away complex formatting from your Markdown content.
 
@@ -1522,7 +1528,7 @@ For example, suppose you have a special image syntax with complex formatting, an
 As a result, you decide to simplify the formatting by using an include with parameters. 
 Here’s an example of the special image syntax you might want to populate with an include:
 ```
-content的值（这是我的示例注释）将插入到`\{\{include.content\}\}`参数中。\
+content的值（这是我的示例注释）将插入到`{{include.content}}`参数中。\
 
 当您想隐藏Markdown内容中的复杂格式时，将参数传递给includes尤其有用。
 
@@ -1546,11 +1552,11 @@ like this:
 这样地：
 ```html
 <figure>
-   <a href="\{\{ include.url \}\}">
-   <img src="\{\{ include.file \}\}" style="max-width: \{\{ include.max-width \}\};"
-      alt="\{\{ include.alt \}\}"/>
+   <a href="{{ include.url }}">
+   <img src="{{ include.file }}" style="max-width: {{ include.max-width }};"
+      alt="{{ include.alt }}"/>
    </a>
-   <figcaption>\{\{ include.caption \}\}</figcaption>
+   <figcaption>{{ include.caption }}</figcaption>
 </figure>
 ```
 ```txt
@@ -1573,7 +1579,7 @@ Here’s an example that passes all the parameters to this include (the include 
 ```
 下面是一个将所有参数传递给include的示例（include文件名为image.html）：
 ```liquid
-\{\% include image.html url="http://jekyllrb.com" max-width="200px" file="logo.png" alt="Jekyll logo" caption="This is the Jekyll logo." \%\}
+{% include image.html url="http://jekyllrb.com" max-width="200px" file="logo.png" alt="Jekyll logo" caption="This is the Jekyll logo." %}
 ```
 ```txt
 The result is the original HTML code shown earlier.
@@ -1595,11 +1601,11 @@ For example, don’t use includes every time you insert an image. (The above tec
 **Passing parameter variables to includes(将参数变量传递到include)**
 ```txt
 Suppose the parameter you want to pass to the include is a variable rather than a string. 
-For example, you might be using \{\{ site.product_name \}\} to refer to every instance of your product rather than the actual hard-coded name. 
+For example, you might be using {{ site.product_name }} to refer to every instance of your product rather than the actual hard-coded name. 
 (In this case, your _config.yml file would have a key called product_name with a value of your product’s name.)
 
 The string you pass to your include parameter can’t contain curly braces. 
-For example, you can’t pass a parameter that contains this: "The latest version of \{\{ site.product_name \}\} is now available."
+For example, you can’t pass a parameter that contains this: "The latest version of {{ site.product_name }} is now available."
 
 If you want to include this variable in your parameter that you pass to an include, 
 you need to store the entire parameter as a variable before passing it to the include. 
@@ -1607,17 +1613,17 @@ you need to store the entire parameter as a variable before passing it to the in
 You can use capture tags to create the variable:
 ```
 假设要传递给include的参数是一个变量，而不是字符串。
-例如，您可能使用 `\{\{site.product_name\}\}` 来引用产品的每个实例，而不是实际的硬编码名称。
+例如，您可能使用 `{{site.product_name}}` 来引用产品的每个实例，而不是实际的硬编码名称。
 （在这种情况下，您的 _config.yml 文件将有一个名为 product_name 的key，其值为您的产品名称。）
 传递给include参数的字符串不能包含大括号。
-例如，您不能传递包含以下内容的参数：`\{\{site.product_name\}\}`的最新版本现已可用。”
+例如，您不能传递包含以下内容的参数：`{{site.product_name}}`的最新版本现已可用。”
 如果要将此变量包含在传递给include的参数中，
 在将整个参数传递给include之前，需要将其存储为一个变量。
 您可以使用捕获标记来创建变量：
 ```liquid
-\{\% capture download_note \%\}
-The latest version of \{\{ site.product_name \}\} is now available.
-\{\% endcapture \%\}
+{% capture download_note %}
+The latest version of {{ site.product_name }} is now available.
+{% endcapture %}
 ```
 ```txt
 Then pass this captured variable into the parameter for the include. 
@@ -1626,7 +1632,7 @@ Omit the quotation marks around the parameter content because it’s no longer a
 然后将这个捕获的变量传递到include的参数中。
 省略参数内容周围的引号，因为它不再是字符串（它是一个变量）：
 ```liquid
-\{\% include note.html content=download_note \%\}
+{% include note.html content=download_note %}
 ```
 
 ***
@@ -1669,7 +1675,7 @@ the value is the rendered content of the post or page being wrapped.
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>\{\{ page.title \}\}</title>
+    <title>{{ page.title }}</title>
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
@@ -1677,9 +1683,9 @@ the value is the rendered content of the post or page being wrapped.
       <a href="/">Home</a>
       <a href="/blog/">Blog</a>
     </nav>
-    <h1>\{\{ page.title \}\}</h1>
+    <h1>{{ page.title }}</h1>
     <section>
-      \{\{ content \}\}
+      {{ content }}
     </section>
     <footer>
       &copy; to me
@@ -1700,10 +1706,10 @@ You can also use front matter defaults to save you from having to set this on ev
 接下来，您需要指定您在页面 front matter 的布局。
 您也可以使用 front matter 默认值来避免在每一页上都设置这个选项。
 ```liquid
-\-\-\-
+---
 title: My First Page
 layout: default
-\-\-\-
+---
 
 This is the content of my page
 ```
@@ -1749,12 +1755,12 @@ For example this layout will live at _layouts/post.html:
 为了实现这一点，你需要创建另一个布局，在前面指定你的原始布局。
 例如，此布局将位于_layouts/post.html：
 ```liquid
-\-\-\-
+---
 layout: default
-\-\-\-
-<p>\{\{ page.date \}\} - Written by \{\{ page.author \}\}</p>
+---
+<p>{{ page.date }} - Written by {{ page.author }}</p>
 
-\{\{ content \}\}
+{{ content }}
 ```
 ```txt
 Now posts can use this layout while the rest of the pages use the default.
@@ -1769,12 +1775,12 @@ For example:
 你可以在布局中设置front matter，唯一的区别是当你在Liquid中使用时，你需要使用布局变量而不是页面。
 例如：
 ```liquid
-\-\-\-
+---
 city: San Francisco
-\-\-\-
-<p>\{\{ layout.city \}\}</p>
+---
+<p>{{ layout.city }}</p>
 
-\{\{ content \}\}
+{{ content }}
 ```
 
 ***
@@ -1798,9 +1804,9 @@ For example, you might have a page on your site located at /my_pages/about-me.ht
 ```
 **例如，您的网站上可能有一个位于/my_pages/about-me.html的页面，并且您希望输出url为/about/。在页面的front matter(前言)，您将设置：**
 ```ruby
-\-\-\-
+---
 permalink: /about/
-\-\-\-
+---
 ```
 **Global(全局)**
 ```txt
@@ -2519,7 +2525,7 @@ Your theme’s styles can be included in the user’s stylesheet using the @impo
 ```
 可以使用@import指令将主题的样式包含在用户的样式表中。
 ```sass
-@import "\{\{ site.theme \}\}";
+@import "{{ site.theme }}";
 ```
 
 **Theme-gem dependencies3.5.0(主题gem依赖项3.5.0)**
@@ -2783,39 +2789,39 @@ Here’s one example of a simple way of rendering paginated Posts in a HTML file
 你可能想在你网站的一个主页上做这件事。
 下面是一个在HTML文件中呈现分页帖子的简单方法示例：
 ```liquid
-\-\-\-
+---
 layout: default
 title: My Blog
-\-\-\-
+---
 
 <!-- This loops through the paginated posts -->
-\{\% for post in paginator.posts \%\}
-  <h1><a href="\{\{ post.url \}\}">\{\{ post.title \}\}</a></h1>
+{% for post in paginator.posts %}
+  <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
   <p class="author">
-    <span class="date">\{\{ post.date \}\}</span>
+    <span class="date">{{ post.date }}</span>
   </p>
   <div class="content">
-    \{\{ post.content \}\}
+    {{ post.content }}
   </div>
-\{\% endfor \%\}
+{% endfor %}
 
 <!-- Pagination links -->
 <div class="pagination">
-  \{\% if paginator.previous_page \%\}
-    <a href="\{\{ paginator.previous_page_path \}\}" class="previous">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path }}" class="previous">
       Previous
     </a>
-  \{\% else \%\}
+  {% else %}
     <span class="previous">Previous</span>
-  \{\% endif \%\}
+  {% endif %}
   <span class="page_number ">
-    Page: \{\{ paginator.page \}\} of \{\{ paginator.total_pages \}\}
+    Page: {{ paginator.page }} of {{ paginator.total_pages }}
   </span>
-  \{\% if paginator.next_page \%\}
-    <a href="\{\{ paginator.next_page_path \}\}" class="next">Next</a>
-  \{\% else \%\}
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path }}" class="next">Next</a>
+  {% else %}
     <span class="next ">Next</span>
-  \{\% endif \%\}
+  {% endif %}
 </div>
 ```
 
@@ -2833,35 +2839,36 @@ The following HTML snippet should handle page one, and render a list of each pag
 
 下面的HTML片段应该处理第一页，并呈现每个页面的列表，其中包含除当前页面之外的所有页面的链接。
 
+
 ```html
-\{\% if paginator.total_pages > 1 \%\}
+{% if paginator.total_pages > 1 %}
 <div class="pagination">
-  \{\% if paginator.previous_page \%\}
-    <a href="\{\{ paginator.previous_page_path | relative_url \}\}">&laquo; Prev</a>
-  \{\% else \%\}
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | relative_url }}">&laquo; Prev</a>
+  {% else %}
     <span>&laquo; Prev</span>
-  \{\% endif \%\}
+  {% endif %}
 
-  \{\% for page in (1..paginator.total_pages) \%\}
-    \{\% if page == paginator.page \%\}
-      <em>\{\{ page \}\}</em>
-    \{\% elsif page == 1 \%\}
-      <a href="\{\{ '/' | relative_url \}\}">\{\{ page \}\}</a>
-    \{\% else \%\}
-      <a href="\{\{ site.paginate_path | relative_url | replace: ':num', page \}\}">\{\{ page \}\}</a>
-    \{\% endif \%\}
-  \{\% endfor \%\}
+  {% for page in (1..paginator.total_pages) %}
+    {% if page == paginator.page %}
+      <em>{{ page }}</em>
+    {% elsif page == 1 %}
+      <a href="{{ '/' | relative_url }}">{{ page }}</a>
+    {% else %}
+      <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a>
+    {% endif %}
+  {% endfor %}
 
-  \{\% if paginator.next_page \%\}
-    <a href="\{\{ paginator.next_page_path | relative_url \}\}">Next &raquo;</a>
-  \{\% else \%\}
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | relative_url }}">Next &raquo;</a>
+  {% else %}
     <span>Next &raquo;</span>
-  \{\% endif \%\}
+  {% endif %}
 </div>
-\{\% endif \%\}
-
+{% endif %}
 ```
 
 ***
 到底了...
 ***
+{% endraw %}

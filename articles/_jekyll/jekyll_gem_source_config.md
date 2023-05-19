@@ -1,17 +1,20 @@
 ---
-index: 6
+order: 7
 text: gem
 ---
 
 ***配置方法***
+
 **查找默认源**
 ```
 $ gem sources
 ```
+
 **移除默认源**
 ```
 $ gem sources --remove https://rubygems.org/
 ```
+
 **添加新源**(阿里镜像源)
 ```
 $ gem sources -a https://mirrors.aliyun.com/rubygems/

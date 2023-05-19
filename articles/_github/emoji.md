@@ -1,7 +1,8 @@
 ---
-index: 0
+order: 1
 text: emoji列表
 ---
+
 {% assign emojis = site.data.emojis -%}
 <div id="articles-github-emoji" class="d-flex w-100 h-100 include-container-lazyload-img">
   <div id="github-emoji_group_scrollspy_navbar" class="h-100 bg-body" style="font-size:12px;">

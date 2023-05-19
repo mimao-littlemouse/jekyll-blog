@@ -1,11 +1,14 @@
 ---
-index: 3
+order: 5
 text: 案例讲解
 ---
 
 # 案例介绍
+
 #### [`返回目录`](./navbar.md)
+
 ##### `使用jekyll-blog博客案例` {#content}
+
 ###  {#title-1}
 [**查看笔记介绍**](#introduction) | [**下一节**](#title-2) 
 

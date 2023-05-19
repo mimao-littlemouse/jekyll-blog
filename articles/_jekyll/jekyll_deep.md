@@ -1,22 +1,28 @@
 ---
-index: 2
+order: 3
 text: 深入
 ---
 
 # jekyll深入了解 
+
 ## [`返回目录`](./navbar.md)
+
 ### `深入了解jekyll` {#content}
 - [**`Guides`**](#content "指南")指南：
   [`Plugins`](#content-plugins "插件")插件、[`Blog Migrations`](#content-blog_migrations "博客迁移")博客迁移、[`Upgrading`](#content-upgrading "升级")升级、[`Deployment`](#content-deployment "部署")部署
+
   ***
+
 - [**`Build`**](#content "构建")构建：
   [`Command Line Usage`](#content-command_line_usage "命令行用法")命令行用法、[`Configuration`](#content-configuration "配置")配置、[`Rendering Process`](#content-rendering_process "渲染过程")渲染过程
   ***
 
 ### **`Guides 指南`**  {#content-guides}
 [`返回大纲`](#content) | [`Build 构建`](#content-build)
+
 #### Plugins 插件 {#content-plugins}
 [目录](#content) | [下](#content-blog_migrations)
+
 ```txt
 Jekyll has a plugin system with hooks that allow you to create custom generated content specific to your site. 
 You can run custom code for your site without having to modify the Jekyll source itself.
@@ -24,10 +30,12 @@ You can run custom code for your site without having to modify the Jekyll source
 Jekyll有一个带有钩子的插件系统，允许您创建特定于您的网站的自定义生成内容。
 您可以为您的网站运行自定义代码，而无需修改Jekyll源代码本身。
 
+
 ```txt
 You can add specific plugins to the whitelist key in _config.yml to allow them to run in safe mode.
 ```
 **您可以在_config.yml中的白名单密钥中添加特定的插件，以允许它们在安全模式下运行。**
+
 ```txt
 Installation - How to install plugins
 Your first plugin - How to write plugins
@@ -51,6 +59,7 @@ Hooks - 细粒度控制以扩展构建过程
 
 #### Blog Migrations 博客迁移 {#content-blog_migrations}
 [上](#content-plugins) | [下](#content-upgrading)
+
 ```txt
 If you’re switching to Jekyll from another blogging system, Jekyll’s importers can help you with the move. 
 To learn more about importing your site to Jekyll, visit our jekyll-import docs site.
@@ -62,6 +71,7 @@ To learn more about importing your site to Jekyll, visit our jekyll-import docs 
 
 #### Upgrading 升级 {#content-upgrading}
 [上](#content-blog_migrations) | [下](#content-deployment)
+
 ```txt
 Upgrading from an older version of Jekyll? 
 Upgrading to a new major version of Jekyll (e.g. from v2.x to v3.x) may cause some headaches. 
@@ -70,6 +80,7 @@ Take the following guides to aid your upgrade:
 从旧版本的Jekyll升级？
 升级到Jekyll的新主要版本（例如从v2.x升级到v3.x）可能会引起一些头痛。
 请参阅以下指南以帮助您升级：
+
 ```
 From 0.x to 1.x and 2.x
 From 2.x to 3.x
@@ -101,6 +112,7 @@ The procedure is similar if you use the github-pages gem.
 
 #### Deployment 部署 {#content-deployment}
 [上](#content-upgrading) | [下](#content-build)
+
 ```txt
 Sites built using Jekyll can be deployed in a large number of ways due to the static nature of the generated output. 
 Here’s some of the most common ways:
@@ -118,8 +130,10 @@ Third Party 第三方
 
 ### **`Build 构建`**  {#content-build}
 [`返回大纲`](#content) | [下](#content-command_line_usage)
+
 #### Command Line Usage  命令行用法 {#content-command_line_usage}
 [目录](#content) | [Guides 指南](#content-guides) | [下](#content-configuration)
+
 ```txt
 The Jekyll gem makes a jekyll executable available to you in your terminal.
 
@@ -127,6 +141,7 @@ The jekyll program has several commands but the structure is always:
 ```
 Jekyll gem使您可以在终端中使用Jekyll可执行文件。
 jekyll程序有几个命令，但其结构始终是：
+
 ```bash
 jekyll command [argument] [option] [argument_to_option]
 
@@ -134,6 +149,7 @@ Examples:
     jekyll new site/ --blank
     jekyll serve --config _alternative_config.yml
 ```
+
 ```txt
 Typically you’ll use jekyll serve while developing locally and jekyll build when you need to generate the site for production.
 
@@ -172,6 +188,7 @@ To change Jekyll’s default build behavior have a look through the configuratio
 ***
 #### Configuration  配置 {#content-configuration}
 [上](#content-command_line_usage) | [下](#content-rendering_process)
+
 ```txt
 Jekyll gives you a lot of flexibility to customize how it builds your site. 
 These options can either be specified in a _config.yml or _config.toml file placed in your site’s root directory, 
@@ -200,9 +217,12 @@ Liquid选项
 Sass/SCSS选项
 Webrick选项
 增量再生
+
 ***
+
 #### Rendering Process  渲染过程 {#content-rendering_process}
 [上](#content-configuration)
+
 ```txt
 For any Jekyll site, a build session consists of discrete phases in the following order
 — setting up plugins, reading source files, running generators, rendering templates, and finally writing files to disk.
