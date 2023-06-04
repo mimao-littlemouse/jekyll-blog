@@ -1,0 +1,75 @@
+<h1 id="案例介绍">案例介绍</h1>
+
+<h4 id="返回目录"><a href="/jekyll-blog/articles/jekyll/navbar"><code>返回目录</code></a></h4>
+
+<h5 id="content"><code>使用jekyll-blog博客案例</code></h5>
+
+<h3 id="title-1">{#title-1}</h3>
+<p><a href="#introduction"><strong>查看笔记介绍</strong></a> | <a href="#title-2"><strong>下一节</strong></a></p>
+
+<p>1.<strong><em>安装jekyll环境</em></strong><br />
+安装jekyll 和 bundler 依赖</p>
+<pre><code>$ gem install jekyll bundler
+</code></pre>
+
+<p>2.<strong><em>创建第一个jekyll项目</em></strong><br />
+创建jekyll项目，并命名为 myblog</p>
+<pre><code>$ jekyll new myblog
+</code></pre>
+<blockquote>
+  <p>创建的过程非常长，请耐心等待</p>
+</blockquote>
+
+<p>3.<strong><em>项目结构</em></strong></p>
+<pre><code>_site #这是运行项目之后，才生成的文件夹（功能如其名）
+    jekyll
+        update
+            2023
+                03
+                    16
+                        welcome-to-jekyll.html
+    assets
+        main.css 
+        main.css.map
+        minima-social-icons.svg
+    about
+        index.html
+    feed.xml
+    404.html
+    index.html
+_ports
+    2023-03-16-welcome-to-jekyll.markdown
+_config.yml
+404.html
+about.markdown
+index.markdown
+Gemfile
+Gemfile.lock
+</code></pre>
+
+<p>4.<strong><em>运行项目</em></strong></p>
+<pre><code>$ bundler exec jekyll serve
+</code></pre>
+
+<pre><code>在运行之后，可能会报有关sass方面的错误，解决方法：
+$ gem install sass
+$ gem install compass
+(是否安装完成，输入sass -v  和  compass -v 看是否可以输出版本好)
+安装上面两个依赖就行，继续
+</code></pre>
+
+<blockquote>
+  <p>将--livereload选项传递给serve，以便在对源文件进行每次更改时自动刷新页面：<br />
+$ bundle exec jekyll serve--livereload</p>
+
+  <p>指定 --host  --post<br />
+可以更改服务运行时的 主机名 和 端口号<br />
+例如：<br />
+$ bundler exec jekyll serve --host 0.0.0.0 --post 4000</p>
+
+  <p>运行之后，出现的sass警告 不用管</p>
+</blockquote>
+
+<p><strong>扩展</strong><br />
+其他使用方法，请参考：<br />
+<a href="https://juejin.cn/post/6844903623567081486">入门教程</a>(来源掘金)</p>

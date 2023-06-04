@@ -1,0 +1,557 @@
+
+<h1 id="jekyll基础filters部分">jekyll基础(filters部分)</h1>
+
+<h4 id="返回"><a href="/jekyll-blog/articles/jekyll/jekyll_base" title="jekyll基础(filters部分)">返回</a></h4>
+
+<h2 id="liuqid-filters">Liuqid Filters</h2>
+
+<pre><code class="language-txt">All of the standard Liquid filters are supported (see below).
+
+To make common tasks easier, Jekyll even adds a few handy filters of its own, all of which you can find on this page. 
+You can also create your own filters using plugins.
+</code></pre>
+<p>支持所有标准 <code>Liquid</code> 过滤器（见下文）。<br />
+为了简化常见任务，Jekyll甚至添加了一些自己的方便过滤器，所有这些都可以在这个页面上找到。<br />
+您也可以使用插件创建自己的过滤器。</p>
+
+<h4 id="过滤器介绍">过滤器介绍：</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">name</th>
+      <th style="text-align: left">description</th>
+      <th style="text-align: center">filter and output</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Relative URL</td>
+      <td style="text-align: left">Prepend baseurl config value to the input to convert a URL path into a relative URL. <br /> This is recommended for a site that is hosted on a subpath of a domain.</td>
+      <td style="text-align: center"><code>{{ "/assets/style.css" | relative_url }}</code> <br /> <code>/my-baseurl/assets/style.css</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将baseurl配置值前置到输入，以将URL路径转换为相对URL。<br /> 对于托管在域的子路径上的网站，建议这样做。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Absolute URL</td>
+      <td style="text-align: left">Prepend url and baseurl values to the input to convert a URL path to an absolute URL.</td>
+      <td style="text-align: center"><code>{{ "/assets/style.css" | absolute_url }}</code> <br /> <code>http://example.com/my-baseurl/assets/style.css</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将url和baseurl值前置到输入，以将url路径转换为绝对url。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Date to XML Schema</td>
+      <td style="text-align: left">Convert a Date into XML Schema (ISO 8601) format.</td>
+      <td style="text-align: center"><code>{{ site.time | date_to_xmlschema }}</code><br /><code>2008-11-07T13:07:54-08:00</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将日期转换为XML模式（ISO 8601）格式。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Date to RFC-822 Format</td>
+      <td style="text-align: left">Convert a Date into the RFC-822 format used for RSS feeds.</td>
+      <td style="text-align: center"><code>{{ site.time | date_to_rfc822 }}</code><br /><code>Mon, 07 Nov 2008 13:07:54 -0800</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将Date转换为用于RSS提要的RFC-822格式。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Date to String</td>
+      <td style="text-align: left">Convert a date to short format.</td>
+      <td style="text-align: center"><code>{{ site.time | date_to_string }}</code><br /><code>07 Nov 2008</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将日期转换为短格式。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Date to String in ordinal US style</td>
+      <td style="text-align: left">Format a date to ordinal, US, short format. 3.8.0</td>
+      <td style="text-align: center"><code>{{ site.time | date_to_string: "ordinal", "US" }}</code><br /><code>Nov 7th, 2008</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将日期格式设置为序号、美国短格式。3.8.0</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Date to Long String</td>
+      <td style="text-align: left">Format a date to long format.</td>
+      <td style="text-align: center"><code>{{ site.time | date_to_long_string }}</code><br /><code>07 November 2008</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将日期设置为长格式。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Date to Long String in ordinal UK style</td>
+      <td style="text-align: left">Format a date to ordinal, UK, long format. 3.8.0</td>
+      <td style="text-align: center"><code>{{ site.time | date_to_long_string: "ordinal" }}</code><br /><code>7th November 2008</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将日期格式设置为序数、英国、长格式。3.8.0</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Where</td>
+      <td style="text-align: left">Select all the objects in an array where the key has the given value.</td>
+      <td style="text-align: center"><code>{{ site.members | where:"graduation_year","2014" }}</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">选择数组中键具有给定值的所有对象。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Where Expression</td>
+      <td style="text-align: left">Select all the objects in an array where the expression is true. 3.2.0</td>
+      <td style="text-align: center"><code>{{ site.members | where_exp:"item","item.graduation_year == 2014" }}</code><br /><code>{{ site.members | where_exp:"item","item.graduation_year &lt; 2014" }}</code><br /><code>{{ site.members | where_exp:"item","item.projects contains 'foo'" }}</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">选择数组中表达式为true的所有对象。3.2.0</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Find</td>
+      <td style="text-align: left">Return the first object in an array for which the queried attribute has the given value or return nil <br /> if no item in the array satisfies the given criteria. 4.1.0</td>
+      <td style="text-align: center"><code>{{ site.members | find: "graduation_year", "2014" }}</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">返回数组中查询属性具有给定值的第一个对象，<br />或者如果数组中没有项目满足给定条件，则返回nil。4.1.0</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Find Expression</td>
+      <td style="text-align: left">Return the first object in an array for which the given expression evaluates to true or <br /> return nil if no item in the array satisfies the evaluated expression. 4.1.0</td>
+      <td style="text-align: center"><code>{{ site.members | find_exp:"item","item.graduation_year == 2014" }}</code><br /><code>{{ site.members | find_exp:"item","item.graduation_year &lt; 2014" }}</code><br />`{{ site.members</td>
+      <td>find_exp:”item”,”item.projects contains ‘foo’” }}</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">返回数组中给定表达式计算结果为true的第一个对象，<br />如果数组中没有项满足计算结果的表达式，则返回nil。4.1.0</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Group By</td>
+      <td style="text-align: left">Group an array’s items by a given property.</td>
+      <td style="text-align: center"><code>{{ site.members | group_by:"graduation_year" }}</code><br /><code>[{"name"=&gt;"2013", "items"=&gt;[...]},{"name"=&gt;"2014", "items"=&gt;[...]}]</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">根据给定的属性对数组的项进行分组。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Group By Expression</td>
+      <td style="text-align: left">Group an array’s items using a Liquid expression. 3.4.0</td>
+      <td style="text-align: center"><code>{{ site.members | group_by_exp: "item","item.graduation_year | truncate: 3, ''" }}</code><br /><code>[{"name"=&gt;"201", "items"=&gt;[...]},{"name"=&gt;"200", "items"=&gt;[...]}]</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">使用Liquid表达式对数组的项进行分组。3.4.0</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">XML Escape</td>
+      <td style="text-align: left">Escape some text for use in XML.</td>
+      <td style="text-align: center"><code>{{ page.content | xml_escape }}</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">转义一些文本以用于XML。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">CGI Escape</td>
+      <td style="text-align: left">CGI escape a string for use in a URL. <br /> Replaces any special characters with appropriate %XX replacements. <br /> CGI escape normally replaces a space with a plus + sign.</td>
+      <td style="text-align: center"><code>{{ "foo, bar; baz?" | cgi_escape }}</code><br /><code>foo%2C+bar%3B+baz%3F</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">CGI对字符串进行转义，以便在URL中使用<br />用适当的 %XX 替换来替换任何特殊字符<br />CGI转义通常用加号替换空格。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">URI Escape</td>
+      <td style="text-align: left">Percent encodes any special characters in a URI. <br /> URI escape normally replaces a space with %20. <br /> Reserved characters will not be escaped.</td>
+      <td style="text-align: center"><code>{{ "http://foo.com/?q=foo, \bar?" | uri_escape }}</code> <br /> <code>http://foo.com/?q=foo,%20%5Cbar?</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">Percent对URI中的任何特殊字符进行编码<br />URI转义通常会将空格替换为 %20 <br />保留字符将不会被转义。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Number of Words</td>
+      <td style="text-align: left">Count the number of words in some text.<br />From v4.1.0, this filter takes an optional argument to control the handling of Chinese-Japanese-Korean (CJK) characters in the input string.<br />Passing ‘cjk’ as the argument will count every CJK character detected as one word irrespective of being separated by whitespace.<br />Passing ‘auto’ (auto-detect) works similar to ‘cjk’ but is more performant if the filter is used on a variable string that may or may not contain CJK chars.</td>
+      <td style="text-align: center"><code>{{ "Hello world!" | number_of_words }}</code> <br /> 2 <br /> <code>{{ "你好hello世界world" | number_of_words }}</code> <br /> 1 <br /> <code>{{ "你好hello世界world" | number_of_words: "cjk" }}</code> <br /> 6 <br /> <code>{{ "你好hello世界world" | number_of_words: "auto" }}</code> <br /> 6 <br /></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">计算一些文本中的字数<br />从v4.1.0开始，此筛选器采用一个可选参数来控制输入字符串中中日韩（CJK）字符的处理<br />传递“cjk”作为参数将把检测到的每个cjk字符计算为一个单词，而不考虑是否用空格分隔<br />传递“auto”（自动检测）的工作原理类似于“cjk”，但如果过滤器用于可能包含或不包含cjk字符的变量字符串，则性能更高。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Array to Sentence</td>
+      <td style="text-align: left">Convert an array into a sentence. <br /> Useful for listing tags. <br /> Optional argument for connector.</td>
+      <td style="text-align: center"><code>{{ page.tags | array_to_sentence_string }}</code> <br /> <code>foo, bar, and baz</code> <br /> <code>{{ page.tags | array_to_sentence_string: "or" }}</code> <br /> <code>foo, bar, or baz</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将数组转换成句子<br />用于列出标记<br />连接器的可选参数。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Markdownify</td>
+      <td style="text-align: left">Convert a Markdown-formatted string into HTML.</td>
+      <td style="text-align: center"><code>{{ page.excerpt | markdownify }}</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将Markdown格式的字符串转换为HTML。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Smartify</td>
+      <td style="text-align: left">Convert “quotes” into “smart quotes.”</td>
+      <td style="text-align: center"><code>{{ page.title | smartify }}</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将“引号”转换为“智能引号”</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Converting Sass/SCSS</td>
+      <td style="text-align: left">Convert a Sass- or SCSS-formatted string into CSS.</td>
+      <td style="text-align: center"><code>{{ some_sass | sassify }}</code><br /><code>{{ some_scss | scssify }}</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将Sass或SCSS格式的字符串转换为CSS。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Slugify</td>
+      <td style="text-align: left">Convert a string into a lowercase URL “slug”. <br /> See below for options.</td>
+      <td style="text-align: center"><code>{{ "The _config.yml file" | slugify }}</code> <br /> <code>the-config-yml-file</code> <br /> <code>{{ "The _config.yml file" | slugify: "pretty" }}</code> <br /> <code>the-_config.yml-file</code> <br /> <code>{{ "The _cönfig.yml file" | slugify: "ascii" }}</code> <br /> <code>the-c-nfig-yml-file</code> <br /> <code>{{ "The cönfig.yml file" | slugify: "latin" }}</code><br /><code>the-config-yml-file</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将字符串转换为小写URL“slug”<br />请参阅以下选项。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Data To JSON</td>
+      <td style="text-align: left">Convert Hash or Array to JSON.</td>
+      <td style="text-align: center"><code>{{ site.data.projects | jsonify }}</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将哈希或数组转换为JSON。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Normalize Whitespace</td>
+      <td style="text-align: left">Replace any occurrence of whitespace with a single space.</td>
+      <td style="text-align: center"><code>{{ "a \n b" | normalize_whitespace }}</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">用单个空格替换任何出现的空格。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Sort</td>
+      <td style="text-align: left">Sort an array. Optional arguments for hashes 1. property name 2. nils order (first or last).</td>
+      <td style="text-align: center"><code>{{ page.tags | sort }}</code><br /><code>{{ site.posts | sort: "author" }}</code><br /><code>{{ site.pages | sort: "title", "last" }}</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">对数组进行排序。哈希1的可选参数。属性名称2。幂零顺序（第一个或最后一个）。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Sample</td>
+      <td style="text-align: left">Pick a random value from an array. <br /> Optionally, pick multiple values.</td>
+      <td style="text-align: center"><code>{{ site.pages | sample }}</code><br /><code>{{ site.pages | sample: 2 }}</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">从数组中选择一个随机值<br />可选地，选择多个值。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">To Integer</td>
+      <td style="text-align: left">Convert a string or boolean to integer.</td>
+      <td style="text-align: center"><code>{{ some_var | to_integer }}</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将字符串或布尔值转换为整数。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Array Filters</td>
+      <td style="text-align: left">Push, pop, shift, and unshift elements from an Array. <br /> These are NON-DESTRUCTIVE, i.e. they do not mutate the array, but rather make a copy and mutate that.</td>
+      <td style="text-align: center"><code>{{ page.tags | push: "Spokane" }}</code><br /><code>["Seattle", "Tacoma", "Spokane"]</code><br /><code>{{ page.tags | pop }}</code><br /><code>["Seattle"]</code><br /><code>{{ page.tags | shift }}</code><br /><code>["Tacoma"]</code><br /><code>{{ page.tags | unshift: "Olympia" }}</code><br /><code>["Olympia", "Seattle", "Tacoma"]</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">从数组中推送、弹出、移位和取消移位元素<br />这些是非破坏性的，即它们不会使数组发生突变，而是复制并使其发生突变。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Inspect</td>
+      <td style="text-align: left">Convert an object into its String representation for debugging.</td>
+      <td style="text-align: center"><code>{{ some_var | inspect }}</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">译</td>
+      <td style="text-align: left">将对象转换为其字符串表示形式以进行调试。</td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<p><strong>Options for the slugify filter(slugify过滤器选项)</strong></p>
+
+<pre><code class="language-txt">The slugify filter accepts an option, each specifying what to filter. 
+The default is default. 
+They are as follows (with what they filter):
+</code></pre>
+<p>slugify过滤器接受一个选项，每个选项都指定要过滤的内容。<br />
+默认值为默认值。<br />
+它们如下（以及它们过滤的内容）：</p>
+<pre><code class="language-txt">none: no characters
+无字符
+raw: spaces
+空格
+default: spaces and non-alphanumeric characters
+空格和非字母数字字符
+pretty: spaces and non-alphanumeric characters except for ._~!$&amp;'()+,;=@
+空格和非字母数字字符，除了 ._~!$&amp;'()+,;=@
+ascii: spaces, non-alphanumeric, and non-ASCII characters
+空格，非字母数字字符 和 非ASCII字符
+latin: like default, except Latin characters are first transliterated (e.g. àèïòü to aeiou)3.7.0 .
+与默认情况一样，除了 拉丁字符 是第一个音译的（例如，从ïòü到aeiou）3.7.0。
+</code></pre>
+
+<pre><code class="language-txt">Detecting nil values with where filter 4.0
+</code></pre>
+<p>使用where filter 4.0检测零值</p>
+
+<pre><code class="language-txt">You can use the where filter to detect documents and pages with properties that are nil or "". 
+For example,
+</code></pre>
+<p>您可以使用 where筛选器 检测财产为 零或“” 的文档和页面。<br />
+例如，</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Using `nil` to select posts that either do not have `my_prop`
+// defined or `my_prop` has been set to `nil` explicitly.
+<span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">filtered_posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">posts</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">where</span><span class="p">:</span><span class="w"> </span><span class="s1">'my_prop'</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">%}</span>
+</code></pre></div></div>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Using Liquid's special literal `empty` or `blank` to select
+// posts that have `my_prop` set to an empty value.
+<span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">filtered_posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">posts</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">where</span><span class="p">:</span><span class="w"> </span><span class="s1">'my_prop'</span><span class="p">,</span><span class="w"> </span><span class="nb">empty</span><span class="w"> </span><span class="p">%}</span>
+</code></pre></div></div>
+
+<p><strong>Binary operators in where_exp filter4.0(where _exp过滤器中的二进制运算符)</strong></p>
+
+<pre><code class="language-txt">You can use Liquid binary operators or and and in the expression passed to the where_exp filter to employ multiple conditionals in the operation.
+
+For example, to get a list of documents on English horror flicks, one could use the following snippet:
+</code></pre>
+<p>可以在传递给where_exp过滤器的表达式中使用Liquid二进制运算符或和，以便在操作中使用多个条件。<br />
+例如，要获得英国恐怖电影的文档列表，可以使用以下片段：</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{{</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">movies</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">where_exp</span><span class="p">:</span><span class="w"> </span><span class="s2">"item"</span><span class="p">,</span><span class="w"> </span><span class="s2">"item.genre == 'horror' and item.language == 'English'"</span><span class="w"> </span><span class="p">}}</span>
+</code></pre></div></div>
+
+<pre><code class="language-txt">Or to get a list of comic-book based movies, one may use the following:
+</code></pre>
+<p>或者，要获得基于漫画的电影列表，可以使用以下内容：</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{{</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">movies</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">where_exp</span><span class="p">:</span><span class="w"> </span><span class="s2">"item"</span><span class="p">,</span><span class="w"> </span><span class="s2">"item.sub_genre == 'MCU' or item.sub_genre == 'DCEU'"</span><span class="w"> </span><span class="p">}}</span>
+</code></pre></div></div>
+
+<p><strong>Standard Liquid Filters(标准Liquid过滤器)</strong></p>
+
+<pre><code class="language-txt">For your convenience, here is the list of all Liquid filters with links to examples in the official Liquid documentation.
+</code></pre>
+<p>为了方便您，以下是所有Liquid过滤器的列表，并附有官方Liquid文档中示例的链接。</p>
+
+<p><a href="https://shopify.github.io/liquid/filters/abs/" title="Liquid文档">去查看</a></p>
+
+<pre><code>abs
+
+append
+
+at_least
+
+at_most
+
+capitalize
+
+ceil
+
+compact
+
+concat
+
+date
+
+default
+
+divided_by
+
+downcase
+
+escape
+
+escape_once
+
+first
+
+floor
+
+join
+
+last
+
+lstrip
+
+map
+
+minus
+
+modulo
+
+newline_to_br
+
+plus
+
+prepend
+
+remove
+
+remove_first
+
+replace
+
+replace_first
+
+reverse
+
+round
+
+rstrip
+
+size
+
+slice
+
+sort
+
+sort_natural
+
+split
+
+strip
+
+strip_html
+
+strip_newlines
+
+times
+
+truncate
+
+truncatewords
+
+uniq
+
+upcase
+
+url_decode
+
+url_encode
+</code></pre>
+

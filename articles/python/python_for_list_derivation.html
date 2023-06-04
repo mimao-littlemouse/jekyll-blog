@@ -1,0 +1,103 @@
+<h1 id="python中列表推导式">python中列表推导式</h1>
+
+<p>new_list = [expression(item) for item in iterable if condition]<br />
+可以写成：<br />
+new_list = []<br />
+for item in iterable:<br />
+    if condition:<br />
+        new_list.append(expression(item))</p>
+
+<p>其他例子：<br />
+numbers = [2*x for x in range(1,11) if x&gt;2 and x&lt;5]<br />
+print(numbers)</p>
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p>[6, 8]</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h1 id="如果-x-的值介于2和5之间则列表推导式返回-2x否则返回-3x">如果 x 的值介于2和5之间，则列表推导式返回 2<em>x，否则返回 3</em>x。</h1>
+<p>numbers = [2<em>x if x &gt; 2 and x &lt; 5 else 3</em>x for x in range(10)]<br />
+print(numbers)</p>
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p>[0, 3, 6, 6, 8, 15, 18, 21, 24, 27]</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>numbers = []<br />
+for x in range(10):<br />
+	if x&gt;2 and x&lt;5:<br />
+		numbers.append(2<em>x)<br />
+	elif x&lt;=2:<br />
+		numbers.append(3</em>x)<br />
+	else:<br />
+		numbers.append(4<em>x)<br />
+numbers = [2</em>x if x &gt; 2 and x &lt; 5 else 3<em>x if x &lt;=2 else 4</em>x for x in range(10)]<br />
+print(numbers)</p>
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p>[0, 3, 6, 6, 8, 20, 24, 28, 32, 36]</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>zip() 方法的使用：<br />
+cities = [‘Rome’, ‘Warsaw’, ‘London’]<br />
+countries = [‘Italy’, ‘Poland’, ‘United Kingdom’]<br />
+abc = [(city, country) for city, country in zip(cities, countries)]<br />
+print(abc)</p>
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p>[(‘Rome’, ‘Italy’), (‘Warsaw’, ‘Poland’), (‘London’, ‘United Kingdom’)]</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>嵌套列表推导式：<br />
+matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]<br />
+for row in matrix:<br />
+    for item in row:<br />
+        item  *= 2<br />
+print(matrix)</p>
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p>[[2, 4, 6], [8, 10, 12], [14, 16, 18]]</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>变换成嵌套列表推导式<br />
+matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]<br />
+matrix = [[item*2 for item in row] for row in matrix]<br />
+print(matrix)</p>
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p>[[2, 4, 6], [8, 10, 12], [14, 16, 18]]</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>reduce和lamba算式<br />
+from functools import reduce<br />
+numbers = [3, 6, 8, 23]<br />
+print(reduce(lambda a,b: a+b, numbers))</p>
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p>40<br />
+变换成列表推导式<br />
+print(sum([number for number in numbers]))<br />
+40</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+

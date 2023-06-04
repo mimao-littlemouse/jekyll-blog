@@ -1,0 +1,232 @@
+
+<h1 id="jekyll基础tags部分">jekyll基础(tags部分)</h1>
+
+<h4 id="返回"><a href="/jekyll-blog/articles/jekyll/jekyll_base" title="jekyll基础(tags部分)">返回</a></h4>
+
+<h2 id="tags-filters">Tags Filters</h2>
+
+<pre><code class="language-txt">All of the standard Liquid tags are supported. 
+Jekyll has a few built in tags to help you build your site. 
+You can also create your own tags using plugins.
+</code></pre>
+<p>支持所有标准的Liquid tag。<br />
+Jekyll有一些内置标签可以帮助你建立你的网站。<br />
+您也可以使用插件创建自己的标签。</p>
+
+<p><strong>Includes</strong></p>
+
+<pre><code class="language-txt">If you have page snippets that you use repeatedly across your site, an include is the perfect way to make this more maintainable.
+</code></pre>
+<p>如果您有在整个网站上重复使用的页面片段，那么include是使其更易于维护的完美方法。</p>
+
+<p><strong>Code snippet highlighting(代码段突出显示)</strong></p>
+
+<pre><code class="language-txt">Jekyll has built in support for syntax highlighting of over 100 languages thanks to Rouge. 
+Rouge is the default highlighter in Jekyll 3 and above.
+</code></pre>
+<p>得益于Rouge，Jekyll内置了对100多种语言语法高亮显示的支持。<br />
+Rouge是Jekyll 3及以上版本中默认的高亮。</p>
+
+<pre><code class="language-txt">Using Pygments has been deprecated and is not supported in Jekyll 4; 
+
+the configuration setting highlighter: 
+pygments now automatically falls back to using Rouge which is written in Ruby and 100% compatible with stylesheets for Pygments.
+</code></pre>
+<p>使用Pygments已被弃用，在Jekyll 4中不支持使用；</p>
+
+<p>配置设置高亮：<br />
+pygments现在自动回到使用Rouge，Rouge是用Ruby编写的，与pygments的样式表100%兼容。</p>
+
+<pre><code class="language-txt">To render a code block with syntax highlighting, surround your code as follows:
+</code></pre>
+<p>要使用语法高亮显示来渲染代码块，请按如下方式环绕代码：</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">highlight</span><span class="w"> </span>ruby<span class="w"> </span><span class="p">%}</span>
+def foo
+  puts 'foo'
+end
+<span class="p">{%</span><span class="w"> </span><span class="nt">endhighlight</span><span class="w"> </span><span class="p">%}</span>
+</code></pre></div></div>
+
+<pre><code class="language-txt">The argument to the highlight tag (ruby in the example above) is the language identifier. 
+
+To find the appropriate identifier to use for the language you want to highlight, look for the “short name” on the Rouge wiki.
+</code></pre>
+<p>高亮标记的参数（上例中的ruby）是语言标识符。<br />
+要为要突出显示的语言找到合适的标识符，请在Rouge wiki上查找“短名称”。</p>
+
+<pre><code class="language-txt">Jekyll processes all Liquid filters in code blocks
+If you are using a language that contains curly braces, you will likely need to place \{\% raw \%\} and \{\% endraw \%\} tags around your code. 
+Since Jekyll 4.0 , you can add render_with_liquid: false in your front matter to disable Liquid entirely for a particular document.
+</code></pre>
+<p>Jekyll在代码块中处理所有Liquid筛选器。<br />
+如果您使用的语言包含大括号，则可能需要在代码周围放置｛% raw% ｝和｛% endraw %} 标记。<br />
+自Jekyll 4.0以来，您可以在前面的内容中添加 render_with_liquid:false ，以完全禁用特定文档的liquid。</p>
+
+<p><strong>Line numbers(行号)</strong></p>
+
+<pre><code class="language-txt">There is a second argument to highlight called linenos that is optional. 
+Including the linenos argument will force the highlighted code to include line numbers. 
+For instance, the following code block would include line numbers next to each line:
+</code></pre>
+<p>还有第二个要突出显示的参数linenos是可选的。<br />
+包含linenos参数将强制高亮显示的代码包含行号。<br />
+例如，以下代码块将包括每行旁边的行号：</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">highlight</span><span class="w"> </span>ruby<span class="w"> </span>linenos<span class="w"> </span><span class="p">%}</span>
+def foo
+  puts 'foo'
+end
+<span class="p">{%</span><span class="w"> </span><span class="nt">endhighlight</span><span class="w"> </span><span class="p">%}</span>
+</code></pre></div></div>
+
+<p><strong>Marking specific lines4.4.0(标记特定线条)</strong></p>
+
+<pre><code class="language-txt">You can mark specific lines in a code snippet by using the optional argument mark_lines. 
+This argument takes a space-separated list of line numbers which must be wrapped in double quotes. 
+For example, the following code block will mark lines 1 and 2 but not line 3:
+</code></pre>
+<p>您可以使用可选参数mark_lines来标记代码段中的特定行。<br />
+此参数采用一个以空格分隔的行号列表，该列表必须用双引号括起来。<br />
+例如，以下代码块将标记第1行和第2行，但不标记第3行：</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">highlight</span><span class="w"> </span>ruby<span class="w"> </span><span class="na">mark_lines</span><span class="o">=</span><span class="s2">"1 2"</span><span class="w"> </span><span class="p">%}</span>
+def foo
+  puts 'foo'
+end
+<span class="p">{%</span><span class="w"> </span><span class="nt">endhighlight</span><span class="w"> </span><span class="p">%}</span>
+</code></pre></div></div>
+
+<pre><code class="language-txt">A default class name of hll will be applied to the marked lines.
+</code></pre>
+<p>hll的默认类名将应用于标记的行。</p>
+
+<p><strong>Stylesheets for syntax highlighting(语法高亮显示的样式表)</strong></p>
+
+<pre><code class="language-txt">In order for the highlighting to show up, you’ll need to include a highlighting stylesheet. 
+For Pygments or Rouge you can use a stylesheet for Pygments, you can find an example gallery here or from its repository.
+
+Copy the CSS file (native.css for example) into your css directory and import the syntax highlighter styles into your main.css:
+</code></pre>
+<p>为了显示高亮显示，您需要包含一个高亮显示样式表。<br />
+对于Pygments或Rouge，您可以使用Pygments的样式表，您可以在此处或其存储库中找到示例库。<br />
+将CSS文件（例如native.CSS）复制到CSS目录中，并将语法高亮样式导入到main.CSS中：</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@import</span> <span class="s1">"native.css"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><strong>Links</strong></p>
+<pre><code class="language-txt">Since Jekyll 4.0 , you don’t need to prepend link and post_url tags with site.baseurl.
+</code></pre>
+<p>自从Jekyll 4.0以来，您不需要使用 site.baseurl 来准备链接和post_url标签。</p>
+
+<p><strong>Linking to pages(链接到页面)</strong></p>
+<pre><code class="language-txt">To link to a post, a page, collection item, or file, the link tag will generate the correct permalink URL for the path you specify. 
+For example, if you use the link tag to link to mypage.html, even if you change your permalink style to include the file extension or omit it, 
+the URL formed by the link tag will always be valid.
+
+You must include the file’s original extension when using the link tag. Here are some examples:
+</code></pre>
+<p>要链接到帖子、页面、收藏项目或文件，链接标记将为您指定的路径生成正确的永久链接URL。<br />
+例如，如果您使用链接标记链接到mypage.html，即使您更改了永久链接样式以包含或省略文件扩展名，<br />
+由链接标签形成的URL将始终是有效的。</p>
+
+<p>使用链接标记时，必须包含文件的原始扩展名。以下是一些例子：</p>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">link</span><span class="w"> </span>_collection/name-of-document.md<span class="w"> </span><span class="p">%}</span>
+<span class="p">{%</span><span class="w"> </span><span class="nt">link</span><span class="w"> </span>_posts/2016-07-26-name-of-post.md<span class="w"> </span><span class="p">%}</span>
+<span class="p">{%</span><span class="w"> </span><span class="nt">link</span><span class="w"> </span>news/index.html<span class="w"> </span><span class="p">%}</span>
+<span class="p">{%</span><span class="w"> </span><span class="nt">link</span><span class="w"> </span>/assets/files/doc.pdf<span class="w"> </span><span class="p">%}</span>
+</code></pre></div></div>
+
+<pre><code class="language-txt">You can also use the link tag to create a link in Markdown as follows:
+</code></pre>
+<p>您也可以使用链接标记在Markdown中创建链接，如下所示：</p>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Link to a document](<span class="p">{%</span><span class="w"> </span><span class="nt">link</span><span class="w"> </span>_collection/name-of-document.md<span class="w"> </span><span class="p">%}</span>)
+[Link to a post](<span class="p">{%</span><span class="w"> </span><span class="nt">link</span><span class="w"> </span>_posts/2016-07-26-name-of-post.md<span class="w"> </span><span class="p">%}</span>)
+[Link to a page](<span class="p">{%</span><span class="w"> </span><span class="nt">link</span><span class="w"> </span>news/index.html<span class="w"> </span><span class="p">%}</span>)
+[Link to a file](<span class="p">{%</span><span class="w"> </span><span class="nt">link</span><span class="w"> </span>/assets/files/doc.pdf<span class="w"> </span><span class="p">%}</span>)
+</code></pre></div></div>
+
+<pre><code class="language-txt">The path to the post, page, or collection is defined as the path relative to the root directory (where your config file is) to the file, 
+not the path from your existing page to the other page.
+
+For example, suppose you’re creating a link in page_a.md (stored in pages/folder1/folder2) to page_b.md (stored in pages/folder1). 
+Your path in the link would not be ../page_b.html. Instead, it would be /pages/folder1/page_b.md.
+
+If you’re unsure of the path, add {{ page.path }} to the page and it will display the path.
+
+One major benefit of using the link or post_url tag is link validation. 
+If the link doesn’t exist, Jekyll won’t build your site. 
+This is a good thing, as it will alert you to a broken link so you can fix it 
+(rather than allowing you to build and deploy a site with broken links).
+
+Note you cannot add filters to link tags. For example, you cannot append a string using Liquid filters, 
+such as {% link mypage.html | append: "#section1" %}. 
+To link to sections on a page, you will need to use regular HTML or Markdown linking techniques.
+
+The name of the file you want to link can be specified as a variable instead of an actual file name. 
+For example, suppose you defined a variable in your page’s front matter like this:
+</code></pre>
+<p>帖子、页面或集合的路径定义为相对于文件的根目录（配置文件所在的位置）的路径，<br />
+而不是从现有页面到另一个页面的路径。</p>
+
+<p>例如，假设您正在page_a.md（存储在 <code>pages/folder1/folder2</code> 中）中创建到<code>page_b.md</code>（存储在 <code>pages/folder1</code> 中）的链接。<br />
+你在链接中的路径不会是 <code>/page_b.html</code>。相反，它将是 <code>/pages/folder1/page_b.md</code>。</p>
+
+<p>如果您不确定路径，请将 <code>{{page.path}}</code> 添加到页面中，它将显示路径。<br />
+使用link或post_url标记的一个主要好处是链接验证。</p>
+
+<p>如果链接不存在，杰基尔就不会建立你的网站。</p>
+
+<p>这是一件好事，因为它会提醒你断开的链接，这样你就可以修复它<br />
+（而不是允许您构建和部署一个链接断开的网站）。<br />
+请注意，不能将筛选器添加到链接标记中。例如，不能使用Liquid过滤器附加字符串，<br />
+例如 <code>｛%link mypage.html | append:“#section1”%｝</code>。<br />
+要链接到页面上的部分，您需要使用常规的HTML或Markdown链接技术。</p>
+
+<p>可以将要链接的文件名指定为变量，而不是实际的文件名。<br />
+例如，假设您在页面的首页中定义了一个变量，如下所示：</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+title: My page
+my_variable: footer_company_a.html
+---
+</code></pre></div></div>
+
+<pre><code class="language-txt">You could then reference that variable in your link:
+</code></pre>
+<p>然后，您可以在链接中引用该变量：</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">link</span><span class="w"> </span>{{<span class="w"> </span>page.my_variable<span class="w"> </span>}}<span class="w"> </span><span class="p">%}</span>
+</code></pre></div></div>
+
+<pre><code class="language-txt">In this example, the link tag would render a link to the file footer_company_a.html.
+</code></pre>
+<p>在本例中，链接标记将呈现到文件footer_company_a.html的链接。</p>
+
+<p><strong>Linking to posts(链接到帖子)</strong></p>
+
+<pre><code class="language-txt">If you want to include a link to a post on your site, the post_url tag will generate the correct permalink URL for the post you specify.
+</code></pre>
+<p>如果你想在网站上包含一个帖子链接，post_url标签会为你指定的帖子生成正确的永久链接url。</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">post_url</span><span class="w"> </span><span class="mi">2010</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">21</span><span class="o">-</span>name-of-post<span class="w"> </span><span class="p">%}</span>
+</code></pre></div></div>
+
+<pre><code class="language-txt">If you organize your posts in subdirectories, you need to include subdirectory path to the post:
+</code></pre>
+<p>如果你在子目录中组织你的帖子，你需要包括帖子的子目录路径：</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">post_url</span><span class="w"> </span>/subdir/2010-07-21-name-of-post<span class="w"> </span><span class="p">%}</span>
+</code></pre></div></div>
+
+<pre><code class="language-txt">There is no need to include the file extension when using the post_url tag.
+
+You can also use this tag to create a link to a post in Markdown as follows:
+</code></pre>
+<p>使用post_url标记时，不需要包含文件扩展名。<br />
+您也可以使用此标记创建指向Markdown中帖子的链接，如下所示：</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Name of Link](<span class="p">{%</span><span class="w"> </span><span class="nt">post_url</span><span class="w"> </span><span class="mi">2010</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">21</span><span class="o">-</span>name-of-post<span class="w"> </span><span class="p">%}</span>)
+</code></pre></div></div>
+
