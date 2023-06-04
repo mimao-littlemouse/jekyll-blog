@@ -35,11 +35,21 @@
 <!-- --- 头部内容部分 --- -->
 <div id="app-header" class="bg-body-tertiary row mx-0 border-bottom" style="height: 50px;">
   <div class="col-1 col-md-2 col-lg-1 px-1 px-md-0 d-flex user-select-none fs-5" title="Mi Mao just want you to be comfortable!">
-    <span class="d-none d-md-block mx-auto align-self-center">Mi Mao</span>
-    <i class="bi bi-card-list d-block d-md-none mx-auto align-self-center text-center" style="width: 32px;height:32px;"></i>
+    <span class="d-none d-md-block d-lg-none d-xxl-block mx-auto align-self-center">Mi Mao</span>
+    <i class="bi bi-card-list d-block d-md-none d-lg-block d-xxl-none mx-auto align-self-center text-center" style="width: 32px;height:32px;"></i>
   </div>
-  <div class="col-10 col-md-8 col-lg-10 px-0 d-flex">
-    <span class="d-block my-auto mx-auto user-select-none fw-light">米猫博客</span>
+  <div class="col-10 col-md-8 col-lg-10 px-0 d-flex align-items-center">
+    <!-- 侧边导航栏 折叠 按钮 相对全局-->
+    <div id="app-mainsidenavbar-collapse-button" class="d-none d-sm-block d-flex p-2 btn btn-outline-secondary me-2 text-center" style="width:40px;" data-bs-toggle="collapse" href="#app-main-side-navbar" role="button" aria-expanded="false" aria-controls="app-main-side-navbar">
+      <i id="app-mainsidenavbar-collapse-button-icon" class="bi bi-chevron-bar-left align-self-center mx-auto"></i>
+    </div>
+    <nav aria-label="breadcrumb">
+      <!-- site-breadcrumb-container 用于获取第二个元素，并将其文本按点击的文章类别进行显示 -->
+      <ol class="site-breadcrumb-container breadcrumb mb-0">
+        <li class="breadcrumb-item">米猫博客</li>
+        <li class="breadcrumb-item active" aria-current="page">
+      </ol>
+    </nav>
   </div>
   <div class="col-1 col-md-2 col-lg-1 px-1 px-md-0 d-flex user-select-none fs-5" title="light or dark">
     <i id="app-header-light-dark-button" class="btn btn-outline-dark p-0 bi bi-brightness-high d-block m-auto align-self-center" style="width: 32px;"></i>
@@ -49,77 +59,89 @@
 <div id="app-main" class="bg-body d-flex row mx-0 overflow-y-auto bg-body-tertiary" style="height: calc(100vh - 50px);">
   <!-- 侧边导航栏 -->
   <!-- 导航选项的数据 是根据集合进行定义 -->
-  <div id="app-main-side-navbar" class="bg-body-tertiary nav nav-pills border-1 col-12 col-sm-1 col-md-2 col-lg-1 px-1 px-sm-0 d-flex flex-row flex-sm-column flex-nowrap align-items-center align-items-sm-stretch overflow-auto scrollbar" style="max-height: calc(100vh - 50px);" role="tablist">
+  <div id="app-main-side-navbar" class="bg-body-tertiary nav nav-pills border-1 col-12 col-sm-1 col-md-2 col-lg-1 px-1 px-sm-0 d-flex flex-row flex-sm-column flex-nowrap align-items-center align-items-sm-stretch overflow-auto scrollbar collapse collapse-horizontal" style="max-height: calc(100vh - 50px);" role="tablist">
     <!-- role="presentation" 可以声明为该元素为列表项 可以赋予列表项的一些特殊css表现，而不需要自己设置 role="button"类似 -->
     <div class="nav-item mx-1 mx-sm-0 my-0 flex-shrink-0" role="presentation" style="height: 32px;">
-      <div id="github-tab-1" class="nav-tab-loading nav-link p-0 d-flex active" style="min-width: 48px;min-height: 30px;border-radius: 0px;" data-bs-target="#github-content-1" data-bs-toggle="pill" type="button" role="tab" aria-controls="github-content-1" aria-selected="true">
-        <span class="d-block d-sm-none d-md-block mx-auto align-self-center" style="font-size: 12px;">github</span>
-        <i class="bi bi-github d-none d-sm-block d-md-none mx-auto align-self-center text-body" title="github"></i>
-        </div>
+      <div id="github-tab-1" class="mainsidenavbar nav-tab-loading nav-link p-0 d-flex align-items-center justify-content-center justify-content-md-start justify-content-lg-center justify-content-xxl-start px-0 px-md-1 px-lg-0 px-xxl-1 active" style="min-width: 48px;min-height: 30px;border-radius: 0px;" data-bs-target="#github-content-1" data-bs-toggle="pill" type="button" role="tab" aria-controls="github-content-1" aria-selected="true" data-article-text="github">
+        <i class="bi bi-github mx-auto mx-md-0 px-0 px-md-2 px-lg-0 px-xxl-2 align-self-center text-body text-center" style="width: 44px;height:28px;line-height:28px;font-size: 28px;" title="github"></i>
+        <span class="d-none d-md-block d-lg-none d-xxl-block px-2" style="font-size:16px;">|</span>
+        <span class="d-none d-md-block d-lg-none d-xxl-block" style="font-size:12px;">github</span>
+      </div>
     </div>
     <div class="nav-item mx-1 mx-sm-0 my-0 flex-shrink-0" role="presentation" style="height: 32px;">
-      <div id="jekyll-tab-2" class="nav-tab-loading nav-link p-0 d-flex " style="min-width: 48px;min-height: 30px;border-radius: 0px;" data-bs-target="#jekyll-content-2" data-bs-toggle="pill" type="button" role="tab" aria-controls="jekyll-content-2" aria-selected="">
-        <span class="d-block d-sm-none d-md-block mx-auto align-self-center" style="font-size: 12px;">jekyll</span>
-        <img class="d-none d-sm-block d-md-none mx-auto align-self-center" style="height:24px;" src="assets/imgs/jekyll.png" alt="jekyll" title="jekyll">
-        </div>
+      <div id="jekyll-tab-2" class="mainsidenavbar nav-tab-loading nav-link p-0 d-flex align-items-center justify-content-center justify-content-md-start justify-content-lg-center justify-content-xxl-start px-0 px-md-1 px-lg-0 px-xxl-1 " style="min-width: 48px;min-height: 30px;border-radius: 0px;" data-bs-target="#jekyll-content-2" data-bs-toggle="pill" type="button" role="tab" aria-controls="jekyll-content-2" aria-selected="" data-article-text="jekyll">
+        <img class="mx-auto mx-md-0 px-0 px-md-2 px-lg-0 px-xxl-2 align-self-center" style="width: 44px;height:28px;" src="assets/imgs/jekyll.png" alt="jekyll" title="jekyll">
+        <span class="d-none d-md-block d-lg-none d-xxl-block px-2" style="font-size:16px;">|</span>
+        <span class="d-none d-md-block d-lg-none d-xxl-block" style="font-size:12px;">jekyll</span>
+      </div>
     </div>
     <div class="nav-item mx-1 mx-sm-0 my-0 flex-shrink-0" role="presentation" style="height: 32px;">
-      <div id="markdown-tab-3" class="nav-tab-loading nav-link p-0 d-flex " style="min-width: 48px;min-height: 30px;border-radius: 0px;" data-bs-target="#markdown-content-3" data-bs-toggle="pill" type="button" role="tab" aria-controls="markdown-content-3" aria-selected="">
-        <span class="d-block d-sm-none d-md-block mx-auto align-self-center" style="font-size: 12px;">markdown</span>
-        <i class="bi bi-markdown d-none d-sm-block d-md-none mx-auto align-self-center text-body" title="markdown"></i>
-        </div>
+      <div id="markdown-tab-3" class="mainsidenavbar nav-tab-loading nav-link p-0 d-flex align-items-center justify-content-center justify-content-md-start justify-content-lg-center justify-content-xxl-start px-0 px-md-1 px-lg-0 px-xxl-1 " style="min-width: 48px;min-height: 30px;border-radius: 0px;" data-bs-target="#markdown-content-3" data-bs-toggle="pill" type="button" role="tab" aria-controls="markdown-content-3" aria-selected="" data-article-text="markdown">
+        <i class="bi bi-markdown mx-auto mx-md-0 px-0 px-md-2 px-lg-0 px-xxl-2 align-self-center text-body text-center" style="width: 44px;height:28px;line-height:28px;font-size: 28px;" title="markdown"></i>
+        <span class="d-none d-md-block d-lg-none d-xxl-block px-2" style="font-size:16px;">|</span>
+        <span class="d-none d-md-block d-lg-none d-xxl-block" style="font-size:12px;">markdown</span>
+      </div>
     </div>
     <div class="nav-item mx-1 mx-sm-0 my-0 flex-shrink-0" role="presentation" style="height: 32px;">
-      <div id="bootstrap5-tab-4" class="nav-tab-loading nav-link p-0 d-flex " style="min-width: 48px;min-height: 30px;border-radius: 0px;" data-bs-target="#bootstrap5-content-4" data-bs-toggle="pill" type="button" role="tab" aria-controls="bootstrap5-content-4" aria-selected="">
-        <span class="d-block d-sm-none d-md-block mx-auto align-self-center" style="font-size: 12px;">bootstrap5</span>
-        <i class="bi bi-bootstrap d-none d-sm-block d-md-none mx-auto align-self-center text-body" title="bootstrap5"></i>
-        </div>
+      <div id="bootstrap5-tab-4" class="mainsidenavbar nav-tab-loading nav-link p-0 d-flex align-items-center justify-content-center justify-content-md-start justify-content-lg-center justify-content-xxl-start px-0 px-md-1 px-lg-0 px-xxl-1 " style="min-width: 48px;min-height: 30px;border-radius: 0px;" data-bs-target="#bootstrap5-content-4" data-bs-toggle="pill" type="button" role="tab" aria-controls="bootstrap5-content-4" aria-selected="" data-article-text="bootstrap5">
+        <i class="bi bi-bootstrap mx-auto mx-md-0 px-0 px-md-2 px-lg-0 px-xxl-2 align-self-center text-body text-center" style="width: 44px;height:28px;line-height:28px;font-size: 28px;" title="bootstrap5"></i>
+        <span class="d-none d-md-block d-lg-none d-xxl-block px-2" style="font-size:16px;">|</span>
+        <span class="d-none d-md-block d-lg-none d-xxl-block" style="font-size:12px;">bootstrap5</span>
+      </div>
     </div>
     <div class="nav-item mx-1 mx-sm-0 my-0 flex-shrink-0" role="presentation" style="height: 32px;">
-      <div id="javascript-tab-5" class="nav-tab-loading nav-link p-0 d-flex " style="min-width: 48px;min-height: 30px;border-radius: 0px;" data-bs-target="#javascript-content-5" data-bs-toggle="pill" type="button" role="tab" aria-controls="javascript-content-5" aria-selected="">
-        <span class="d-block d-sm-none d-md-block mx-auto align-self-center" style="font-size: 12px;">javascript</span>
-        <img class="d-none d-sm-block d-md-none mx-auto align-self-center" style="height:24px;" src="assets/imgs/javascript.png" alt="javascript" title="javascript">
-        </div>
+      <div id="javascript-tab-5" class="mainsidenavbar nav-tab-loading nav-link p-0 d-flex align-items-center justify-content-center justify-content-md-start justify-content-lg-center justify-content-xxl-start px-0 px-md-1 px-lg-0 px-xxl-1 " style="min-width: 48px;min-height: 30px;border-radius: 0px;" data-bs-target="#javascript-content-5" data-bs-toggle="pill" type="button" role="tab" aria-controls="javascript-content-5" aria-selected="" data-article-text="javascript">
+        <img class="mx-auto mx-md-0 px-0 px-md-2 px-lg-0 px-xxl-2 align-self-center" style="width: 44px;height:28px;" src="assets/imgs/javascript.png" alt="javascript" title="javascript">
+        <span class="d-none d-md-block d-lg-none d-xxl-block px-2" style="font-size:16px;">|</span>
+        <span class="d-none d-md-block d-lg-none d-xxl-block" style="font-size:12px;">javascript</span>
+      </div>
     </div>
     <div class="nav-item mx-1 mx-sm-0 my-0 flex-shrink-0" role="presentation" style="height: 32px;">
-      <div id="python-tab-6" class="nav-tab-loading nav-link p-0 d-flex " style="min-width: 48px;min-height: 30px;border-radius: 0px;" data-bs-target="#python-content-6" data-bs-toggle="pill" type="button" role="tab" aria-controls="python-content-6" aria-selected="">
-        <span class="d-block d-sm-none d-md-block mx-auto align-self-center" style="font-size: 12px;">python</span>
-        <img class="d-none d-sm-block d-md-none mx-auto align-self-center" style="height:24px;" src="assets/imgs/python.png" alt="python" title="python">
-        </div>
+      <div id="python-tab-6" class="mainsidenavbar nav-tab-loading nav-link p-0 d-flex align-items-center justify-content-center justify-content-md-start justify-content-lg-center justify-content-xxl-start px-0 px-md-1 px-lg-0 px-xxl-1 " style="min-width: 48px;min-height: 30px;border-radius: 0px;" data-bs-target="#python-content-6" data-bs-toggle="pill" type="button" role="tab" aria-controls="python-content-6" aria-selected="" data-article-text="python">
+        <img class="mx-auto mx-md-0 px-0 px-md-2 px-lg-0 px-xxl-2 align-self-center" style="width: 44px;height:28px;" src="assets/imgs/python.png" alt="python" title="python">
+        <span class="d-none d-md-block d-lg-none d-xxl-block px-2" style="font-size:16px;">|</span>
+        <span class="d-none d-md-block d-lg-none d-xxl-block" style="font-size:12px;">python</span>
+      </div>
     </div>
     <div class="nav-item mx-1 mx-sm-0 my-0 flex-shrink-0" role="presentation" style="height: 32px;">
-      <div id="django-tab-7" class="nav-tab-loading nav-link p-0 d-flex " style="min-width: 48px;min-height: 30px;border-radius: 0px;" data-bs-target="#django-content-7" data-bs-toggle="pill" type="button" role="tab" aria-controls="django-content-7" aria-selected="">
-        <span class="d-block d-sm-none d-md-block mx-auto align-self-center" style="font-size: 12px;">django</span>
-        <img class="d-none d-sm-block d-md-none mx-auto align-self-center" style="height:24px;" src="assets/imgs/django.png" alt="django" title="django">
-        </div>
+      <div id="django-tab-7" class="mainsidenavbar nav-tab-loading nav-link p-0 d-flex align-items-center justify-content-center justify-content-md-start justify-content-lg-center justify-content-xxl-start px-0 px-md-1 px-lg-0 px-xxl-1 " style="min-width: 48px;min-height: 30px;border-radius: 0px;" data-bs-target="#django-content-7" data-bs-toggle="pill" type="button" role="tab" aria-controls="django-content-7" aria-selected="" data-article-text="django">
+        <img class="mx-auto mx-md-0 px-0 px-md-2 px-lg-0 px-xxl-2 align-self-center" style="width: 44px;height:28px;" src="assets/imgs/django.png" alt="django" title="django">
+        <span class="d-none d-md-block d-lg-none d-xxl-block px-2" style="font-size:16px;">|</span>
+        <span class="d-none d-md-block d-lg-none d-xxl-block" style="font-size:12px;">django</span>
+      </div>
     </div>
     <div class="nav-item mx-1 mx-sm-0 my-0 flex-shrink-0" role="presentation" style="height: 32px;">
-      <div id="scrapy-tab-8" class="nav-tab-loading nav-link p-0 d-flex " style="min-width: 48px;min-height: 30px;border-radius: 0px;" data-bs-target="#scrapy-content-8" data-bs-toggle="pill" type="button" role="tab" aria-controls="scrapy-content-8" aria-selected="">
-        <span class="d-block d-sm-none d-md-block mx-auto align-self-center" style="font-size: 12px;">scrapy</span>
-        <img class="d-none d-sm-block d-md-none mx-auto align-self-center" style="height:24px;" src="assets/imgs/scrapy.png" alt="scrapy" title="scrapy">
-        </div>
+      <div id="scrapy-tab-8" class="mainsidenavbar nav-tab-loading nav-link p-0 d-flex align-items-center justify-content-center justify-content-md-start justify-content-lg-center justify-content-xxl-start px-0 px-md-1 px-lg-0 px-xxl-1 " style="min-width: 48px;min-height: 30px;border-radius: 0px;" data-bs-target="#scrapy-content-8" data-bs-toggle="pill" type="button" role="tab" aria-controls="scrapy-content-8" aria-selected="" data-article-text="scrapy">
+        <img class="mx-auto mx-md-0 px-0 px-md-2 px-lg-0 px-xxl-2 align-self-center" style="width: 44px;height:28px;" src="assets/imgs/scrapy.png" alt="scrapy" title="scrapy">
+        <span class="d-none d-md-block d-lg-none d-xxl-block px-2" style="font-size:16px;">|</span>
+        <span class="d-none d-md-block d-lg-none d-xxl-block" style="font-size:12px;">scrapy</span>
+      </div>
     </div>
     <div class="nav-item mx-1 mx-sm-0 my-0 flex-shrink-0" role="presentation" style="height: 32px;">
-      <div id="sqlite-tab-9" class="nav-tab-loading nav-link p-0 d-flex " style="min-width: 48px;min-height: 30px;border-radius: 0px;" data-bs-target="#sqlite-content-9" data-bs-toggle="pill" type="button" role="tab" aria-controls="sqlite-content-9" aria-selected="">
-        <span class="d-block d-sm-none d-md-block mx-auto align-self-center" style="font-size: 12px;">sqlite</span>
-        <img class="d-none d-sm-block d-md-none mx-auto align-self-center" style="height:24px;" src="assets/imgs/sqlite.png" alt="sqlite" title="sqlite">
-        </div>
+      <div id="sqlite-tab-9" class="mainsidenavbar nav-tab-loading nav-link p-0 d-flex align-items-center justify-content-center justify-content-md-start justify-content-lg-center justify-content-xxl-start px-0 px-md-1 px-lg-0 px-xxl-1 " style="min-width: 48px;min-height: 30px;border-radius: 0px;" data-bs-target="#sqlite-content-9" data-bs-toggle="pill" type="button" role="tab" aria-controls="sqlite-content-9" aria-selected="" data-article-text="sqlite">
+        <img class="mx-auto mx-md-0 px-0 px-md-2 px-lg-0 px-xxl-2 align-self-center" style="width: 44px;height:28px;" src="assets/imgs/sqlite.png" alt="sqlite" title="sqlite">
+        <span class="d-none d-md-block d-lg-none d-xxl-block px-2" style="font-size:16px;">|</span>
+        <span class="d-none d-md-block d-lg-none d-xxl-block" style="font-size:12px;">sqlite</span>
+      </div>
     </div>
     <div class="nav-item mx-1 mx-sm-0 my-0 flex-shrink-0" role="presentation" style="height: 32px;">
-      <div id="boa-tab-10" class="nav-tab-loading nav-link p-0 d-flex " style="min-width: 48px;min-height: 30px;border-radius: 0px;" data-bs-target="#boa-content-10" data-bs-toggle="pill" type="button" role="tab" aria-controls="boa-content-10" aria-selected="">
-        <span class="d-block d-sm-none d-md-block mx-auto align-self-center" style="font-size: 12px;">boa</span>
-        <img class="d-none d-sm-block d-md-none mx-auto align-self-center" style="height:24px;" src="assets/imgs/boa.png" alt="boa" title="boa">
-        </div>
+      <div id="boa-tab-10" class="mainsidenavbar nav-tab-loading nav-link p-0 d-flex align-items-center justify-content-center justify-content-md-start justify-content-lg-center justify-content-xxl-start px-0 px-md-1 px-lg-0 px-xxl-1 " style="min-width: 48px;min-height: 30px;border-radius: 0px;" data-bs-target="#boa-content-10" data-bs-toggle="pill" type="button" role="tab" aria-controls="boa-content-10" aria-selected="" data-article-text="boa">
+        <img class="mx-auto mx-md-0 px-0 px-md-2 px-lg-0 px-xxl-2 align-self-center" style="width: 44px;height:28px;" src="assets/imgs/boa.png" alt="boa" title="boa">
+        <span class="d-none d-md-block d-lg-none d-xxl-block px-2" style="font-size:16px;">|</span>
+        <span class="d-none d-md-block d-lg-none d-xxl-block" style="font-size:12px;">boa</span>
+      </div>
     </div>
     <div class="nav-item mx-1 mx-sm-0 my-0 flex-shrink-0" role="presentation" style="height: 32px;">
-      <div id="posts-tab-1000" class="nav-tab-loading nav-link p-0 d-flex " style="min-width: 48px;min-height: 30px;border-radius: 0px;" data-bs-target="#posts-content-1000" data-bs-toggle="pill" type="button" role="tab" aria-controls="posts-content-1000" aria-selected="">
-        <span class="d-block d-sm-none d-md-block mx-auto align-self-center" style="font-size: 12px;">帖子</span>
-        <i class="bi bi-postcard d-none d-sm-block d-md-none mx-auto align-self-center text-body" title="posts"></i>
-        </div>
+      <div id="posts-tab-1000" class="mainsidenavbar nav-tab-loading nav-link p-0 d-flex align-items-center justify-content-center justify-content-md-start justify-content-lg-center justify-content-xxl-start px-0 px-md-1 px-lg-0 px-xxl-1 " style="min-width: 48px;min-height: 30px;border-radius: 0px;" data-bs-target="#posts-content-1000" data-bs-toggle="pill" type="button" role="tab" aria-controls="posts-content-1000" aria-selected="" data-article-text="帖子">
+        <i class="bi bi-postcard mx-auto mx-md-0 px-0 px-md-2 px-lg-0 px-xxl-2 align-self-center text-body text-center" style="width: 44px;height:28px;line-height:28px;font-size: 28px;" title="posts"></i>
+        <span class="d-none d-md-block d-lg-none d-xxl-block px-2" style="font-size:16px;">|</span>
+        <span class="d-none d-md-block d-lg-none d-xxl-block" style="font-size:12px;">帖子</span>
+      </div>
     </div>
     </div>
   <!-- 右边内容区域 -->
-  <div id="app-main-content" class="tab-content bg-body-tertiary col-12 col-sm-11 col-md-10 col-lg-11 px-1" style="height: calc(100vh - 87px);max-height: calc(100vh - 50px);">
+  <div id="app-main-content" class="tab-content bg-body-tertiary col-12 col-sm-11 col-md-10 col-lg-11 px-2 border-start 
+  border-primary-subtle" style="height: calc(100vh - 87px);max-height: calc(100vh - 50px);">
     <!-- 右边区域 tab (id 以 article.label article.index 配合 tab content进行命名区分)-->
     <!-- 其中，javascript需要 以 类名为： id-app-main-tab_content-articles-carousel 来获取这些 文章carousel对象（其中地方不要进行使用 否则会出现意外的错误） -->
     <div id="github-content-1" class="id-app-main-tab_content-articles-carousel tab-pane fade show active w-100 h-100" role="tabpanel" aria-labelledby="github-tab-1" tabindex="0">
@@ -33639,8 +33661,12 @@ ps -e可以查找到boa对应的进程id
   </div>
   <div id="app-footer-content" class="collapse">
       <div style="height:200px" class="d-flex flex-column align-items-center justify-content-evenly">
-        <div>© 2023 开源项目</div>
-        <div>email: mimao_littlemouse@163.com</div>
+        <div>©2023 开源项目</div>
+        <div>
+          <i class="user-select-none bi bi-mailbox"></i>
+           
+          <span class="user-select-all fw-light">mimao_littlemouse@163.com</span>
+        </div>
       </div>
   </div>
 </div>
@@ -33873,6 +33899,10 @@ toast.show() -->
 <script src="/jekyll-blog/assets/js/device/index.js"></script>
 
 <!-- 引入 各部分内容 javascript 代码 -->
+<!-- 引入主体区域侧边导航栏模块 -->
+<!-- 引入 点击不同导航菜单，在顶部显示不同的文字提示 -->
+<script src="/jekyll-blog/assets/js/mainsidenavbar/index.js"></script>
+
 <!-- 滚动条模块 -->
 <!-- 轮播图指示滚动条模块 -->
 <script src="/jekyll-blog/assets/js/scroll/carousel_scroll.js"></script>
